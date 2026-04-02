@@ -1,0 +1,126 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0 ;
+    
+}
+
+#heroDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: url('C:\Users\Malindu Sachinthana\Downloads\Final Year Project Files\AI-based-pizza-sales-prediction-system-and-customer-support-web-platform-final\frontend\src\assets\MainBackground.jpg') no-repeat center center/cover;
+   
+}
+
+.top-left-logo {
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    width: 100px; 
+    height: auto;
+    border-radius: 50%; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); 
+    z-index: 10; 
+    transition: transform 0.3s ease;
+}
+
+.top-left-logo:hover {
+    transform: scale(1.05);
+}
+
+
+
+#heroDiv h2 {
+    color: #ffffffbe;
+    font-family:Aclonica,sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    text-align: center;
+}
+
+#loginForm-container {
+    background: #0a0a0a1f;
+    padding: 40px;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 510px;
+}
+
+#loginForm {
+    display: flex;
+    flex-direction: column;
+}
+
+#loginForm label {
+    color: #ffffff;
+    font-family: 'Times New Roman', Times, serif;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size:1rem;
+    letter-spacing: 0.5px;
+}
+
+#loginForm input {
+    padding: 14px;
+    margin-bottom: 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #ffffff9f;
+    width: 370px;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+#loginForm input:focus {
+    outline: none;
+    transform: translateY(-2px);
+}
+
+#loginForm button {
+    align-self: center;  
+    width: 50%;
+    margin-top: 20px;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background-color: #ffffff94;
+    color: #000000;
+    font-family: Uncial Antiqua,sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#loginForm button:hover {
+    background-color: #c57424d7;
+    box-shadow: 0 4px 15px rgba(32, 31, 31, 0.4);
+}
+
+#loginForm button:active {
+    transform: scale(0.98);
+}
+
+.forgot-btn-link{
+
+    color: #ffffff;
+    cursor: pointer;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.remember-forgot{
+    display: flex;
+    
+    margin:auto;
+
+}

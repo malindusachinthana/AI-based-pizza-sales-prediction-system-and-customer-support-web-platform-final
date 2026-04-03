@@ -113,14 +113,22 @@
 
 .forgot-btn-link{
 
-    color: #ffffff;
-    cursor: pointer;
+    display: flex;
     font-family: 'Times New Roman', Times, serif;
+    cursor: pointer;
+    color: #ffffff;
+    text-decoration: underline;
+    margin: auto;
+    position: relative;
+    left: 260px;
+
 }
 
 .remember-forgot{
-    display: flex;
-    
-    margin:auto;
 
+    width: 100%;
+    margin: 10px 0 20px; 
+    font-size: 0.9em;
+    color: #ffff;
 }
+

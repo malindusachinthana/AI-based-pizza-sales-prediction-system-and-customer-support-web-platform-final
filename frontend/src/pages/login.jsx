@@ -86,9 +86,11 @@ function Login() {
                 type="text" 
                 className="forgot-btn-link" 
                 onClick={handleForgotPassword}
-            >   Forgot password?
+            >   Forgot password..?
             </text>
           </div>
+
+
 
           {errorMessage && <p style={{ color: "red", marginTop: "10px" }}>{errorMessage}</p>}
           

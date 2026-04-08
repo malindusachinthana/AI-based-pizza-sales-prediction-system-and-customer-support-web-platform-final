@@ -1,0 +1,163 @@
+/* Container holding the entire page */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  
+  background-image: url('C:\Users\Malindu Sachinthana\Downloads\Final Year Project Files\AI-based-pizza-sales-prediction-system-and-customer-support-web-platform-final\frontend\src\assets\rigisterbackground(1).png'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  font-family:Aclonica,sans-serif;
+}
+
+/* Dark overlay to make the form pop against the background image */
+.auth-container::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.65); /* Adjust the 0.65 to make the background darker or lighter */
+  z-index: 1;
+}
+
+/* The translucent glassmorphism form box */
+.auth-box {
+  position: relative;
+  z-index: 2;
+  background: rgba(20, 20, 20, 0.75); /* Dark transparent background */
+  padding: 45px 50px;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  border: 1px solid rgba(242, 158, 32, 0.2); /* Subtle orange border glow */
+  backdrop-filter: blur(8px); /* Creates the frosted glass effect */
+}
+
+.auth-letter{
+    color: #ffffff;
+}
+
+/* Logo Text Styling */
+.auth-box h1 {
+  font-size: 32px;
+  margin-bottom: 5px;
+  letter-spacing: 2px;
+  font-family:Aclonica,sans-serif;
+}
+
+.auth-box h1 .white-text {
+  color: #ffffff;
+}
+
+.auth-box h1 .orange-text {
+  color: #f29e20; /* The signature OvenZa orange */
+}
+
+/* Welcome / Create Account Text */
+.auth-box h2 {
+  color: #ffffff;
+  font-size: 22px;
+  margin-bottom: 35px;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+/* Input Fields Layout */
+.input-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  color: #f29e20; /* Orange labels matching the image */
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Input Fields Styling */
+.input-group input {
+  width: 100%;
+  padding: 12px 15px;
+  background: rgba(255, 255, 255, 0.05); /* Highly transparent white */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 15px;
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.input-group input::placeholder {
+  color: #888888;
+}
+
+.input-group input:focus {
+  border-color: #f29e20; /* Glows orange when clicked */
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 10px rgba(242, 158, 32, 0.3);
+}
+
+/* The Main Button */
+.primary-btn {
+  width: 100%;
+  padding: 14px;
+  background-color: #f29e20;
+  color: #111111;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  text-transform: uppercase;
+  font-family:Aclonica,sans-serif;
+}
+
+.primary-btn:hover {
+  background-color: #ffffff; /* Darkens slightly on hover */
+}
+
+.primary-btn:active {
+  transform: scale(1.02);
+}
+
+/* Error Message Box */
+.error-msg {
+  color: #ff4d4d;
+  background-color: rgba(255, 77, 77, 0.1);
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  border: 1px solid #ff4d4d;
+}
+
+/* Bottom Text Styling */
+.redirect-text {
+  margin-top: 25px;
+  font-size: 14px;
+  color: #aaaaaa;
+}
+
+.redirect-link {
+  color: #f29e20;
+  cursor: pointer;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.redirect-link:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}

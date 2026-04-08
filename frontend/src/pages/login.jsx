@@ -12,11 +12,14 @@ function Login() {
   
   const navigate = useNavigate();
 
-  // --- ADDED: Handler for the forgot password button ---
   const handleForgotPassword = (e) => {
     e.preventDefault();
     // Add your forgot password modal or routing logic here later
     alert("Redirecting to password reset..."); 
+  };
+
+  const handleRegisterRedirect = () => {
+    navigate("/register"); // Ensure you have this route defined in App.js
   };
 
   const validate = async (e) => {
@@ -95,9 +98,16 @@ function Login() {
           {errorMessage && <p style={{ color: "red", marginTop: "10px" }}>{errorMessage}</p>}
           
           <button type="submit" style={{ marginTop: "15px" }}>Login</button>
+
+          <div className="register-link">
+            <p>Don't have an account? <span onClick={handleRegisterRedirect}>Register</span></p>
+          </div>
+
         </form>
       </div>
     </div>
+
+    
   );
 }
 

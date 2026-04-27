@@ -384,3 +384,26 @@ function GallerySection() {
     </section>
   );
 }
+
+// ── Footer ────────────────────────────────────────────────────
+function Footer() {
+  return (
+    <footer className="footer">
+      <div className="footer-logo">
+        <img src={logoCrust} alt="OvenZa Crust" />
+        <span>OvenZa</span>
+      </div>
+      <ul className="footer-links">
+        <li><Link to="/customer-home">Home</Link></li>
+        <li><Link to="/gallery">Gallery</Link></li>
+        <li><Link to="/menu">Menu</Link></li>
+        <li><Link to="/special-offers">Special Offers</Link></li>
+        <li><Link to="/about">About Us</Link></li>
+      </ul>
+      <p className="footer-copy">
+        © 2026 OvenZa. All Rights Reserved<br />
+        <span style={{ fontSize: '0.7rem', opacity: 0.6 }}>By, Malindu Sachinthana</span>
+      </p>
+    </footer>
+  );
+}

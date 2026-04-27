@@ -48,3 +48,25 @@ import foodImg3       from '../../assets/thepepoimg.jpg';
 import lobbyImg1      from '../../assets/home02.jpg';
 import lobbyImg2      from '../../assets/home03.jpg';
 import lobbyImg3      from '../../assets/home04.jpg';
+
+// ── Scroll Reveal Hook ───────────────────────────────────────
+function useReveal() {
+  useEffect(() => {
+    const targets = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const delay = entry.target.dataset.delay || 0;
+            setTimeout(() => {
+              entry.target.classList.add('visible');
+            }, Number(delay));
+          }
+        });
+      },
+      { threshold: 0.13 }
+    );
+    targets.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+}

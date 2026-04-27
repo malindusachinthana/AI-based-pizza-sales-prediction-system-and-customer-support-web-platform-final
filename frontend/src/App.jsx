@@ -11,13 +11,11 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          {/* This makes Login the default page when the app loads */}
-          <Route path="/" element={<Login />} />
-          
-          {/* This is the route your Login page redirect is looking for */}
-          <Route path="/register" element={<Register />} />
-          
-          {/* You will add these routes later based on your login logic */}
+
+          <Route path="/"              element={<CustomerHome />} />
+          <Route path="/login"         element={<Login />} />
+          <Route path="/register"      element={<Register />} />
+
           {/* <Route path="/admin-dashboard" element={<AdminDashboard />} /> */}
           {/* <Route path="/customer-home" element={<CustomerHome />} /> */}
         </Routes>

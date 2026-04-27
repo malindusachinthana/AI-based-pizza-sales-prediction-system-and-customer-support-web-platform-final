@@ -32,12 +32,7 @@ function Login() {
 
   const handleForgotPassword = (e) => {
     e.preventDefault();
-    // Add your forgot password modal or routing logic here later
-    alert("Redirecting to password reset..."); 
-  };
-
-  const handleRegisterRedirect = () => {
-    navigate("/register"); // Ensure you have this route defined in App.js
+    alert("Redirecting to password reset...");
   };
 
   const validate = async (e) => {
@@ -45,10 +40,9 @@ function Login() {
     setErrorMessage("");
 
     try {
-      // Call Node.js backend
-      const response = await axios.post('http://localhost:5000/api/auth/login', { 
-        userName, 
-        password 
+      const response = await axios.post('http://localhost:5000/api/auth/login', {
+        username,
+        password
       });
       
       const data = response.data;

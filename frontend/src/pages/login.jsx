@@ -4,7 +4,8 @@ import axios from 'axios';
 import '../style/login.css';
 import logoImage from '../assets/OvenzaCrustlogo.png';
 
-// ── Login Animation Overlay ───────────────────────────────────
+// Login Animation Overlay
+
 function LoginOverlay({ show, username }) {
   if (!show) return null;
   return (
@@ -25,8 +26,8 @@ function Login() {
   const [username, setUsername]         = useState("");
   const [password, setPassword]         = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [showLogin, setShowLogin]       = useState(false); // ✅ Add this
-  const [loggedUser, setLoggedUser]     = useState("");    // ✅ Add this
+  const [showLogin, setShowLogin]       = useState(false);
+  const [loggedUser, setLoggedUser]     = useState("");
 
   const navigate = useNavigate();
 
@@ -52,11 +53,11 @@ function Login() {
       localStorage.setItem("userRole", data.role);
       localStorage.setItem("username", data.username);
 
-      // ✅ Show animation first
+      // Show animation first
       setLoggedUser(data.username);
       setShowLogin(true);
 
-      // ✅ Wait 2.5s then redirect
+      // Wait 2.5s then redirect
       setTimeout(() => {
         if (data.role === 'admin') {
           navigate("/admin-dashboard");
@@ -76,7 +77,7 @@ function Login() {
 
   return (
     <>
-      {/* ✅ Login Animation Overlay */}
+      {/* Login Animation Overlay */}
       <LoginOverlay show={showLogin} username={loggedUser} />
 
       <div id="heroDiv">

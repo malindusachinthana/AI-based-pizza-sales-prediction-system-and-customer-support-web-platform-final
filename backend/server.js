@@ -1,7 +1,8 @@
-const express   = require('express');
-const dotenv    = require('dotenv');
-const cors      = require('cors');
-const connectDB = require('./config/db');
+const express    = require('express');
+const dotenv     = require('dotenv');
+const cors       = require('cors');
+const connectDB  = require('./config/db');
+const authRoutes = require('./routes/authRoutes');
 
 // Load environment variables
 dotenv.config();
@@ -20,8 +21,8 @@ app.get('/', (req, res) => {
   res.json({ message: '🍕 OvenZa Crust API is running!' });
 });
 
-// Auth Routes (we'll add this next)
-// app.use('/api/auth', require('./routes/authRoutes'));
+// Auth Routes
+app.use('/api/auth', authRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

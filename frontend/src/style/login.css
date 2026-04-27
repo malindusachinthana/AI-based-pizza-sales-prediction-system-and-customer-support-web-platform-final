@@ -1,50 +1,50 @@
 * {
     box-sizing: border-box;
     margin: 0;
-    padding: 0 ;
-    
+    padding: 0;
 }
 
-#heroDiv{
+#heroDiv {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: url('C:\Users\Malindu Sachinthana\Downloads\Final Year Project Files\AI-based-pizza-sales-prediction-system-and-customer-support-web-platform-final\frontend\src\assets\MainBackground.jpg') no-repeat center center/cover;
-   
+    background: url('../assets/MainBackground.jpg') no-repeat center center/cover;
 }
 
+/* ── Logo ── */
 .top-left-logo {
     position: absolute;
     top: 30px;
     left: 40px;
-    width: 100px; 
+    width: 100px;
     height: auto;
-    border-radius: 50%; 
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); 
-    z-index: 10; 
-    transition: transform 0.3s ease;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .top-left-logo:hover {
-    transform: scale(1.05);
+    transform: scale(1.08) rotate(5deg);
+    opacity: 0.85;
 }
 
-
-
+/* ── Welcome Heading ── */
 #heroDiv h2 {
     color: #ffffffbe;
-    font-family:Aclonica,sans-serif;
+    font-family: Aclonica, sans-serif;
     font-size: 2.5rem;
     margin-bottom: 24px;
     text-transform: uppercase;
     letter-spacing: 2px;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
     text-align: center;
-   
 }
 
+/* ── Form Container ── */
 #loginForm-container {
     background: #0a0a0a1f;
     padding: 40px;
@@ -63,7 +63,7 @@
     font-family: 'Times New Roman', Times, serif;
     margin-bottom: 8px;
     font-weight: 600;
-    font-size:1rem;
+    font-size: 1rem;
     letter-spacing: 0.5px;
 }
 
@@ -85,7 +85,7 @@
 }
 
 #loginForm button {
-    align-self: center;  
+    align-self: center;
     width: 50%;
     margin-top: 20px;
     padding: 14px;
@@ -93,7 +93,7 @@
     border-radius: 8px;
     background-color: #ffffff94;
     color: #000000;
-    font-family: Uncial Antiqua,sans-serif;
+    font-family: Uncial Antiqua, sans-serif;
     font-size: 1.1rem;
     font-weight: 600;
     cursor: pointer;
@@ -111,8 +111,8 @@
     transform: scale(0.98);
 }
 
-.forgot-btn-link{
-
+/* ── Forgot Password ── */
+.forgot-btn-link {
     display: flex;
     font-family: 'Times New Roman', Times, serif;
     cursor: pointer;
@@ -121,19 +121,20 @@
     margin: auto;
     position: relative;
     left: 260px;
-
 }
 
-.remember-forgot{
+.forgot-btn-link:hover {
+    color: #ff0000;
+}
 
+.remember-forgot {
     width: 100%;
-    margin: 10px 0 20px; 
+    margin: 10px 0 20px;
     font-size: 0.9em;
     color: #ffff;
 }
 
-
-/* Container for the registration text */
+/* ── Register Link ── */
 .register-link {
     margin-top: 20px;
     text-align: center;
@@ -141,27 +142,114 @@
     color: #ffffff;
 }
 
-/* The clickable "Register" word */
-.register-link span {
-    color: #ff0000; /* Using a pizza-sauce red to match your theme */
+.register-link a {
+    color: #ff0000;
     font-weight: bold;
     cursor: pointer;
+    text-decoration: none;
     transition: color 0.3s ease;
 }
 
-.register-link span:hover {
-    color: #ff0000;
+.register-link a:hover {
+    color: #ff6600;
     text-decoration: underline;
 }
 
-.forgot-btn-link:hover {
-    color: #ff0000;
-}
-
-/* Error message styling */
+/* ── Error Message ── */
 .error-text {
     color: #ff0000;
     font-size: 0.85rem;
     margin-top: 10px;
     text-align: center;
+}
+
+/* ══════════════════════════════════════════
+   LOGIN ANIMATION OVERLAY
+══════════════════════════════════════════ */
+.login-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 14, 8, 0.96);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: loginFadeIn 0.4s ease;
+}
+
+@keyframes loginFadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.login-box {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    animation: loginFadeUp 0.5s ease;
+}
+
+@keyframes loginFadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* ✅ Spinning Pizza */
+.login-pizza {
+    font-size: 5rem;
+    animation: loginSpin 1s ease infinite;
+}
+
+@keyframes loginSpin {
+    0%   { transform: rotate(0deg)   scale(1);    }
+    25%  { transform: rotate(90deg)  scale(1.15); }
+    50%  { transform: rotate(180deg) scale(1);    }
+    75%  { transform: rotate(270deg) scale(1.15); }
+    100% { transform: rotate(360deg) scale(1);    }
+}
+
+/* ✅ Welcome Title */
+.login-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #c9a84c;
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+    text-shadow: 0 2px 16px rgba(201, 168, 76, 0.4);
+}
+
+/* ✅ Subtitle */
+.login-sub {
+    font-size: 0.95rem;
+    color: #a89f8c;
+    letter-spacing: 0.08em;
+}
+
+.login-sub strong {
+    color: #c9a84c;
+    font-weight: 700;
+}
+
+/* ✅ Progress Bar */
+.login-bar-wrap {
+    width: 220px;
+    height: 3px;
+    background: rgba(201, 168, 76, 0.15);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.login-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #8a6f30, #c9a84c, #e2c97e);
+    border-radius: 10px;
+    animation: loginBar 2.3s ease forwards;
+}
+
+@keyframes loginBar {
+    from { width: 0%;   }
+    to   { width: 100%; }
 }

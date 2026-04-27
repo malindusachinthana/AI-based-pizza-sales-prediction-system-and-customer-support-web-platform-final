@@ -3,7 +3,8 @@ import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import '../style/register.css';
 
-// ── Register Success Overlay ──────────────────────────────────
+// Register Success Overlay
+
 function RegisterOverlay({ show, username }) {
   if (!show) return null;
   return (
@@ -11,11 +12,11 @@ function RegisterOverlay({ show, username }) {
       <div className="register-anim-box">
         <div className="register-icon">🎉</div>
         <div className="register-pizza">🍕</div>
-        <h2 className="register-title">Welcome to OvenZa!</h2>
+        <h2 className="register-title">Welcome to OvenZa..!</h2>
         <p className="register-sub">
           Account created for <strong>{username}</strong>!
         </p>
-        <p className="register-sub2">Redirecting you to login...</p>
+        <p className="register-sub2">Redirecting you to login..!</p>
         <div className="register-bar-wrap">
           <div className="register-bar" />
         </div>
@@ -35,8 +36,8 @@ const Register = () => {
   });
 
   const [error,       setError]       = useState('');
-  const [showSuccess, setShowSuccess] = useState(false); // ✅ Animation state
-  const [regUser,     setRegUser]     = useState('');    // ✅ Store username
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [regUser,     setRegUser]     = useState('');
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -65,11 +66,11 @@ const Register = () => {
         password: formData.password
       });
 
-      // ✅ Show animation instead of Swal
+      // Show animation instead of Swal
       setRegUser(formData.username);
       setShowSuccess(true);
 
-      // ✅ Wait 2.8s then redirect to login
+      // Wait 2.8s then redirect to login
       setTimeout(() => {
         navigate('/login');
       }, 2800);
@@ -85,7 +86,7 @@ const Register = () => {
 
   return (
     <>
-      {/* ✅ Success Animation Overlay */}
+      {/* Success Animation Overlay */}
       <RegisterOverlay show={showSuccess} username={regUser} />
 
       <div className="auth-container">

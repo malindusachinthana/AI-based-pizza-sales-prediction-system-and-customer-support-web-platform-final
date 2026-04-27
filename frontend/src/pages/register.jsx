@@ -95,53 +95,70 @@ const Register = () => {
             <h3>Register Here,</h3>
           </div>
 
-          <div className="input-group">
-            <label>Email</label>
-            <input 
-              type="email" 
-              name="email" 
-              value={formData.email} 
-              onChange={handleChange} 
-              placeholder="Enter your email" 
-              required 
-            />
-          </div>
+          {error && <p className="error-msg">{error}</p>}
 
-          <div className="input-group">
-            <label>Password</label>
-            <input 
-              type="password" 
-              name="password" 
-              value={formData.password} 
-              onChange={handleChange} 
-              placeholder="Create a password" 
-              required 
-            />
-          </div>
+          <form onSubmit={handleRegister}>
+            <div className="input-group">
+              <label>Username</label>
+              <input
+                type="text"
+                name="username"
+                value={formData.username}
+                onChange={handleChange}
+                placeholder="Choose a username"
+                required
+              />
+            </div>
 
-          <div className="input-group">
-            <label>Confirm Password</label>
-            <input 
-              type="password" 
-              name="confirmPassword" 
-              value={formData.confirmPassword} 
-              onChange={handleChange} 
-              placeholder="Confirm your password" 
-              required 
-            />
-          </div>
+            <div className="input-group">
+              <label>Email</label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Enter your email"
+                required
+              />
+            </div>
 
-          <button type="submit" className="primary-btn">Submit</button>
-        </form>
+            <div className="input-group">
+              <label>Password</label>
+              <input
+                type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                placeholder="Create a password"
+                required
+              />
+            </div>
 
-        <p className="redirect-text">
-          I already have an account? {' '}
-          <span className="redirect-link" onClick={() => navigate('/')}>
-            Login here
-          </span>
-        </p>
+            <div className="input-group">
+              <label>Confirm Password</label>
+              <input
+                type="password"
+                name="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                placeholder="Confirm your password"
+                required
+              />
+            </div>
+
+            <button type="submit" className="primary-btn">Submit</button>
+          </form>
+
+          <p className="redirect-text">
+            I already have an account?{' '}
+            <Link to="/login" className="redirect-link">
+              Login here
+            </Link>
+          </p>
+
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

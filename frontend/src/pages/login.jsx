@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Swal } from 'sweetalert2/dist/sweetalert2.all.js';
-import axios from 'axios'; 
-import '../style/login.css'
+import { useNavigate, Link } from 'react-router-dom';
+import axios from 'axios';
+import '../style/login.css';
 import logoImage from '../assets/OvenzaCrustlogo.png';
 
 function Login() {

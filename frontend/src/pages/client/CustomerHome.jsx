@@ -98,3 +98,15 @@ function Navbar() {
   const username = localStorage.getItem('username');
   const role     = localStorage.getItem('userRole');
 
+  // ✅ Updated logout with animation
+  const handleLogout = () => {
+    setShowLogout(true); // Show animation
+    setTimeout(() => {
+      localStorage.removeItem('token');
+      localStorage.removeItem('userRole');
+      localStorage.removeItem('username');
+      navigate('/');
+      setShowLogout(false);
+    }, 2500); // Wait 2.5s then redirect
+  };
+

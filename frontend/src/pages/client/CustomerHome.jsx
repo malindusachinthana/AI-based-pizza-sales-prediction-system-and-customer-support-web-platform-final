@@ -151,3 +151,37 @@ function Navbar() {
           <li><Link to="/about">About Us</Link></li>
         </ul>
 
+        {/* ── User Section ── */}
+        <div className="navbar-user-wrap">
+          {token && (
+            <span className="navbar-greeting">👋 Hi, {username}</span>
+          )}
+          <button className="user-icon-btn" onClick={handleProfileRedirect}>
+            👤
+          </button>
+          <div className="user-dropdown">
+            {!token ? (
+              <button className="dropdown-btn" onClick={handleLoginRedirect}>
+                🔑 Login
+              </button>
+            ) : (
+              <>
+                {role === 'admin' && (
+                  <button className="dropdown-btn" onClick={handleAdminRedirect}>
+                    ▦ Admin Panel
+                  </button>
+                )}
+                <button className="dropdown-btn" onClick={() => navigate('/customer-profile')}>
+                  👤 My Profile
+                </button>
+                <button className="dropdown-btn logout" onClick={handleLogout}>
+                  ⟵ Logout
+                </button>
+              </>
+            )}
+          </div>
+        </div>
+      </nav>
+    </>
+  );
+}

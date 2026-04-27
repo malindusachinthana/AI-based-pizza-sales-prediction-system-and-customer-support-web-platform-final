@@ -211,3 +211,23 @@ function HeroSection() {
   );
 }
 
+// ── Category Icon Row ─────────────────────────────────────────
+function CategoryIconRow() {
+  const icons = [
+    { src: chickenIcon, label: 'Chicken' },
+    { src: cheeseIcon,  label: 'Cheese'  },
+    { src: vegIcon,     label: 'Veg'     },
+    { src: seafoodIcon, label: 'Seafood' },
+    { src: pizzaIcon,   label: 'Pizzas'  },
+  ];
+  return (
+    <div className="icon-row reveal" data-delay="200">
+      {icons.map(({ src, label }) => (
+        <div className="icon-item" key={label}>
+          <img src={src} alt={label} />
+          <span>{label}</span>
+        </div>
+      ))}
+    </div>
+  );
+}

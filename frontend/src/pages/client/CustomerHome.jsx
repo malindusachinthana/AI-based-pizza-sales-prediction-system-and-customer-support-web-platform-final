@@ -325,3 +325,31 @@ function MenuSection() {
     </section>
   );
 }
+
+// ── Special Offers Section ────────────────────────────────────
+function OffersSection() {
+  return (
+    <section className="offers-section" id="special-offers">
+      <div className="container">
+        <div className="offers-header reveal">
+          <h2 className="offers-title">Special Offers</h2>
+        </div>
+        <div className="offer-card reveal" data-delay="150">
+          <div className="offer-badge-wrap">
+            <span className="offer-badge-main">BUY 1<br />GET 1</span>
+            <span className="offer-badge-sub">FREE<br />OFFER..!</span>
+          </div>
+          <div className="offer-center">
+            <img className="offer-image" src={offerPizza} alt="Five Cheese Pizza offer" />
+            <h3 className="offer-pizza-name">The Five Cheese Pizza</h3>
+            <p className="offer-desc">
+              Purchase Any Variety of Pizza &amp; Get Same Variety of Pizza FREE...!
+            </p>
+          </div>
+          <div className="offer-family">Enjoy<br />With<br />Your<br />Whole<br />Family.</div>
+        </div>
+      </div>
+    </section>
+  );
+}
+

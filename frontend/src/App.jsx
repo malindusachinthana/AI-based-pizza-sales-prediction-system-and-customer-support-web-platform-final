@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import CustomerHome   from './pages/client/CustomerHome.jsx';
 import Login          from './pages/login.jsx';
 import Register       from './pages/register.jsx';
-// import AdminDashboard from './pages/admin/AdminDashboard.jsx';
 
 function App() {
   return (
@@ -15,9 +14,6 @@ function App() {
           <Route path="/"              element={<CustomerHome />} />
           <Route path="/login"         element={<Login />} />
           <Route path="/register"      element={<Register />} />
-
-          {/* Admin Route */}
-          {/* <Route path="/admin-dashboard" element={<AdminDashboard />} /> */}
 
         </Routes>
       </div>

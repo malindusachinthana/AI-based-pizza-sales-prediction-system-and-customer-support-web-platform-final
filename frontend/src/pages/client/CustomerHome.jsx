@@ -87,3 +87,14 @@ function LogoutOverlay({ show }) {
     </div>
   );
 }
+
+// Navbar
+function Navbar() {
+  const navRef   = useRef(null);
+  const navigate = useNavigate();
+  const [showLogout, setShowLogout] = useState(false); // ✅ Add this
+
+  const token    = localStorage.getItem('token');
+  const username = localStorage.getItem('username');
+  const role     = localStorage.getItem('userRole');
+

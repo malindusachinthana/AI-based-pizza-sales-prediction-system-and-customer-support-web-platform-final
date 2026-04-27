@@ -3,6 +3,27 @@ import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import '../style/register.css';
 
+// ── Register Success Overlay ──────────────────────────────────
+function RegisterOverlay({ show, username }) {
+  if (!show) return null;
+  return (
+    <div className="register-overlay">
+      <div className="register-anim-box">
+        <div className="register-icon">🎉</div>
+        <div className="register-pizza">🍕</div>
+        <h2 className="register-title">Welcome to OvenZa!</h2>
+        <p className="register-sub">
+          Account created for <strong>{username}</strong>!
+        </p>
+        <p className="register-sub2">Redirecting you to login...</p>
+        <div className="register-bar-wrap">
+          <div className="register-bar" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 const Register = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({

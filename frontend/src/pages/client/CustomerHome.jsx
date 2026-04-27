@@ -144,3 +144,10 @@ function Navbar() {
           <img src={logo} alt="OvenZa Logo" />
         </Link>
 
+        {/* ── Right Links ── */}
+        <ul className="navbar-links-right">
+          <li><Link to="/menu">Menu</Link></li>
+          <li><Link to="/special-offers">Special Offers</Link></li>
+          <li><Link to="/about">About Us</Link></li>
+        </ul>
+

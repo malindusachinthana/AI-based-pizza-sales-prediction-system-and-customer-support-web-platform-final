@@ -231,3 +231,48 @@ function CategoryIconRow() {
     </div>
   );
 }
+
+// ── About Section ────────────────────────────────────────────
+function AboutSection() {
+  return (
+    <section className="section" id="about">
+      <div className="container">
+        <div className="about-grid">
+          <div className="about-image-wrap reveal-left">
+            <img src={aboutPizza} alt="Wood-fired pizza" />
+            <div className="about-badge">
+              <span>🔥</span>
+              <span>Wood<br />Fired</span>
+            </div>
+          </div>
+          <div className="reveal-right">
+            <span className="section-label">Wood-Fired Authenticity</span>
+            <p className="about-tagline-main">Smoky, Savory, and<br />Served with Soul.</p>
+            <p className="about-tagline-sub">Chicken · Cheese · Veg · Seafood Pizzas</p>
+            <div className="gold-divider" />
+            <p className="section-desc">
+              Indulge in our masterfully crafted thin-crust pizzas — fresh from the heat of our
+              traditional wood-fired ovens and layered with premium, hand-picked toppings.
+            </p>
+            <p className="section-desc" style={{ marginTop: '14px' }}>
+              Whether you are taking a break from the bustling energy of Maharagama or gathering
+              for a relaxed evening out, every meal here is plated with warm, neighborhood hospitality.
+            </p>
+            <CategoryIconRow />
+            <div className="about-btns">
+              <Link to="/menu"    className="btn-primary">Order Now</Link>
+              <Link to="/gallery" className="btn-outline">Gallery</Link>
+            </div>
+          </div>
+        </div>
+        <div className="gallery-strip reveal" data-delay="100">
+          {[galleryImg1, galleryImg2, galleryImg3, galleryImg4].map((src, i) => (
+            <div className="gallery-strip-item" key={i}>
+              <img src={src} alt={`Gallery ${i + 1}`} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

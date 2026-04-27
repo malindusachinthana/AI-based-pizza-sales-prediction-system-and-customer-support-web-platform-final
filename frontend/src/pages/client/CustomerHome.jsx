@@ -276,3 +276,18 @@ function AboutSection() {
     </section>
   );
 }
+
+// ── Menu Section ─────────────────────────────────────────────
+const categories = [
+  { label: 'Veggie',  img: veggiePizza  },
+  { label: 'Chicken', img: chickenPizza },
+  { label: 'Classic', img: classicPizza },
+  { label: 'Supreme', img: supremePizza },
+];
+
+const sizes = [
+  { label: 'Large',  img: largePizza  },
+  { label: 'Medium', img: mediumPizza },
+  { label: 'Small',  img: smallPizza  },
+];
+

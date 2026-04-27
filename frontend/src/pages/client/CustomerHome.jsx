@@ -353,3 +353,34 @@ function OffersSection() {
   );
 }
 
+// ── Gallery Section ───────────────────────────────────────────
+function GallerySection() {
+  return (
+    <section className="gallery-section" id="gallery">
+      <div className="container">
+        <div className="gallery-title-block reveal">
+          <h2 className="gallery-main-title">O V E N Z A &nbsp; G A L L E R Y</h2>
+        </div>
+        <div className="gallery-subtitle-row">
+          <div className="gallery-col reveal-left">
+            <span className="gallery-col-title">OvenZa Foods</span>
+            <div className="gallery-col-grid">
+              <img src={foodImg1} alt="OvenZa food 1" />
+              <img src={foodImg2} alt="OvenZa food 2" />
+              <img src={foodImg3} alt="OvenZa food 3" />
+            </div>
+          </div>
+          <div className="gallery-divider" />
+          <div className="gallery-col reveal-right">
+            <span className="gallery-col-title">OvenZa Lobby</span>
+            <div className="gallery-col-grid">
+              <img src={lobbyImg1} alt="OvenZa lobby 1" />
+              <img src={lobbyImg2} alt="OvenZa lobby 2" />
+              <img src={lobbyImg3} alt="OvenZa lobby 3" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

@@ -115,15 +115,17 @@ function Login() {
               </span>
             </div>
 
+            {errorMessage && (
+              <p style={{ color: "red", marginTop: "10px" }}>{errorMessage}</p>
+            )}
 
+            <button type="submit" style={{ marginTop: "15px" }}>Login</button>
 
-          {errorMessage && <p style={{ color: "red", marginTop: "10px" }}>{errorMessage}</p>}
-          
-          <button type="submit" style={{ marginTop: "15px" }}>Login</button>
-
-          <div className="register-link">
-            <p>Don't have an account? <span onClick={handleRegisterRedirect}>Register</span></p>
-          </div>
+            <div className="register-link">
+              <p>Don't have an account?{' '}
+                <Link to="/register">Register</Link>
+              </p>
+            </div>
 
         </form>
       </div>

@@ -19,7 +19,7 @@
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0, 0, 0, 0.65); /* Adjust the 0.65 to make the background darker or lighter */
+  background: rgba(0, 0, 0, 0.65);     /* Adjust the 0.65 to make the background darker or lighter */
   z-index: 1;
 }
 
@@ -35,7 +35,7 @@
   max-width: 420px;
   text-align: center;
   border: 1px solid rgba(242, 158, 32, 0.2); /* Subtle orange border glow */
-  backdrop-filter: blur(8px); /* Creates the frosted glass effect */
+  backdrop-filter: blur(8px);                  /* Creates the frosted glass effect */
 }
 
 .auth-letter{
@@ -55,7 +55,7 @@
 }
 
 .auth-box h1 .orange-text {
-  color: #f29e20; /* The signature OvenZa orange */
+  color: #f29e20;         /* The signature OvenZa orange */
 }
 
 /* Welcome / Create Account Text */
@@ -75,7 +75,7 @@
 
 .input-group label {
   display: block;
-  color: #f29e20; /* Orange labels matching the image */
+  color: #f29e20;    /* Orange labels matching the image */
   margin-bottom: 8px;
   font-size: 14px;
   font-weight: 500;
@@ -101,7 +101,7 @@
 }
 
 .input-group input:focus {
-  border-color: #f29e20; /* Glows orange when clicked */
+  border-color: #f29e20;              /* Glows orange when clicked */
   background: rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 10px rgba(242, 158, 32, 0.3);
 }
@@ -125,7 +125,7 @@
 }
 
 .primary-btn:hover {
-  background-color: #ffffff; /* Darkens slightly on hover */
+  background-color: #ffffff;    /* Darkens slightly on hover */
 }
 
 .primary-btn:active {
@@ -162,9 +162,8 @@
   text-decoration: underline;
 }
 
-/* ══════════════════════════════════════════
-   REGISTER SUCCESS ANIMATION OVERLAY
-══════════════════════════════════════════ */
+/* REGISTER SUCCESS ANIMATION OVERLAY */
+
 .register-overlay {
   position: fixed;
   inset: 0;
@@ -195,7 +194,7 @@
   to   { opacity: 1; transform: translateY(0);    }
 }
 
-/* ✅ Confetti emoji bouncing */
+/* Confetti emoji bouncing */
 .register-icon {
   font-size: 3rem;
   animation: regBounce 0.6s ease infinite alternate;
@@ -206,7 +205,7 @@
   to   { transform: translateY(-14px) scale(1.2); }
 }
 
-/* ✅ Spinning pizza */
+/* Spinning pizza */
 .register-pizza {
   font-size: 4.5rem;
   animation: regSpin 1s ease infinite;
@@ -220,7 +219,7 @@
   100% { transform: rotate(360deg) scale(1);    }
 }
 
-/* ✅ Title */
+/* Title */
 .register-title {
   font-size: 2.2rem;
   font-weight: 700;
@@ -230,7 +229,7 @@
   text-shadow: 0 2px 16px rgba(201, 168, 76, 0.5);
 }
 
-/* ✅ Username line */
+/* Username line */
 .register-sub {
   font-size: 1rem;
   color: #a89f8c;
@@ -242,7 +241,7 @@
   font-weight: 700;
 }
 
-/* ✅ Redirect line */
+/* Redirect line */
 .register-sub2 {
   font-size: 0.82rem;
   color: #6a6058;
@@ -250,7 +249,7 @@
   text-transform: uppercase;
 }
 
-/* ✅ Progress bar */
+/* Progress bar */
 .register-bar-wrap {
   width: 220px;
   height: 3px;

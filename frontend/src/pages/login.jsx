@@ -75,35 +75,40 @@ function Login() {
   };
 
   return (
-    <div id="heroDiv">
-     <h2>Welcome</h2>
-     <img src={logoImage} alt="OvenZa Crust Logo" className="top-left-logo" /> 
+    <>
+      {/* ✅ Login Animation Overlay */}
+      <LoginOverlay show={showLogin} username={loggedUser} />
 
-      <div id="loginForm-container">
-        <form id="loginForm" onSubmit={validate}>
-          <label>Username:</label>
-          <input 
-            type="text" 
-            value={userName} 
-            onChange={(e) => setUserName(e.target.value)} 
-            placeholder="Username" 
-            required 
-          />
-          
-          <label>Password:</label>
-          <input 
-            type="password" 
-            value={password} 
-            onChange={(e) => setPassword(e.target.value)} 
-            placeholder="Password" 
-            required 
-          />
-          
-          <div className="remember-forgot" >
+      <div id="heroDiv">
+        <Link to="/">
+          <img src={logoImage} alt="OvenZa Crust Logo" className="top-left-logo" />
+        </Link>
+        <h2>Welcome</h2>
 
-            <text 
-                type="text" 
-                className="forgot-btn-link" 
+        <div id="loginForm-container">
+          <form id="loginForm" onSubmit={validate}>
+
+            <label>Username:</label>
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Username"
+              required
+            />
+
+            <label>Password:</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+              required
+            />
+
+            <div className="remember-forgot">
+              <span
+                className="forgot-btn-link"
                 onClick={handleForgotPassword}
             >   Forgot password..?
             </text>

@@ -42,22 +42,45 @@ const Register = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    
-    // Basic validation
+    setError('');
+
+    // Check passwords match
     if (formData.password !== formData.confirmPassword) {
       setError("Passwords do not match!");
       return;
     }
-    
-    setError('');
-    // TODO: Send data to your Node.js backend here
-    console.log("Registration data:", formData);
-    
-    // Redirect back to login after successful registration
-    alert("Registration successful! Please login.");
-    navigate('/');
+
+    // Password strength check
+    if (formData.password.length < 6) {
+      setError("Password must be at least 6 characters!");
+      return;
+    }
+
+    try {
+      await axios.post('http://localhost:5000/api/auth/register', {
+        username: formData.username,
+        email:    formData.email,
+        password: formData.password
+      });
+
+      // ✅ Show animation instead of Swal
+      setRegUser(formData.username);
+      setShowSuccess(true);
+
+      // ✅ Wait 2.8s then redirect to login
+      setTimeout(() => {
+        navigate('/login');
+      }, 2800);
+
+    } catch (error) {
+      if (error.response && error.response.data) {
+        setError(error.response.data.message);
+      } else {
+        setError("Something went wrong. Please try again.");
+      }
+    }
   };
 
   return (

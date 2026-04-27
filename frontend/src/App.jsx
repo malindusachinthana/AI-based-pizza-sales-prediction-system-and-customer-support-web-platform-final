@@ -1,9 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-// Import your page components
-import Login from './pages/login.jsx';       // Adjust the path based on your folder structure
-import Register from './pages/register.jsx'; // Adjust the path based on your folder structure
+import CustomerHome   from './pages/client/CustomerHome.jsx';
+import Login          from './pages/login.jsx';
+import Register       from './pages/register.jsx';
+// import AdminDashboard from './pages/admin/AdminDashboard.jsx';
 
 function App() {
   return (

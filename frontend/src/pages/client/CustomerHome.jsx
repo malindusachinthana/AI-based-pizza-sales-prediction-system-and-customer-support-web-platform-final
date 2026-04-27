@@ -185,3 +185,29 @@ function Navbar() {
     </>
   );
 }
+
+// ── Hero Section ─────────────────────────────────────────────
+function HeroSection() {
+  return (
+    <section className="hero" id="home">
+      <div className="hero-bg" style={{ backgroundImage: `url(${heroBg})` }} />
+      <div className="hero-overlay" />
+      <div className="hero-content">
+        <span className="hero-script">
+          𝔐𝔢𝔱𝔬𝔡𝔬 𝔗𝔯𝔞𝔡𝔦𝔷𝔦𝔬𝔫𝔞𝔩𝔢, 𝔊𝔲𝔰𝔱𝔬 𝔄𝔲𝔱𝔢𝔫𝔱𝔦𝔠𝔬
+        </span>
+        <h1 className="hero-title">
+          Traditional Method,<br />Authentic Taste
+        </h1>
+        <p className="hero-tagline">
+          Old-world Italian craft &nbsp;·&nbsp; New-world Sri Lankan spice &nbsp;·&nbsp; Pure pizza magic
+        </p>
+        <div className="hero-cta-group">
+          <Link to="/menu"    className="btn-primary">Order Now</Link>
+          <Link to="/gallery" className="btn-outline">View Gallery</Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+

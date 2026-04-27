@@ -84,25 +84,15 @@ const Register = () => {
   };
 
   return (
-    <div className="auth-container">
-      <div className="auth-box">
-        <h1>OvenZa Crust</h1>
-        <div className="auth-letter">
-        <h3>Register Here,</h3></div>
-        
-        {error && <p className="error-msg">{error}</p>}
+    <>
+      {/* ✅ Success Animation Overlay */}
+      <RegisterOverlay show={showSuccess} username={regUser} />
 
-        <form onSubmit={handleRegister}>
-          <div className="input-group">
-            <label>Username</label>
-            <input 
-              type="text" 
-              name="username" 
-              value={formData.username} 
-              onChange={handleChange} 
-              placeholder="Choose a username" 
-              required 
-            />
+      <div className="auth-container">
+        <div className="auth-box">
+          <h1>OvenZa Crust</h1>
+          <div className="auth-letter">
+            <h3>Register Here,</h3>
           </div>
 
           <div className="input-group">

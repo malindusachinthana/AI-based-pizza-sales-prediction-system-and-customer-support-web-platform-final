@@ -20,7 +20,7 @@ const createAdmin = async () => {
     // Hash password
     const hashed = await bcrypt.hash('Ov3nZ@Cru$t!2025#', 10);
 
-    // Create admin
+    // Create the admin
     await Admin.create({
       username: 'OvZa_Admin@2025',
       email:    'admin@ovenZacrust.com',

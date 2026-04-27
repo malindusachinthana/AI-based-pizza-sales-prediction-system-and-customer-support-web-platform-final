@@ -44,13 +44,13 @@ function Login() {
         username,
         password
       });
-      
+
       const data = response.data;
 
-      // 1. Store the secure JWT token and user details in localStorage
-      localStorage.setItem("token", data.token); 
-      localStorage.setItem("userId", data._id);
-      localStorage.setItem("userRole", data.role); // 'admin' or 'customer'
+      // Store token and user info
+      localStorage.setItem("token",    data.token);
+      localStorage.setItem("userRole", data.role);
+      localStorage.setItem("username", data.username);
 
       Swal.fire("Success", "Login Successful", "success");
 

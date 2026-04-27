@@ -291,3 +291,37 @@ const sizes = [
   { label: 'Small',  img: smallPizza  },
 ];
 
+function MenuSection() {
+  return (
+    <section className="section section-alt menu-section" id="menu">
+      <div className="container">
+        <div className="menu-header reveal">
+          <span className="menu-letter">M E N U</span>
+          <p className="menu-subtitle">
+            Explore a world of tastier possibilities with our wide range of sizes and
+            authentic flavors inspired by cuisines from around the globe...!
+          </p>
+        </div>
+        <div className="category-grid">
+          {categories.map(({ label, img }, i) => (
+            <div className="category-card reveal" key={label} data-delay={i * 90}>
+              <img src={img} alt={label} />
+              <div className="category-card-overlay" />
+              <span className="category-card-label">{label}</span>
+            </div>
+          ))}
+        </div>
+        <p className="size-section-title reveal"  data-delay="60">Sized to Your Craving</p>
+        <p className="size-section-subtitle reveal" data-delay="120">Your Pizza, Your Portion</p>
+        <div className="size-grid">
+          {sizes.map(({ label, img }, i) => (
+            <div className="size-card reveal" key={label} data-delay={i * 90}>
+              <img src={img} alt={`${label} pizza`} />
+              <span className="size-card-label">{label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

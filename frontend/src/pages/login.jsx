@@ -110,9 +110,10 @@ function Login() {
               <span
                 className="forgot-btn-link"
                 onClick={handleForgotPassword}
-            >   Forgot password..?
-            </text>
-          </div>
+              >
+                Forgot password..?
+              </span>
+            </div>
 
 
 

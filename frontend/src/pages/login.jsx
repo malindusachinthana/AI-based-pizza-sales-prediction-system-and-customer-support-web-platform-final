@@ -22,10 +22,12 @@ function LoginOverlay({ show, username }) {
 }
   
 function Login() {
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername]         = useState("");
+  const [password, setPassword]         = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  
+  const [showLogin, setShowLogin]       = useState(false); // ✅ Add this
+  const [loggedUser, setLoggedUser]     = useState("");    // ✅ Add this
+
   const navigate = useNavigate();
 
   const handleForgotPassword = (e) => {

@@ -3,7 +3,8 @@ const jwt      = require('jsonwebtoken');
 const Customer = require('../models/Customer');
 const Admin    = require('../models/Admin');
 
-// ─── REGISTER (Customers Only) ───────────────────────────────────────────────
+// Register - Only for Customer
+
 exports.register = async (req, res) => {
   const { username, email, password } = req.body;
 
@@ -40,7 +41,8 @@ exports.register = async (req, res) => {
   }
 };
 
-// ─── LOGIN (Admin & Customer) ─────────────────────────────────────────────────
+// Login Admin & Customer
+
 exports.login = async (req, res) => {
   const { username, password } = req.body;
 
@@ -66,7 +68,7 @@ exports.login = async (req, res) => {
       return res.status(401).json({ message: 'Invalid password' });
     }
 
-    // Generate JWT token
+    // Add the JWT token
     const token = jwt.sign(
       { id: user._id, role },
       process.env.JWT_SECRET,

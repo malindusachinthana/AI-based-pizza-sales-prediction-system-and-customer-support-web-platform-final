@@ -40,3 +40,23 @@ exports.register = async (req, res) => {
   }
 };
 
+// ─── LOGIN (Admin & Customer) ─────────────────────────────────────────────────
+exports.login = async (req, res) => {
+  const { username, password } = req.body;
+
+  try {
+    // First check Admin collection
+    let user = await Admin.findOne({ username });
+    let role = 'admin';
+
+    // If not admin, check Customer collection
+    if (!user) {
+      user = await Customer.findOne({ username });
+      role = 'customer';
+    }
+
+    // If still not found
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+

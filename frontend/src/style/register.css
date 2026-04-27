@@ -161,3 +161,113 @@
   color: #ffffff;
   text-decoration: underline;
 }
+
+/* ══════════════════════════════════════════
+   REGISTER SUCCESS ANIMATION OVERLAY
+══════════════════════════════════════════ */
+.register-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 14, 8, 0.97);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: regFadeIn 0.4s ease;
+}
+
+@keyframes regFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.register-anim-box {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  animation: regFadeUp 0.5s ease;
+}
+
+@keyframes regFadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* ✅ Confetti emoji bouncing */
+.register-icon {
+  font-size: 3rem;
+  animation: regBounce 0.6s ease infinite alternate;
+}
+
+@keyframes regBounce {
+  from { transform: translateY(0)   scale(1);    }
+  to   { transform: translateY(-14px) scale(1.2); }
+}
+
+/* ✅ Spinning pizza */
+.register-pizza {
+  font-size: 4.5rem;
+  animation: regSpin 1s ease infinite;
+}
+
+@keyframes regSpin {
+  0%   { transform: rotate(0deg)   scale(1);    }
+  25%  { transform: rotate(90deg)  scale(1.15); }
+  50%  { transform: rotate(180deg) scale(1);    }
+  75%  { transform: rotate(270deg) scale(1.15); }
+  100% { transform: rotate(360deg) scale(1);    }
+}
+
+/* ✅ Title */
+.register-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #c9a84c;
+  font-style: italic;
+  font-family: 'Playfair Display', serif;
+  text-shadow: 0 2px 16px rgba(201, 168, 76, 0.5);
+}
+
+/* ✅ Username line */
+.register-sub {
+  font-size: 1rem;
+  color: #a89f8c;
+  letter-spacing: 0.06em;
+}
+
+.register-sub strong {
+  color: #c9a84c;
+  font-weight: 700;
+}
+
+/* ✅ Redirect line */
+.register-sub2 {
+  font-size: 0.82rem;
+  color: #6a6058;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ✅ Progress bar */
+.register-bar-wrap {
+  width: 220px;
+  height: 3px;
+  background: rgba(201, 168, 76, 0.15);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.register-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #8a6f30, #c9a84c, #e2c97e);
+  border-radius: 10px;
+  animation: regBar 2.6s ease forwards;
+}
+
+@keyframes regBar {
+  from { width: 0%;   }
+  to   { width: 100%; }
+}

@@ -19,3 +19,24 @@ exports.register = async (req, res) => {
     if (existingEmail) {
       return res.status(400).json({ message: 'Email already registered' });
     }
+
+    // Hash the password
+    const hashed = await bcrypt.hash(password, 10);
+
+    // Create new customer
+    const customer = await Customer.create({
+      username,
+      email,
+      password: hashed
+    });
+
+    res.status(201).json({
+      message: '✅ Customer registered successfully!',
+      id: customer._id
+    });
+
+  } catch (err) {
+    res.status(500).json({ message: '❌ Server error: ' + err.message });
+  }
+};
+

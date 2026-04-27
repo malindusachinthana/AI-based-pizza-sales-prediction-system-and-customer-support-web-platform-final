@@ -52,14 +52,18 @@ function Login() {
       localStorage.setItem("userRole", data.role);
       localStorage.setItem("username", data.username);
 
-      Swal.fire("Success", "Login Successful", "success");
+      // ✅ Show animation first
+      setLoggedUser(data.username);
+      setShowLogin(true);
 
-      // 2. Role-Based Routing 
-      if (data.role === 'admin') {
-        navigate("/admin-dashboard"); // Routes to AdminDashboard.jsx
-      } else {
-        navigate("/customer-home"); // Routes to CustomerHome.jsx
-      }
+      // ✅ Wait 2.5s then redirect
+      setTimeout(() => {
+        if (data.role === 'admin') {
+          navigate("/admin-dashboard");
+        } else {
+          navigate("/");
+        }
+      }, 2500);
 
     } catch (error) {
       if (error.response && error.response.data) {

@@ -110,3 +110,37 @@ function Navbar() {
     }, 2500); // Wait 2.5s then redirect
   };
 
+  const handleLoginRedirect  = () => navigate('/login');
+  const handleAdminRedirect  = () => navigate('/admin-dashboard');
+  const handleProfileRedirect = () => { if (token) navigate('/customer-profile'); };
+
+  useEffect(() => {
+    const onScroll = () => {
+      if (navRef.current) {
+        navRef.current.style.background =
+          window.scrollY > 60
+            ? 'rgba(20, 26, 16, 0.98)'
+            : 'rgba(20, 26, 16, 0.75)';
+      }
+    };
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  return (
+    <>
+      {/* ✅ Logout Overlay */}
+      <LogoutOverlay show={showLogout} />
+
+      <nav className="navbar" ref={navRef}>
+        {/* ── Left Links ── */}
+        <ul className="navbar-links-left">
+          <li><Link to="/" className="active">Home</Link></li>
+          <li><Link to="/gallery">Gallery</Link></li>
+        </ul>
+
+        {/* ── Center Logo ── */}
+        <Link to="/" className="navbar-logo">
+          <img src={logo} alt="OvenZa Logo" />
+        </Link>
+

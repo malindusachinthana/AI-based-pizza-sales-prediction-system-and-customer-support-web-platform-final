@@ -4,6 +4,23 @@ import axios from 'axios';
 import '../style/login.css';
 import logoImage from '../assets/OvenzaCrustlogo.png';
 
+// ── Login Animation Overlay ───────────────────────────────────
+function LoginOverlay({ show, username }) {
+  if (!show) return null;
+  return (
+    <div className="login-overlay">
+      <div className="login-box">
+        <div className="login-pizza">🍕</div>
+        <h2 className="login-title">Welcome Back!</h2>
+        <p className="login-sub">👋 Hi, <strong>{username}</strong>! Ready to explore?</p>
+        <div className="login-bar-wrap">
+          <div className="login-bar" />
+        </div>
+      </div>
+    </div>
+  );
+}
+  
 function Login() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");

@@ -26,13 +26,17 @@ function RegisterOverlay({ show, username }) {
 
 const Register = () => {
   const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
+    username:        '',
+    email:           '',
+    password:        '',
     confirmPassword: ''
   });
-  const [error, setError] = useState('');
+
+  const [error,       setError]       = useState('');
+  const [showSuccess, setShowSuccess] = useState(false); // ✅ Animation state
+  const [regUser,     setRegUser]     = useState('');    // ✅ Store username
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });

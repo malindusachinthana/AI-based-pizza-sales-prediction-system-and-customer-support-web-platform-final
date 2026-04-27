@@ -5,3 +5,7 @@ const { register, login } = require('../controllers/authController');
 // POST /api/auth/register  → Create new customer
 router.post('/register', register);
 
+// POST /api/auth/login     → Login admin or customer
+router.post('/login', login);
+
+module.exports = router;

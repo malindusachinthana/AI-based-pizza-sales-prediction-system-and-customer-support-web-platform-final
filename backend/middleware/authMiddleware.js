@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-// ─── Protect Route (Must Be Logged In) ───────────────────────────────────────
+// Protect Route
 const protect = (req, res, next) => {
   const authHeader = req.headers.authorization;
 
@@ -19,7 +19,7 @@ const protect = (req, res, next) => {
   }
 };
 
-// ─── Admin Only Route ─────────────────────────────────────────────────────────
+// Admin Only Route
 const adminOnly = (req, res, next) => {
   if (req.user?.role !== 'admin') {
     return res.status(403).json({ message: '❌ Admin access only' });
@@ -27,7 +27,7 @@ const adminOnly = (req, res, next) => {
   next();
 };
 
-// ─── Customer Only Route ──────────────────────────────────────────────────────
+// Customer Only Route
 const customerOnly = (req, res, next) => {
   if (req.user?.role !== 'customer') {
     return res.status(403).json({ message: '❌ Customer access only' });

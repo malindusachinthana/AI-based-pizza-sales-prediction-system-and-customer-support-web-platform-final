@@ -407,3 +407,31 @@ function Footer() {
     </footer>
   );
 }
+
+// ── Main Page Export ─────────────────────────────────────── ✅
+export default function CustomerHome() {
+  useReveal();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const role  = localStorage.getItem('userRole');
+    if (!token || role !== 'customer') {
+      navigate('/');
+    }
+  }, [navigate]);
+
+  return (
+    <>
+      <Navbar />
+      <main>
+        <HeroSection />
+        <AboutSection />
+        <MenuSection />
+        <OffersSection />
+        <GallerySection />
+      </main>
+      <Footer />
+    </>
+  );
+}

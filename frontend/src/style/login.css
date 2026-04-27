@@ -13,7 +13,7 @@
     background: url('../assets/MainBackground.jpg') no-repeat center center/cover;
 }
 
-/* ── Logo ── */
+/* Logo */
 .top-left-logo {
     position: absolute;
     top: 30px;
@@ -32,7 +32,7 @@
     opacity: 0.85;
 }
 
-/* ── Welcome Heading ── */
+/* Welcome Heading */
 #heroDiv h2 {
     color: #ffffffbe;
     font-family: Aclonica, sans-serif;
@@ -44,7 +44,7 @@
     text-align: center;
 }
 
-/* ── Form Container ── */
+/* Form Container */
 #loginForm-container {
     background: #0a0a0a1f;
     padding: 40px;
@@ -111,7 +111,7 @@
     transform: scale(0.98);
 }
 
-/* ── Forgot Password ── */
+/* Forgot Password */
 .forgot-btn-link {
     display: flex;
     font-family: 'Times New Roman', Times, serif;
@@ -134,7 +134,7 @@
     color: #ffff;
 }
 
-/* ── Register Link ── */
+/* Register Link */
 .register-link {
     margin-top: 20px;
     text-align: center;
@@ -155,7 +155,7 @@
     text-decoration: underline;
 }
 
-/* ── Error Message ── */
+/* Error Message */
 .error-text {
     color: #ff0000;
     font-size: 0.85rem;
@@ -163,9 +163,7 @@
     text-align: center;
 }
 
-/* ══════════════════════════════════════════
-   LOGIN ANIMATION OVERLAY
-══════════════════════════════════════════ */
+/* LOGIN ANIMATION OVERLAY */
 .login-overlay {
     position: fixed;
     inset: 0;
@@ -196,7 +194,7 @@
     to   { opacity: 1; transform: translateY(0);    }
 }
 
-/* ✅ Spinning Pizza */
+/* Spinning Pizza */
 .login-pizza {
     font-size: 5rem;
     animation: loginSpin 1s ease infinite;
@@ -210,7 +208,7 @@
     100% { transform: rotate(360deg) scale(1);    }
 }
 
-/* ✅ Welcome Title */
+/* Welcome Title */
 .login-title {
     font-size: 2.2rem;
     font-weight: 700;
@@ -220,7 +218,7 @@
     text-shadow: 0 2px 16px rgba(201, 168, 76, 0.4);
 }
 
-/* ✅ Subtitle */
+/* Subtitle */
 .login-sub {
     font-size: 0.95rem;
     color: #a89f8c;
@@ -232,7 +230,7 @@
     font-weight: 700;
 }
 
-/* ✅ Progress Bar */
+/* Progress Bar */
 .login-bar-wrap {
     width: 220px;
     height: 3px;

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../style/adminDashboard.css';
+import PizzaMenuManagement from './pizzaMenuManagement.jsx';
 
 // ── Route Protection ──────────────────────────────────────────
 function useAdminProtection() {
@@ -332,7 +333,7 @@ export default function AdminDashboard() {
     switch (active) {
       case 'dashboard': return <DashboardOverview />;
       case 'forecast':  return <ComingSoon title="AI Sales Forecast" />;
-      case 'menu':      return <ComingSoon title="Pizza Menu Management" />;
+      case 'menu': return <PizzaMenuManagement />;
       case 'offers':    return <ComingSoon title="Special Offers" />;
       case 'chatbot':   return <ComingSoon title="Chatbot Manager" />;
       case 'profile':   return <ComingSoon title="Admin Profile" />;

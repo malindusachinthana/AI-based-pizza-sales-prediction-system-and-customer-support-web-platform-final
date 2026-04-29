@@ -14,3 +14,14 @@ function useAdminProtection() {
   }, [navigate]);
 }
 
+// ── Fetch Real Stats from Backend ─────────────────────────────
+function useAdminStats() {
+  const [stats, setStats] = useState({
+    totalCustomers: 0,
+    newToday:       0,
+    totalPizzas:    0,
+    totalOrders:    0,
+    revenue:        0
+  });
+  const [loading, setLoading] = useState(true);
+

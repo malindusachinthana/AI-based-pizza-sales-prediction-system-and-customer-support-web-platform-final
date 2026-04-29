@@ -13,6 +13,43 @@ import heroBg      from '../../assets/MainBackgound.png';
 import aboutPizza  from '../../assets/mainimg.png';
 
 // Gallery Strip
+import galleryImg1 from '../../assets/home01.jpg';
+import galleryImg2 from '../../assets/home02.jpg';
+import galleryImg3 from '../../assets/home03.jpg';
+import galleryImg4 from '../../assets/home04.jpg';
+
+// Menu — Category Icons
+import pizzaIcon   from '../../assets/pizzaIcon.png';
+import chickenIcon from '../../assets/chickenIcon.png';
+import seafoodIcon from '../../assets/seafoodIcon.png';
+import cheeseIcon  from '../../assets/cheeseIcon.png';
+import vegIcon     from '../../assets/vegIcon.png';
+
+// Menu — Category Cards
+import veggiePizza  from '../../assets/vegimg.jpg';
+import chickenPizza from '../../assets/theChickenAlfimg.jpg';
+import classicPizza from '../../assets/theClassicimg.jpg';
+import supremePizza from '../../assets/supremeimg.jpg';
+
+// Menu — Size Cards
+import largePizza  from '../../assets/theBigmeetimg.jpg';
+import mediumPizza from '../../assets/mainGalleryimg.png';
+import smallPizza  from '../../assets/pepo2img.jpg';
+
+// Special Offer
+import offerPizza  from '../../assets/4cheeseimg.jpg';
+
+// Gallery — OvenZa Foods
+import foodImg1    from '../../assets/home05.jpg';
+import foodImg2    from '../../assets/rest01.jpg';
+import foodImg3    from '../../assets/thepepoimg.jpg';
+
+// Gallery — OvenZa Lobby
+import lobbyImg1   from '../../assets/home02.jpg';
+import lobbyImg2   from '../../assets/home03.jpg';
+import lobbyImg3   from '../../assets/home04.jpg';
+
+// ── Scroll Reveal Hook ───────────────────────────────────────
 function useReveal() {
   useEffect(() => {
     const targets = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');

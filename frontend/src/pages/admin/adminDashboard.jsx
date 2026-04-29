@@ -46,3 +46,15 @@ function useAdminStats() {
   return { stats, loading };
 }
 
+// ── Stat Card ─────────────────────────────────────────────────
+function StatCard({ icon, value, label, change, accent }) {
+  return (
+    <div className={`stat-card stat-${accent}`}>
+      <div className="stat-icon">{icon}</div>
+      <div className="stat-value">{value}</div>
+      <div className="stat-label">{label}</div>
+      <div className="stat-change">{change}</div>
+    </div>
+  );
+}
+

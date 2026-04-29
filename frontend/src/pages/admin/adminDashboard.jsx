@@ -310,3 +310,16 @@ function DashboardOverview() {
   );
 }
 
+// ── Coming Soon Panel ─────────────────────────────────────────
+function ComingSoon({ title }) {
+  return (
+    <div className="admin-content">
+      <div className="coming-soon">
+        <div className="coming-icon">🍕</div>
+        <h2 className="coming-title">{title}</h2>
+        <p className="coming-sub">This section is coming soon...</p>
+      </div>
+    </div>
+  );
+}
+

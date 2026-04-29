@@ -323,3 +323,29 @@ function ComingSoon({ title }) {
   );
 }
 
+// ── Main Export ───────────────────────────────────────────────
+export default function AdminDashboard() {
+  useAdminProtection();
+  const [active, setActive] = useState('dashboard');
+
+  const renderContent = () => {
+    switch (active) {
+      case 'dashboard': return <DashboardOverview />;
+      case 'forecast':  return <ComingSoon title="AI Sales Forecast" />;
+      case 'menu':      return <ComingSoon title="Pizza Menu Management" />;
+      case 'offers':    return <ComingSoon title="Special Offers" />;
+      case 'chatbot':   return <ComingSoon title="Chatbot Manager" />;
+      case 'profile':   return <ComingSoon title="Admin Profile" />;
+      default:          return <DashboardOverview />;
+    }
+  };
+
+  return (
+    <div className="admin-wrapper">
+      <Sidebar active={active} setActive={setActive} />
+      <div className="admin-main">
+        {renderContent()}
+      </div>
+    </div>
+  );
+}

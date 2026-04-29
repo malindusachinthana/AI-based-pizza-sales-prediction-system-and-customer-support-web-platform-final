@@ -38,3 +38,13 @@ router.get('/', async (req, res) => {
   }
 });
 
+// ── GET BY CATEGORY (public) ──────────────────────────────────
+router.get('/category/:category', async (req, res) => {
+  try {
+    const pizzas = await Pizza.find({ category: req.params.category });
+    res.json(pizzas);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+

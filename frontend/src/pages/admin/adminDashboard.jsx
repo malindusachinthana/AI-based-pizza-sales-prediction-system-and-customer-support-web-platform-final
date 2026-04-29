@@ -58,3 +58,93 @@ function StatCard({ icon, value, label, change, accent }) {
   );
 }
 
+// ── Sidebar ───────────────────────────────────────────────────
+function Sidebar({ active, setActive }) {
+  const navigate = useNavigate();
+
+  const navItems = [
+    { id: 'dashboard', icon: '▦', label: 'Dashboard'      },
+    { id: 'forecast',  icon: '◎', label: 'AI Forecast'    },
+    { id: 'menu',      icon: '◈', label: 'Pizza Menu'     },
+    { id: 'offers',    icon: '✦', label: 'Special Offers' },
+    { id: 'chatbot',   icon: '◉', label: 'Chatbot'        },
+    { id: 'profile',   icon: '◯', label: 'Profile'        },
+  ];
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('userRole');
+    localStorage.removeItem('username');
+    navigate('/');
+  };
+
+  const username = localStorage.getItem('username');
+
+  return (
+    <aside className="admin-sidebar">
+
+      {/* Logo */}
+      <div className="sidebar-logo">
+        <span className="sidebar-brand">OvenZa Crust</span>
+        <span className="sidebar-sub">Admin Panel</span>
+      </div>
+
+      {/* Admin Info */}
+      <div className="sidebar-admin">
+        <div className="sidebar-avatar">OA</div>
+        <div>
+          <div className="sidebar-name">{username}</div>
+          <div className="sidebar-role">Super Admin</div>
+        </div>
+      </div>
+
+      {/* Navigation */}
+      <nav className="sidebar-nav">
+        <div className="sidebar-section-label">Main</div>
+        {navItems.slice(0, 2).map(item => (
+          <button
+            key={item.id}
+            className={`sidebar-item ${active === item.id ? 'active' : ''}`}
+            onClick={() => setActive(item.id)}
+          >
+            <span className="sidebar-item-icon">{item.icon}</span>
+            {item.label}
+          </button>
+        ))}
+
+        <div className="sidebar-section-label">Manage</div>
+        {navItems.slice(2, 5).map(item => (
+          <button
+            key={item.id}
+            className={`sidebar-item ${active === item.id ? 'active' : ''}`}
+            onClick={() => setActive(item.id)}
+          >
+            <span className="sidebar-item-icon">{item.icon}</span>
+            {item.label}
+          </button>
+        ))}
+
+        <div className="sidebar-section-label">Account</div>
+        {navItems.slice(5).map(item => (
+          <button
+            key={item.id}
+            className={`sidebar-item ${active === item.id ? 'active' : ''}`}
+            onClick={() => setActive(item.id)}
+          >
+            <span className="sidebar-item-icon">{item.icon}</span>
+            {item.label}
+          </button>
+        ))}
+      </nav>
+
+      {/* Logout */}
+      <div className="sidebar-footer">
+        <button className="sidebar-logout" onClick={handleLogout}>
+          ⟵ Logout
+        </button>
+      </div>
+
+    </aside>
+  );
+}
+

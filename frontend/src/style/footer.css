@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Lato:wght@300;400;700&display=swap');
+
+/* ── Footer ── */
+.footer {
+  background: #242e1f;
+  border-top: 1px solid rgba(201, 168, 76, 0.15);
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* ── Footer Logo ── */
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-logo img {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid #8a6f30;
+  object-fit: cover;
+}
+
+.footer-logo span {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 0.9rem;
+  color: #c9a84c;
+}
+
+/* ── Footer Links ── */
+.footer-links {
+  display: flex;
+  list-style: none;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-links a {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #a89f8c;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #c9a84c;
+}
+
+/* ── Footer Copy ── */
+.footer-copy {
+  font-size: 0.78rem;
+  color: #a89f8c;
+  text-align: right;
+  line-height: 1.6;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 24px 20px;
+  }
+
+  .footer-links {
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .footer-copy {
+    text-align: center;
+  }
+}

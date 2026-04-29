@@ -166,3 +166,147 @@ function DashboardOverview() {
         </span>
       </div>
 
+      {/* ✅ Stat Cards with Real Data */}
+      {loading ? (
+        <div className="loading-stats">🍕 Loading stats...</div>
+      ) : (
+        <div className="stats-grid">
+          <StatCard
+            icon="🍕"
+            value={stats.totalPizzas}
+            label="Pizza Items"
+            change="▲ 3 this week"
+            accent="gold"
+          />
+          <StatCard
+            icon="👥"
+            value={stats.totalCustomers}
+            label="Customers"
+            change={`▲ ${stats.newToday} new today`}
+            accent="green"
+          />
+          <StatCard
+            icon="📦"
+            value={stats.totalOrders}
+            label="Total Orders"
+            change="▲ 28 today"
+            accent="orange"
+          />
+          <StatCard
+            icon="💰"
+            value={`Rs.${(stats.revenue / 1000).toFixed(0)}k`}
+            label="Revenue"
+            change="▲ 18% this week"
+            accent="blue"
+          />
+        </div>
+      )}
+
+      {/* Mid Row */}
+      <div className="mid-grid">
+
+        {/* Weekly Sales Chart */}
+        <div className="admin-panel">
+          <div className="panel-header">
+            <span className="panel-title">Weekly Sales</span>
+            <span className="panel-action">View Full →</span>
+          </div>
+          <div className="bar-chart">
+            {[
+              { day: 'Mon', h: 45, active: false },
+              { day: 'Tue', h: 65, active: true  },
+              { day: 'Wed', h: 40, active: false  },
+              { day: 'Thu', h: 80, active: true  },
+              { day: 'Fri', h: 55, active: false  },
+              { day: 'Sat', h: 90, active: true  },
+              { day: 'Sun', h: 70, active: true  },
+            ].map(({ day, h, active }) => (
+              <div className="bar-wrap" key={day}>
+                <div
+                  className={`bar ${active ? 'bar-active' : ''}`}
+                  style={{ height: `${h}px` }}
+                />
+                <span className="bar-label">{day}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Top Selling */}
+        <div className="admin-panel">
+          <div className="panel-header">
+            <span className="panel-title">Top Selling Pizzas</span>
+            <span className="panel-action">Manage →</span>
+          </div>
+          <div className="pizza-list">
+            {[
+              { name: 'BBQ Chicken Pizza', orders: 48, badge: 'Top', color: '#c9a84c' },
+              { name: 'Four Cheese Pizza', orders: 36, badge: 'Hot', color: '#c0392b' },
+              { name: 'Italian Supreme',   orders: 29, badge: 'New', color: '#3b7a3b' },
+            ].map(({ name, orders, badge, color }) => (
+              <div className="pizza-item" key={name}>
+                <div className="pizza-dot" style={{ background: color }} />
+                <span className="pizza-name">{name}</span>
+                <span className="pizza-orders">{orders}</span>
+                <span className="pizza-badge">{badge}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+
+      {/* Bottom Row */}
+      <div className="mid-grid">
+
+        {/* AI Forecast */}
+        <div className="admin-panel ai-panel">
+          <div className="panel-header">
+            <div className="ai-badge">
+              <div className="ai-pulse" />
+              AI Sales Forecast
+            </div>
+          </div>
+          <p className="ai-subtitle">Next 5-day prediction</p>
+          <div className="ai-forecast">
+            {[
+              { day: 'Tue', val: 42 },
+              { day: 'Wed', val: 38 },
+              { day: 'Thu', val: 55 },
+              { day: 'Fri', val: 61 },
+              { day: 'Sat', val: 78 },
+            ].map(({ day, val }) => (
+              <div className="ai-day" key={day}>
+                <div className="ai-day-name">{day}</div>
+                <div className="ai-day-val">{val}</div>
+                <div className="ai-day-unit">orders</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Quick Actions */}
+        <div className="admin-panel">
+          <div className="panel-header">
+            <span className="panel-title">Quick Actions</span>
+          </div>
+          <div className="quick-actions">
+            {[
+              { icon: '+',  label: 'Add Pizza' },
+              { icon: '✦', label: 'New Offer'  },
+              { icon: '◉', label: 'Chatbot'    },
+              { icon: '📊', label: 'Reports'   },
+            ].map(({ icon, label }) => (
+              <button className="action-btn" key={label}>
+                <div className="action-icon">{icon}</div>
+                <div className="action-label">{label}</div>
+              </button>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
+}
+

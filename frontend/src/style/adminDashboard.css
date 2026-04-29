@@ -28,3 +28,17 @@ body {
   color: var(--cream);
 }
 
+/* ══════════════════════════════════════
+   LAYOUT
+══════════════════════════════════════ */
+.admin-wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+.admin-main {
+  flex: 1;
+  margin-left: 220px;
+  min-height: 100vh;
+  background: var(--bg-dark);
+}

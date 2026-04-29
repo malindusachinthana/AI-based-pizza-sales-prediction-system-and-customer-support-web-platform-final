@@ -161,3 +161,26 @@ body {
   flex-shrink: 0;
 }
 
+/* ── Sidebar Footer ── */
+.sidebar-footer {
+  padding: 12px 18px;
+  border-top: 1px solid rgba(201, 168, 76, 0.1);
+}
+.sidebar-logout {
+  width: 100%;
+  padding: 8px;
+  background: transparent;
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  border-radius: 6px;
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all var(--transition);
+  text-align: center;
+}
+.sidebar-logout:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+

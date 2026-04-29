@@ -99,3 +99,37 @@ export default function PizzaMenuManagement() {
     }
   };
 
+  // ── Delete pizza ──────────────────────────────────────────
+  const handleDelete = async (id, name) => {
+    const result = await Swal.fire({
+      title: 'Delete Pizza?',
+      text:  `Are you sure you want to delete "${name}"?`,
+      icon:  'warning',
+      showCancelButton:   true,
+      confirmButtonColor: '#c0392b',
+      cancelButtonColor:  '#3a4a32',
+      confirmButtonText:  'Yes, delete it!'
+    });
+
+    if (!result.isConfirmed) return;
+
+    try {
+      const token = localStorage.getItem('token');
+      await axios.delete(`http://localhost:5000/api/pizzas/${id}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+
+      await Swal.fire({
+        title: 'Deleted!',
+        text:  `${name} has been removed.`,
+        icon:  'success',
+        timer: 1500,
+        showConfirmButton: false
+      });
+
+      fetchPizzas();
+    } catch (err) {
+      Swal.fire('Error', 'Failed to delete pizza', 'error');
+    }
+  };
+

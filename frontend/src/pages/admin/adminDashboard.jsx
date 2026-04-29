@@ -148,3 +148,21 @@ function Sidebar({ active, setActive }) {
   );
 }
 
+// ── Dashboard Overview ────────────────────────────────────────
+function DashboardOverview() {
+  const { stats, loading } = useAdminStats(); // ✅ Real data
+
+  return (
+    <div className="admin-content">
+
+      {/* Page Title */}
+      <div className="content-header">
+        <h1 className="content-title">Dashboard Overview</h1>
+        <span className="content-date">
+          {new Date().toLocaleDateString('en-US', {
+            weekday: 'long', year: 'numeric',
+            month:   'long', day:  'numeric'
+          })}
+        </span>
+      </div>
+

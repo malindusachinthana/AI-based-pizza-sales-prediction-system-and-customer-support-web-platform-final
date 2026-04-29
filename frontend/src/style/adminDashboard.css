@@ -184,3 +184,30 @@ body {
   color: var(--gold);
 }
 
+/* ══════════════════════════════════════
+   CONTENT AREA
+══════════════════════════════════════ */
+.admin-content {
+  padding: 24px 28px;
+}
+
+/* ── Content Header ── */
+.content-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+}
+.content-title {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-style: italic;
+  color: var(--gold);
+}
+.content-date {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+

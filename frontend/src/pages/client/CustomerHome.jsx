@@ -2,15 +2,15 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../../style/CustomerHome.css';
 
-// OvenZa logos
-import logo           from '../../assets/OvenZlogo.png';
-import logoCrust      from '../../assets/OvenzaCrust logo.png';
+// Import shared components
+import Navbar from '../../components/navbar';
+import Footer from '../../components/footer';
 
-// Hero section - Main Background
-import heroBg         from '../../assets/MainBackgound.png';
+// Hero / Main Background
+import heroBg      from '../../assets/MainBackgound.png';
 
 // About section
-import aboutPizza     from '../../assets/mainimg.png';
+import aboutPizza  from '../../assets/mainimg.png';
 
 // Gallery Strip
 import galleryImg1    from '../../assets/home01.jpg';

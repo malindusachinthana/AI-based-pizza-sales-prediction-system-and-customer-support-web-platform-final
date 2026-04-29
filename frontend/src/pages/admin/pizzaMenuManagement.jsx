@@ -133,3 +133,28 @@ export default function PizzaMenuManagement() {
     }
   };
 
+  // ── Group by category ─────────────────────────────────────
+  const groupedPizzas = {
+    Classic: pizzas.filter(p => p.category === 'Classic'),
+    Chicken: pizzas.filter(p => p.category === 'Chicken'),
+    Supreme: pizzas.filter(p => p.category === 'Supreme'),
+    Veggie:  pizzas.filter(p => p.category === 'Veggie'),
+  };
+
+  return (
+    <div className="admin-content">
+
+      {/* ── Header ── */}
+      <div className="content-header">
+        <div>
+          <h1 className="content-title">Pizza Menu Management</h1>
+          <span className="content-date">Total: {pizzas.length} pizzas</span>
+        </div>
+        <button
+          className="add-pizza-btn"
+          onClick={() => setShowForm(!showForm)}
+        >
+          {showForm ? '✕ Cancel' : '+ Add New Pizza'}
+        </button>
+      </div>
+

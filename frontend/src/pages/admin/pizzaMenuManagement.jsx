@@ -21,3 +21,20 @@ export default function PizzaMenuManagement() {
   const [preview,       setPreview]       = useState(null);
   const [selectedSizes, setSelectedSizes] = useState({});
 
+  // ── Fetch pizzas ──────────────────────────────────────────
+  const fetchPizzas = async () => {
+    try {
+      const res = await axios.get('http://localhost:5000/api/pizzas');
+      setPizzas(res.data);
+      const initial = {};
+      res.data.forEach(p => { initial[p._id] = 'medium'; });
+      setSelectedSizes(initial);
+    } catch (err) {
+      console.error('Failed to fetch pizzas:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => { fetchPizzas(); }, []);
+

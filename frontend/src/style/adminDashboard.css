@@ -269,3 +269,13 @@ body {
   margin-top: 6px;
 }
 
+/* ══════════════════════════════════════
+   GRID LAYOUTS
+══════════════════════════════════════ */
+.mid-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+

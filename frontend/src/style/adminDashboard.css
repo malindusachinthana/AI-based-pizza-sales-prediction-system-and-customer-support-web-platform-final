@@ -279,3 +279,35 @@ body {
   margin-bottom: 20px;
 }
 
+/* ══════════════════════════════════════
+   PANELS
+══════════════════════════════════════ */
+.admin-panel {
+  background: var(--bg-card);
+  border: 1px solid rgba(201, 168, 76, 0.1);
+  border-radius: 8px;
+  padding: 18px;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+}
+.panel-title {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--gold);
+}
+.panel-action {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color var(--transition);
+}
+.panel-action:hover { color: var(--gold); }
+

@@ -28,3 +28,13 @@ const upload = multer({
   }
 });
 
+// ── GET ALL PIZZAS (public) ───────────────────────────────────
+router.get('/', async (req, res) => {
+  try {
+    const pizzas = await Pizza.find().sort({ category: 1, name: 1 });
+    res.json(pizzas);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+

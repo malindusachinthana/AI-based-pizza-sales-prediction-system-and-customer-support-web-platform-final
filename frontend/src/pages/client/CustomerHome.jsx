@@ -71,124 +71,7 @@ function useReveal() {
   }, []);
 }
 
-// Logout Animation Overlay
-
-function LogoutOverlay({ show }) {
-  if (!show) return null;
-  return (
-    <div className="logout-overlay">
-      <div className="logout-box">
-        <div className="logout-pizza">🍕</div>
-        <h2 className="logout-title">See You Soon!</h2>
-        <p className="logout-sub">You have been logged out.</p>
-        <div className="logout-bar-wrap">
-          <div className="logout-bar" />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// Navbar
-function Navbar() {
-  const navRef   = useRef(null);
-  const navigate = useNavigate();
-  const [showLogout, setShowLogout] = useState(false); // ✅ Add this
-
-  const token    = localStorage.getItem('token');
-  const username = localStorage.getItem('username');
-  const role     = localStorage.getItem('userRole');
-
-  // logout with animation
-  const handleLogout = () => {
-    setShowLogout(true); // Animation
-    setTimeout(() => {
-      localStorage.removeItem('token');
-      localStorage.removeItem('userRole');
-      localStorage.removeItem('username');
-      navigate('/');
-      setShowLogout(false);
-    }, 2500); // Wait 2.5s then redirect
-  };
-
-  const handleLoginRedirect  = () => navigate('/login');
-  const handleAdminRedirect  = () => navigate('/admin-dashboard');
-  const handleProfileRedirect = () => { if (token) navigate('/customer-profile'); };
-
-  useEffect(() => {
-    const onScroll = () => {
-      if (navRef.current) {
-        navRef.current.style.background =
-          window.scrollY > 60
-            ? 'rgba(20, 26, 16, 0.98)'
-            : 'rgba(20, 26, 16, 0.75)';
-      }
-    };
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  return (
-    <>
-      {/* Logout Overlay */}
-      <LogoutOverlay show={showLogout} />
-
-      <nav className="navbar" ref={navRef}>
-        {/* Left Links */}
-        <ul className="navbar-links-left">
-          <li><Link to="/" className="active">Home</Link></li>
-          <li><Link to="/gallery">Gallery</Link></li>
-        </ul>
-
-        {/* Center Logo */}
-        <Link to="/" className="navbar-logo">
-          <img src={logo} alt="OvenZa Logo" />
-        </Link>
-
-        {/* Right Links */}
-        <ul className="navbar-links-right">
-          <li><Link to="/menu">Menu</Link></li>
-          <li><Link to="/special-offers">Special Offers</Link></li>
-          <li><Link to="/about">About Us</Link></li>
-        </ul>
-
-        {/* User Section */}
-        <div className="navbar-user-wrap">
-          {token && (
-            <span className="navbar-greeting">👋 Hi, {username}</span>
-          )}
-          <button className="user-icon-btn" onClick={handleProfileRedirect}>
-            👤
-          </button>
-          <div className="user-dropdown">
-            {!token ? (
-              <button className="dropdown-btn" onClick={handleLoginRedirect}>
-                🔑 Login
-              </button>
-            ) : (
-              <>
-                {role === 'admin' && (
-                  <button className="dropdown-btn" onClick={handleAdminRedirect}>
-                    ▦ Admin Panel
-                  </button>
-                )}
-                <button className="dropdown-btn" onClick={() => navigate('/customer-profile')}>
-                  👤 My Profile
-                </button>
-                <button className="dropdown-btn logout" onClick={handleLogout}>
-                  ⟵ Logout
-                </button>
-              </>
-            )}
-          </div>
-        </div>
-      </nav>
-    </>
-  );
-}
-
-// Hero Section
-
+// ── Hero Section ─────────────────────────────────────────────
 function HeroSection() {
   return (
     <section className="hero" id="home">
@@ -213,8 +96,7 @@ function HeroSection() {
   );
 }
 
-// Category Icon Row
-
+// ── Category Icon Row ─────────────────────────────────────────
 function CategoryIconRow() {
   const icons = [
     { src: chickenIcon, label: 'Chicken' },
@@ -235,8 +117,7 @@ function CategoryIconRow() {
   );
 }
 
-// About Section
-
+// ── About Section ────────────────────────────────────────────
 function AboutSection() {
   return (
     <section className="section" id="about">
@@ -281,8 +162,7 @@ function AboutSection() {
   );
 }
 
-// Menu Section
-
+// ── Menu Section ─────────────────────────────────────────────
 const categories = [
   { label: 'Veggie',  img: veggiePizza  },
   { label: 'Chicken', img: chickenPizza },
@@ -316,7 +196,7 @@ function MenuSection() {
             </div>
           ))}
         </div>
-        <p className="size-section-title reveal"  data-delay="60">Sized to Your Craving</p>
+        <p className="size-section-title reveal" data-delay="60">Sized to Your Craving</p>
         <p className="size-section-subtitle reveal" data-delay="120">Your Pizza, Your Portion</p>
         <div className="size-grid">
           {sizes.map(({ label, img }, i) => (
@@ -331,8 +211,7 @@ function MenuSection() {
   );
 }
 
-// Special Offers Section
-
+// ── Special Offers Section ────────────────────────────────────
 function OffersSection() {
   return (
     <section className="offers-section" id="special-offers">
@@ -359,8 +238,7 @@ function OffersSection() {
   );
 }
 
-// Gallery Section
-
+// ── Gallery Section ───────────────────────────────────────────
 function GallerySection() {
   return (
     <section className="gallery-section" id="gallery">
@@ -392,43 +270,9 @@ function GallerySection() {
   );
 }
 
-// Footer
-
-function Footer() {
-  return (
-    <footer className="footer">
-      <div className="footer-logo">
-        <img src={logoCrust} alt="OvenZa Crust" />
-        <span>OvenZa</span>
-      </div>
-      <ul className="footer-links">
-        <li><Link to="/customer-home">Home</Link></li>
-        <li><Link to="/gallery">Gallery</Link></li>
-        <li><Link to="/menu">Menu</Link></li>
-        <li><Link to="/special-offers">Special Offers</Link></li>
-        <li><Link to="/about">About Us</Link></li>
-      </ul>
-      <p className="footer-copy">
-        © 2026 OvenZa. All Rights Reserved<br />
-        <span style={{ fontSize: '0.7rem', opacity: 0.6 }}>By, Malindu Sachinthana</span>
-      </p>
-    </footer>
-  );
-}
-
-// Main Page Export
-
+// ── Main Page Export ──────────────────────────────────────────
 export default function CustomerHome() {
   useReveal();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    const role  = localStorage.getItem('userRole');
-    if (!token || role !== 'customer') {
-      navigate('/');
-    }
-  }, [navigate]);
 
   return (
     <>

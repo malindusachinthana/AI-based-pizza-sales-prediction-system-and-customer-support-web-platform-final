@@ -385,3 +385,71 @@ body {
   border: 1px solid rgba(201, 168, 76, 0.2);
 }
 
+/* ══════════════════════════════════════
+   AI FORECAST
+══════════════════════════════════════ */
+.ai-panel {
+  border-color: rgba(201, 168, 76, 0.25);
+}
+.ai-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(201, 168, 76, 0.1);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 0.72rem;
+  color: var(--gold);
+  font-weight: 600;
+}
+.ai-pulse {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  animation: aiPulse 1.5s infinite;
+}
+@keyframes aiPulse {
+  0%, 100% { opacity: 1; transform: scale(1);   }
+  50%       { opacity: 0.3; transform: scale(0.8); }
+}
+.ai-subtitle {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+  margin-top: 8px;
+}
+.ai-forecast {
+  display: flex;
+  gap: 8px;
+}
+.ai-day {
+  flex: 1;
+  background: rgba(201, 168, 76, 0.05);
+  border: 1px solid rgba(201, 168, 76, 0.1);
+  border-radius: 6px;
+  padding: 8px 4px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  transition: all var(--transition);
+}
+.ai-day:hover {
+  border-color: var(--gold);
+  background: rgba(201, 168, 76, 0.08);
+}
+.ai-day-name {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+.ai-day-val {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+.ai-day-unit {
+  font-size: 0.6rem;
+  color: var(--text-muted);
+}
+

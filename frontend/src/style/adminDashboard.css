@@ -344,3 +344,44 @@ body {
   color: var(--text-muted);
 }
 
+/* ══════════════════════════════════════
+   TOP PIZZAS
+══════════════════════════════════════ */
+.pizza-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.pizza-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  background: var(--bg-section);
+  border-radius: 6px;
+  border: 1px solid rgba(201, 168, 76, 0.08);
+}
+.pizza-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.pizza-name {
+  font-size: 0.8rem;
+  color: var(--cream);
+  flex: 1;
+}
+.pizza-orders {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+.pizza-badge {
+  font-size: 0.65rem;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: rgba(201, 168, 76, 0.1);
+  color: var(--gold);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+}
+

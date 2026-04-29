@@ -488,3 +488,18 @@ body {
 }
 .action-btn:hover .action-label { color: var(--gold); }
 
+/* ══════════════════════════════════════
+   LOADING STATE
+══════════════════════════════════════ */
+.loading-stats {
+  text-align: center;
+  padding: 40px;
+  color: var(--gold);
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+}
+
+/* ══════════════════════════════════════

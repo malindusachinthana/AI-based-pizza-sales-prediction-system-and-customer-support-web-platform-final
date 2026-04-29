@@ -38,3 +38,16 @@ export default function PizzaMenuManagement() {
 
   useEffect(() => { fetchPizzas(); }, []);
 
+  // ── Handle form input ─────────────────────────────────────
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleImage = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setFormData({ ...formData, image: file });
+      setPreview(URL.createObjectURL(file));
+    }
+  };
+

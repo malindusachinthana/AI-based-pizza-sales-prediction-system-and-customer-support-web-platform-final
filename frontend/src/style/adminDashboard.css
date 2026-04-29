@@ -211,3 +211,61 @@ body {
   color: var(--text-muted);
 }
 
+/* ══════════════════════════════════════
+   STAT CARDS
+══════════════════════════════════════ */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(201, 168, 76, 0.1);
+  border-radius: 8px;
+  padding: 18px;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+}
+.stat-gold::before   { background: var(--gold); }
+.stat-green::before  { background: var(--green); }
+.stat-orange::before { background: #c85a20; }
+.stat-blue::before   { background: var(--blue); }
+
+.stat-icon {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+.stat-value {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+.stat-change {
+  font-size: 0.75rem;
+  color: var(--green);
+  margin-top: 6px;
+}
+

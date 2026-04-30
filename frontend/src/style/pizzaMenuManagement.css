@@ -274,3 +274,21 @@
   border-color: var(--red);
 }
 
+/* ══════════════════════════════════════
+   EMPTY STATE
+══════════════════════════════════════ */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+}
+.empty-icon {
+  font-size: 4rem;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+.empty-state p {
+  font-size: 0.95rem;
+  font-style: italic;
+}
+

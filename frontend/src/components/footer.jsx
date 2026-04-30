@@ -24,7 +24,7 @@ export default function Footer() {
 
       {/* ── Copyright ── */}
       <p className="footer-copy">
-        © 2026 OvenZa. All Rights Reserved<br />
+        © 2026 OvenZa Crust. All Rights Reserved<br />
         <span style={{ fontSize: '0.7rem', opacity: 0.6 }}>
           By, Malindu Sachinthana
         </span>

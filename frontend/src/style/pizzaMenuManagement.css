@@ -205,3 +205,33 @@
   line-height: 1.4;
 }
 
+/* ── Size Dropdown ── */
+.pizza-size-row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.pizza-size-select {
+  padding: 5px 12px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  transition: all var(--transition);
+  appearance: auto;
+}
+.pizza-size-select:hover,
+.pizza-size-select:focus {
+  border-color: var(--gold);
+  outline: none;
+}
+.pizza-size-select option {
+  background: #2d3828;
+  color: var(--cream);
+}
+

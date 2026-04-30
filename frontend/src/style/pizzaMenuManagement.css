@@ -251,3 +251,26 @@
   color: var(--cream);
   opacity: 0.8;
 }
+
+/* ── Delete Button (styled like Purchase) ── */
+.btn-delete {
+  width: 100%;
+  padding: 8px 16px;
+  background: rgba(180, 170, 160, 0.25);
+  border: 1px solid rgba(220, 50, 50, 0.35);
+  border-radius: 8px;
+  color: #e07070;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all var(--transition);
+  text-align: center;
+}
+.btn-delete:hover {
+  background: rgba(192, 57, 43, 0.7);
+  color: white;
+  border-color: var(--red);
+}
+

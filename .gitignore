@@ -1,0 +1,26 @@
+# ML model files — regenerate from Colab notebook
+ml-service/models/category_daily_models_v2.pkl
+ml-service/models/current_dataset.csv
+
+# Python virtual environment
+ml-service/venv/
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+.env.local
+
+# React build
+frontend/build/
+
+# OS files
+.DS_Store
+Thumbs.db

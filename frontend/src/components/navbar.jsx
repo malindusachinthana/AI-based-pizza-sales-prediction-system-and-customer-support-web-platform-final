@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom'; // ✅ Added useLocation
 import '../style/navbar.css';
 import logo from '../assets/OvenZlogo.png';
 
@@ -22,8 +22,9 @@ function LogoutOverlay({ show }) {
 
 // ── Navbar ────────────────────────────────────────────────────
 export default function Navbar() {
-  const navRef    = useRef(null);
-  const navigate  = useNavigate();
+  const navRef   = useRef(null);
+  const navigate = useNavigate();
+  const location = useLocation(); // ✅ Added
   const [showLogout, setShowLogout] = useState(false);
 
   const token    = localStorage.getItem('token');
@@ -41,9 +42,9 @@ export default function Navbar() {
     }, 2500);
   };
 
-  const handleLoginRedirect    = () => navigate('/login');
-  const handleAdminRedirect    = () => navigate('/admin-dashboard');
-  const handleProfileRedirect  = () => { if (token) navigate('/customer-profile'); };
+  const handleLoginRedirect   = () => navigate('/login');
+  const handleAdminRedirect   = () => navigate('/admin-dashboard');
+  const handleProfileRedirect = () => { if (token) navigate('/customer-profile'); };
 
   useEffect(() => {
     const onScroll = () => {
@@ -66,8 +67,22 @@ export default function Navbar() {
 
         {/* ── Left Links ── */}
         <ul className="navbar-links-left">
-          <li><Link to="/" className="active">Home</Link></li>
-          <li><Link to="/gallery">Gallery</Link></li>
+          <li>
+            <Link
+              to="/"
+              className={location.pathname === '/' ? 'active' : ''}
+            >
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/gallery"
+              className={location.pathname === '/gallery' ? 'active' : ''}
+            >
+              Gallery
+            </Link>
+          </li>
         </ul>
 
         {/* ── Center Logo ── */}
@@ -77,9 +92,30 @@ export default function Navbar() {
 
         {/* ── Right Links ── */}
         <ul className="navbar-links-right">
-          <li><Link to="/menu">Menu</Link></li>
-          <li><Link to="/special-offers">Special Offers</Link></li>
-          <li><Link to="/about">About Us</Link></li>
+          <li>
+            <Link
+              to="/menu"
+              className={location.pathname === '/menu' ? 'active' : ''}
+            >
+              Menu
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/special-offers"
+              className={location.pathname === '/special-offers' ? 'active' : ''}
+            >
+              Special Offers
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/about"
+              className={location.pathname === '/about' ? 'active' : ''}
+            >
+              About Us
+            </Link>
+          </li>
         </ul>
 
         {/* ── User Section ── */}
@@ -87,9 +123,11 @@ export default function Navbar() {
           {token && (
             <span className="navbar-greeting">👋 Hi, {username}</span>
           )}
+
           <button className="user-icon-btn" onClick={handleProfileRedirect}>
             👤
           </button>
+
           <div className="user-dropdown">
             {!token ? (
               <button className="dropdown-btn" onClick={handleLoginRedirect}>

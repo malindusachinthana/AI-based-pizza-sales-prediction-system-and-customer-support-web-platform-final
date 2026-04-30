@@ -235,3 +235,19 @@
   color: var(--cream);
 }
 
+/* ── Card Footer ── */
+.pizza-card-footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.pizza-card-price {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  color: var(--cream);
+  opacity: 0.8;
+}

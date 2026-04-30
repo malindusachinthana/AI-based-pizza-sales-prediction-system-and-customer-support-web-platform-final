@@ -332,11 +332,6 @@ export default function PizzaMenuManagement() {
 
                       {/* Price + Delete */}
                         <div className="pizza-card-footer">
-                            <span className="pizza-card-price">
-                            {selectedSizes[pizza._id] === 'small'  ? 'Small'  :
-                            selectedSizes[pizza._id] === 'large'  ? 'Large'  : 'Medium'}
-                            {' — '}Rs. {pizza.sizes?.[selectedSizes[pizza._id] || 'medium']}
-                            </span>
                             <button
                                 className="btn-delete"
                                 onClick={() => handleDelete(pizza._id, pizza.name)}

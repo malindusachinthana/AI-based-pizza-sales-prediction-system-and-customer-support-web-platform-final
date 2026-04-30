@@ -331,7 +331,6 @@ export default function PizzaMenuManagement() {
                       </div>
 
                       {/* Price + Delete */}
-                      {/* Price + Delete */}
                         <div className="pizza-card-footer">
                             <span className="pizza-card-price">
                             {selectedSizes[pizza._id] === 'small'  ? 'Small'  :

@@ -195,3 +195,13 @@
   transform: scale(1.06);
 }
 
+/* ── Pizza Name ── */
+.pizza-card-name {
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--cream);
+  text-align: center;
+  line-height: 1.4;
+}
+

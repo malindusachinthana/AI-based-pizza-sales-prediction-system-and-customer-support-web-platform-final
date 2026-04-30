@@ -126,3 +126,20 @@
   color: var(--red);
 }
 
+/* ══════════════════════════════════════
+   CATEGORY SECTION
+══════════════════════════════════════ */
+.category-section {
+  margin-bottom: 48px;
+}
+
+.category-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--cream);
+  text-align: center;
+  margin-bottom: 24px;
+  letter-spacing: 0.15em;
+  text-transform: capitalize;
+}
+

@@ -173,3 +173,14 @@
 .menu-category-title::before { right: calc(50% + 100px); }
 .menu-category-title::after  { left:  calc(50% + 100px); }
 
+/* ══════════════════════════════════════
+   PIZZA GRID
+══════════════════════════════════════ */
+.menu-pizza-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);  /* ✅ 4 columns now */
+  gap: 18px;
+  max-width: 950px;                        /* ✅ Limit grid width */
+  margin: 0 auto;
+}
+

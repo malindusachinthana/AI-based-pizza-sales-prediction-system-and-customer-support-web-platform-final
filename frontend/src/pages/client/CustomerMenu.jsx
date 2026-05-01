@@ -130,3 +130,17 @@ export default function CustomerMenu() {
     fetchPizzas();
   }, []);
 
+  // Filter pizzas by category
+  const filteredPizzas = activeCategory === 'All'
+    ? pizzas
+    : pizzas.filter(p => p.category === activeCategory);
+
+  // Count per category for filter buttons
+  const counts = {
+    All:     pizzas.length,
+    Classic: pizzas.filter(p => p.category === 'Classic').length,
+    Chicken: pizzas.filter(p => p.category === 'Chicken').length,
+    Supreme: pizzas.filter(p => p.category === 'Supreme').length,
+    Veggie:  pizzas.filter(p => p.category === 'Veggie').length,
+  };
+

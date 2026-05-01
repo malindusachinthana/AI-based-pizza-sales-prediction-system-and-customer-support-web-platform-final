@@ -123,3 +123,27 @@ export default function SalesForecast() {
     Veggie  : d.categories?.Veggie?.predicted  || 0,
   }));
 
+  // ── Loading ───────────────────────────────────────────────────
+  if (loading) return (
+    <div className="sf-loading">
+      <div className="sf-loading-icon">🍕</div>
+      <p className="sf-loading-text">Loading AI forecast...</p>
+    </div>
+  );
+
+  return (
+    <div className="sf-page">
+
+      {/* ── Header ── */}
+      <div className="sf-header">
+        <div className="sf-header-logo">🍕</div>
+        <div>
+          <p className="sf-header-title">OvenZa Crust</p>
+          <p className="sf-header-sub">Admin Dashboard</p>
+        </div>
+        <div className="sf-header-status">
+          <span className="sf-status-dot" />
+          AI Model Active
+        </div>
+      </div>
+

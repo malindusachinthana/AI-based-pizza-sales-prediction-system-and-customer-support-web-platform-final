@@ -144,3 +144,17 @@ export default function CustomerMenu() {
     Veggie:  pizzas.filter(p => p.category === 'Veggie').length,
   };
 
+  // Group by category
+  const grouped = {
+    Classic: filteredPizzas.filter(p => p.category === 'Classic'),
+    Chicken: filteredPizzas.filter(p => p.category === 'Chicken'),
+    Supreme: filteredPizzas.filter(p => p.category === 'Supreme'),
+    Veggie:  filteredPizzas.filter(p => p.category === 'Veggie'),
+  };
+
+  return (
+    <>
+      <Navbar />
+
+      <div className="menu-page">
+

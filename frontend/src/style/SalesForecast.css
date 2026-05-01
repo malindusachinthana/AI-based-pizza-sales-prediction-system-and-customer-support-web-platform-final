@@ -112,3 +112,34 @@
   font-size: 16px;
   font-family: Arial, sans-serif;
 }
+
+/* ── Tabs ─────────────────────────────────────────────────────── */
+.sf-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #3a3d2e;
+}
+
+.sf-tab {
+  padding: 9px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: Arial, sans-serif;
+  cursor: pointer;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: #8a9070;
+  margin-bottom: -1px;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.sf-tab:hover {
+  color: #c8a060;
+}
+
+.sf-tab.active {
+  color: #c8872a;
+  border-bottom-color: #c8872a;
+}

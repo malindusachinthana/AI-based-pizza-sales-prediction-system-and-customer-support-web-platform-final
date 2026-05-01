@@ -254,3 +254,32 @@
 }
 
 
+/* ── Size Dropdown ── */
+.menu-size-wrap { width: 100%; }
+
+.menu-size-select {
+  width: 100%;
+  padding: 6px 10px;                       /* ✅ Smaller padding */
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-size: 0.74rem;                      /* ✅ Smaller text */
+  cursor: pointer;
+  text-align: center;
+  transition: all var(--transition);
+  appearance: auto;
+}
+
+.menu-size-select:hover,
+.menu-size-select:focus {
+  border-color: var(--gold);
+  outline: none;
+}
+
+.menu-size-select option {
+  background: #3a4a32;
+  color: var(--cream);
+}
+

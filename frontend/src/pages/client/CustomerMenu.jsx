@@ -42,3 +42,20 @@ function CategoryFilter({ active, setActive, counts }) {
   );
 }
 
+// ── Pizza Card ────────────────────────────────────────────────
+function PizzaCard({ pizza }) {
+  const [selectedSize, setSelectedSize] = useState('medium');
+
+  
+  return (
+    <div className="menu-pizza-card">
+
+      {/* Image */}
+      <div className="menu-pizza-img-wrap">
+        <img
+          src={`http://localhost:5000${pizza.imageUrl}`}
+          alt={pizza.name}
+          className="menu-pizza-img"
+        />
+      </div>
+

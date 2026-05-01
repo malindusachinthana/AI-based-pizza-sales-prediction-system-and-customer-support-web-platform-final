@@ -396,3 +396,35 @@
   background: #332a1a;
   color: #c8a060;
 }
+
+/* ── Upload box ───────────────────────────────────────────────── */
+.sf-upload-box {
+  border: 2px dashed #4a4d3a;
+  border-radius: 12px;
+  padding: 40px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.sf-upload-box:hover {
+  border-color: #c8872a;
+}
+
+.sf-upload-icon {
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+
+.sf-upload-title {
+  color: #e8e0d0;
+  font-weight: 600;
+  margin: 0 0 6px;
+}
+
+.sf-upload-sub {
+  color: #8a9070;
+  font-size: 12px;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}

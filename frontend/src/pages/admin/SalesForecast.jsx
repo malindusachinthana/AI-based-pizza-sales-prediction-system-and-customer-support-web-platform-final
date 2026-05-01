@@ -232,3 +232,34 @@ export default function SalesForecast() {
                   ))}
                 </select>
 
+                {/* Single day mini stats */}
+                {singleDay && (
+                  <div className="sf-day-stats">
+                    {Object.entries(singleDay.categories || {}).map(([cat, vals]) => (
+                      <div
+                        key={cat}
+                        className="sf-day-stat-card"
+                        style={{ borderLeft: `3px solid ${CATEGORY_COLORS[cat]}` }}>
+                        <p className="sf-day-stat-label">{cat}</p>
+                        <p className="sf-day-stat-value"
+                          style={{ color: CATEGORY_COLORS[cat] }}>
+                          {vals.predicted}
+                        </p>
+                        <p className="sf-day-stat-range">{vals.lower}–{vals.upper}</p>
+                      </div>
+                    ))}
+                    <div className="sf-day-stat-card total"
+                      style={{ borderLeft: '3px solid #c8872a' }}>
+                      <p className="sf-day-stat-label">Total</p>
+                      <p className="sf-day-stat-value" style={{ color: '#e8e0d0' }}>
+                        {singleDay.total}
+                      </p>
+                      <p className="sf-day-stat-range">
+                        {singleDay.total_lower}–{singleDay.total_upper}
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+

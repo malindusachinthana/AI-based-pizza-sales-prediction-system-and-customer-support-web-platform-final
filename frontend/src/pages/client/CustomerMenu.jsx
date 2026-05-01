@@ -82,3 +82,28 @@ function PizzaCard({ pizza }) {
           </select>
         </div>
 
+        {/* Purchase Button */}
+        <button className="menu-purchase-btn">
+          Purchase
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// ── Category Section ──────────────────────────────────────────
+function CategorySection({ category, pizzas }) {
+  if (pizzas.length === 0) return null;
+
+  return (
+    <div className="menu-category-section">
+      <h2 className="menu-category-title">{category}</h2>
+      <div className="menu-pizza-grid">
+        {pizzas.map(pizza => (
+          <PizzaCard key={pizza._id} pizza={pizza} />
+        ))}
+      </div>
+    </div>
+  );
+}
+

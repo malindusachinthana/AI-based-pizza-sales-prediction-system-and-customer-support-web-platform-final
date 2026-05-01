@@ -1,0 +1,8 @@
+/* ── Page ─────────────────────────────────────────────────────── */
+.sf-page {
+  min-height: 100vh;
+  background: #1a1e16;
+  font-family: 'Georgia', serif;
+  color: #e8e0d0;
+  padding: 0 0 48px;
+}

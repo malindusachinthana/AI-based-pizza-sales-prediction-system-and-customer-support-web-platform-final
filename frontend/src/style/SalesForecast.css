@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Playfair+Display:ital,wght@0,400;1,400&display=swap');
 /* ── Page ─────────────────────────────────────────────────────── */
 .sf-page {
   min-height: 100vh;
@@ -93,24 +95,44 @@
 }
 
 /* ── Loading ──────────────────────────────────────────────────── */
+
 .sf-loading {
   min-height: 100vh;
-  background: #1a1e16;
+  background: #1c2318;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
-.sf-loading-icon {
-  font-size: 32px;
+.sf-loading-pizza {
+  font-size: 72px;
+  display: inline-block;
+  animation: pizzaSpin 3s linear infinite;
+}
+
+@keyframes pizzaSpin {
+  0%   { transform: rotate(0deg);   }
+  100% { transform: rotate(360deg); }
 }
 
 .sf-loading-text {
-  color: #c8a060;
-  font-size: 16px;
-  font-family: Arial, sans-serif;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 20px;
+  color: #c9a84c;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.sf-loading-brand {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 14px;
+  color: #a89f8c;
+  letter-spacing: 0.12em;
+  margin: 0;
+  text-transform: uppercase;
 }
 
 /* ── Tabs ─────────────────────────────────────────────────────── */

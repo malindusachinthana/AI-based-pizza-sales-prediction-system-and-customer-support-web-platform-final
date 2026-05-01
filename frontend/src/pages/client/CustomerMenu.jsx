@@ -107,3 +107,26 @@ function CategorySection({ category, pizzas }) {
   );
 }
 
+// ── Main Export ───────────────────────────────────────────────
+export default function CustomerMenu() {
+  const [pizzas,         setPizzas]         = useState([]);
+  const [loading,        setLoading]        = useState(true);
+  const [activeCategory, setActiveCategory] = useState('All');
+  const [error,          setError]          = useState(null);
+
+  // Fetch pizzas from backend
+  useEffect(() => {
+    const fetchPizzas = async () => {
+      try {
+        const res = await axios.get('http://localhost:5000/api/pizzas');
+        setPizzas(res.data);
+      } catch (err) {
+        setError('Failed to load menu. Please try again.');
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchPizzas();
+  }, []);
+

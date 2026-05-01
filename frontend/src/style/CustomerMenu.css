@@ -305,3 +305,31 @@
   box-shadow: 0 4px 16px rgba(200, 90, 32, 0.4);
 }
 
+/* ══════════════════════════════════════
+   LOADING STATE
+══════════════════════════════════════ */
+.menu-loading {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--cream);
+}
+
+.menu-loading-pizza {
+  font-size: 4rem;
+  animation: menuSpin 2s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes menuSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.menu-loading p {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+

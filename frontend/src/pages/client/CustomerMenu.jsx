@@ -20,3 +20,25 @@ function MenuHero() {
   );
 }
 
+// ── Category Filter ───────────────────────────────────────────
+function CategoryFilter({ active, setActive, counts }) {
+  const categories = ['All', 'Classic', 'Chicken', 'Supreme', 'Veggie'];
+
+  return (
+    <div className="category-filter">
+      {categories.map(cat => (
+        <button
+          key={cat}
+          className={`filter-btn ${active === cat ? 'filter-btn--active' : ''}`}
+          onClick={() => setActive(cat)}
+        >
+          {cat}
+          {counts[cat] > 0 && (
+            <span className="filter-count">{counts[cat]}</span>
+          )}
+        </button>
+      ))}
+    </div>
+  );
+}
+

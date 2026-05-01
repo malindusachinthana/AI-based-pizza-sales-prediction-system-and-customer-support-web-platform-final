@@ -80,3 +80,35 @@
   font-family: Arial, sans-serif;
 }
 
+/* ── Error banner ─────────────────────────────────────────────── */
+.sf-error {
+  background: #331a1a;
+  border: 1px solid #6b3333;
+  border-radius: 8px;
+  padding: 10px 16px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  color: #d07070;
+  font-family: Arial, sans-serif;
+}
+
+/* ── Loading ──────────────────────────────────────────────────── */
+.sf-loading {
+  min-height: 100vh;
+  background: #1a1e16;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sf-loading-icon {
+  font-size: 32px;
+}
+
+.sf-loading-text {
+  color: #c8a060;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+}

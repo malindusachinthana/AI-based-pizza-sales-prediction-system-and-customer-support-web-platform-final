@@ -263,3 +263,64 @@ export default function SalesForecast() {
               </div>
             </div>
 
+            {/* Chart */}
+            <div className="sf-card">
+              <p className="sf-card-title">
+                {singleDay
+                  ? `Day ${singleDay.day_number} — ${singleDay.date_pretty} (${singleDay.day_name})`
+                  : '14-Day Sales Forecast by Category'}
+              </p>
+              <p className="sf-card-sub">
+                {singleDay
+                  ? `Predicted: ${singleDay.total} pizzas  |  Range: ${singleDay.total_lower}–${singleDay.total_upper}`
+                  : 'Stacked daily predicted quantity per pizza category'}
+              </p>
+              <ResponsiveContainer width="100%" height={280}>
+                {singleDay ? (
+                  <BarChart
+                    data={Object.entries(singleDay.categories || {}).map(([cat, vals]) => ({
+                      name: cat, value: vals.predicted,
+                    }))}
+                    margin={{ top: 8, right: 16, left: 0, bottom: 0 }}>
+                    <CartesianGrid stroke="#2a2e22" strokeDasharray="3 3" vertical={false} />
+                    <XAxis dataKey="name"
+                      tick={{ fill: '#8a9070', fontSize: 12 }}
+                      axisLine={false} tickLine={false} />
+                    <YAxis tick={{ fill: '#8a9070', fontSize: 12 }}
+                      axisLine={false} tickLine={false} width={40} />
+                    <Tooltip content={<CustomTooltip />} />
+                    <Bar dataKey="value" fill="#c8872a" radius={[4, 4, 0, 0]} />
+                  </BarChart>
+                ) : (
+                  <AreaChart data={chartData}
+                    margin={{ top: 8, right: 16, left: 0, bottom: 0 }}>
+                    <defs>
+                      {Object.entries(CATEGORY_COLORS).map(([cat, color]) => (
+                        <linearGradient key={cat} id={`grad${cat}`} x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="5%"  stopColor={color} stopOpacity={0.4} />
+                          <stop offset="95%" stopColor={color} stopOpacity={0} />
+                        </linearGradient>
+                      ))}
+                    </defs>
+                    <CartesianGrid stroke="#2a2e22" strokeDasharray="3 3" vertical={false} />
+                    <XAxis dataKey="name"
+                      tick={{ fill: '#8a9070', fontSize: 11 }}
+                      axisLine={false} tickLine={false} />
+                    <YAxis tick={{ fill: '#8a9070', fontSize: 11 }}
+                      axisLine={false} tickLine={false} width={40} />
+                    <Tooltip content={<CustomTooltip />} />
+                    <Legend wrapperStyle={{
+                      fontSize: 12, color: '#8a9070', fontFamily: 'Arial, sans-serif',
+                    }} />
+                    {Object.entries(CATEGORY_COLORS).map(([cat, color]) => (
+                      <Area key={cat} type="monotone" dataKey={cat}
+                        stroke={color} strokeWidth={2}
+                        fill={`url(#grad${cat})`} stackId="1" />
+                    ))}
+                  </AreaChart>
+                )}
+              </ResponsiveContainer>
+            </div>
+          </>
+        )}
+

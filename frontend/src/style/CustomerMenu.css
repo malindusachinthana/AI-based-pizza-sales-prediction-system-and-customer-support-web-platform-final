@@ -243,3 +243,14 @@
   padding: 12px 12px 14px;                 /* ✅ Less padding */
 }
 
+/* ── Name ── */
+.menu-pizza-name {
+  font-family: var(--font-heading);
+  font-size: 0.82rem;                      /* ✅ Smaller text */
+  font-weight: 500;
+  color: var(--cream);
+  text-align: center;
+  line-height: 1.4;
+}
+
+

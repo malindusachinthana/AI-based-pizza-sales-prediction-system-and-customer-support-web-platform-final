@@ -1,2 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&family=Great+Vibes&family=Uncial+Antiqua&display=swap');
 
+/* ── Variables ── */
+:root {
+  --menu-bg:      #3a4a32;
+  --menu-card:    rgba(180, 190, 170, 0.15);
+  --menu-border:  rgba(255, 255, 255, 0.15);
+  --gold:         #c9a84c;
+  --gold-light:   #e2c97e;
+  --cream:        #f5ede0;
+  --text-muted:   #a89f8c;
+  --font-display: 'Cinzel Decorative', serif;
+  --font-heading: 'Playfair Display', serif;
+  --font-body:    'Lato', sans-serif;
+  --transition:   0.3s ease;
+}
+

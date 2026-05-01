@@ -376,3 +376,23 @@
   display: block;
   font-weight: 400;
 }
+
+/* ── Badge ────────────────────────────────────────────────────── */
+.sf-badge {
+  display: inline-block;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: Arial, sans-serif;
+}
+
+.sf-badge.green {
+  background: #1a3320;
+  color: #6aad78;
+}
+
+.sf-badge.amber {
+  background: #332a1a;
+  color: #c8a060;
+}

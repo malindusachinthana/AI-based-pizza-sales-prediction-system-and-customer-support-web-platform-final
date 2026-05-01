@@ -134,3 +134,12 @@
   background: rgba(28, 35, 24, 0.2);
 }
 
+/* ══════════════════════════════════════
+   MENU CONTENT
+══════════════════════════════════════ */
+.menu-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 32px;
+}
+

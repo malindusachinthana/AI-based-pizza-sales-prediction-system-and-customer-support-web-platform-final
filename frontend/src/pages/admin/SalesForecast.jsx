@@ -147,3 +147,30 @@ export default function SalesForecast() {
         </div>
       </div>
 
+      {/* ── Body ── */}
+      <div className="sf-body">
+        <h1 className="sf-title">Sales Forecast</h1>
+        <p className="sf-subtitle">
+          Prophet AI — daily predictions from {accuracyData?.last_training_date}
+        </p>
+
+        {/* Error */}
+        {error && <div className="sf-error">⚠ {error}</div>}
+
+        {/* ── Tabs ── */}
+        <div className="sf-tabs">
+          {[
+            { key: 'forecast',  label: '📈 14-Day Forecast' },
+            { key: 'breakdown', label: '📋 Daily Breakdown'  },
+            { key: 'accuracy',  label: '🎯 Model Accuracy'   },
+            { key: 'retrain',   label: '🔄 Upload & Retrain' },
+          ].map(t => (
+            <button
+              key={t.key}
+              className={`sf-tab ${activeTab === t.key ? 'active' : ''}`}
+              onClick={() => setActiveTab(t.key)}>
+              {t.label}
+            </button>
+          ))}
+        </div>
+

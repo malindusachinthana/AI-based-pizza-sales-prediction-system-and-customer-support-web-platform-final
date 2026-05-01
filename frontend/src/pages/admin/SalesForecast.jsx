@@ -473,3 +473,77 @@ export default function SalesForecast() {
           </>
         )}
 
+        {/* TAB 4 — UPLOAD & RETRAIN */}
+
+      {/* {activeTab === 'retrain' && (
+          <>
+            <div className="sf-card">
+              <p className="sf-card-title">Upload New Sales Data</p>
+              <p className="sf-card-sub">
+                Upload a CSV file with new sales records. The data will be combined
+                with existing data and all 4 models will retrain automatically.
+              </p>
+
+              <div className="sf-info-box">
+                <p className="sf-info-box-title">Required CSV columns:</p>
+                <code>order_date, quantity, pizza_category</code>
+                <p className="sf-info-box-note">
+                  pizza_category must be one of: Chicken, Classic, Supreme, Veggie
+                </p>
+              </div>
+
+              <div className="sf-upload-box" onClick={() => fileRef.current?.click()}>
+                <input ref={fileRef} type="file" accept=".csv"
+                  style={{ display: 'none' }} onChange={handleRetrain} />
+                <div className="sf-upload-icon">📂</div>
+                <p className="sf-upload-title">
+                  {retraining ? 'Retraining models...' : 'Click to upload CSV'}
+                </p>
+                <p className="sf-upload-sub">
+                  {retraining
+                    ? 'This may take 1–2 minutes. Please wait...'
+                    : '.csv files only'}
+                </p>
+              </div>
+            </div>
+
+            {retrainReport && (
+              <div className="sf-card border-green">
+                <p className="sf-card-title green">✅ Retrain Successful</p>
+                <div className="sf-metrics-row" style={{ marginTop: 14 }}>
+                  <MetricCard
+                    label="New Rows Added"
+                    value={retrainReport.new_rows_added.toLocaleString()} />
+                  <MetricCard
+                    label="Total Dataset"
+                    value={retrainReport.total_rows.toLocaleString()} />
+                  <MetricCard
+                    label="New End Date"
+                    value={retrainReport.new_last_train_date}
+                    accent="green" />
+                  <MetricCard
+                    label="Global Accuracy"
+                    value={`${retrainReport.global_accuracy}%`}
+                    accent="green" />
+                </div>
+                <p className="sf-retrain-label" style={{ marginTop: 16 }}>
+                  CATEGORY ACCURACY AFTER RETRAIN:
+                </p>
+                <div className="sf-retrain-cats">
+                  {Object.entries(retrainReport.category_accuracy).map(([cat, acc]) => (
+                    <span key={cat} className="sf-retrain-cat-chip"
+                      style={{ borderLeft: `3px solid ${CATEGORY_COLORS[cat]}` }}>
+                      <span className="sf-retrain-cat-name"
+                        style={{ color: CATEGORY_COLORS[cat] }}>{cat}</span>
+                      <span className="sf-retrain-cat-acc">{acc}%</span>
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+          </>
+        )} */}
+      </div>
+    </div>
+  );
+}

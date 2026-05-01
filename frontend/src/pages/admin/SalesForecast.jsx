@@ -174,3 +174,38 @@ export default function SalesForecast() {
           ))}
         </div>
 
+        {/* ════════════════════════════════════
+            TAB 1 — 14-DAY FORECAST
+        ════════════════════════════════════ */}
+        {activeTab === 'forecast' && (
+          <>
+            {/* Metric cards */}
+            <div className="sf-metrics-row">
+              {selectedDay === 'all' ? (
+                <MetricCard
+                  label="Total (14 Days)"
+                  value={totalPredicted.toLocaleString()}
+                  sub="pizzas predicted" />
+              ) : (
+                singleDay && (
+                  <MetricCard
+                    label={`Day ${singleDay.day_number} Total`}
+                    value={singleDay.total.toLocaleString()}
+                    sub={singleDay.date_pretty}
+                    accent="amber" />
+                )
+              )}
+              <MetricCard
+                label="Daily Average"
+                value={avgDaily.toLocaleString()}
+                sub="pizzas / day" />
+              <MetricCard
+                label="Busiest Day"
+                value={peakDay?.total.toLocaleString() || '—'}
+                sub={peakDay ? `${peakDay.day_name} ${peakDay.date?.slice(5)}` : ''} />
+              <MetricCard
+                label="Model Accuracy"
+                value={`${avgAccuracy}%`}
+                sub="avg category accuracy"
+                accent="green" />
+            </div>

@@ -95,3 +95,31 @@ export default function SalesForecast() {
     }
   }
 
+  // ── Derived data ──────────────────────────────────────────────
+  const displayData    = selectedDay === 'all'
+    ? forecastData
+    : forecastData.filter(d => d.day_number === Number(selectedDay));
+
+  const singleDay      = selectedDay !== 'all' && displayData.length > 0
+    ? displayData[0] : null;
+
+  const totalPredicted = forecastData.reduce((s, d) => s + d.total, 0);
+  const avgDaily       = forecastData.length
+    ? Math.round(totalPredicted / forecastData.length) : 0;
+  const peakDay        = forecastData.length
+    ? forecastData.reduce((a, b) => b.total > a.total ? b : a) : null;
+  const avgAccuracy    = accuracyData
+    ? Math.round(
+        Object.values(accuracyData.categories).reduce((s, c) => s + c.accuracy, 0) /
+        Math.max(Object.keys(accuracyData.categories).length, 1)
+      )
+    : 0;
+
+  const chartData = forecastData.map(d => ({
+    name    : `${d.day_name?.slice(0, 3)} ${d.date?.slice(5)}`,
+    Chicken : d.categories?.Chicken?.predicted || 0,
+    Classic : d.categories?.Classic?.predicted || 0,
+    Supreme : d.categories?.Supreme?.predicted || 0,
+    Veggie  : d.categories?.Veggie?.predicted  || 0,
+  }));
+

@@ -283,3 +283,25 @@
   color: var(--cream);
 }
 
+/* ── Purchase Button ── */
+.menu-purchase-btn {
+  width: 100%;
+  padding: 8px 12px;                       /* ✅ Smaller padding */
+  background: rgba(245, 237, 224, 0.3);
+  border: none;
+  border-radius: 6px;
+  color: var(--cream);
+  font-family: 'Uncial Antiqua', serif;
+  font-size: 0.78rem;                      /* ✅ Smaller text */
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all var(--transition);
+  text-align: center;
+}
+
+.menu-purchase-btn:hover {
+  background: #e06820;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(200, 90, 32, 0.4);
+}
+

@@ -143,3 +143,46 @@
   color: #c8872a;
   border-bottom-color: #c8872a;
 }
+
+/* ── Metric cards ─────────────────────────────────────────────── */
+.sf-metrics-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.sf-metric-card {
+  background: #1f2419;
+  border: 1px solid #3a3d2e;
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+
+.sf-metric-label {
+  font-size: 11px;
+  color: #8a9070;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 6px;
+  font-family: Arial, sans-serif;
+  font-weight: 600;
+}
+
+.sf-metric-value {
+  font-size: 26px;
+  font-weight: 700;
+  color: #e8e0d0;
+  margin: 0;
+}
+
+.sf-metric-value.accent-amber { color: #c8872a; }
+.sf-metric-value.accent-green { color: #6aad78; }
+
+.sf-metric-sub {
+  font-size: 12px;
+  color: #c8a060;
+  margin: 3px 0 0;
+  font-family: Arial, sans-serif;
+}
+

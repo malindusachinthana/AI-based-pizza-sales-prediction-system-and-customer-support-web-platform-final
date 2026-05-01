@@ -209,3 +209,26 @@ export default function SalesForecast() {
                 sub="avg category accuracy"
                 accent="green" />
             </div>
+
+            {/* Day dropdown card */}
+            <div className="sf-card">
+              <div className="sf-dropdown-row">
+                <div className="sf-dropdown-label-group">
+                  <p className="sf-card-title" style={{ margin: 0 }}>Select Day to Highlight</p>
+                  <p className="sf-card-sub" style={{ margin: 0 }}>
+                    Choose a specific day or view all 14 days
+                  </p>
+                </div>
+
+                <select
+                  className="sf-select"
+                  value={selectedDay}
+                  onChange={e => setSelectedDay(e.target.value)}>
+                  <option value="all">📊 All 14 Days</option>
+                  {forecastData.map(d => (
+                    <option key={d.day_number} value={d.day_number}>
+                      Day {d.day_number} — {d.date_pretty} ({d.day_name})
+                    </option>
+                  ))}
+                </select>
+

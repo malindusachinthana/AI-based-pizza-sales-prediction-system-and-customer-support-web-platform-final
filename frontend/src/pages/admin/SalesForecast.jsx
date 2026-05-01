@@ -324,3 +324,79 @@ export default function SalesForecast() {
           </>
         )}
 
+        {/* ════════════════════════════════════
+            TAB 2 — DAILY BREAKDOWN
+        ════════════════════════════════════ */}
+        {activeTab === 'breakdown' && (
+          <>
+            <div className="sf-card">
+              <div className="sf-dropdown-row">
+                <div className="sf-dropdown-label-group">
+                  <p className="sf-card-title" style={{ margin: 0 }}>Filter by Day</p>
+                  <p className="sf-card-sub" style={{ margin: 0 }}>
+                    Select a specific day or view all
+                  </p>
+                </div>
+                <select className="sf-select" value={selectedDay}
+                  onChange={e => setSelectedDay(e.target.value)}>
+                  <option value="all">📋 All 14 Days</option>
+                  {forecastData.map(d => (
+                    <option key={d.day_number} value={d.day_number}>
+                      Day {d.day_number} — {d.date_pretty} ({d.day_name})
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <div className="sf-card no-padding">
+              <div className="sf-card-header">
+                <span className="sf-card-header-title">Daily Breakdown</span>
+                <span className="sf-card-header-count">
+                  {displayData.length} {displayData.length === 1 ? 'day' : 'days'} shown
+                </span>
+              </div>
+              <div className="sf-table-wrap">
+                <table className="sf-table">
+                  <thead>
+                    <tr>
+                      {['Day', 'Date', 'Day Name', 'Chicken', 'Classic',
+                        'Supreme', 'Veggie', 'Total'].map(h => (
+                        <th key={h}>{h}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {displayData.map((row, i) => {
+                      const isHighlighted = selectedDay !== 'all';
+                      return (
+                        <tr key={i}
+                          className={isHighlighted ? 'highlighted'
+                            : i % 2 === 0 ? 'even' : 'odd'}>
+                          <td className="cell-day">{row.day_number}</td>
+                          <td>{row.date}</td>
+                          <td>{row.day_name}</td>
+                          {['Chicken', 'Classic', 'Supreme', 'Veggie'].map(cat => (
+                            <td key={cat} style={{ color: CATEGORY_COLORS[cat], fontWeight: 600 }}>
+                              {row.categories?.[cat]?.predicted ?? '—'}
+                              <span className="cell-range">
+                                {row.categories?.[cat]?.lower}–{row.categories?.[cat]?.upper}
+                              </span>
+                            </td>
+                          ))}
+                          <td className="cell-total">
+                            {row.total}
+                            <span className="cell-range">
+                              {row.total_lower}–{row.total_upper}
+                            </span>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </>
+        )}
+

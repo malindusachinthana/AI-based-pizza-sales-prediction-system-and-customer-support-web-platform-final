@@ -123,11 +123,11 @@ export default function SalesForecast() {
     Veggie  : d.categories?.Veggie?.predicted  || 0,
   }));
 
-  // ── Loading ───────────────────────────────────────────────────
+  // ── Loading 
   if (loading) return (
     <div className="sf-loading">
       <div className="sf-loading-icon">🍕</div>
-      <p className="sf-loading-text">Loading AI forecast...</p>
+      <p className="sf-loading-text">Loading OvenZa forecast...</p>
     </div>
   );
 
@@ -163,7 +163,7 @@ export default function SalesForecast() {
             { key: 'forecast',  label: '📈 14-Day Forecast' },
             { key: 'breakdown', label: '📋 Daily Breakdown'  },
             { key: 'accuracy',  label: '🎯 Model Accuracy'   },
-            { key: 'retrain',   label: '🔄 Upload & Retrain' },
+            {/* key: 'retrain',   label: '🔄 Upload & Retrain' */},
           ].map(t => (
             <button
               key={t.key}

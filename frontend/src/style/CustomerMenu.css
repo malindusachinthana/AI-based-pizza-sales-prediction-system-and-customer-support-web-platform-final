@@ -72,3 +72,65 @@
   letter-spacing: 0.02em;
 }
 
+/* ══════════════════════════════════════
+   CATEGORY FILTER
+══════════════════════════════════════ */
+.menu-filter-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 24px 20px 8px;
+}
+
+.category-filter {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.filter-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.filter-btn:hover {
+  background: rgba(201, 168, 76, 0.15);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.filter-btn--active {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #1c2318;
+}
+
+.filter-btn--active:hover {
+  background: var(--gold-light);
+  border-color: var(--gold-light);
+  color: #1c2318;
+}
+
+.filter-count {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 1px 7px;
+  font-size: 0.7rem;
+}
+
+.filter-btn--active .filter-count {
+  background: rgba(28, 35, 24, 0.2);
+}
+

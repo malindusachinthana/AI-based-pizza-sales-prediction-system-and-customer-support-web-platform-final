@@ -35,3 +35,63 @@ const CustomTooltip = ({ active, payload, label }) => {
   );
 };
 
+// ── Metric card ───────────────────────────────────────────────────
+const MetricCard = ({ label, value, sub, accent }) => (
+  <div className="sf-metric-card">
+    <p className="sf-metric-label">{label}</p>
+    <p className={`sf-metric-value ${accent ? `accent-${accent}` : ''}`}>{value}</p>
+    {sub && <p className="sf-metric-sub">{sub}</p>}
+  </div>
+);
+
+// ── Main Component ────────────────────────────────────────────────
+export default function SalesForecast() {
+  const [forecastData,  setForecastData]  = useState([]);
+  const [accuracyData,  setAccuracyData]  = useState(null);
+  const [loading,       setLoading]       = useState(true);
+  const [retraining,    setRetraining]    = useState(false);
+  const [retrainReport, setRetrainReport] = useState(null);
+  const [error,         setError]         = useState(null);
+  const [activeTab,     setActiveTab]     = useState('forecast');
+  const [selectedDay,   setSelectedDay]   = useState('all');
+
+  const fileRef = useRef(null);
+
+  useEffect(() => { loadAll(); }, []);
+
+  async function loadAll() {
+    setLoading(true); setError(null);
+    try {
+      const [fcRes, accRes] = await Promise.all([
+        axios.get(`${API}/forecast`),
+        axios.get(`${API}/accuracy`),
+      ]);
+      setForecastData(fcRes.data.data);
+      setAccuracyData(accRes.data.data);
+    } catch (err) {
+      setError('Cannot connect to AI model. Make sure api.py is running on port 5001.');
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function handleRetrain(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    setRetraining(true); setRetrainReport(null); setError(null);
+    const formData = new FormData();
+    formData.append('file', file);
+    try {
+      const res = await axios.post(`${API}/retrain`, formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
+      setRetrainReport(res.data.report);
+      await loadAll();
+    } catch (err) {
+      setError(err.response?.data?.error || 'Retrain failed. Check the CSV format.');
+    } finally {
+      setRetraining(false);
+      if (fileRef.current) fileRef.current.value = '';
+    }
+  }
+

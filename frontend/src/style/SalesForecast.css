@@ -281,3 +281,43 @@
   border-color: #c8872a;
 }
 
+/* ── Day stat mini cards ──────────────────────────────────────── */
+.sf-day-stats {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-left: auto;
+}
+
+.sf-day-stat-card {
+  background: #1a1e16;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-family: Arial, sans-serif;
+  min-width: 110px;
+}
+
+.sf-day-stat-card.total {
+  background: #2a2e22;
+}
+
+.sf-day-stat-label {
+  font-size: 10px;
+  color: #8a9070;
+  margin: 0 0 2px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.sf-day-stat-value {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.sf-day-stat-range {
+  font-size: 10px;
+  color: #6a6a5a;
+  margin: 2px 0 0;
+}
+

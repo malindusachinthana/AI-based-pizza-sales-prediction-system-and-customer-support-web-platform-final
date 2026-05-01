@@ -60,3 +60,23 @@
   background: #6aad78;
   display: inline-block;
 }
+
+/* ── Body ─────────────────────────────────────────────────────── */
+.sf-body {
+  padding: 28px 32px;
+}
+
+.sf-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #e8e0d0;
+  margin: 0 0 4px;
+}
+
+.sf-subtitle {
+  font-size: 13px;
+  color: #8a9070;
+  margin: 0 0 24px;
+  font-family: Arial, sans-serif;
+}
+

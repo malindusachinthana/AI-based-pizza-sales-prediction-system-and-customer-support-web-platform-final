@@ -333,3 +333,27 @@
   letter-spacing: 0.08em;
 }
 
+/* ══════════════════════════════════════
+   ERROR / EMPTY STATE
+══════════════════════════════════════ */
+.menu-error,
+.menu-empty {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--text-muted);
+}
+
+.menu-empty-icon {
+  font-size: 4rem;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.menu-error p,
+.menu-empty p {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+}
+

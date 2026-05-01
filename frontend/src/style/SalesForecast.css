@@ -454,3 +454,34 @@
   margin: 8px 0 0;
 }
 
+/* ── Retrain report ───────────────────────────────────────────── */
+.sf-retrain-cats {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.sf-retrain-cat-chip {
+  background: #1a1e16;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-family: Arial, sans-serif;
+}
+
+.sf-retrain-cat-name {
+  font-weight: 600;
+}
+
+.sf-retrain-cat-acc {
+  color: #6aad78;
+  margin-left: 8px;
+}
+
+.sf-retrain-label {
+  font-size: 12px;
+  color: #8a9070;
+  margin: 0 0 8px;
+  font-family: Arial, sans-serif;
+  font-weight: 600;
+}

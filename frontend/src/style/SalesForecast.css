@@ -428,3 +428,29 @@
   margin: 0;
   font-family: Arial, sans-serif;
 }
+
+/* ── Info box (CSV format hint) ───────────────────────────────── */
+.sf-info-box {
+  background: #1a1e16;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+}
+
+.sf-info-box-title {
+  color: #c8a060;
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+
+.sf-info-box code {
+  color: #6aad78;
+}
+
+.sf-info-box-note {
+  color: #8a9070;
+  margin: 8px 0 0;
+}
+

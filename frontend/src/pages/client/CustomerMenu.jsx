@@ -170,3 +170,36 @@ export default function CustomerMenu() {
           />
         </div>
 
+        {/* Content */}
+        <div className="menu-content">
+          {loading ? (
+            <div className="menu-loading">
+              <div className="menu-loading-pizza">🍕</div>
+              <p>Loading our delicious menu...</p>
+            </div>
+          ) : error ? (
+            <div className="menu-error">
+              <p>{error}</p>
+            </div>
+          ) : pizzas.length === 0 ? (
+            <div className="menu-empty">
+              <div className="menu-empty-icon">🍕</div>
+              <p>Menu is being prepared. Check back soon!</p>
+            </div>
+          ) : (
+            Object.entries(grouped).map(([category, list]) => (
+              <CategorySection
+                key={category}
+                category={category}
+                pizzas={list}
+              />
+            ))
+          )}
+        </div>
+
+      </div>
+
+      <Footer />
+    </>
+  );
+}

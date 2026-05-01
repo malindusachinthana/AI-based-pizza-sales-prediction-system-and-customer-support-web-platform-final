@@ -158,3 +158,15 @@ export default function CustomerMenu() {
 
       <div className="menu-page">
 
+        {/* Hero */}
+        <MenuHero />
+
+        {/* Category Filter */}
+        <div className="menu-filter-wrap">
+          <CategoryFilter
+            active={activeCategory}
+            setActive={setActiveCategory}
+            counts={counts}
+          />
+        </div>
+

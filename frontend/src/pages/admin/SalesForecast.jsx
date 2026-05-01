@@ -126,11 +126,11 @@ export default function SalesForecast() {
   // ── Loading 
   if (loading) return (
     <div className="sf-loading">
-      <div className="sf-loading-icon">🍕</div>
-      <p className="sf-loading-text">Loading OvenZa forecast...</p>
+      <div className="sf-loading-pizza">🍕</div>
+      <p className="sf-loading-text">Loading AI Forecasting..!</p>
+      <p className="sf-loading-brand">OvenZa Crust</p>
     </div>
   );
-
   return (
     <div className="sf-page">
 
@@ -160,10 +160,10 @@ export default function SalesForecast() {
         {/* ── Tabs ── */}
         <div className="sf-tabs">
           {[
-            { key: 'forecast',  label: '📈 14-Day Forecast' },
+            { key: 'forecast',  label: '📈 14-Day Forecast'  },
             { key: 'breakdown', label: '📋 Daily Breakdown'  },
             { key: 'accuracy',  label: '🎯 Model Accuracy'   },
-            {/* key: 'retrain',   label: '🔄 Upload & Retrain' */},
+            { key: 'retrain',   label: '🔄 Upload & Retrain' },
           ].map(t => (
             <button
               key={t.key}
@@ -475,7 +475,7 @@ export default function SalesForecast() {
 
         {/* TAB 4 — UPLOAD & RETRAIN */}
 
-      {/* {activeTab === 'retrain' && (
+       {activeTab === 'retrain' && (
           <>
             <div className="sf-card">
               <p className="sf-card-title">Upload New Sales Data</p>
@@ -542,7 +542,7 @@ export default function SalesForecast() {
               </div>
             )}
           </>
-        )} */}
+        )}
       </div>
     </div>
   );

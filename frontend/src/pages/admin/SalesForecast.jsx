@@ -400,3 +400,76 @@ export default function SalesForecast() {
           </>
         )}
 
+        {/* ════════════════════════════════════
+            TAB 3 — MODEL ACCURACY
+        ════════════════════════════════════ */}
+        {activeTab === 'accuracy' && accuracyData && (
+          <>
+            <div className="sf-card">
+              <p className="sf-card-title">Category Model Accuracy</p>
+              <p className="sf-card-sub">
+                Evaluated on last 28 days of training data (zero-sales days excluded)
+              </p>
+              <ResponsiveContainer width="100%" height={240}>
+                <BarChart
+                  data={Object.entries(accuracyData.categories).map(([cat, m]) => ({
+                    name: cat, Accuracy: m.accuracy,
+                  }))}
+                  margin={{ top: 8, right: 16, left: 0, bottom: 0 }}>
+                  <CartesianGrid stroke="#2a2e22" strokeDasharray="3 3" vertical={false} />
+                  <XAxis dataKey="name" tick={{ fill: '#8a9070', fontSize: 12 }}
+                    axisLine={false} tickLine={false} />
+                  <YAxis domain={[0, 100]} tick={{ fill: '#8a9070', fontSize: 12 }}
+                    axisLine={false} tickLine={false} width={40} />
+                  <Tooltip content={<CustomTooltip />} />
+                  <Bar dataKey="Accuracy" fill="#c8872a" radius={[4, 4, 0, 0]} />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+
+            <div className="sf-card no-padding">
+              <div className="sf-card-header">
+                <span className="sf-card-header-title">Accuracy Details</span>
+              </div>
+              <div className="sf-table-wrap">
+                <table className="sf-table">
+                  <thead>
+                    <tr>
+                      {['Model', 'Accuracy', 'MAPE', 'MAE', 'RMSE', 'Status'].map(h => (
+                        <th key={h}>{h}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {Object.entries(accuracyData.categories).map(([cat, m], i) => (
+                      <tr key={cat} className={i % 2 === 0 ? 'even' : 'odd'}>
+                        <td style={{ fontWeight: 600, color: CATEGORY_COLORS[cat] }}>{cat}</td>
+                        <td style={{ fontWeight: 700, color: '#e8e0d0' }}>{m.accuracy}%</td>
+                        <td>{m.mape}%</td>
+                        <td>{m.mae}</td>
+                        <td>{m.rmse}</td>
+                        <td>
+                          <span className={`sf-badge ${m.accuracy >= 75 ? 'green' : 'amber'}`}>
+                            {m.accuracy >= 80 ? 'Excellent'
+                              : m.accuracy >= 70 ? 'Good' : 'Acceptable'}
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                    <tr className="odd">
+                      <td style={{ fontWeight: 600, color: '#8a9070' }}>Global (baseline)</td>
+                      <td style={{ fontWeight: 700, color: '#e8e0d0' }}>
+                        {accuracyData.global.accuracy}%
+                      </td>
+                      <td>{accuracyData.global.mape}%</td>
+                      <td colSpan={3}>
+                        <span className="sf-badge amber">Baseline only</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </>
+        )}
+

@@ -6,6 +6,29 @@ import Footer from '../../components/footer';
 import { useCart } from '../../context/CartContext';
 import '../../style/CustomerMenu.css';
 
+// ── Login Required Modal ──────────────────────────────────────
+function LoginModal({ onLogin, onCancel }) {
+  return (
+    <div className="login-modal-overlay">
+      <div className="login-modal-box">
+        <div className="login-modal-icon">🔒</div>
+        <h2 className="login-modal-title">Login Required</h2>
+        <p className="login-modal-msg">
+          You need to log in to add items to your cart and place an order.
+        </p>
+        <div className="login-modal-btns">
+          <button className="login-modal-btn-primary" onClick={onLogin}>
+            🔑 Login
+          </button>
+          <button className="login-modal-btn-secondary" onClick={onCancel}>
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ── Hero Section ──────────────────────────────────────────────
 function MenuHero() {
   return (

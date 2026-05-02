@@ -80,3 +80,37 @@ export function CartProvider({ children }) {
         .filter(item => item.quantity > 0)
     );
   }
+
+  // ── Change size ───────────────────────────────────────────
+  // Uses stored sizes from the cart item itself — no pizza prop needed
+  function changeSize(id, oldSize, newSize) {
+    setCartItems(prev => {
+      // Get price from stored sizes on the cart item
+      const currentItem = prev.find(
+        item => item._id === id && item.size === oldSize
+      );
+      const newPrice = currentItem?.sizes?.[newSize] || 0;
+
+      // Check if new size already exists for this pizza
+      const alreadyExists = prev.find(
+        item => item._id === id && item.size === newSize
+      );
+
+      if (alreadyExists) {
+        return prev
+          .map(item =>
+            item._id === id && item.size === newSize
+              ? { ...item, quantity: item.quantity + (currentItem?.quantity || 1) }
+              : item
+          )
+          .filter(item => !(item._id === id && item.size === oldSize));
+      }
+
+      return prev.map(item =>
+        item._id === id && item.size === oldSize
+          ? { ...item, size: newSize, price: newPrice }
+          : item
+      );
+    });
+  }
+

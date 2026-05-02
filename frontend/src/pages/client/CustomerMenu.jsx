@@ -106,6 +106,9 @@ function PizzaCard({ pizza, onLoginRequired }) {
             value={selectedSize}
             onChange={(e) => setSelectedSize(e.target.value)}
           >
+            <option value="small">Small  — Rs. {pizza.sizes?.small}</option>
+            <option value="medium">Medium — Rs. {pizza.sizes?.medium}</option>
+            <option value="large">Large  — Rs. {pizza.sizes?.large}</option>
           </select>
         </div>
 

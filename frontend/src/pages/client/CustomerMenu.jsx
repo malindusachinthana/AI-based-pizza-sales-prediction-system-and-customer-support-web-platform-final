@@ -67,7 +67,25 @@ function CategoryFilter({ active, setActive, counts }) {
 }
 
 // ── Pizza Card ────────────────────────────────────────────────
+function PizzaCard({ pizza, onLoginRequired }) {
   const [selectedSize, setSelectedSize] = useState('medium');
+  const [added,        setAdded]        = useState(false);
+  const { addToCart }                   = useCart();
+
+  function handleAddToCart() {
+    const token    = localStorage.getItem('token');
+    const userRole = localStorage.getItem('userRole');
+
+    // Not logged in or admin → show login modal
+    if (!token || userRole === 'admin') {
+      onLoginRequired();
+      return;
+    }
+
+    addToCart(pizza, selectedSize);
+    setAdded(true);
+    setTimeout(() => setAdded(false), 1500);
+  }
 
   
   return (

@@ -213,6 +213,17 @@ export default function CustomerMenu() {
     <>
       <Navbar />
 
+      {/* ── Login Required Modal ── */}
+      {showLoginModal && (
+        <LoginModal
+          onLogin={() => {
+            setShowLoginModal(false);
+            navigate('/login');
+          }}
+          onCancel={() => setShowLoginModal(false)}
+        />
+      )}
+
       <div className="menu-page">
 
         {/* Hero */}

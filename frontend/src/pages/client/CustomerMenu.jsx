@@ -171,8 +171,10 @@ export default function CustomerMenu() {
   const [loading,        setLoading]        = useState(true);
   const [activeCategory, setActiveCategory] = useState('All');
   const [error,          setError]          = useState(null);
+  const [showLoginModal, setShowLoginModal] = useState(false);  // ← modal state
 
-  // Fetch pizzas from backend
+  const navigate = useNavigate();
+
   useEffect(() => {
     const fetchPizzas = async () => {
       try {

@@ -243,6 +243,7 @@ export default function CustomerMenu() {
               <p>Loading our delicious menu...</p>
             </div>
           ) : error ? (
+            <div className="menu-error"><p>{error}</p></div>
           ) : pizzas.length === 0 ? (
             <div className="menu-empty">
               <div className="menu-empty-icon">🍕</div>
@@ -254,6 +255,7 @@ export default function CustomerMenu() {
                 key={category}
                 category={category}
                 pizzas={list}
+                onLoginRequired={() => setShowLoginModal(true)}
               />
             ))
           )}
@@ -261,6 +263,7 @@ export default function CustomerMenu() {
 
       </div>
 
+      <FloatingCart />
       <Footer />
     </>
   );

@@ -127,6 +127,25 @@ function PizzaCard({ pizza, onLoginRequired }) {
   );
 }
 
+// ── Floating Cart Button ──────────────────────────────────────
+function FloatingCart() {
+  const { cartCount, cartTotal } = useCart();
+  const navigate                 = useNavigate();
+
+  if (cartCount === 0) return null;
+
+  return (
+    <div className="floating-cart" onClick={() => navigate('/cart')}>
+      <span className="floating-cart-icon">🛒</span>
+      <span className="floating-cart-info">
+        <span className="floating-cart-count">{cartCount} item{cartCount > 1 ? 's' : ''}</span>
+        <span className="floating-cart-total">Rs. {cartTotal.toLocaleString()}</span>
+      </span>
+      <span className="floating-cart-arrow">→</span>
+    </div>
+  );
+}
+
 // ── Category Section ──────────────────────────────────────────
 function CategorySection({ category, pizzas }) {
   if (pizzas.length === 0) return null;

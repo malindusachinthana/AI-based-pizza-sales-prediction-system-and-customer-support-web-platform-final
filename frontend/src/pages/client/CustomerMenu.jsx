@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import Navbar from '../../components/navbar';
 import Footer from '../../components/footer';
+import { useCart } from '../../context/CartContext';
 import '../../style/CustomerMenu.css';
 
 // ── Hero Section ──────────────────────────────────────────────

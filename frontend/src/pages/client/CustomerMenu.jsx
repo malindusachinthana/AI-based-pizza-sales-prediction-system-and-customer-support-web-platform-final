@@ -147,15 +147,18 @@ function FloatingCart() {
 }
 
 // ── Category Section ──────────────────────────────────────────
-function CategorySection({ category, pizzas }) {
+function CategorySection({ category, pizzas, onLoginRequired }) {
   if (pizzas.length === 0) return null;
-
   return (
     <div className="menu-category-section">
       <h2 className="menu-category-title">{category}</h2>
       <div className="menu-pizza-grid">
         {pizzas.map(pizza => (
-          <PizzaCard key={pizza._id} pizza={pizza} />
+          <PizzaCard
+            key={pizza._id}
+            pizza={pizza}
+            onLoginRequired={onLoginRequired}
+          />
         ))}
       </div>
     </div>

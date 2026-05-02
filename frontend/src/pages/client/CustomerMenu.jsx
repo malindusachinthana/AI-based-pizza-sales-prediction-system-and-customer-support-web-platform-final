@@ -87,11 +87,8 @@ function PizzaCard({ pizza, onLoginRequired }) {
     setTimeout(() => setAdded(false), 1500);
   }
 
-  
   return (
     <div className="menu-pizza-card">
-
-      {/* Image */}
       <div className="menu-pizza-img-wrap">
         <img
           src={`http://localhost:5000${pizza.imageUrl}`}
@@ -100,26 +97,15 @@ function PizzaCard({ pizza, onLoginRequired }) {
         />
       </div>
 
-      {/* Info */}
       <div className="menu-pizza-body">
         <h3 className="menu-pizza-name">{pizza.name}</h3>
 
-        {/* Size Dropdown */}
         <div className="menu-size-wrap">
           <select
             className="menu-size-select"
             value={selectedSize}
             onChange={(e) => setSelectedSize(e.target.value)}
           >
-            <option value="small">
-              Small — Rs. {pizza.sizes?.small}
-            </option>
-            <option value="medium">
-              Medium — Rs. {pizza.sizes?.medium}
-            </option>
-            <option value="large">
-              Large — Rs. {pizza.sizes?.large}
-            </option>
           </select>
         </div>
 

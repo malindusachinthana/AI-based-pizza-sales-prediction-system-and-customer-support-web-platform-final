@@ -114,3 +114,9 @@ export function CartProvider({ children }) {
     });
   }
 
+  // ── Clear entire cart ─────────────────────────────────────
+  function clearCart() {
+    setCartItems([]);
+    localStorage.removeItem('ovenza_cart');
+  }
+

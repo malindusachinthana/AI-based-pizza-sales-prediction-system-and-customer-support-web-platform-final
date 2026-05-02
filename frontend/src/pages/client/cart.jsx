@@ -99,3 +99,26 @@ export default function Cart() {
   if (!token || userRole === 'admin') {
     navigate('/login');
     return null;
+  }
+  // ─────────────────────────────────────────────────────────
+
+  // ── PayPal success handler ────────────────────────────────
+  async function onPayPalApprove(data) {
+    setPaying(true);
+    try {
+      console.log('✅ PayPal approved. Order ID:', data.orderID);
+
+      const orderData = {
+        paypalOrderId : data.orderID,
+        payerName     : username,
+        payerEmail    : 'sandbox@buyer.com',
+        items         : cartItems.map(item => ({
+          pizzaId  : item._id,
+          name     : item.name,
+          size     : item.size,
+          price    : item.price,
+          quantity : item.quantity,
+        })),
+        total  : cartTotal,
+        status : 'paid',
+      };

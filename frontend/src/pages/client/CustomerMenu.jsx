@@ -112,6 +112,15 @@ function PizzaCard({ pizza, onLoginRequired }) {
           </select>
         </div>
 
+        <p className="menu-pizza-price">
+          Rs. {pizza.sizes?.[selectedSize]?.toLocaleString()}
+        </p>
+
+        <button
+          className={`menu-cart-btn ${added ? 'menu-cart-btn--added' : ''}`}
+          onClick={handleAddToCart}
+        >
+          {added ? '✓ Added!' : '🛒 Add to Cart'}
         </button>
       </div>
     </div>

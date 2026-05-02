@@ -146,3 +146,7 @@ export function CartProvider({ children }) {
   );
 }
 
+// ── Custom hook ───────────────────────────────────────────────
+export function useCart() {
+  return useContext(CartContext);
+}

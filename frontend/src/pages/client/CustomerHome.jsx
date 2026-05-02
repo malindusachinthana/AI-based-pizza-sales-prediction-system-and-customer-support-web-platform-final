@@ -277,7 +277,7 @@ export default function CustomerHome() {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="home-page">
         <HeroSection />
         <AboutSection />
         <MenuSection />

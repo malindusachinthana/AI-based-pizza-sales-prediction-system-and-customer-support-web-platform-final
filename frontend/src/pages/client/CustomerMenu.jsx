@@ -190,12 +190,10 @@ export default function CustomerMenu() {
     fetchPizzas();
   }, []);
 
-  // Filter pizzas by category
   const filteredPizzas = activeCategory === 'All'
     ? pizzas
     : pizzas.filter(p => p.category === activeCategory);
 
-  // Count per category for filter buttons
   const counts = {
     All:     pizzas.length,
     Classic: pizzas.filter(p => p.category === 'Classic').length,
@@ -204,7 +202,6 @@ export default function CustomerMenu() {
     Veggie:  pizzas.filter(p => p.category === 'Veggie').length,
   };
 
-  // Group by category
   const grouped = {
     Classic: filteredPizzas.filter(p => p.category === 'Classic'),
     Chicken: filteredPizzas.filter(p => p.category === 'Chicken'),

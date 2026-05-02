@@ -57,3 +57,14 @@ export function CartProvider({ children }) {
     );
   }
 
+  // ── Increase quantity ─────────────────────────────────────
+  function increaseQty(id, size) {
+    setCartItems(prev =>
+      prev.map(item =>
+        item._id === id && item.size === size
+          ? { ...item, quantity: item.quantity + 1 }
+          : item
+      )
+    );
+  }
+

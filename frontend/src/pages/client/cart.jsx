@@ -85,3 +85,17 @@ function CartItem({ item }) {
   );
 }
 
+// ── Main Cart Page ────────────────────────────────────────────
+export default function Cart() {
+  const { cartItems, cartTotal, clearCart } = useCart();
+  const navigate                            = useNavigate();
+  const [paying, setPaying]                 = useState(false);
+
+  // ── Route Guard — must be logged in as customer ───────────
+  const token    = localStorage.getItem('token');
+  const userRole = localStorage.getItem('userRole');
+  const username = localStorage.getItem('username') || 'Customer';
+
+  if (!token || userRole === 'admin') {
+    navigate('/login');
+    return null;

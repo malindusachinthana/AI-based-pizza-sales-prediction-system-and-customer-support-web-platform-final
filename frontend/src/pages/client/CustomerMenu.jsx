@@ -48,7 +48,6 @@ function MenuHero() {
 // ── Category Filter ───────────────────────────────────────────
 function CategoryFilter({ active, setActive, counts }) {
   const categories = ['All', 'Classic', 'Chicken', 'Supreme', 'Veggie'];
-
   return (
     <div className="category-filter">
       {categories.map(cat => (
@@ -68,7 +67,6 @@ function CategoryFilter({ active, setActive, counts }) {
 }
 
 // ── Pizza Card ────────────────────────────────────────────────
-function PizzaCard({ pizza }) {
   const [selectedSize, setSelectedSize] = useState('medium');
 
   

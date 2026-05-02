@@ -9,3 +9,6 @@ import '../../style/cart.css';
 
 // ── PayPal Sandbox Client ID ──────────────────────────────────
 const PAYPAL_CLIENT_ID = 'AaP9unl1F12HpVGdDIR8IeN0NpmbW99-3TqT4mImxH6ymHTq-_G9FDfDQqBWHq9A3AZS4LGJGAWK3Ycp';
+
+const SIZE_LABELS = { small: 'S', medium: 'M', large: 'L' };
+

@@ -20,3 +20,32 @@ export function CartProvider({ children }) {
     localStorage.setItem('ovenza_cart', JSON.stringify(cartItems));
   }, [cartItems]);
 
+  // ── Add item to cart ──────────────────────────────────────
+  function addToCart(pizza, size) {
+    const price = pizza.sizes?.[size] || 0;
+
+    setCartItems(prev => {
+      const existing = prev.find(
+        item => item._id === pizza._id && item.size === size
+      );
+
+      if (existing) {
+        return prev.map(item =>
+          item._id === pizza._id && item.size === size
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      }
+
+      return [...prev, {
+        _id      : pizza._id,
+        name     : pizza.name,
+        imageUrl : pizza.imageUrl,
+        category : pizza.category,
+        sizes    : pizza.sizes,   // ← store all sizes for price lookup
+        size,
+        price,
+        quantity : 1,
+      }];
+    });
+  }

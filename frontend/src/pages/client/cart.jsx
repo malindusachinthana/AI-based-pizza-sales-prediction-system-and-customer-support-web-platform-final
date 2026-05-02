@@ -122,3 +122,130 @@ export default function Cart() {
         total  : cartTotal,
         status : 'paid',
       };
+
+      console.log('📦 Sending order to backend:', orderData);
+      const response = await axios.post('http://localhost:5000/api/orders', orderData);
+      console.log('✅ Order saved:', response.data);
+
+      const savedItems = [...cartItems];
+      clearCart();
+      navigate('/order-confirmation', {
+        state: {
+          orderId   : data.orderID,
+          payerName : username,
+          total     : cartTotal,
+          items     : savedItems,
+        }
+      });
+
+    } catch (err) {
+      console.error('❌ Error:', err);
+      alert('Order saving failed: ' + (err.response?.data?.message || err.message));
+    } finally {
+      setPaying(false);
+    }
+  }
+
+  if (cartItems.length === 0) return (
+    <>
+      <Navbar />
+      <div className="cart-page"><EmptyCart /></div>
+      <Footer />
+    </>
+  );
+
+  return (
+    <PayPalScriptProvider options={{
+      'client-id'    : PAYPAL_CLIENT_ID,
+      currency       : 'USD',
+      'buyer-country': 'US',
+    }}>
+      <Navbar />
+
+      <div className="cart-page">
+        <div className="cart-container">
+
+          {/* Header */}
+          <div className="cart-header">
+            <button className="cart-back-btn" onClick={() => navigate('/menu')}>
+              ← Back to Menu
+            </button>
+            <h1 className="cart-title">Your Cart</h1>
+            <span className="cart-item-count">
+              {cartItems.reduce((s, i) => s + i.quantity, 0)} item(s)
+            </span>
+          </div>
+
+          <div className="cart-body">
+
+            {/* Left — Cart items */}
+            <div className="cart-items-col">
+              {cartItems.map(item => (
+                <CartItem key={`${item._id}-${item.size}`} item={item} />
+              ))}
+            </div>
+
+            {/* Right — Order summary */}
+            <div className="cart-summary-col">
+              <div className="cart-summary-card">
+                <h2 className="cart-summary-title">Order Summary</h2>
+
+                <div className="cart-summary-items">
+                  {cartItems.map(item => (
+                    <div key={`${item._id}-${item.size}`} className="cart-summary-row">
+                      <span className="cart-summary-item-name">
+                        {item.name} ({SIZE_LABELS[item.size]}) ×{item.quantity}
+                      </span>
+                      <span className="cart-summary-item-price">
+                        Rs. {(item.price * item.quantity).toLocaleString()}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="cart-summary-divider" />
+
+                <div className="cart-summary-total-row">
+                  <span className="cart-summary-total-label">Total</span>
+                  <span className="cart-summary-total-value">
+                    Rs. {cartTotal.toLocaleString()}
+                  </span>
+                </div>
+
+                <div className="cart-summary-divider" />
+
+                <p className="cart-paypal-note">
+                  💳 Secure payment via PayPal
+                </p>
+
+                {paying ? (
+                  <div className="cart-paying">Processing payment...</div>
+                ) : (
+                  <PayPalButtons
+                    style={{ layout: 'vertical', color: 'gold', shape: 'rect' }}
+                    createOrder={(data, actions) => {
+                      return actions.order.create({
+                        purchase_units: [{
+                          amount: { value: '5.00' },
+                          description: 'OvenZa Crust Pizza Order',
+                        }]
+                      });
+                    }}
+                    onApprove={onPayPalApprove}
+                    onError={(err) => {
+                      console.error('PayPal error:', err);
+                      alert('Payment failed. Please try again.');
+                    }}
+                  />
+                )}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <Footer />
+    </PayPalScriptProvider>
+  );
+}

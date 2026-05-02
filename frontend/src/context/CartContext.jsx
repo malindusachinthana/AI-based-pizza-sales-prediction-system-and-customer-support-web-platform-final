@@ -120,3 +120,29 @@ export function CartProvider({ children }) {
     localStorage.removeItem('ovenza_cart');
   }
 
+  // ── Totals ────────────────────────────────────────────────
+  const cartTotal = cartItems.reduce(
+    (sum, item) => sum + item.price * item.quantity, 0
+  );
+
+  const cartCount = cartItems.reduce(
+    (sum, item) => sum + item.quantity, 0
+  );
+
+  return (
+    <CartContext.Provider value={{
+      cartItems,
+      cartTotal,
+      cartCount,
+      addToCart,
+      removeFromCart,
+      increaseQty,
+      decreaseQty,
+      changeSize,
+      clearCart,
+    }}>
+      {children}
+    </CartContext.Provider>
+  );
+}
+

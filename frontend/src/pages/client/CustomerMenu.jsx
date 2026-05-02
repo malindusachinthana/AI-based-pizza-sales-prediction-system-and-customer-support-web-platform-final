@@ -226,10 +226,8 @@ export default function CustomerMenu() {
 
       <div className="menu-page">
 
-        {/* Hero */}
         <MenuHero />
 
-        {/* Category Filter */}
         <div className="menu-filter-wrap">
           <CategoryFilter
             active={activeCategory}
@@ -238,7 +236,6 @@ export default function CustomerMenu() {
           />
         </div>
 
-        {/* Content */}
         <div className="menu-content">
           {loading ? (
             <div className="menu-loading">
@@ -246,9 +243,6 @@ export default function CustomerMenu() {
               <p>Loading our delicious menu...</p>
             </div>
           ) : error ? (
-            <div className="menu-error">
-              <p>{error}</p>
-            </div>
           ) : pizzas.length === 0 ? (
             <div className="menu-empty">
               <div className="menu-empty-icon">🍕</div>

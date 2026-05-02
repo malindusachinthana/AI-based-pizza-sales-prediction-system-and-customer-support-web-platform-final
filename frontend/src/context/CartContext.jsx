@@ -49,3 +49,11 @@ export function CartProvider({ children }) {
       }];
     });
   }
+
+  // ── Remove item from cart ─────────────────────────────────
+  function removeFromCart(id, size) {
+    setCartItems(prev =>
+      prev.filter(item => !(item._id === id && item.size === size))
+    );
+  }
+

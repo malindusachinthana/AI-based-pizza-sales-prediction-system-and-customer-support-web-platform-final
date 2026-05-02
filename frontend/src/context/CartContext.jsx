@@ -68,3 +68,15 @@ export function CartProvider({ children }) {
     );
   }
 
+  // ── Decrease quantity ─────────────────────────────────────
+  function decreaseQty(id, size) {
+    setCartItems(prev =>
+      prev
+        .map(item =>
+          item._id === id && item.size === size
+            ? { ...item, quantity: item.quantity - 1 }
+            : item
+        )
+        .filter(item => item.quantity > 0)
+    );
+  }

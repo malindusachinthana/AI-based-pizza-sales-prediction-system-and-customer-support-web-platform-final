@@ -112,9 +112,6 @@ function PizzaCard({ pizza, onLoginRequired }) {
           </select>
         </div>
 
-        {/* Purchase Button */}
-        <button className="menu-purchase-btn">
-          Purchase
         </button>
       </div>
     </div>

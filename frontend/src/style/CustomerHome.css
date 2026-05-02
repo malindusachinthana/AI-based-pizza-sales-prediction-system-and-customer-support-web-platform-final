@@ -26,10 +26,14 @@
 /* ── Reset & Base ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
+
 body {
   background: var(--bg-dark);
   color: var(--cream);
   font-family: var(--font-body);
+}
+
+.home-page {
   overflow-x: hidden;
 }
 

@@ -96,3 +96,13 @@ router.get('/live-preview', async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
+
+// GET /api/chatbot-config
+router.get('/', async (req, res) => {
+  try {
+    const configs = await ChatbotConfig.find({}).sort({ key: 1 });
+    res.json(configs);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});

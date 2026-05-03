@@ -1,0 +1,32 @@
+const express        = require('express');
+const router         = express.Router();
+const ChatbotConfig  = require('../models/ChatbotConfig');
+const ChatbotLog     = require('../models/ChatbotLog');
+const Pizza          = require('../models/Pizza');
+const Order          = require('../models/order');
+
+const DEFAULTS = [
+  {
+    key:    'hours',
+    label:  'Opening Hours',
+    answer: `🕐 We're open every day:<br/><strong>Mon – Fri:</strong> 10:00 AM – 11:00 PM<br/><strong>Sat – Sun:</strong> 9:00 AM – 12:00 AM (Midnight)`,
+  },
+  {
+    key:    'how_to_order',
+    label:  'How to Order',
+    answer: `🛒 Ordering is easy!<br/>1. Go to the <strong>Menu</strong> page<br/>2. Choose your pizza & size<br/>3. Add to cart 🛒<br/>4. Checkout with <strong>PayPal</strong><br/>5. Your order is confirmed instantly! ✅`,
+  },
+  {
+    key:    'payment',
+    label:  'Payment Methods',
+    answer: `💳 We currently accept <strong>PayPal</strong> for secure online payments. More payment options coming soon!`,
+  },
+  {
+    key:    'contact',
+    label:  'Location & Contact',
+    answer: `📍 Find us at <strong>OvenZa Crust, Colombo, Sri Lanka</strong>.<br/>📞 Call us: <strong>+94 11 234 5678</strong><br/>📧 Email: <strong>hello@ovenzacrust.lk</strong>`,
+  },
+];
+
+// ══ Named routes MUST come before /:key ══
+

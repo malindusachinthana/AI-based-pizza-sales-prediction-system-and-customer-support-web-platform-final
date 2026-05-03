@@ -1,6 +1,3 @@
-// ChatbotConfig.js
-// Place in: backend/models/ChatbotConfig.js
-
 const mongoose = require('mongoose');
 
 const ChatbotConfigSchema = new mongoose.Schema({

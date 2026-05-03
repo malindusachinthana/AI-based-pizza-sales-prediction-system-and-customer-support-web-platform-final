@@ -73,3 +73,15 @@
   background: var(--gold);
   color: var(--bg-dark);
 }
+
+/* ── Body Layout ──────────────────────────────────────────── */
+.cart-body {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 28px;
+  align-items: start;
+}
+
+@media (max-width: 800px) {
+  .cart-body { grid-template-columns: 1fr; }
+}

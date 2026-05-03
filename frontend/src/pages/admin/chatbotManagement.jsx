@@ -65,3 +65,26 @@ export default function ChatbotManagement() {
     setEditValue(cfg.answer.replace(/<br\/>/g, '\n').replace(/<[^>]+>/g, ''));
     setSaveMsg('');
   }
+
+  // ── Save edited answer ────────────────────────────────────
+  async function handleSave(key) {
+    setSaving(true);
+    setSaveMsg('');
+    try {
+      // Convert newlines back to <br/> and wrap bold markers
+      const htmlAnswer = editValue
+        .replace(/\n/g, '<br/>')
+        .trim();
+
+      await axios.put(`${API}/chatbot-config/${key}`, { answer: htmlAnswer });
+      setSaveMsg('✅ Saved successfully!');
+      setEditingKey(null);
+      fetchAll();
+    } catch {
+      setSaveMsg('❌ Failed to save. Try again.');
+    } finally {
+      setSaving(false);
+      setTimeout(() => setSaveMsg(''), 3000);
+    }
+  }
+

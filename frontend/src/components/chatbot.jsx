@@ -89,3 +89,99 @@ export default function Chatbot() {
     setLoading(false);
   }
 
+  return (
+    /* We attach the wrapperRef to this containing div */
+    <div ref={wrapperRef}>
+      {/* ── Floating Bubble Button ── */}
+      <button
+        className={`cb-bubble ${open ? 'cb-bubble--active' : ''}`}
+        onClick={() => setOpen(o => !o)}
+        aria-label="Open chatbot"
+      >
+        {open ? (
+          /* Show 'X' Close icon when open */
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        ) : (
+          /* Show ONLY custom image when closed */
+          <>
+            <img src={chatIcon} alt="Chat Icon" className="cb-bubble-icon" />
+            <span className="cb-bubble-ping" />
+          </>
+        )}
+      </button>
+
+      {/* ── Chat Window ── */}
+      <div className={`cb-window ${open ? 'cb-window--open' : ''}`}>
+
+        {/* Header */}
+        <div className="cb-header">
+          <div className="cb-header-avatar">🍕</div>
+          <div className="cb-header-info">
+            <p className="cb-header-name">OvenZ</p>
+            <p className="cb-header-status">Always here to help</p>
+          </div>
+          <button className="cb-clear-btn" onClick={handleClear} title="Clear chat">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+              <polyline points="1 4 1 10 7 10"/>
+              <path d="M3.51 15a9 9 0 1 0 .49-4.94"/>
+            </svg>
+          </button>
+        </div>
+
+        {/* Messages */}
+        <div className="cb-messages">
+          {messages.map((msg, i) => (
+            <div key={i} className={`cb-msg cb-msg--${msg.from}`}>
+              {msg.from === 'bot' && <span className="cb-msg-avatar">🍕</span>}
+              <div
+                className="cb-msg-bubble"
+                dangerouslySetInnerHTML={{ __html: msg.text }}
+              />
+            </div>
+          ))}
+
+          {/* Loading dots */}
+          {loading && (
+            <div className="cb-msg cb-msg--bot">
+              <span className="cb-msg-avatar">🍕</span>
+              <div className="cb-msg-bubble cb-typing">
+                <span /><span /><span />
+              </div>
+            </div>
+          )}
+
+          <div ref={bottomRef} />
+        </div>
+
+        {/* Questions or Ask Another */}
+        <div className="cb-footer">
+          {!asked && !loading && (
+            <div className="cb-questions">
+              {QUESTIONS.map(q => (
+                <button
+                  key={q.id}
+                  className="cb-question-btn"
+                  onClick={() => handleQuestion(q)}
+                >
+                  {q.label}
+                </button>
+              ))}
+            </div>
+          )}
+
+          {asked && !loading && (
+            <div className="cb-ask-another">
+              <button className="cb-another-btn" onClick={handleAskAnother}>
+                Ask another question 🔄
+              </button>
+            </div>
+          )}
+        </div>
+
+      </div>
+    </div>
+  );
+}

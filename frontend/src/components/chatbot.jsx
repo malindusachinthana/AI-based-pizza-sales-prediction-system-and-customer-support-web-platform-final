@@ -81,3 +81,11 @@ export default function Chatbot() {
       text: 'Sure! What else would you like to know? 😊'
     }]);
   }
+
+  // ── Clear chat ─────────────────────────────────────────────
+  function handleClear() {
+    setMessages([{ from: 'bot', text: BOT_GREETING }]);
+    setAsked(false);
+    setLoading(false);
+  }
+

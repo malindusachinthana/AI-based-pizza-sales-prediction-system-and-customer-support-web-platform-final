@@ -370,3 +370,38 @@
   color: var(--text-muted);
   font-size: 15px;
 }
+
+/* ── Add to Cart button (in CustomerMenu.css) ─────────────── */
+.menu-cart-btn {
+  width: 100%;
+  padding: 10px 0;
+  border: none;
+  border-radius: 8px;
+  background: var(--gold, #c9a84c);
+  color: #1c2318;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 0.04em;
+  transition: 0.3s ease;
+  margin-top: 10px;
+}
+
+.menu-cart-btn:hover {
+  background: #e2c97e;
+  transform: translateY(-2px);
+}
+
+.menu-cart-btn--added {
+  background: #2d6a4f;
+  color: #fff;
+}
+
+.menu-pizza-price {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--gold, #c9a84c);
+  margin: 8px 0 0;
+  font-family: 'Lato', sans-serif;
+}

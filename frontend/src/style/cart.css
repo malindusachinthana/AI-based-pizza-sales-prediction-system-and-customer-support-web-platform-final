@@ -16,3 +16,17 @@
   --transition: 0.3s ease;
 }
 
+/* ── Page ─────────────────────────────────────────────────── */
+.cart-page {
+  min-height: 100vh;
+  background: var(--bg-dark);
+  padding-top: 80px;
+  font-family: var(--font-body);
+}
+
+.cart-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+

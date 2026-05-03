@@ -251,3 +251,61 @@ export default function ChatbotManagement() {
         </div>
       )}
 
+      {/* ══════════════════════════════════════════
+          TAB 3 — Usage Stats
+      ══════════════════════════════════════════ */}
+      {activeTab === 'stats' && (
+        <div className="cbm-section">
+          <p className="cbm-section-desc">
+            See which questions customers ask most often. Data is collected automatically every time the chatbot is used.
+          </p>
+
+          {stats.total === 0 ? (
+            <div className="cbm-empty">
+              <span>📊</span>
+              <p>No chatbot usage data yet. Stats will appear once customers start using the chatbot!</p>
+            </div>
+          ) : (
+            <>
+              {topQuestion && (
+                <div className="cbm-top-question">
+                  <p className="cbm-top-label">🔥 Most Asked Question</p>
+                  <p className="cbm-top-value">
+                    {QUESTION_LABELS[topQuestion._id] || topQuestion._id}
+                  </p>
+                  <p className="cbm-top-count">{topQuestion.count} times asked</p>
+                </div>
+              )}
+
+              <div className="cbm-stats-list">
+                {stats.logs.map((log, i) => {
+                  const pct = Math.round((log.count / stats.total) * 100);
+                  return (
+                    <div key={log._id} className="cbm-stat-row">
+                      <span className="cbm-stat-rank">#{i + 1}</span>
+                      <div className="cbm-stat-info">
+                        <p className="cbm-stat-name">
+                          {QUESTION_LABELS[log._id] || log._id}
+                        </p>
+                        <div className="cbm-stat-bar-wrap">
+                          <div
+                            className="cbm-stat-bar"
+                            style={{ width: `${pct}%` }}
+                          />
+                        </div>
+                      </div>
+                      <span className="cbm-stat-count">
+                        {log.count} <small>({pct}%)</small>
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            </>
+          )}
+        </div>
+      )}
+
+    </div>
+  );
+}

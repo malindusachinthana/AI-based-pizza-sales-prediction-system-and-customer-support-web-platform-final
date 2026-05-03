@@ -31,3 +31,29 @@ export default function ChatbotManagement() {
   const [loading,      setLoading]      = useState(true);
   const [activeTab,    setActiveTab]    = useState('answers'); // 'answers' | 'stats' | 'live'
 
+  // ── Load everything on mount ───────────────────────────────
+  useEffect(() => {
+    fetchAll();
+  }, []);
+
+  async function fetchAll() {
+    setLoading(true);
+    try {
+      // Seed defaults first
+      await axios.get(`${API}/chatbot-config/seed`);
+
+      const [cfgRes, liveRes, statsRes] = await Promise.all([
+        axios.get(`${API}/chatbot-config`),
+        axios.get(`${API}/chatbot-config/live-preview`),
+        axios.get(`${API}/chatbot-config/stats`),
+      ]);
+
+      setConfigs(cfgRes.data);
+      setLiveData(liveRes.data);
+      setStats(statsRes.data);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  }

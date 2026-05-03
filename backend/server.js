@@ -7,6 +7,8 @@ const authRoutes  = require('./routes/authRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const pizzaRoutes = require('./routes/pizzaRoutes');
 const orderRoutes = require('./routes/orderRoutes');
+const chatbotRoutes = require('./routes/chatbotRoutes');
+const chatbotConfigRoutes = require('./routes/chatbotConfigRoutes');
 
 dotenv.config();
 connectDB();
@@ -30,6 +32,9 @@ app.use('/api/auth',   authRoutes);
 app.use('/api/admin',  adminRoutes);
 app.use('/api/pizzas', pizzaRoutes);
 app.use('/api/orders', orderRoutes);
+app.use('/api/admin', adminRoutes);
+app.use('/api/chatbot', chatbotRoutes);
+app.use('/api/chatbot-config', chatbotConfigRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

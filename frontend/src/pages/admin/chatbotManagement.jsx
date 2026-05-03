@@ -57,3 +57,11 @@ export default function ChatbotManagement() {
       setLoading(false);
     }
   }
+
+  // ── Start editing ─────────────────────────────────────────
+  function handleEdit(cfg) {
+    setEditingKey(cfg.key);
+    // Strip HTML tags for easier editing
+    setEditValue(cfg.answer.replace(/<br\/>/g, '\n').replace(/<[^>]+>/g, ''));
+    setSaveMsg('');
+  }

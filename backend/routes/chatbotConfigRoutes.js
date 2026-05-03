@@ -47,3 +47,17 @@ router.get('/seed', async (req, res) => {
   }
 });
 
+// GET /api/chatbot-config/stats
+router.get('/stats', async (req, res) => {
+  try {
+    const logs = await ChatbotLog.aggregate([
+      { $group: { _id: '$questionType', count: { $sum: 1 } } },
+      { $sort:  { count: -1 } },
+      { $limit: 10 }
+    ]);
+    const total = await ChatbotLog.countDocuments();
+    res.json({ logs, total });
+  } catch (err) {
+    res.json({ logs: [], total: 0 });
+  }
+});

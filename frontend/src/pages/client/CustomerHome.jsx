@@ -5,6 +5,7 @@ import '../../style/CustomerHome.css';
 // Import shared components
 import Navbar from '../../components/navbar';
 import Footer from '../../components/footer';
+import Chatbot from '../../components/chatbot.jsx'
 
 // Hero / Main Background
 import heroBg      from '../../assets/MainBackgound.png';
@@ -284,7 +285,9 @@ export default function CustomerHome() {
         <OffersSection />
         <GallerySection />
       </main>
+
       <Footer />
+      <Chatbot />
     </>
   );
 }

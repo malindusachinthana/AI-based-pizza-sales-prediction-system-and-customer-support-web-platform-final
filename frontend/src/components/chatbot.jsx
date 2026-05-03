@@ -72,3 +72,12 @@ export default function Chatbot() {
       setAsked(true);
     }
   }
+
+  // ── Reset to show questions again ──────────────────────────
+  function handleAskAnother() {
+    setAsked(false);
+    setMessages(prev => [...prev, {
+      from: 'bot',
+      text: 'Sure! What else would you like to know? 😊'
+    }]);
+  }

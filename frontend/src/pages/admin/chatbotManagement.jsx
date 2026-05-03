@@ -88,3 +88,13 @@ export default function ChatbotManagement() {
     }
   }
 
+  // ── Top question from stats ───────────────────────────────
+  const topQuestion = stats.logs[0];
+
+  if (loading) return (
+    <div className="cbm-loading">
+      <span className="cbm-loading-emoji">🍕</span>
+      <p className="cbm-loading-title">Chatbot Management</p>
+      <p className="cbm-loading-sub">Loading chatbot data...</p>
+    </div>
+  );

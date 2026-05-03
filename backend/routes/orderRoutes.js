@@ -1,7 +1,11 @@
+// orderRoutes.js — updated with user orders endpoint
+// Place in: backend/routes/orderRoutes.js
+
 const express = require('express');
 const router  = express.Router();
-const Order   = require('../models/order');  
+const Order   = require('../models/order');
 
+// ── POST /api/orders — Save order after PayPal payment ────────
 router.post('/', async (req, res) => {
   try {
     const { paypalOrderId, payerName, payerEmail, items, total, status } = req.body;
@@ -24,12 +28,25 @@ router.post('/', async (req, res) => {
   }
 });
 
+// ── GET /api/orders — Get all orders (admin) ──────────────────
 router.get('/', async (req, res) => {
   try {
     const orders = await Order.find().sort({ createdAt: -1 });
     res.json(orders);
   } catch (err) {
     res.status(500).json({ message: 'Failed to fetch orders' });
+  }
+});
+
+// ── GET /api/orders/user/:username — Get orders by username ───
+router.get('/user/:username', async (req, res) => {
+  try {
+    const orders = await Order.find({ payerName: req.params.username })
+      .sort({ createdAt: -1 })
+      .limit(10);
+    res.json(orders);
+  } catch (err) {
+    res.status(500).json({ message: 'Failed to fetch user orders' });
   }
 });
 

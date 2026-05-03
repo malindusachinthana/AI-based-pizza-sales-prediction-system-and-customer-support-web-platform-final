@@ -5,6 +5,7 @@ import Navbar from '../../components/navbar';
 import Footer from '../../components/footer';
 import { useCart } from '../../context/CartContext';
 import '../../style/CustomerMenu.css';
+import Chatbot from '../../components/chatbot.jsx'
 
 // ── Login Required Modal ──────────────────────────────────────
 function LoginModal({ onLogin, onCancel }) {
@@ -265,6 +266,7 @@ export default function CustomerMenu() {
 
       <FloatingCart />
       <Footer />
+      <Chatbot />
     </>
   );
 }

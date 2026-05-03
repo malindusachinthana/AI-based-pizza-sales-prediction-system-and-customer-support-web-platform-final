@@ -1,1 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700&family=Lato:wght@300;400;700&display=swap');
+
+:root {
+  --bg-dark   : #1c2318;
+  --bg-card   : #2d3828;
+  --bg-section: #242e1f;
+  --olive     : #3b4a32;
+  --gold      : #c9a84c;
+  --gold-light: #e2c97e;
+  --cream     : #f5ede0;
+  --text-muted: #a89f8c;
+  --red       : #c0392b;
+  --font-disp : 'Cinzel Decorative', serif;
+  --font-head : 'Playfair Display', serif;
+  --font-body : 'Lato', sans-serif;
+  --transition: 0.3s ease;
+}
+

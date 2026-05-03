@@ -136,3 +136,71 @@ export default function ChatbotManagement() {
           </button>
         ))}
       </div>
+
+      {/* ══════════════════════════════════════════
+          TAB 1 — Edit Answers
+      ══════════════════════════════════════════ */}
+      {activeTab === 'answers' && (
+        <div className="cbm-section">
+          <p className="cbm-section-desc">
+            These answers are shown to customers in the chatbot. Edit them any time and they update instantly — no code changes needed.
+          </p>
+
+          <div className="cbm-cards">
+            {configs.map(cfg => (
+              <div key={cfg.key} className={`cbm-card ${editingKey === cfg.key ? 'cbm-card--editing' : ''}`}>
+
+                <div className="cbm-card-header">
+                  <span className="cbm-card-label">{cfg.label}</span>
+                  <span className="cbm-card-key">{cfg.key}</span>
+                </div>
+
+                {editingKey === cfg.key ? (
+                  // ── Edit mode ──
+                  <div className="cbm-edit-mode">
+                    <textarea
+                      className="cbm-textarea"
+                      value={editValue}
+                      onChange={e => setEditValue(e.target.value)}
+                      rows={5}
+                      placeholder="Type the answer here…"
+                    />
+                    <p className="cbm-edit-hint">💡 Use a new line for line breaks. They'll show correctly in the chatbot.</p>
+                    <div className="cbm-edit-actions">
+                      <button
+                        className="cbm-btn cbm-btn--save"
+                        onClick={() => handleSave(cfg.key)}
+                        disabled={saving}
+                      >
+                        {saving ? 'Saving…' : '💾 Save'}
+                      </button>
+                      <button
+                        className="cbm-btn cbm-btn--cancel"
+                        onClick={() => setEditingKey(null)}
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  // ── View mode ──
+                  <div className="cbm-view-mode">
+                    <p
+                      className="cbm-answer-preview"
+                      dangerouslySetInnerHTML={{ __html: cfg.answer }}
+                    />
+                    <button
+                      className="cbm-btn cbm-btn--edit"
+                      onClick={() => handleEdit(cfg)}
+                    >
+                      ✏️ Edit
+                    </button>
+                  </div>
+                )}
+
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+

@@ -204,3 +204,50 @@ export default function ChatbotManagement() {
         </div>
       )}
 
+      {/* ══════════════════════════════════════════
+          TAB 2 — Live DB Data
+      ══════════════════════════════════════════ */}
+      {activeTab === 'live' && (
+        <div className="cbm-section">
+          <p className="cbm-section-desc">
+            These answers are generated automatically from your live database. They update whenever you change the menu or new orders come in — no editing needed.
+          </p>
+
+          <div className="cbm-live-grid">
+
+            <div className="cbm-live-card cbm-live-card--gold">
+              <span className="cbm-live-icon">🏆</span>
+              <p className="cbm-live-label">Best Selling Pizza</p>
+              <p className="cbm-live-value">{liveData?.bestSeller?.name || '—'}</p>
+              <p className="cbm-live-sub">{liveData?.bestSeller?.orders} orders</p>
+              <span className="cbm-live-badge">Auto from Orders</span>
+            </div>
+
+            <div className="cbm-live-card cbm-live-card--red">
+              <span className="cbm-live-icon">💎</span>
+              <p className="cbm-live-label">Most Expensive Pizza</p>
+              <p className="cbm-live-value">{liveData?.mostExpensive?.name || '—'}</p>
+              <p className="cbm-live-sub">Rs. {liveData?.mostExpensive?.price?.toLocaleString()}</p>
+              <span className="cbm-live-badge">Auto from Menu</span>
+            </div>
+
+            <div className="cbm-live-card cbm-live-card--green">
+              <span className="cbm-live-icon">💚</span>
+              <p className="cbm-live-label">Most Affordable Pizza</p>
+              <p className="cbm-live-value">{liveData?.cheapest?.name || '—'}</p>
+              <p className="cbm-live-sub">Rs. {liveData?.cheapest?.price?.toLocaleString()}</p>
+              <span className="cbm-live-badge">Auto from Menu</span>
+            </div>
+
+            <div className="cbm-live-card cbm-live-card--blue">
+              <span className="cbm-live-icon">🍕</span>
+              <p className="cbm-live-label">Total Pizzas on Menu</p>
+              <p className="cbm-live-value">{liveData?.totalPizzas || '—'}</p>
+              <p className="cbm-live-sub">Across all categories</p>
+              <span className="cbm-live-badge">Auto from Menu</span>
+            </div>
+
+          </div>
+        </div>
+      )}
+

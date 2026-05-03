@@ -8,6 +8,7 @@ import Register          from './pages/register.jsx';
 import CustomerMenu      from './pages/client/CustomerMenu.jsx';
 import Cart              from './pages/client/cart.jsx';
 import OrderConfirmation from './pages/client/OrderConfirmation.jsx';
+import CustomerProfile   from './pages/client/CustomerProfile.jsx';
 
 // Admin Pages
 import AdminDashboard from './pages/admin/adminDashboard.jsx';
@@ -25,6 +26,7 @@ function App() {
           <Route path="/menu"               element={<CustomerMenu />} />
           <Route path="/cart"               element={<Cart />} />              
           <Route path="/order-confirmation" element={<OrderConfirmation />} />
+          <Route path="/customer-profile" element={<CustomerProfile />} />
 
           {/* Admin Routes */}
           <Route path="/admin-dashboard" element={<AdminDashboard />} />

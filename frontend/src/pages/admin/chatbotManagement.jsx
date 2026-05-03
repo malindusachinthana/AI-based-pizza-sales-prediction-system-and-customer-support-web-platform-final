@@ -98,3 +98,21 @@ export default function ChatbotManagement() {
       <p className="cbm-loading-sub">Loading chatbot data...</p>
     </div>
   );
+
+  return (
+    <div className="cbm-wrap">
+
+      {/* ── Page Header ── */}
+      <div className="cbm-header">
+        <div className="cbm-header-left">
+          <span className="cbm-header-icon">🤖</span>
+          <div>
+            <h2 className="cbm-title">Chatbot Management</h2>
+            <p className="cbm-subtitle">Manage chatbot answers & view usage stats</p>
+          </div>
+        </div>
+        <div className="cbm-stat-pill">
+          <span>💬</span>
+          <span><strong>{stats.total}</strong> total questions asked</span>
+        </div>
+      </div>

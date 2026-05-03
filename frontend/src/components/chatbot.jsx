@@ -18,3 +18,17 @@ const QUESTIONS = [
   { id: 'payment',       label: '💳 Payment methods?'           },
   { id: 'contact',       label: '📍 Location & contact?'        },
 ];
+
+const BOT_GREETING = "Hey there! 👋 I'm <strong>OvenZ</strong> 🍕<br/>How can I help you today? Pick a question below!";
+
+export default function Chatbot() {
+  const [open,     setOpen]     = useState(false);
+  const [messages, setMessages] = useState([
+    { from: 'bot', text: BOT_GREETING }
+  ]);
+  const [loading,  setLoading]  = useState(false);
+  const [asked,    setAsked]    = useState(false); 
+  const bottomRef = useRef(null);
+
+  const wrapperRef = useRef(null);
+

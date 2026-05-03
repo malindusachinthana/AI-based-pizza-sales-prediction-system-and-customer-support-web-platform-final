@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import '../../style/adminDashboard.css';
 import PizzaMenuManagement from './pizzaMenuManagement.jsx';
 import SalesForecast from './SalesForecast.jsx';
+import ChatbotManagement from './chatbotManagement.jsx';
+import AdminProfile from './adminProfile.jsx';
 
 // ── Route Protection ──────────────────────────────────────────
 function useAdminProtection() {
@@ -69,7 +71,7 @@ function Sidebar({ active, setActive }) {
     { id: 'forecast',  icon: '◎', label: 'AI Forecast'    },
     { id: 'menu',      icon: '◈', label: 'Pizza Menu'     },
     { id: 'offers',    icon: '✦', label: 'Special Offers' },
-    { id: 'chatbot',   icon: '◉', label: 'Chatbot'        },
+    { id: 'Chatbot', label: 'ChatbotManagement', icon: '🤖' },
     { id: 'profile',   icon: '◯', label: 'Profile'        },
   ];
 
@@ -336,8 +338,8 @@ export default function AdminDashboard() {
       case 'forecast':  return <SalesForecast />;
       case 'menu': return <PizzaMenuManagement />;
       case 'offers':    return <ComingSoon title="Special Offers" />;
-      case 'chatbot':   return <ComingSoon title="Chatbot Manager" />;
-      case 'profile':   return <ComingSoon title="Admin Profile" />;
+      case 'Chatbot': return <ChatbotManagement />;
+      case 'profile':   return <AdminProfile />;
       default:          return <DashboardOverview />;
     }
   };

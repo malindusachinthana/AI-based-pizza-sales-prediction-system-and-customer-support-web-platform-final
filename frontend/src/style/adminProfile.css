@@ -45,3 +45,55 @@
   color: #7a7268;
   margin: 0;
 }
+
+/* ── Header ───────────────────────────────────────────────── */
+.ap-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.ap-header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.ap-header-icon {
+  font-size: 1.6rem;
+  width: 52px;
+  height: 52px;
+  background: rgba(201, 168, 76, 0.12);
+  border: 1.5px solid rgba(201, 168, 76, 0.25);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ap-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #f0e6d0;
+  margin: 0 0 2px;
+}
+
+.ap-subtitle {
+  font-size: 0.8rem;
+  color: #a89f8c;
+  margin: 0;
+}
+
+.ap-role-badge {
+  background: rgba(201, 168, 76, 0.12);
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  color: #c9a84c;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 7px 16px;
+  border-radius: 20px;
+}

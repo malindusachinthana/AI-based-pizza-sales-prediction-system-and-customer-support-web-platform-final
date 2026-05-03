@@ -344,3 +344,29 @@
   padding: 20px;
   font-family: var(--font-body);
 }
+
+/* ── Empty Cart ───────────────────────────────────────────── */
+.cart-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+  gap: 16px;
+}
+
+.cart-empty-icon {
+  font-size: 64px;
+}
+
+.cart-empty-title {
+  font-family: var(--font-head);
+  font-size: 24px;
+  color: var(--cream);
+}
+
+.cart-empty-sub {
+  color: var(--text-muted);
+  font-size: 15px;
+}

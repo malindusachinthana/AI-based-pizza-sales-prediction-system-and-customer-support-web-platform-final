@@ -147,3 +147,10 @@
   font-weight: 700;
   margin: 0;
 }
+
+/* ── Divider ──────────────────────────────────────────────── */
+.ap-divider {
+  height: 1px;
+  background: rgba(201, 168, 76, 0.12);
+  margin: 24px 0;
+}

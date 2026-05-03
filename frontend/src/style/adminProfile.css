@@ -105,3 +105,45 @@
   border-radius: 16px;
   padding: 32px 28px;
 }
+
+/* ── Avatar section ───────────────────────────────────────── */
+.ap-avatar-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.ap-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: rgba(80, 90, 75, 0.7);
+  border: 2px solid rgba(201, 168, 76, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ap-avatar-svg {
+  width: 54px;
+  height: 54px;
+  color: #c9a84c;
+}
+
+.ap-avatar-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #f0e6d0;
+  margin: 0;
+}
+
+.ap-avatar-role {
+  font-size: 0.72rem;
+  color: #c9a84c;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 0;
+}

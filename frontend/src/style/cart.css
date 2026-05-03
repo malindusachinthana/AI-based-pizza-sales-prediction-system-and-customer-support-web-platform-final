@@ -405,3 +405,51 @@
   margin: 8px 0 0;
   font-family: 'Lato', sans-serif;
 }
+
+/* ── Floating Cart Button ─────────────────────────────────── */
+.floating-cart {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  background: var(--gold, #c9a84c);
+  color: #1c2318;
+  border-radius: 50px;
+  padding: 14px 22px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  box-shadow: 0 8px 32px rgba(201, 168, 76, 0.35);
+  z-index: 999;
+  transition: 0.3s ease;
+  font-family: 'Lato', sans-serif;
+}
+
+.floating-cart:hover {
+  background: #e2c97e;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(201, 168, 76, 0.45);
+}
+
+.floating-cart-icon { font-size: 20px; }
+
+.floating-cart-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.floating-cart-count {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.floating-cart-total {
+  font-size: 11px;
+  opacity: 0.8;
+}
+
+.floating-cart-arrow {
+  font-size: 18px;
+  font-weight: 700;
+}

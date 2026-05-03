@@ -99,3 +99,44 @@ router.post('/query', async (req, res) => {
           answer: `🍕 We currently have <strong>${count} pizzas</strong> on our menu across 4 categories — Classic, Chicken, Supreme, and Veggie. Head to the Menu to explore them all!`
         });
       }
+
+      // ── Editable answers from MongoDB config ─────────────────
+      case 'hours': {
+        const answer = await getConfig('hours',
+          `🕐 We're open every day:<br/><strong>Mon – Fri:</strong> 10:00 AM – 11:00 PM<br/><strong>Sat – Sun:</strong> 9:00 AM – 12:00 AM`
+        );
+        return res.json({ answer });
+      }
+
+      case 'how_to_order': {
+        const answer = await getConfig('how_to_order',
+          `🛒 Go to Menu → Choose pizza & size → Add to cart → Checkout → Confirmed! ✅`
+        );
+        return res.json({ answer });
+      }
+
+      case 'payment': {
+        const answer = await getConfig('payment',
+          `💳 We currently accept <strong>PayPal</strong> for secure online payments.`
+        );
+        return res.json({ answer });
+      }
+
+      case 'contact': {
+        const answer = await getConfig('contact',
+          `📍 <strong>OvenZa Crust, Colombo, Sri Lanka</strong>.<br/>📞 <strong>+94 11 234 5678</strong>`
+        );
+        return res.json({ answer });
+      }
+
+      default:
+        return res.json({ answer: "I'm not sure about that! Try one of the questions below 👇" });
+    }
+
+  } catch (err) {
+    console.error('Chatbot error:', err);
+    res.status(500).json({ answer: 'Something went wrong. Please try again!' });
+  }
+});
+
+module.exports = router;

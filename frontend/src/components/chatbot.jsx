@@ -46,3 +46,29 @@ export default function Chatbot() {
       }
     }
 
+    // Bind the event listener to the whole document
+    document.addEventListener("mousedown", handleClickOutside);
+    
+    // Cleanup the event listener when the component unmounts
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+    }, []);
+
+  // ── Handle question tap ────────────────────────────────────
+  async function handleQuestion(q) {
+    // Add user bubble
+    setMessages(prev => [...prev, { from: 'user', text: q.label }]);
+    setLoading(true);
+    setAsked(false);
+
+    try {
+      const res = await axios.post('http://localhost:5000/api/chatbot/query', { type: q.id });
+      setMessages(prev => [...prev, { from: 'bot', text: res.data.answer }]);
+    } catch {
+      setMessages(prev => [...prev, { from: 'bot', text: '⚠️ Something went wrong. Please try again!' }]);
+    } finally {
+      setLoading(false);
+      setAsked(true);
+    }
+  }

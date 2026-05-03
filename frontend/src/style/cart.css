@@ -253,3 +253,94 @@
   color: var(--red);
   background: rgba(192, 57, 43, 0.1);
 }
+
+/* ── Order Summary Card ───────────────────────────────────── */
+.cart-summary-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  border-radius: 14px;
+  padding: 24px;
+  position: sticky;
+  top: 20px;
+}
+
+.cart-summary-title {
+  font-family: var(--font-head);
+  font-size: 18px;
+  color: var(--gold);
+  margin: 0 0 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+}
+
+/* Summary items list */
+.cart-summary-items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.cart-summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.cart-summary-item-name {
+  color: var(--text-muted);
+  flex: 1;
+}
+
+.cart-summary-item-price {
+  color: var(--cream);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.cart-summary-divider {
+  border: none;
+  border-top: 1px solid rgba(201, 168, 76, 0.15);
+  margin: 14px 0;
+}
+
+/* Total row */
+.cart-summary-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.cart-summary-total-label {
+  font-family: var(--font-head);
+  font-size: 17px;
+  color: var(--cream);
+  font-weight: 600;
+}
+
+.cart-summary-total-value {
+  font-family: var(--font-head);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+/* PayPal note */
+.cart-paypal-note {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-align: center;
+  margin: 0 0 14px;
+}
+
+/* Processing */
+.cart-paying {
+  text-align: center;
+  color: var(--gold);
+  font-size: 14px;
+  padding: 20px;
+  font-family: var(--font-body);
+}

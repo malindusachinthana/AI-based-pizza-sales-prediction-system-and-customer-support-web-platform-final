@@ -106,3 +106,21 @@ router.get('/', async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
+
+// PUT /api/chatbot-config/:key  — MUST be last
+router.put('/:key', async (req, res) => {
+  try {
+    const { answer } = req.body;
+    const updated = await ChatbotConfig.findOneAndUpdate(
+      { key: req.params.key },
+      { answer, updatedAt: new Date() },
+      { returnDocument: 'after' }
+    );
+    if (!updated) return res.status(404).json({ message: 'Config not found' });
+    res.json({ message: '✅ Updated!', config: updated });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+module.exports = router;

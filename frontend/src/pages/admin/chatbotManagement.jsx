@@ -116,3 +116,23 @@ export default function ChatbotManagement() {
           <span><strong>{stats.total}</strong> total questions asked</span>
         </div>
       </div>
+
+      {/* ── Save message toast ── */}
+      {saveMsg && <div className={`cbm-toast ${saveMsg.startsWith('✅') ? 'cbm-toast--ok' : 'cbm-toast--err'}`}>{saveMsg}</div>}
+
+      {/* ── Tabs ── */}
+      <div className="cbm-tabs">
+        {[
+          { id: 'answers', label: '✏️ Edit Answers' },
+          { id: 'live',    label: '📡 Live DB Data'  },
+          { id: 'stats',   label: '📊 Usage Stats'   },
+        ].map(tab => (
+          <button
+            key={tab.id}
+            className={`cbm-tab ${activeTab === tab.id ? 'cbm-tab--active' : ''}`}
+            onClick={() => setActiveTab(tab.id)}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>

@@ -30,3 +30,20 @@ const DEFAULTS = [
 
 // ══ Named routes MUST come before /:key ══
 
+// GET /api/chatbot-config/seed
+router.get('/seed', async (req, res) => {
+  try {
+    for (const d of DEFAULTS) {
+      await ChatbotConfig.findOneAndUpdate(
+        { key: d.key },
+        { $setOnInsert: d },
+        { upsert: true, returnDocument: 'after' }
+      );
+    }
+    const all = await ChatbotConfig.find({});
+    res.json({ message: '✅ Defaults seeded.', count: all.length });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+

@@ -10,3 +10,38 @@
   width: 100%;
   margin: 0 auto;
 }
+
+/* ── Loading ──────────────────────────────────────────────── */
+.ap-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-height: 60vh;
+}
+
+.ap-loading-emoji {
+  font-size: 3.2rem;
+  animation: ap-float 2.4s ease-in-out infinite;
+}
+
+@keyframes ap-float {
+  0%, 100% { transform: translateY(0);     }
+  50%       { transform: translateY(-10px); }
+}
+
+.ap-loading-title {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.7rem;
+  color: #c9a84c;
+  margin: 0;
+}
+
+.ap-loading-sub {
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: #7a7268;
+  margin: 0;
+}

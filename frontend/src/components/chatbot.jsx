@@ -32,3 +32,17 @@ export default function Chatbot() {
 
   const wrapperRef = useRef(null);
 
+  // Auto-scroll to bottom on new message
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
+
+  // 2. ADD THIS NEW useEffect FOR OUTSIDE CLICKS
+  useEffect(() => {
+    function handleClickOutside(event) {
+      // If the chat is open, and the click happened outside of our wrapper block, close it
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+    }
+

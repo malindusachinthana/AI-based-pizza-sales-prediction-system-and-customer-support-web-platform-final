@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&family=Great+Vibes&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Lato:wght@300;400;700&family=Aclonica&display=swap');
 @keyframes navSlide {
   from { transform: translateY(-100%); opacity: 0; }
   to   { transform: translateY(0);     opacity: 1; }
@@ -74,9 +74,9 @@
 
 .navbar-links-left a,
 .navbar-links-right a {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Aclonica', sans-serif;
   font-size: 0.85rem;
-  font-weight: 700;
+  font-weight: 400; 
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #f5ede0;

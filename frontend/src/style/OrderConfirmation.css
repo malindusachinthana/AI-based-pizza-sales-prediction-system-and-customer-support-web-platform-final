@@ -75,3 +75,58 @@
   font-family: monospace;
   word-break: break-all;
 }
+
+/* ── Items Card ───────────────────────────────────────────── */
+.oc-items-card {
+  background: #2d3828;
+  border: 1px solid rgba(201, 168, 76, 0.15);
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.oc-items-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  color: #c9a84c;
+  margin: 0 0 16px;
+}
+
+.oc-item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.oc-item-name { color: #f5ede0; }
+.oc-item-price { color: #c9a84c; font-weight: 700; white-space: nowrap; }
+
+.oc-divider {
+  border: none;
+  border-top: 1px solid rgba(201, 168, 76, 0.15);
+  margin: 14px 0;
+}
+
+.oc-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.oc-total-label {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  color: #f5ede0;
+  font-weight: 600;
+}
+
+.oc-total-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #c9a84c;
+}

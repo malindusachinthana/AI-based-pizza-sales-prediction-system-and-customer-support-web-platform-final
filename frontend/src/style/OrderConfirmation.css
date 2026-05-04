@@ -16,3 +16,16 @@
   width: 100%;
   text-align: center;
 }
+
+/* ── Success Icon ─────────────────────────────────────────── */
+.oc-success-icon {
+  font-size: 72px;
+  margin-bottom: 16px;
+  animation: ocBounce 0.6s ease;
+}
+
+@keyframes ocBounce {
+  0%   { transform: scale(0); opacity: 0; }
+  60%  { transform: scale(1.2); }
+  100% { transform: scale(1); opacity: 1; }
+}

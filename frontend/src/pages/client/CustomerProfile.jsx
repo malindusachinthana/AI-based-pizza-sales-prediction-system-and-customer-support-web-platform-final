@@ -26,3 +26,16 @@ useEffect(() => {
   fetchOrders();
 }, [navigate]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // ── Fetch orders for this user ────────────────────────────
+  async function fetchOrders() {
+    try {
+      const res = await axios.get(
+        `http://localhost:5000/api/orders/user/${username}`
+      );
+      setOrders(res.data);
+    } catch (err) {
+      console.error('Failed to fetch orders:', err);
+    } finally {
+      setLoading(false);
+    }
+  }

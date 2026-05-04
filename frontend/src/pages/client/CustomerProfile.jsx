@@ -14,3 +14,15 @@ export default function CustomerProfile() {
   // ── Get logged in user from localStorage ──────────────────
   const username  = localStorage.getItem('username') || 'Customer';
   const firstName = username.split('_')[0] || username;
+
+  // ── Redirect if not logged in ─────────────────────────────
+useEffect(() => {
+   const token    = localStorage.getItem('token');
+  const userRole = localStorage.getItem('userRole');
+  if (!token || userRole === 'admin') {
+    navigate('/login');
+    return;
+  }
+  fetchOrders();
+}, [navigate]); // eslint-disable-line react-hooks/exhaustive-deps
+

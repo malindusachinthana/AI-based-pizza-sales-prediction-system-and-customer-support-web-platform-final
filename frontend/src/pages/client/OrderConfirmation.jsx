@@ -18,3 +18,19 @@ export default function OrderConfirmation() {
   useEffect(() => {
     if (!orderId) navigate('/menu');
   }, [orderId, navigate]);
+
+  if (!orderId) return null;
+
+  return (
+    <>
+      <Navbar />
+
+      <div className="oc-page">
+        <div className="oc-container">
+
+          {/* Success icon + message */}
+          <div className="oc-success-icon">✅</div>
+          <h1 className="oc-title">Order Confirmed!</h1>
+          <p className="oc-greeting">
+            Thank you, <strong>{payerName}</strong>! Your pizza is on its way 🍕
+          </p>

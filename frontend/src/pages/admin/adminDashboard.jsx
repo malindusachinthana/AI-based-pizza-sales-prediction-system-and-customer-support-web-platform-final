@@ -67,12 +67,12 @@ function Sidebar({ active, setActive }) {
   const navigate = useNavigate();
 
   const navItems = [
-    { id: 'dashboard', icon: '▦', label: 'Dashboard'      },
-    { id: 'forecast',  icon: '◎', label: 'AI Forecast'    },
-    { id: 'menu',      icon: '◈', label: 'Pizza Menu'     },
-    { id: 'offers',    icon: '✦', label: 'Special Offers' },
-    { id: 'Chatbot', label: 'ChatbotManagement', icon: '🤖' },
-    { id: 'profile',   icon: '◯', label: 'Profile'        },
+    { id: 'dashboard', icon: '🖥️', label: 'Dashboard'      },
+    { id: 'forecast',  icon: '🎯', label: 'AI Forecast'    },
+    { id: 'menu',      icon: '📜', label: 'Pizza Menu'     },
+    { id: 'offers',    icon: '🪇', label: 'Special Offers' },
+    { id: 'Chatbot',   icon: '🤖', label: 'ChatbotManagement' },
+    { id: 'profile',   icon: '👨‍🍳', label: 'Profile'        },
   ];
 
   const handleLogout = () => {

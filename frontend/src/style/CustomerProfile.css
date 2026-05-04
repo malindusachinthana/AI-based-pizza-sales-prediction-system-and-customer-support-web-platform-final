@@ -50,3 +50,12 @@
   width: 75px;
   height: 75px;
 }
+
+/* ── Username ─────────────────────────────────────────────── */
+.profile-username {
+  font-size: 13px;
+  color: #a89f8c;
+  letter-spacing: 0.08em;
+  margin: 0 0 10px;
+  font-family: 'Lato', sans-serif;
+}

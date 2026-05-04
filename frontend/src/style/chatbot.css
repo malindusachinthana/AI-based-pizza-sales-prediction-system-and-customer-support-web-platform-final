@@ -79,3 +79,19 @@
   70%  { transform: scale(2.2); opacity: 0; }
   100% { transform: scale(1); opacity: 0; }
 }
+
+/* ── Chat Window ──────────────────────────────────────────── */
+.cb-window {
+  position: fixed;
+  bottom: 100px;
+  right: 28px;
+  z-index: 999;
+  width: 360px;
+  max-height: 560px;
+  background: #1e261a;
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  border-radius: 18px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;

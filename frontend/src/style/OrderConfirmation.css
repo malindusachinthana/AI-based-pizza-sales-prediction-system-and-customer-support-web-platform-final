@@ -49,3 +49,29 @@
 .oc-greeting strong {
   color: #c9a84c;
 }
+
+/* ── Order ID ─────────────────────────────────────────────── */
+.oc-order-id {
+  background: #2d3828;
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  border-radius: 8px;
+  padding: 12px 20px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.oc-order-id-label {
+  font-size: 11px;
+  color: #a89f8c;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.oc-order-id-value {
+  font-size: 13px;
+  color: #c9a84c;
+  font-family: monospace;
+  word-break: break-all;
+}

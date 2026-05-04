@@ -136,7 +136,7 @@ export default function SalesForecast() {
 
       {/* ── Header ── */}
       <div className="sf-header">
-        <div className="sf-header-logo">🍕</div>
+        <div className="sf-header-logo">🕰️</div>
         <div>
           <p className="sf-header-title">OvenZa Crust</p>
           <p className="sf-header-sub">Admin Dashboard</p>

@@ -154,3 +154,10 @@
   color: #c9a84c;
   text-decoration: underline;
 }
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 700px) {
+  .profile-page { padding: 120px 16px 80px; }
+  .profile-orders-box { padding: 16px 18px; }
+  .profile-order-item { flex-wrap: wrap; }
+}

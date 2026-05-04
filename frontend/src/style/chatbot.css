@@ -335,3 +335,17 @@
   background: rgba(201, 168, 76, 0.22);
   transform: scale(1.02);
 }
+
+/* ── Mobile ───────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .cb-window {
+    width: calc(100vw - 24px);
+    right: 12px;
+    bottom: 90px;
+  }
+
+  .cb-bubble {
+    bottom: 20px;
+    right: 16px;
+  }
+}

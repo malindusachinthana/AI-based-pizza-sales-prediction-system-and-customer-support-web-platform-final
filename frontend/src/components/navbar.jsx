@@ -125,7 +125,7 @@ export default function Navbar() {
           )}
 
           <button className="user-icon-btn" onClick={handleProfileRedirect}>
-            👤
+            👨‍🍳
           </button>
 
           <div className="user-dropdown">
@@ -142,7 +142,7 @@ export default function Navbar() {
                 )}
                 <button className="dropdown-btn"
                   onClick={() => navigate('/customer-profile')}>
-                  👤 My Profile
+                  👨‍🍳 My Profile
                 </button>
                 <button className="dropdown-btn logout" onClick={handleLogout}>
                   ⟵ Logout

@@ -51,3 +51,31 @@
   box-shadow: 0 10px 32px rgba(0, 0, 0, 0.5), 0 0 0 6px rgba(201, 168, 76, 0.2);
   animation: none;
 }
+
+/* When the chat is open (The Red 'X' Circle) */
+.cb-bubble--active {
+  background: linear-gradient(135deg, #c0392b, #8b1a1a);
+  animation: none;
+}
+
+/* Ping ring */
+.cb-bubble-ping {
+  position: absolute;
+  top: -2px; right: -2px;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: #c9a84c;
+  border: 2px solid #1c2318;
+  animation: cb-ping 1.8s infinite;
+}
+
+@keyframes cb-pulse {
+  0%, 100% { box-shadow: 0 6px 24px rgba(0,0,0,0.45), 0 0 0 0 rgba(201,168,76,0.5); }
+  50%       { box-shadow: 0 6px 24px rgba(0,0,0,0.45), 0 0 0 10px rgba(201,168,76,0); }
+}
+
+@keyframes cb-ping {
+  0%   { transform: scale(1); opacity: 1; }
+  70%  { transform: scale(2.2); opacity: 0; }
+  100% { transform: scale(1); opacity: 0; }
+}

@@ -70,3 +70,26 @@
   margin: 0 0 40px;
   text-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
 }
+
+/* ── Orders section ───────────────────────────────────────── */
+.profile-orders-section {
+  width: 100%;
+  max-width: 680px;
+}
+
+.profile-orders-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-style: italic;
+  color: #c9a84c;
+  margin: 0 0 14px;
+  font-weight: 400;
+}
+
+.profile-orders-box {
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 24px 28px;
+  backdrop-filter: blur(8px);
+}

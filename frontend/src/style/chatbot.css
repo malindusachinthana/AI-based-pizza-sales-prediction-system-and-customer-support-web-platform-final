@@ -108,3 +108,14 @@
   transform: translateY(0) scale(1);
   pointer-events: all;
 }
+
+/* ── Header ───────────────────────────────────────────────── */
+.cb-header {
+  background: linear-gradient(135deg, #2d3828, #3b4a32);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}

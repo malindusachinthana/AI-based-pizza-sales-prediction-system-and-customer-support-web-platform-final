@@ -53,3 +53,31 @@
   from { opacity: 0; transform: translateY(6px); }
   to   { opacity: 1; transform: translateY(0);   }
 }
+
+/* ── Header ───────────────────────────────────────────────── */
+.cbm-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.cbm-header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.cbm-header-icon {
+  font-size: 2rem;
+  width: 52px;
+  height: 52px;
+  background: rgba(201, 168, 76, 0.12);
+  border: 1.5px solid rgba(201, 168, 76, 0.25);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

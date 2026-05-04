@@ -60,3 +60,26 @@ export default function OrderConfirmation() {
               <span className="oc-total-value">Rs. {total?.toLocaleString()}</span>
             </div>
           </div>
+
+          {/* Delivery note */}
+          <p className="oc-delivery-note">
+            🚚 Your order will be delivered in 30–45 minutes
+          </p>
+
+          {/* Action buttons */}
+          <div className="oc-actions">
+            <button className="oc-btn-primary" onClick={() => navigate('/menu')}>
+              Order More
+            </button>
+            <button className="oc-btn-secondary" onClick={() => navigate('/')}>
+              Back to Home
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <Footer />
+    </>
+  );
+}

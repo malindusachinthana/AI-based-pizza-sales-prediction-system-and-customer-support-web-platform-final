@@ -298,8 +298,8 @@ function DashboardOverview() {
             {[
               { icon: '+',  label: 'Add Pizza' },
               { icon: '✦', label: 'New Offer'  },
-              { icon: '◉', label: 'Chatbot'    },
-              { icon: '📊', label: 'Reports'   },
+              { icon: '🤖', label: 'Chatbot'    },
+              { icon: '📑', label: 'Reports'   },
             ].map(({ icon, label }) => (
               <button className="action-btn" key={label}>
                 <div className="action-icon">{icon}</div>

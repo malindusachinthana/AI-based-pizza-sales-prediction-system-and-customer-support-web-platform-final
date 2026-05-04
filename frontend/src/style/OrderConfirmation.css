@@ -29,3 +29,23 @@
   60%  { transform: scale(1.2); }
   100% { transform: scale(1); opacity: 1; }
 }
+
+/* ── Title ────────────────────────────────────────────────── */
+.oc-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(1.6rem, 5vw, 2.4rem);
+  color: #c9a84c;
+  margin: 0 0 10px;
+  letter-spacing: 0.05em;
+}
+
+.oc-greeting {
+  font-size: 16px;
+  color: #f5ede0;
+  margin: 0 0 24px;
+  line-height: 1.6;
+}
+
+.oc-greeting strong {
+  color: #c9a84c;
+}

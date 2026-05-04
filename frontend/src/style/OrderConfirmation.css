@@ -139,3 +139,46 @@
   line-height: 1.6;
 }
 
+/* ── Action buttons ───────────────────────────────────────── */
+.oc-actions {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.oc-btn-primary {
+  padding: 12px 28px;
+  background: #c9a84c;
+  color: #1c2318;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Lato', sans-serif;
+  transition: 0.3s ease;
+}
+
+.oc-btn-primary:hover {
+  background: #e2c97e;
+  transform: translateY(-2px);
+}
+
+.oc-btn-secondary {
+  padding: 12px 28px;
+  background: transparent;
+  color: #c9a84c;
+  border: 1px solid #c9a84c;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Lato', sans-serif;
+  transition: 0.3s ease;
+}
+
+.oc-btn-secondary:hover {
+  background: rgba(201, 168, 76, 0.1);
+  transform: translateY(-2px);
+}

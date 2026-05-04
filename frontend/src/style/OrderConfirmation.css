@@ -130,3 +130,12 @@
   font-weight: 700;
   color: #c9a84c;
 }
+
+/* ── Delivery note ────────────────────────────────────────── */
+.oc-delivery-note {
+  font-size: 14px;
+  color: #a89f8c;
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+

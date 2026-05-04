@@ -119,3 +119,29 @@
   gap: 10px;
   flex-shrink: 0;
 }
+
+.cb-header-avatar {
+  font-size: 1.6rem;
+  line-height: 1;
+  width: 40px;
+  height: 40px;
+  background: rgba(201, 168, 76, 0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid rgba(201, 168, 76, 0.3);
+  flex-shrink: 0;
+}
+
+.cb-header-info {
+  flex: 1;
+}
+
+.cb-header-name {
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #c9a84c;
+  margin: 0;
+}

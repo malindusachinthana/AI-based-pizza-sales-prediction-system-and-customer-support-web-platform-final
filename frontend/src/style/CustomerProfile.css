@@ -139,3 +139,18 @@
   white-space: nowrap;
   font-family: 'Lato', sans-serif;
 }
+
+/* ── Empty / loading states ───────────────────────────────── */
+.profile-orders-loading,
+.profile-orders-empty {
+  color: #a89f8c;
+  font-size: 14px;
+  text-align: center;
+  padding: 12px 0;
+  font-family: 'Lato', sans-serif;
+}
+
+.profile-orders-empty a {
+  color: #c9a84c;
+  text-decoration: underline;
+}

@@ -34,3 +34,29 @@ export default function OrderConfirmation() {
           <p className="oc-greeting">
             Thank you, <strong>{payerName}</strong>! Your pizza is on its way 🍕
           </p>
+
+          {/* Order ID */}
+          <div className="oc-order-id">
+            <span className="oc-order-id-label">Order ID</span>
+            <span className="oc-order-id-value">{orderId}</span>
+          </div>
+
+          {/* Items summary */}
+          <div className="oc-items-card">
+            <h2 className="oc-items-title">Your Order</h2>
+            {items?.map((item, i) => (
+              <div key={i} className="oc-item-row">
+                <span className="oc-item-name">
+                  {item.name} ({SIZE_LABELS[item.size]}) × {item.quantity}
+                </span>
+                <span className="oc-item-price">
+                  Rs. {(item.price * item.quantity).toLocaleString()}
+                </span>
+              </div>
+            ))}
+            <div className="oc-divider" />
+            <div className="oc-total-row">
+              <span className="oc-total-label">Total Paid</span>
+              <span className="oc-total-value">Rs. {total?.toLocaleString()}</span>
+            </div>
+          </div>

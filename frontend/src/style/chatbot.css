@@ -31,3 +31,23 @@
   border-radius: 50%;      /* Ensures the logo fits well inside the circular button */
 }
 
+/* Text inside the bubble */
+.cb-bubble-text {
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.cb-bubble svg {
+  width: 26px;
+  height: 26px;
+  color: #fff;
+}
+
+.cb-bubble:hover {
+  transform: scale(1.1);   /* Slightly increased the hover pop */
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.5), 0 0 0 6px rgba(201, 168, 76, 0.2);
+  animation: none;
+}

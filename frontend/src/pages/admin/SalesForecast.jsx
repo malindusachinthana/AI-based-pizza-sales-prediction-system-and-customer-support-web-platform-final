@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
+import '../../style/SalesForecast.css';
 import {
   AreaChart, Area, BarChart, Bar,
   XAxis, YAxis, CartesianGrid, Tooltip,
   ResponsiveContainer, Legend
 } from 'recharts';
-import '../../style/SalesForecast.css';
+
 
 const API = 'http://localhost:5001';
 
@@ -136,7 +137,7 @@ export default function SalesForecast() {
 
       {/* ── Header ── */}
       <div className="sf-header">
-        <div className="sf-header-logo">🕰️</div>
+        <div className="sf-header-logo">🍕</div>
         <div>
           <p className="sf-header-title">OvenZa Crust</p>
           <p className="sf-header-sub">Admin Dashboard</p>
@@ -151,7 +152,7 @@ export default function SalesForecast() {
       <div className="sf-body">
         <h1 className="sf-title">Sales Forecast</h1>
         <p className="sf-subtitle">
-          Prophet AI — daily predictions from {accuracyData?.last_training_date}
+          AI - Daily Predictions, from {accuracyData?.last_training_date}
         </p>
 
         {/* Error */}
@@ -160,7 +161,7 @@ export default function SalesForecast() {
         {/* ── Tabs ── */}
         <div className="sf-tabs">
           {[
-            { key: 'forecast',  label: '📈 14-Day Forecast'  },
+            { key: 'forecast',  label: '📈 14 - Days Forecast'  },
             { key: 'breakdown', label: '📋 Daily Breakdown'  },
             { key: 'accuracy',  label: '🎯 Model Accuracy'   },
             { key: 'retrain',   label: '🔄 Upload & Retrain' },

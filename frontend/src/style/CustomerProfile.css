@@ -12,3 +12,12 @@
   font-family: 'Lato', sans-serif;
   padding: 140px 24px 100px;
 }
+
+/* ── Background overlay ───────────────────────────────────── */
+.profile-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 26, 16, 0.72);
+  z-index: 0;
+}
+

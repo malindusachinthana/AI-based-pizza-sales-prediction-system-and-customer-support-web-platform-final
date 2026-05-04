@@ -357,6 +357,105 @@
   letter-spacing: 0.05em;
 }
 
+/* ── Login Required Modal ───────────────────────────────────── */
+
+.login-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.login-modal-box {
+  background: #2d3828;
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  border-radius: 16px;
+  padding: 40px 36px;
+  max-width: 380px;
+  width: 90%;
+  text-align: center;
+  animation: slideUp 0.3s ease;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.login-modal-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.login-modal-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 20px;
+  color: #c9a84c;
+  margin: 0 0 12px;
+  letter-spacing: 0.04em;
+}
+
+.login-modal-msg {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  color: #a89f8c;
+  line-height: 1.7;
+  margin: 0 0 28px;
+}
+
+.login-modal-btns {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.login-modal-btn-primary {
+  padding: 11px 28px;
+  background: #c9a84c;
+  color: #1c2318;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Lato', sans-serif;
+  transition: 0.3s ease;
+  letter-spacing: 0.03em;
+}
+
+.login-modal-btn-primary:hover {
+  background: #e2c97e;
+  transform: translateY(-2px);
+}
+
+.login-modal-btn-secondary {
+  padding: 11px 28px;
+  background: transparent;
+  color: #a89f8c;
+  border: 1px solid #4a4d3a;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Lato', sans-serif;
+  transition: 0.3s ease;
+}
+
+.login-modal-btn-secondary:hover {
+  border-color: #c9a84c;
+  color: #c9a84c;
+}
+
 
 /* ══════════════════════════════════════
    RESPONSIVE

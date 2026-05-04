@@ -20,3 +20,14 @@
   transition: all 0.3s ease; 
   animation: cb-pulse 2.8s infinite;
 }
+
+/* Custom Image Icon Styling */
+.cb-bubble-icon {
+  width: 36px;             /* Made slightly larger since it's the only item */
+  height: 36px;
+  margin: 0;               /* Removed the right margin */
+  vertical-align: middle;
+  object-fit: contain;     
+  border-radius: 50%;      /* Ensures the logo fits well inside the circular button */
+}
+

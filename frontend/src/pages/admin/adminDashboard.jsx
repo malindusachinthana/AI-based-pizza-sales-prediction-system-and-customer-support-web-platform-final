@@ -395,19 +395,19 @@ function DashboardOverview({ setActive }) {
           )}
         </div>
 
-        {/* Quick Actions */}
+        {/* Quick Actions — wired up */}
         <div className="admin-panel">
           <div className="panel-header">
             <span className="panel-title">Quick Actions</span>
           </div>
           <div className="quick-actions">
             {[
-              { icon: '+',  label: 'Add Pizza' },
-              { icon: '✦', label: 'New Offer'  },
-              { icon: '🤖', label: 'Chatbot'    },
-              { icon: '📑', label: 'Reports'   },
-            ].map(({ icon, label }) => (
-              <button className="action-btn" key={label}>
+              { icon: '🍕', label: 'Add Pizza',  target: 'menu'      },
+              { icon: '🪇',  label: 'New Offer',  target: 'offers'    },
+              { icon: '🤖', label: 'Chatbot',    target: 'Chatbot'   },
+              { icon: '🎯', label: 'AI Forecast',target: 'forecast'  },
+            ].map(({ icon, label, target }) => (
+              <button className="action-btn" key={label} onClick={() => setActive(target)}>
                 <div className="action-icon">{icon}</div>
                 <div className="action-label">{label}</div>
               </button>

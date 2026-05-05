@@ -286,22 +286,6 @@ function DashboardOverview({ setActive }) {
               {weeklyLoading ? '...' : `Rs.${(weeklySales.reduce((s, d) => s + d.total, 0) / 1000).toFixed(1)}k this week`}
             </span>
           </div>
-          <div className="bar-chart">
-            {[
-              { day: 'Mon', h: 45, active: false },
-              { day: 'Tue', h: 65, active: true  },
-              { day: 'Wed', h: 40, active: false  },
-              { day: 'Thu', h: 80, active: true  },
-              { day: 'Fri', h: 55, active: false  },
-              { day: 'Sat', h: 90, active: true  },
-              { day: 'Sun', h: 70, active: true  },
-            ].map(({ day, h, active }) => (
-              <div className="bar-wrap" key={day}>
-                <div
-                  className={`bar ${active ? 'bar-active' : ''}`}
-                  style={{ height: `${h}px` }}
-                />
-                <span className="bar-label">{day}</span>
               </div>
             ))}
           </div>

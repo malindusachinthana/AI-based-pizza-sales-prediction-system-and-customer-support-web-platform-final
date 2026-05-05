@@ -343,6 +343,20 @@ function DashboardOverview({ setActive }) {
             <span className="panel-action" onClick={() => setActive('menu')} style={{ cursor: 'pointer' }}>Manage →</span>
           </div>
           <div className="pizza-list">
+            {topLoading ? (
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem', textAlign: 'center', padding: '20px 0' }}>Loading...</p>
+            ) : topPizzas.length === 0 ? (
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem', textAlign: 'center', padding: '20px 0' }}>No orders yet 🍕</p>
+            ) : (
+              topPizzas.map(({ name, orders, badge, color }) => (
+                <div className="pizza-item" key={name}>
+                  <div className="pizza-dot" style={{ background: color }} />
+                  <span className="pizza-name">{name}</span>
+                  <span className="pizza-orders">{orders}</span>
+                  <span className="pizza-badge">{badge}</span>
+                </div>
+              ))
+            )}
           </div>
         </div>
 

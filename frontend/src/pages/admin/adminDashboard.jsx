@@ -153,8 +153,6 @@ function Sidebar({ active, setActive }) {
 }
 
 // ── Dashboard Overview ────────────────────────────────────────
-function DashboardOverview() {
-  const { stats, loading } = useAdminStats(); // ✅ Real data
 
   return (
     <div className="admin-content">

@@ -336,25 +336,13 @@ function DashboardOverview({ setActive }) {
           )}
         </div>
 
-        {/* Top Selling */}
+        {/* Top Selling — LIVE */}
         <div className="admin-panel">
           <div className="panel-header">
             <span className="panel-title">Top Selling Pizzas</span>
-            <span className="panel-action">Manage →</span>
+            <span className="panel-action" onClick={() => setActive('menu')} style={{ cursor: 'pointer' }}>Manage →</span>
           </div>
           <div className="pizza-list">
-            {[
-              { name: 'BBQ Chicken Pizza', orders: 48, badge: 'Top', color: '#c9a84c' },
-              { name: 'Four Cheese Pizza', orders: 36, badge: 'Hot', color: '#c0392b' },
-              { name: 'Italian Supreme',   orders: 29, badge: 'New', color: '#3b7a3b' },
-            ].map(({ name, orders, badge, color }) => (
-              <div className="pizza-item" key={name}>
-                <div className="pizza-dot" style={{ background: color }} />
-                <span className="pizza-name">{name}</span>
-                <span className="pizza-orders">{orders}</span>
-                <span className="pizza-badge">{badge}</span>
-              </div>
-            ))}
           </div>
         </div>
 

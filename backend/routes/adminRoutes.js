@@ -204,4 +204,42 @@ router.get('/weekly-sales', async (req, res) => {
   }
 });
 
+
+// ── GET /api/admin/top-pizzas ──────────────────────────────────
+router.get('/top-pizzas', async (req, res) => {
+  try {
+    const orders = await Order.find({});
+
+    // Count quantity per pizza name from all orders
+    const countMap = {};
+    orders.forEach(order => {
+      (order.items || []).forEach(item => {
+        if (item.name) {
+          countMap[item.name] = (countMap[item.name] || 0) + (item.quantity || 1);
+        }
+      });
+    });
+
+    // Sort and take top 3
+    const sorted = Object.entries(countMap)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 3);
+
+    const badges  = ['Top', 'Hot', 'New'];
+    const colors  = ['#c9a84c', '#c0392b', '#3b7a3b'];
+
+    const result = sorted.map(([name, orders], i) => ({
+      name,
+      orders,
+      badge: badges[i],
+      color: colors[i],
+    }));
+
+    res.json(result);
+  } catch (err) {
+    console.error('Top pizzas error:', err);
+    res.status(500).json({ message: err.message });
+  }
+});
+
 module.exports = router;

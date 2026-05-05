@@ -286,6 +286,38 @@ function DashboardOverview({ setActive }) {
               {weeklyLoading ? '...' : `Rs.${(weeklySales.reduce((s, d) => s + d.total, 0) / 1000).toFixed(1)}k this week`}
             </span>
           </div>
+
+          {weeklyLoading ? (
+            <div style={{ textAlign: 'center', padding: '40px 0', color: 'var(--text-muted)', fontSize: '0.85rem' }}>
+              Loading...
+            </div>
+          ) : (
+            <>
+              <div className="bar-chart">
+                {weeklySales.map((d) => (
+                  <div
+                    key={d.day}
+                    className="bar-wrap"
+                    onMouseEnter={() => setHoveredDay(d.day)}
+                    onMouseLeave={() => setHoveredDay(null)}
+                    style={{ position: 'relative', cursor: 'pointer' }}
+                  >
+                    {/* Tooltip */}
+                    {hoveredDay === d.day && (
+                      <div className="bar-tooltip">
+                        <p className="bar-tooltip-orders">{d.orders} orders</p>
+                        <p className="bar-tooltip-revenue">Rs.{d.total.toLocaleString()}</p>
+                      </div>
+                    )}
+                    <div
+                      className={`bar ${d.total > 0 ? 'bar-active' : ''} ${d.isToday ? 'bar-today' : ''}`}
+                      style={{ height: `${getHeight(d.total)}px` }}
+                    />
+                    <span className={`bar-label ${d.isToday ? 'bar-label-today' : ''}`}>
+                      {d.day}
+                    </span>
+                  </div>
+                ))}
               </div>
             ))}
           </div>

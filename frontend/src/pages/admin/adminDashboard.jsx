@@ -374,6 +374,25 @@ function DashboardOverview({ setActive }) {
             </div>
           </div>
           <p className="ai-subtitle">Next 5-day prediction</p>
+          {forecastLoad ? (
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem', textAlign: 'center', padding: '20px 0' }}>
+              Loading forecast...
+            </p>
+          ) : forecast.length === 0 ? (
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem', textAlign: 'center', padding: '20px 0' }}>
+              ⚠️ Flask model offline. Start the API on port 5001.
+            </p>
+          ) : (
+            <div className="ai-forecast">
+              {forecast.map(({ day, val }) => (
+                <div className="ai-day" key={day}>
+                  <div className="ai-day-name">{day}</div>
+                  <div className="ai-day-val">{val}</div>
+                  <div className="ai-day-unit">orders</div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Quick Actions */}

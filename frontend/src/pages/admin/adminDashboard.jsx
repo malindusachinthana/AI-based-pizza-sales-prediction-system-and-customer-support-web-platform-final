@@ -153,6 +153,77 @@ function Sidebar({ active, setActive }) {
 }
 
 // ── Dashboard Overview ────────────────────────────────────────
+function DashboardOverview({ setActive }) {
+  const { stats, loading } = useAdminStats();
+
+  // ── Weekly Sales State ─────────────────────────────────────
+  const [weeklySales,    setWeeklySales]    = useState([]);
+  const [weeklyLoading,  setWeeklyLoading]  = useState(true);
+  const [hoveredDay,     setHoveredDay]     = useState(null);
+  const [topPizzas,      setTopPizzas]      = useState([]);
+  const [topLoading,     setTopLoading]     = useState(true);
+  const [forecast,       setForecast]       = useState([]);
+  const [forecastLoad,   setForecastLoad]   = useState(true);
+
+  useEffect(() => {
+    const fetchWeekly = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        const res   = await fetch('http://localhost:5000/api/admin/weekly-sales', {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        const data = await res.json();
+        setWeeklySales(data);
+      } catch (err) {
+        console.error('Weekly sales error:', err);
+      } finally {
+        setWeeklyLoading(false);
+      }
+    };
+
+    const fetchTopPizzas = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        const res   = await fetch('http://localhost:5000/api/admin/top-pizzas', {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        const data = await res.json();
+        setTopPizzas(data);
+      } catch (err) {
+        console.error('Top pizzas error:', err);
+      } finally {
+        setTopLoading(false);
+      }
+    };
+
+    const fetchForecast = async () => {
+      try {
+        const res  = await fetch('http://localhost:5001/forecast');
+        const data = await res.json();
+        // API returns { success: true, data: [ { day_name, date, total, ... } ] }
+        const next5 = (data.data || [])
+          .slice(0, 5)
+          .map(d => ({
+            day: d.day_name.slice(0, 3), // 'Wednesday' → 'Wed'
+            val: Math.max(0, d.total),
+          }));
+        setForecast(next5);
+      } catch (err) {
+        console.error('Forecast fetch error:', err);
+        setForecast([]);
+      } finally {
+        setForecastLoad(false);
+      }
+    };
+
+    fetchWeekly();
+    fetchTopPizzas();
+    fetchForecast();
+  }, []);
+
+  // Scale bar heights relative to max value (max = 110px, min = 6px)
+  const maxTotal  = Math.max(...weeklySales.map(d => d.total), 1);
+  const getHeight = (total) => Math.max(6, Math.round((total / maxTotal) * 110));
 
   return (
     <div className="admin-content">

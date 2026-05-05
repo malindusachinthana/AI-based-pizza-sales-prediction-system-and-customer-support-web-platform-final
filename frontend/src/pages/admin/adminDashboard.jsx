@@ -319,6 +319,21 @@ function DashboardOverview({ setActive }) {
                   </div>
                 ))}
               </div>
+
+              {/* Legend */}
+              <div className="bar-legend">
+                <span className="bar-legend-item">
+                  <span className="bar-legend-dot bar-legend-dot--active" /> Sales
+                </span>
+                <span className="bar-legend-item">
+                  <span className="bar-legend-dot" /> No sales
+                </span>
+                <span className="bar-legend-item bar-legend-today">
+                  ● Today
+                </span>
+              </div>
+            </>
+          )}
         </div>
 
         {/* Top Selling */}

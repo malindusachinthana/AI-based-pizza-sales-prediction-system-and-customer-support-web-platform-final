@@ -374,21 +374,6 @@ function DashboardOverview({ setActive }) {
             </div>
           </div>
           <p className="ai-subtitle">Next 5-day prediction</p>
-          <div className="ai-forecast">
-            {[
-              { day: 'Tue', val: 42 },
-              { day: 'Wed', val: 38 },
-              { day: 'Thu', val: 55 },
-              { day: 'Fri', val: 61 },
-              { day: 'Sat', val: 78 },
-            ].map(({ day, val }) => (
-              <div className="ai-day" key={day}>
-                <div className="ai-day-name">{day}</div>
-                <div className="ai-day-val">{val}</div>
-                <div className="ai-day-unit">orders</div>
-              </div>
-            ))}
-          </div>
         </div>
 
         {/* Quick Actions */}

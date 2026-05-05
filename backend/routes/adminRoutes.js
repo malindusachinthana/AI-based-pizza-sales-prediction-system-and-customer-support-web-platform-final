@@ -124,4 +124,84 @@ router.get('/stats', async (req, res) => {
   }
 });
 
+
+// ── GET /api/admin/weekly-sales ───────────────────────────────
+router.get('/weekly-sales', async (req, res) => {
+  try {
+    // Sri Lanka timezone offset: UTC+5:30 = +330 minutes = +19800 seconds
+    const TZ_OFFSET_MS = 5.5 * 60 * 60 * 1000;
+
+    // Get current local time in Sri Lanka
+    const nowUTC   = new Date();
+    const nowLocal = new Date(nowUTC.getTime() + TZ_OFFSET_MS);
+
+    // Find Monday of current local week
+    const localDay  = nowLocal.getUTCDay(); // 0=Sun
+    const diffToMon = (localDay === 0) ? -6 : 1 - localDay;
+
+    const mondayLocal = new Date(nowLocal);
+    mondayLocal.setUTCDate(nowLocal.getUTCDate() + diffToMon);
+    mondayLocal.setUTCHours(0, 0, 0, 0);
+
+    const sundayLocal = new Date(mondayLocal);
+    sundayLocal.setUTCDate(mondayLocal.getUTCDate() + 6);
+    sundayLocal.setUTCHours(23, 59, 59, 999);
+
+    // Convert back to UTC for MongoDB query
+    const mondayUTC = new Date(mondayLocal.getTime() - TZ_OFFSET_MS);
+    const sundayUTC = new Date(sundayLocal.getTime() - TZ_OFFSET_MS);
+
+    // Aggregate — shift createdAt by +5:30 before extracting day
+    const results = await Order.aggregate([
+      {
+        $match: { createdAt: { $gte: mondayUTC, $lte: sundayUTC } }
+      },
+      {
+        $addFields: {
+          // Shift timestamp to Sri Lanka local time before grouping
+          localDate: {
+            $toDate: { $add: ['$createdAt', TZ_OFFSET_MS] }
+          }
+        }
+      },
+      {
+        $group: {
+          _id:    { $dayOfWeek: '$localDate' }, // 1=Sun,2=Mon,...7=Sat (local)
+          total:  { $sum: '$total' },
+          orders: { $sum: 1 }
+        }
+      }
+    ]);
+
+    // Map Mon–Sun
+    const days = [
+      { day: 'Mon', dow: 2 },
+      { day: 'Tue', dow: 3 },
+      { day: 'Wed', dow: 4 },
+      { day: 'Thu', dow: 5 },
+      { day: 'Fri', dow: 6 },
+      { day: 'Sat', dow: 7 },
+      { day: 'Sun', dow: 1 },
+    ];
+
+    // Today's local day-of-week in MongoDB format
+    const todayDow = nowLocal.getUTCDay() === 0 ? 1 : nowLocal.getUTCDay() + 1;
+
+    const weekly = days.map(({ day, dow }) => {
+      const found = results.find(r => r._id === dow);
+      return {
+        day,
+        total:   found?.total  || 0,
+        orders:  found?.orders || 0,
+        isToday: dow === todayDow,
+      };
+    });
+
+    res.json(weekly);
+  } catch (err) {
+    console.error('Weekly sales error:', err);
+    res.status(500).json({ message: err.message });
+  }
+});
+
 module.exports = router;

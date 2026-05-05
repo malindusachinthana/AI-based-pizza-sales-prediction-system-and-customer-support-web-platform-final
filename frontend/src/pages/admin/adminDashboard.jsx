@@ -420,6 +420,7 @@ function DashboardOverview({ setActive }) {
   );
 }
 
+
 // ── Coming Soon Panel ─────────────────────────────────────────
 function ComingSoon({ title }) {
   return (
@@ -440,13 +441,13 @@ export default function AdminDashboard() {
 
   const renderContent = () => {
     switch (active) {
-      case 'dashboard': return <DashboardOverview />;
+      case 'dashboard': return <DashboardOverview setActive={setActive} />;
       case 'forecast':  return <SalesForecast />;
       case 'menu': return <PizzaMenuManagement />;
       case 'offers':    return <ComingSoon title="Special Offers" />;
       case 'Chatbot': return <ChatbotManagement />;
       case 'profile':   return <AdminProfile />;
-      default:          return <DashboardOverview />;
+      default:          return <DashboardOverview setActive={setActive} />;
     }
   };
 

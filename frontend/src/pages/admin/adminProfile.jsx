@@ -56,7 +56,7 @@ export default function AdminProfile() {
 
       <div className="ap-header">
         <div className="ap-header-left">
-          <span className="ap-header-icon">👤</span>
+          <span className="ap-header-icon">👨‍🍳</span>
           <div>
             <h2 className="ap-title">Admin Profile</h2>
             <p className="ap-subtitle">Your account information</p>
@@ -82,7 +82,7 @@ export default function AdminProfile() {
         <div className="ap-info-rows">
 
           <div className="ap-info-row">
-            <span className="ap-info-label">👤 Username</span>
+            <span className="ap-info-label">👨‍🍳 Username</span>
             <span className="ap-info-value">{admin?.username || '—'}</span>
           </div>
 
@@ -99,7 +99,7 @@ export default function AdminProfile() {
           </div>
 
           <div className="ap-info-row ap-info-row--last">
-            <span className="ap-info-label">📅 Member Since</span>
+            <span className="ap-info-label">📅 Admin Since</span>
             <span className="ap-info-value">{formatDate(admin?.createdAt)}</span>
           </div>
 

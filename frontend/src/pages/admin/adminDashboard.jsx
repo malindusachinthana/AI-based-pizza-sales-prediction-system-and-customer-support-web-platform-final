@@ -319,8 +319,6 @@ function DashboardOverview({ setActive }) {
                   </div>
                 ))}
               </div>
-            ))}
-          </div>
         </div>
 
         {/* Top Selling */}

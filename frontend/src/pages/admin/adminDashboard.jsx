@@ -234,12 +234,12 @@ function DashboardOverview({ setActive }) {
         <span className="content-date">
           {new Date().toLocaleDateString('en-US', {
             weekday: 'long', year: 'numeric',
-            month:   'long', day:  'numeric'
+            month: 'long', day: 'numeric'
           })}
         </span>
       </div>
 
-      {/* ✅ Stat Cards with Real Data */}
+      {/* Stat Cards */}
       {loading ? (
         <div className="loading-stats">🍕 Loading stats...</div>
       ) : (
@@ -248,28 +248,28 @@ function DashboardOverview({ setActive }) {
             icon="🍕"
             value={stats.totalPizzas}
             label="Pizza Items"
-            change="▲ 3 this week"
+            change={`${stats.pizzasThisWeek > 0 ? '▲' : '–'} ${stats.pizzasThisWeek} added this week`}
             accent="gold"
           />
           <StatCard
             icon="👥"
             value={stats.totalCustomers}
             label="Customers"
-            change={`▲ ${stats.newToday} new today`}
+            change={`${stats.newToday > 0 ? '▲' : '–'} ${stats.newToday} new today`}
             accent="green"
           />
           <StatCard
             icon="📦"
             value={stats.totalOrders}
             label="Total Orders"
-            change="▲ 28 today"
+            change={`${stats.ordersToday > 0 ? '▲' : '–'} ${stats.ordersToday} today`}
             accent="orange"
           />
           <StatCard
             icon="💰"
-            value={`Rs.${(stats.revenue / 1000).toFixed(0)}k`}
+            value={`Rs.${(stats.revenue / 1000).toFixed(1)}k`}
             label="Revenue"
-            change="▲ 18% this week"
+            change={`${stats.revenueChange >= 0 ? '▲' : '▼'} ${Math.abs(stats.revenueChange)}% this week`}
             accent="blue"
           />
         </div>
@@ -278,11 +278,13 @@ function DashboardOverview({ setActive }) {
       {/* Mid Row */}
       <div className="mid-grid">
 
-        {/* Weekly Sales Chart */}
+        {/* ── Weekly Sales Chart (LIVE) ── */}
         <div className="admin-panel">
           <div className="panel-header">
             <span className="panel-title">Weekly Sales</span>
-            <span className="panel-action">View Full →</span>
+            <span className="panel-action">
+              {weeklyLoading ? '...' : `Rs.${(weeklySales.reduce((s, d) => s + d.total, 0) / 1000).toFixed(1)}k this week`}
+            </span>
           </div>
           <div className="bar-chart">
             {[

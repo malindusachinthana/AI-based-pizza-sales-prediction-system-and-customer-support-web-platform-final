@@ -11,7 +11,7 @@ import Chatbot from '../../components/chatbot.jsx'
 import heroBg      from '../../assets/MainBackgound.png';
 
 // About section
-import aboutPizza  from '../../assets/mainimg.png';
+import aboutPizza  from '../../assets/mainGalleryimg.png';
 
 // Gallery Strip
 import galleryImg1 from '../../assets/home01.jpg';

@@ -5,6 +5,7 @@ import PizzaMenuManagement from './pizzaMenuManagement.jsx';
 import SalesForecast from './SalesForecast.jsx';
 import ChatbotManagement from './chatbotManagement.jsx';
 import AdminProfile from './adminProfile.jsx';
+import SpecialOffersManagement from './specialOffersManagement.jsx';
 
 // ── Route Protection ──────────────────────────────────────────
 function useAdminProtection() {
@@ -444,7 +445,7 @@ export default function AdminDashboard() {
       case 'dashboard': return <DashboardOverview setActive={setActive} />;
       case 'forecast':  return <SalesForecast />;
       case 'menu': return <PizzaMenuManagement />;
-      case 'offers':    return <ComingSoon title="Special Offers" />;
+      case 'offers':    return <SpecialOffersManagement/>;
       case 'Chatbot': return <ChatbotManagement />;
       case 'profile':   return <AdminProfile />;
       default:          return <DashboardOverview setActive={setActive} />;

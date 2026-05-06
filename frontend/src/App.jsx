@@ -9,6 +9,7 @@ import CustomerMenu      from './pages/client/CustomerMenu.jsx';
 import Cart              from './pages/client/cart.jsx';
 import OrderConfirmation from './pages/client/OrderConfirmation.jsx';
 import CustomerProfile   from './pages/client/CustomerProfile.jsx';
+import SpecialOffers     from './pages/client/specialOffers.jsx';
 
 // Admin Pages
 import AdminDashboard from './pages/admin/adminDashboard.jsx';
@@ -27,6 +28,7 @@ function App() {
           <Route path="/cart"               element={<Cart />} />              
           <Route path="/order-confirmation" element={<OrderConfirmation />} />
           <Route path="/customer-profile" element={<CustomerProfile />} />
+          <Route path="/special-offers" element={<SpecialOffers />} />
 
           {/* Admin Routes */}
           <Route path="/admin-dashboard" element={<AdminDashboard />} />

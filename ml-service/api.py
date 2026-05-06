@@ -1,9 +1,6 @@
 # api.py — OvenZa Crust | AI Sales Prediction API
-# ─────────────────────────────────────────────────
-# Place this file in:  your-project/ml-service/api.py
-# Run with         :  python api.py
-# Runs on          :  http://localhost:5001
-# ─────────────────────────────────────────────────
+
+# imports
 
 from flask import Flask, request, jsonify
 from flask_cors import CORS
@@ -18,7 +15,7 @@ warnings.filterwarnings('ignore')
 app = Flask(__name__)
 CORS(app)  # allow React (localhost:3000) to call this API
 
-# ── Paths ─────────────────────────────────────────────────────────
+# Paths
 BASE_DIR    = os.path.dirname(os.path.abspath(__file__))
 MODEL_PATH  = os.path.join(BASE_DIR, 'models', 'category_daily_models_v2.pkl')
 DATASET_PATH= os.path.join(BASE_DIR, 'models', 'current_dataset.csv')

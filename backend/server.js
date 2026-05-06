@@ -9,6 +9,7 @@ const pizzaRoutes = require('./routes/pizzaRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 const chatbotRoutes = require('./routes/chatbotRoutes');
 const chatbotConfigRoutes = require('./routes/chatbotConfigRoutes');
+const offerRoutes = require('./routes/offerRoutes');
 
 dotenv.config();
 connectDB();
@@ -28,13 +29,13 @@ app.get('/', (req, res) => {
 });
 
 // Routes
-app.use('/api/auth',   authRoutes);
-app.use('/api/admin',  adminRoutes);
-app.use('/api/pizzas', pizzaRoutes);
-app.use('/api/orders', orderRoutes);
-app.use('/api/admin', adminRoutes);
-app.use('/api/chatbot', chatbotRoutes);
+app.use('/api/auth',           authRoutes);
+app.use('/api/admin',          adminRoutes);
+app.use('/api/pizzas',         pizzaRoutes);
+app.use('/api/orders',         orderRoutes);
+app.use('/api/chatbot',        chatbotRoutes);
 app.use('/api/chatbot-config', chatbotConfigRoutes);
+app.use('/api/offers',         offerRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

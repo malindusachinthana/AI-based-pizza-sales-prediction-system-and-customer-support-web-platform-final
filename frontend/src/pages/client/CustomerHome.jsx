@@ -259,6 +259,32 @@ function OffersSection() {
                   ))}
                 </span>
               </div>
+
+              {/* Center — 2×2 image grid with description overlay */}
+              <div className="offer-center">
+                {[0,1,2,3].map(i => (
+                  imgs[i]
+                    ? <img key={i} className="offer-center-img" src={`http://localhost:5000${imgs[i]}`} alt={`offer ${i+1}`} />
+                    : <div key={i} className="offer-center-placeholder">🍕</div>
+                ))}
+                {/* Description overlay */}
+                <div className="offer-overlay">
+                  <h3 className="offer-pizza-name">{offer.pizzaName}</h3>
+                  <p className="offer-desc">{offer.description}</p>
+                </div>
+              </div>
+
+              {/* Right — Family text */}
+              <div className="offer-family">
+                {offer.familyText.split('\n').map((line, j) => (
+                  <React.Fragment key={j}>{line}{j < offer.familyText.split('\n').length - 1 && <br />}</React.Fragment>
+                ))}
+              </div>
+
+            </div>
+          );
+        })}
+
       </div>
     </section>
   );

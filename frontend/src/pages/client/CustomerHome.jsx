@@ -228,6 +228,37 @@ function OffersSection() {
         <div className="offers-header">
           <h2 className="offers-title">Special Offers</h2>
         </div>
+
+        {loading && (
+          <p style={{ textAlign: 'center', color: '#a89f8c', padding: '40px 0' }}>
+            Loading offers...
+          </p>
+        )}
+
+        {!loading && offers.length === 0 && (
+          <p style={{ textAlign: 'center', color: '#a89f8c', padding: '40px 0' }}>
+            No active offers right now. Check back soon! 🍕
+          </p>
+        )}
+
+        {!loading && offers.map((offer) => {
+          const imgs = offer.images || [];
+          return (
+            <div key={offer._id} className="offer-card">
+
+              {/* Left — Badge */}
+              <div className="offer-badge-wrap">
+                <span className="offer-badge-main">
+                  {offer.badgeMain.split('\n').map((line, j) => (
+                    <React.Fragment key={j}>{line}{j < offer.badgeMain.split('\n').length - 1 && <br />}</React.Fragment>
+                  ))}
+                </span>
+                <span className="offer-badge-sub">
+                  {offer.badgeSub.split('\n').map((line, j) => (
+                    <React.Fragment key={j}>{line}{j < offer.badgeSub.split('\n').length - 1 && <br />}</React.Fragment>
+                  ))}
+                </span>
+              </div>
       </div>
     </section>
   );

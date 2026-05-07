@@ -336,7 +336,6 @@ export default function CustomerHome() {
         <OffersSection />
         <GallerySection />
       </main>
-
       <Footer />
       <Chatbot />
     </>

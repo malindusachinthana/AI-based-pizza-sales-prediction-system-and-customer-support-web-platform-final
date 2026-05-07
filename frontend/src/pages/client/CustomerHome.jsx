@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../../style/CustomerHome.css';
 
@@ -20,7 +20,7 @@ import galleryImg3 from '../../assets/home03.jpg';
 import galleryImg4 from '../../assets/home04.jpg';
 
 // Menu — Category Icons
-import pizzaIcon   from '../../assets/pizzaIcon.png';
+import pizzaIcon   from '../../assets/pizza_img_icon.png';
 import chickenIcon from '../../assets/chickenIcon.png';
 import seafoodIcon from '../../assets/seafoodIcon.png';
 import cheeseIcon  from '../../assets/cheeseIcon.png';
@@ -36,9 +36,6 @@ import supremePizza from '../../assets/supremeimg.jpg';
 import largePizza  from '../../assets/theBigmeetimg.jpg';
 import mediumPizza from '../../assets/mainGalleryimg.png';
 import smallPizza  from '../../assets/pepo2img.jpg';
-
-// Special Offer
-import offerPizza  from '../../assets/4cheeseimg.jpg';
 
 // Gallery — OvenZa Foods
 import foodImg1    from '../../assets/home05.jpg';
@@ -134,7 +131,7 @@ function AboutSection() {
           <div className="reveal-right">
             <span className="section-label">Wood-Fired Authenticity</span>
             <p className="about-tagline-main">Smoky, Savory, and<br />Served with Soul.</p>
-            <p className="about-tagline-sub">Chicken · Cheese · Veg · Seafood Pizzas</p>
+            <p className="about-tagline-sub">Chicken · Cheese · Veg · Seafood - Pizzas</p>
             <div className="gold-divider" />
             <p className="section-desc">
               Indulge in our masterfully crafted thin-crust pizzas — fresh from the heat of our
@@ -212,12 +209,23 @@ function MenuSection() {
   );
 }
 
-// ── Special Offers Section ────────────────────────────────────
+// ── Special Offers Section — LIVE from MongoDB ────────────────
 function OffersSection() {
+  const [offers,  setOffers]  = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('http://localhost:5000/api/offers/active')
+      .then(res => res.json())
+      .then(data => { setOffers(data); setLoading(false); })
+      .catch(() => setLoading(false));
+  }, []);
+
   return (
     <section className="offers-section" id="special-offers">
       <div className="container">
-        <div className="offers-header reveal">
+
+        <div className="offers-header">
           <h2 className="offers-title">Special Offers</h2>
         </div>
         <div className="offer-card reveal" data-delay="150">

@@ -81,3 +81,31 @@ export default function SpecialOffersManagement() {
     setImageFiles(newFiles);
     setImagePreviews(newPreviews);
   }
+
+  async function handleSave() {
+    if (!form.pizzaName.trim() || !form.description.trim()) {
+      setMsg('❌ Pizza name and description are required.');
+      return;
+    }
+    setSaving(true);
+    setMsg('');
+    try {
+      const fd = new FormData();
+      Object.entries(form).forEach(([k, v]) => fd.append(k, v));
+      imageFiles.forEach(file => { if (file) fd.append('images', file); });
+
+      if (editOffer) {
+        await axios.put(`${API}/${editOffer._id}`, fd);
+        setMsg('✅ Offer updated!');
+      } else {
+        await axios.post(API, fd);
+        setMsg('✅ Offer created!');
+      }
+      fetchOffers();
+      setTimeout(() => { setShowForm(false); setMsg(''); }, 1200);
+    } catch (err) {
+      setMsg('❌ Failed. Please try again.');
+    } finally {
+      setSaving(false);
+    }
+  }

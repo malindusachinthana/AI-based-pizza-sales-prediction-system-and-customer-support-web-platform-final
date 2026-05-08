@@ -132,3 +132,19 @@ export default function SpecialOffersManagement() {
       <p className="som-loading-sub">Loading offers...</p>
     </div>
   );
+
+  return (
+    <div className="som-wrap">
+
+      {/* Header */}
+      <div className="som-header">
+        <div className="som-header-left">
+          <span className="som-header-icon">🪇</span>
+          <div>
+            <h2 className="som-title">Special Offers</h2>
+            <p className="som-subtitle">Manage offers shown on the customer home page</p>
+          </div>
+        </div>
+        <button className="som-add-btn" onClick={handleAdd}>+ Add Offer</button>
+      </div>
+

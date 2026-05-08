@@ -76,3 +76,16 @@ export default function SpecialOffers() {
                       ))}
                     </span>
                   </div>
+
+                  {/* Center — 2×2 image grid + overlay */}
+                  <div className="so-img-grid">
+                    {[0,1,2,3].map(i => (
+                      imgs[i]
+                        ? <img key={i} src={`${API_BASE}${imgs[i]}`} alt={`offer ${i+1}`} className="so-grid-img" />
+                        : <div key={i} className="so-grid-placeholder">🍕</div>
+                    ))}
+                    <div className="so-img-overlay">
+                      <h2 className="so-offer-name">{offer.pizzaName}</h2>
+                      <p className="so-offer-desc">{offer.description}</p>
+                    </div>
+                  </div>

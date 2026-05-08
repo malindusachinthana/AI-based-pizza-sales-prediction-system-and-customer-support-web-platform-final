@@ -70,3 +70,14 @@ export default function SpecialOffersManagement() {
     setShowForm(true);
     setMsg('');
   }
+
+  function handleImagePick(index, e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    const newFiles    = [...imageFiles];
+    const newPreviews = [...imagePreviews];
+    newFiles[index]    = file;
+    newPreviews[index] = URL.createObjectURL(file);
+    setImageFiles(newFiles);
+    setImagePreviews(newPreviews);
+  }

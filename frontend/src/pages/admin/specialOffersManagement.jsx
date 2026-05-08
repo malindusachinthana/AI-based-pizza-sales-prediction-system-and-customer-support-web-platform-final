@@ -50,3 +50,23 @@ export default function SpecialOffersManagement() {
     setMsg('');
   }
 
+  function handleEdit(offer) {
+    setEditOffer(offer);
+    setForm({
+      badgeMain:   offer.badgeMain,
+      badgeSub:    offer.badgeSub,
+      pizzaName:   offer.pizzaName,
+      description: offer.description,
+      familyText:  offer.familyText,
+      isActive:    offer.isActive,
+    });
+    setImageFiles([null, null, null, null]);
+    // Load existing images as previews
+    const previews = ['', '', '', ''];
+    (offer.images || []).forEach((img, i) => {
+      if (i < 4) previews[i] = `${IMG}${img}`;
+    });
+    setImagePreviews(previews);
+    setShowForm(true);
+    setMsg('');
+  }

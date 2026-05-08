@@ -24,3 +24,17 @@ export default function SpecialOffers() {
     <>
       <Navbar />
 
+      <main className="so-page">
+
+        {/* ── Hero Banner ── */}
+        <section className="so-hero">
+          <div className="so-hero-overlay" />
+          <div className="so-hero-content">
+            <span className="so-hero-label">OvenZa Crust</span>
+            <h1 className="so-hero-title">Special Offers</h1>
+            <p className="so-hero-sub">
+              Handpicked deals crafted with love — enjoy more for less
+            </p>
+            <div className="so-hero-divider" />
+          </div>
+        </section>

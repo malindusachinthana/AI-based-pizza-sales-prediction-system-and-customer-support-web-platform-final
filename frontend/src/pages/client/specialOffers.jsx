@@ -19,3 +19,5 @@ export default function SpecialOffers() {
       .then(data => { setOffers(data); setLoading(false); })
       .catch(() => setLoading(false));
   }, []);
+
+  return (

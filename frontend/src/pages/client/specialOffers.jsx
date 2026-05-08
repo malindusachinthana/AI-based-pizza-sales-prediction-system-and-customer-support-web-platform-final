@@ -89,3 +89,25 @@ export default function SpecialOffers() {
                       <p className="so-offer-desc">{offer.description}</p>
                     </div>
                   </div>
+
+                  {/* Right — Family text */}
+                  <div className="so-family-text">
+                    {offer.familyText.split('\n').map((line, j) => (
+                      <React.Fragment key={j}>{line}{j < offer.familyText.split('\n').length - 1 && <br />}</React.Fragment>
+                    ))}
+                  </div>
+
+                </div>
+              );
+            })}
+
+          </div>
+        </section>
+
+      </main>
+
+      <Footer />
+      <Chatbot />
+    </>
+  );
+}

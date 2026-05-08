@@ -246,3 +246,56 @@ export default function SpecialOffersManagement() {
           </div>
         </div>
       )}
+
+      {/* ── Offers List ── */}
+      {offers.length === 0 ? (
+        <div className="som-empty">
+          <span>✦</span>
+          <p>No offers yet. Click <strong>+ Add Offer</strong> to create one!</p>
+        </div>
+      ) : (
+        <div className="som-offers-list">
+          {offers.map(offer => (
+            <div key={offer._id} className={`som-offer-row ${!offer.isActive ? 'som-offer-row--hidden' : ''}`}>
+
+              {/* Images preview */}
+              <div className="som-offer-imgs">
+                {(offer.images || []).slice(0, 4).map((img, i) => (
+                  <img key={i} src={`${IMG}${img}`} alt={`offer ${i}`} />
+                ))}
+                {(offer.images || []).length === 0 && <span>🍕</span>}
+              </div>
+
+              <div className="som-offer-info">
+                <p className="som-offer-name">{offer.pizzaName}</p>
+                <p className="som-offer-desc">{offer.description}</p>
+                <p className="som-offer-badge-text">
+                  Badge: <strong>{offer.badgeMain.replace('\n', ' ')} — {offer.badgeSub.replace('\n', ' ')}</strong>
+                </p>
+              </div>
+
+              <span className={`som-status ${offer.isActive ? 'som-status--on' : 'som-status--off'}`}>
+                {offer.isActive ? '● Live' : '● Hidden'}
+              </span>
+
+              <div className="som-offer-actions">
+                <button className="som-action-btn som-action-btn--toggle"
+                  onClick={() => handleToggle(offer._id)}>
+                  {offer.isActive ? '🙈 Hide' : '👁 Show'}
+                </button>
+                <button className="som-action-btn som-action-btn--edit"
+                  onClick={() => handleEdit(offer)}>
+                  ✏️ Edit
+                </button>
+                <button className="som-action-btn som-action-btn--delete"
+                  onClick={() => handleDelete(offer._id)}>
+                  🗑 Delete
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}

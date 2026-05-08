@@ -109,3 +109,26 @@ export default function SpecialOffersManagement() {
       setSaving(false);
     }
   }
+
+  async function handleToggle(id) {
+    try {
+      await axios.patch(`${API}/${id}/toggle`);
+      fetchOffers();
+    } catch (err) { console.error(err); }
+  }
+
+  async function handleDelete(id) {
+    if (!window.confirm('Delete this offer?')) return;
+    try {
+      await axios.delete(`${API}/${id}`);
+      fetchOffers();
+    } catch (err) { console.error(err); }
+  }
+
+  if (loading) return (
+    <div className="som-loading">
+      <span className="som-loading-emoji">✦</span>
+      <p className="som-loading-title">Special Offers</p>
+      <p className="som-loading-sub">Loading offers...</p>
+    </div>
+  );

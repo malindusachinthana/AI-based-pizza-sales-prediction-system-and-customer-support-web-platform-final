@@ -38,3 +38,41 @@ export default function SpecialOffers() {
             <div className="so-hero-divider" />
           </div>
         </section>
+
+        {/* ── Offers Section ── */}
+        <section className="so-offers-section">
+          <div className="so-container">
+
+            {loading && (
+              <div className="so-loading">
+                <span className="so-loading-emoji">✦</span>
+                <p>Loading offers...</p>
+              </div>
+            )}
+
+            {!loading && offers.length === 0 && (
+              <div className="so-empty">
+                <span>🍕</span>
+                <h3>No active offers right now</h3>
+                <p>Check back soon — great deals are coming!</p>
+              </div>
+            )}
+
+            {!loading && offers.map((offer) => {
+              const imgs = offer.images || [];
+              return (
+                <div key={offer._id} className="so-offer-card">
+
+                  {/* Left — Badge */}
+                  <div className="so-badge-wrap">
+                    <span className="so-badge-main">
+                      {offer.badgeMain.split('\n').map((line, j) => (
+                        <React.Fragment key={j}>{line}{j < offer.badgeMain.split('\n').length - 1 && <br />}</React.Fragment>
+                      ))}
+                    </span>
+                    <span className="so-badge-sub">
+                      {offer.badgeSub.split('\n').map((line, j) => (
+                        <React.Fragment key={j}>{line}{j < offer.badgeSub.split('\n').length - 1 && <br />}</React.Fragment>
+                      ))}
+                    </span>
+                  </div>

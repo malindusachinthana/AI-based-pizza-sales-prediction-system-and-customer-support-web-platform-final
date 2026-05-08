@@ -148,3 +148,57 @@ export default function SpecialOffersManagement() {
         <button className="som-add-btn" onClick={handleAdd}>+ Add Offer</button>
       </div>
 
+      {/* ── Add / Edit Form ── */}
+      {showForm && (
+        <div className="som-form-card">
+          <h3 className="som-form-title">{editOffer ? '✏️ Edit Offer' : '➕ New Offer'}</h3>
+
+          <div className="som-form-grid">
+            <div className="som-form-col">
+
+              <div className="som-field">
+                <label className="som-label">Offer Name *</label>
+                <input className="som-input" value={form.pizzaName}
+                  onChange={e => setForm(f => ({ ...f, pizzaName: e.target.value }))}
+                  placeholder="e.g. The Grilled Chicken Pizza" />
+              </div>
+
+              <div className="som-field">
+                <label className="som-label">Description *</label>
+                <textarea className="som-textarea" rows={3} value={form.description}
+                  onChange={e => setForm(f => ({ ...f, description: e.target.value }))}
+                  placeholder="e.g. Purchase Any Variety & Get Same Variety FREE!" />
+              </div>
+
+              <div className="som-field">
+                <label className="som-label">Badge Main Text</label>
+                <textarea className="som-textarea" rows={2} value={form.badgeMain}
+                  onChange={e => setForm(f => ({ ...f, badgeMain: e.target.value }))}
+                  placeholder="BUY 1&#10;GET 1" />
+              </div>
+
+              <div className="som-field">
+                <label className="som-label">Badge Sub Text</label>
+                <textarea className="som-textarea" rows={2} value={form.badgeSub}
+                  onChange={e => setForm(f => ({ ...f, badgeSub: e.target.value }))}
+                  placeholder="FREE&#10;OFFER..!" />
+              </div>
+
+              <div className="som-field">
+                <label className="som-label">Right Side Text</label>
+                <textarea className="som-textarea" rows={3} value={form.familyText}
+                  onChange={e => setForm(f => ({ ...f, familyText: e.target.value }))}
+                  placeholder="Enjoy&#10;With&#10;Your&#10;Whole&#10;Family." />
+              </div>
+
+              <div className="som-field som-field--row">
+                <label className="som-label">Show on Customer Page</label>
+                <button
+                  className={`som-toggle ${form.isActive ? 'som-toggle--on' : ''}`}
+                  onClick={() => setForm(f => ({ ...f, isActive: !f.isActive }))}
+                >
+                  {form.isActive ? 'Active ✅' : 'Hidden 🔴'}
+                </button>
+              </div>
+
+            </div>

@@ -202,3 +202,47 @@ export default function SpecialOffersManagement() {
               </div>
 
             </div>
+
+            {/* Right col — 4 images */}
+            <div className="som-form-col">
+              <label className="som-label">Pizza Images (up to 4)</label>
+              <div className="som-images-grid">
+                {[0, 1, 2, 3].map(i => (
+                  <div
+                    key={i}
+                    className="som-image-upload"
+                    onClick={() => document.getElementById(`offer-img-${i}`).click()}
+                  >
+                    {imagePreviews[i]
+                      ? <img src={imagePreviews[i]} alt={`preview ${i}`} className="som-image-preview" />
+                      : <div className="som-image-placeholder">
+                          <span>🍕</span>
+                          <p>Image {i + 1}</p>
+                        </div>
+                    }
+                    <input
+                      id={`offer-img-${i}`}
+                      type="file"
+                      accept="image/*"
+                      style={{ display: 'none' }}
+                      onChange={e => handleImagePick(i, e)}
+                    />
+                  </div>
+                ))}
+              </div>
+              <p className="som-hint">Click each slot to upload. These 4 images will show as a 2×2 grid on the customer page.</p>
+            </div>
+          </div>
+
+          {msg && <p className={`som-msg ${msg.startsWith('✅') ? 'som-msg--ok' : 'som-msg--err'}`}>{msg}</p>}
+
+          <div className="som-form-actions">
+            <button className="som-btn som-btn--save" onClick={handleSave} disabled={saving}>
+              {saving ? 'Saving...' : editOffer ? '💾 Update Offer' : '➕ Create Offer'}
+            </button>
+            <button className="som-btn som-btn--cancel" onClick={() => setShowForm(false)}>
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}

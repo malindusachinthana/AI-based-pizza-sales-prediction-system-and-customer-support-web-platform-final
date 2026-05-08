@@ -40,3 +40,13 @@ export default function SpecialOffersManagement() {
       setLoading(false);
     }
   }
+
+  function handleAdd() {
+    setEditOffer(null);
+    setForm(EMPTY_FORM);
+    setImageFiles([null, null, null, null]);
+    setImagePreviews(['', '', '', '']);
+    setShowForm(true);
+    setMsg('');
+  }
+

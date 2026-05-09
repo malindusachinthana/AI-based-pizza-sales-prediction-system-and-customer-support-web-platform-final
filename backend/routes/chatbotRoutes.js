@@ -129,8 +129,16 @@ router.post('/query', async (req, res) => {
         return res.json({ answer });
       }
 
-      default:
+      default: {
+        // Try to find answer in custom DB configs
+        try {
+          const customCfg = await ChatbotConfig.findOne({ key: type });
+          if (customCfg) {
+            return res.json({ answer: customCfg.answer });
+          }
+        } catch {}
         return res.json({ answer: "I'm not sure about that! Try one of the questions below 👇" });
+      }
     }
 
   } catch (err) {

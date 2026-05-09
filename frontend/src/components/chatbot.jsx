@@ -3,8 +3,8 @@ import axios from 'axios';
 import '../style/chatbot.css';
 import chatIcon from '../../src/assets/OvenZlogo.png';
 
-// ── Question categories ────────────────────────────────────────
-const QUESTIONS = [
+// ── Hardcoded questions (always shown) ────────────────────────
+const FIXED_QUESTIONS = [
   { id: 'best_seller',   label: '🏆 Best selling pizza?'        },
   { id: 'most_expensive',label: '💎 Most expensive pizza?'      },
   { id: 'cheapest',      label: '💚 Most affordable pizza?'     },
@@ -19,49 +19,58 @@ const QUESTIONS = [
   { id: 'contact',       label: '📍 Location & contact?'        },
 ];
 
+// Keys already in fixed list — don't show them again from DB
+const FIXED_IDS = new Set(FIXED_QUESTIONS.map(q => q.id));
+
 const BOT_GREETING = "Hey there! 👋 I'm <strong>OvenZ</strong> 🍕<br/>How can I help you today? Pick a question below!";
 
 export default function Chatbot() {
-  const [open,     setOpen]     = useState(false);
-  const [messages, setMessages] = useState([
-    { from: 'bot', text: BOT_GREETING }
-  ]);
-  const [loading,  setLoading]  = useState(false);
-  const [asked,    setAsked]    = useState(false); 
-  const bottomRef = useRef(null);
+  const [open,       setOpen]       = useState(false);
+  const [messages,   setMessages]   = useState([{ from: 'bot', text: BOT_GREETING }]);
+  const [loading,    setLoading]    = useState(false);
+  const [asked,      setAsked]      = useState(false);
+  const [extraQs,    setExtraQs]    = useState([]); // custom questions from DB
 
+  const bottomRef  = useRef(null);
   const wrapperRef = useRef(null);
 
-  // Auto-scroll to bottom on new message
+  // ── Auto-scroll ──────────────────────────────────────────
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  // 2. ADD THIS NEW useEffect FOR OUTSIDE CLICKS
+  // ── Close on outside click ───────────────────────────────
   useEffect(() => {
     function handleClickOutside(event) {
-      // If the chat is open, and the click happened outside of our wrapper block, close it
       if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
         setOpen(false);
       }
     }
-
-    // Bind the event listener to the whole document
     document.addEventListener("mousedown", handleClickOutside);
-    
-    // Cleanup the event listener when the component unmounts
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-    }, []);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
-  // ── Handle question tap ────────────────────────────────────
+  // ── Load custom questions from DB ────────────────────────
+  useEffect(() => {
+    axios.get('http://localhost:5000/api/chatbot-config')
+      .then(res => {
+        // Only show questions NOT already in the fixed list
+        const custom = res.data
+          .filter(cfg => !FIXED_IDS.has(cfg.key))
+          .map(cfg => ({ id: cfg.key, label: cfg.label }));
+        setExtraQs(custom);
+      })
+      .catch(() => {}); // keep showing fixed questions on error
+  }, []);
+
+  // All questions = fixed + custom from DB
+  const allQuestions = [...FIXED_QUESTIONS, ...extraQs];
+
+  // ── Handle question tap ──────────────────────────────────
   async function handleQuestion(q) {
-    // Add user bubble
     setMessages(prev => [...prev, { from: 'user', text: q.label }]);
     setLoading(true);
     setAsked(false);
-
     try {
       const res = await axios.post('http://localhost:5000/api/chatbot/query', { type: q.id });
       setMessages(prev => [...prev, { from: 'bot', text: res.data.answer }]);
@@ -73,16 +82,11 @@ export default function Chatbot() {
     }
   }
 
-  // ── Reset to show questions again ──────────────────────────
   function handleAskAnother() {
     setAsked(false);
-    setMessages(prev => [...prev, {
-      from: 'bot',
-      text: 'Sure! What else would you like to know? 😊'
-    }]);
+    setMessages(prev => [...prev, { from: 'bot', text: 'Sure! What else would you like to know? 😊' }]);
   }
 
-  // ── Clear chat ─────────────────────────────────────────────
   function handleClear() {
     setMessages([{ from: 'bot', text: BOT_GREETING }]);
     setAsked(false);
@@ -90,7 +94,6 @@ export default function Chatbot() {
   }
 
   return (
-    /* We attach the wrapperRef to this containing div */
     <div ref={wrapperRef}>
       {/* ── Floating Bubble Button ── */}
       <button
@@ -99,13 +102,11 @@ export default function Chatbot() {
         aria-label="Open chatbot"
       >
         {open ? (
-          /* Show 'X' Close icon when open */
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
             <line x1="18" y1="6" x2="6" y2="18"/>
             <line x1="6" y1="6" x2="18" y2="18"/>
           </svg>
         ) : (
-          /* Show ONLY custom image when closed */
           <>
             <img src={chatIcon} alt="Chat Icon" className="cb-bubble-icon" />
             <span className="cb-bubble-ping" />
@@ -136,14 +137,10 @@ export default function Chatbot() {
           {messages.map((msg, i) => (
             <div key={i} className={`cb-msg cb-msg--${msg.from}`}>
               {msg.from === 'bot' && <span className="cb-msg-avatar">🍕</span>}
-              <div
-                className="cb-msg-bubble"
-                dangerouslySetInnerHTML={{ __html: msg.text }}
-              />
+              <div className="cb-msg-bubble" dangerouslySetInnerHTML={{ __html: msg.text }} />
             </div>
           ))}
 
-          {/* Loading dots */}
           {loading && (
             <div className="cb-msg cb-msg--bot">
               <span className="cb-msg-avatar">🍕</span>
@@ -152,7 +149,6 @@ export default function Chatbot() {
               </div>
             </div>
           )}
-
           <div ref={bottomRef} />
         </div>
 
@@ -160,18 +156,14 @@ export default function Chatbot() {
         <div className="cb-footer">
           {!asked && !loading && (
             <div className="cb-questions">
-              {QUESTIONS.map(q => (
-                <button
-                  key={q.id}
-                  className="cb-question-btn"
-                  onClick={() => handleQuestion(q)}
-                >
+              {allQuestions.map(q => (
+                <button key={q.id} className="cb-question-btn"
+                  onClick={() => handleQuestion(q)}>
                   {q.label}
                 </button>
               ))}
             </div>
           )}
-
           {asked && !loading && (
             <div className="cb-ask-another">
               <button className="cb-another-btn" onClick={handleAskAnother}>

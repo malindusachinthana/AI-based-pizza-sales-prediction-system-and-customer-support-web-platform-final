@@ -98,27 +98,69 @@ router.get('/live-preview', async (req, res) => {
   }
 });
 
-// GET /api/chatbot-config
+// GET /api/chatbot-config — get all
 router.get('/', async (req, res) => {
   try {
-    const configs = await ChatbotConfig.find({}).sort({ key: 1 });
+    const configs = await ChatbotConfig.find({}).sort({ createdAt: 1 });
     res.json(configs);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 });
 
-// PUT /api/chatbot-config/:key  — MUST be last
+// POST /api/chatbot-config — add new custom Q&A
+router.post('/', async (req, res) => {
+  try {
+    const { label, answer } = req.body;
+    if (!label || !answer)
+      return res.status(400).json({ message: 'Label and answer are required' });
+
+    // Generate unique key from label
+    const key = label
+      .toLowerCase()
+      .replace(/[^a-z0-9\s]/g, '')
+      .trim()
+      .replace(/\s+/g, '_')
+      .slice(0, 30) + '_' + Date.now();
+
+    const config = await ChatbotConfig.create({ key, label, answer });
+    res.status(201).json({ message: '✅ Question added!', config });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// PUT /api/chatbot-config/:key — update label AND/OR answer
 router.put('/:key', async (req, res) => {
   try {
-    const { answer } = req.body;
+    const { label, answer } = req.body;
+    const updateData = { updatedAt: new Date() };
+    if (answer !== undefined) updateData.answer = answer;
+    if (label  !== undefined) updateData.label  = label;
+
     const updated = await ChatbotConfig.findOneAndUpdate(
       { key: req.params.key },
-      { answer, updatedAt: new Date() },
+      updateData,
       { returnDocument: 'after' }
     );
     if (!updated) return res.status(404).json({ message: 'Config not found' });
     res.json({ message: '✅ Updated!', config: updated });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// DELETE /api/chatbot-config/:key — delete custom Q&A
+router.delete('/:key', async (req, res) => {
+  try {
+    // Protect default keys
+    const PROTECTED = ['hours', 'how_to_order', 'payment', 'contact'];
+    if (PROTECTED.includes(req.params.key))
+      return res.status(403).json({ message: 'Cannot delete default questions' });
+
+    const deleted = await ChatbotConfig.findOneAndDelete({ key: req.params.key });
+    if (!deleted) return res.status(404).json({ message: 'Config not found' });
+    res.json({ message: '✅ Deleted!' });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

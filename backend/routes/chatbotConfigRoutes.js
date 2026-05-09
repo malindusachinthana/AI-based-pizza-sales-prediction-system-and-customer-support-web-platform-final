@@ -1,9 +1,10 @@
-const express        = require('express');
-const router         = express.Router();
-const ChatbotConfig  = require('../models/ChatbotConfig');
-const ChatbotLog     = require('../models/ChatbotLog');
-const Pizza          = require('../models/Pizza');
-const Order          = require('../models/order');
+// chatbotConfigRoutes.js
+const express       = require('express');
+const router        = express.Router();
+const ChatbotConfig = require('../models/ChatbotConfig');
+const ChatbotLog    = require('../models/ChatbotLog');
+const Pizza         = require('../models/Pizza');
+const Order         = require('../models/order');
 
 const DEFAULTS = [
   {

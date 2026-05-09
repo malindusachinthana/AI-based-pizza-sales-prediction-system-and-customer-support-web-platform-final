@@ -25,3 +25,27 @@ import img16 from '../../assets/theGreekimg.jpg';
 import img17 from '../../assets/woodfire_1.jpg';
 import img18 from '../../assets/woodfire_2.jpg';
 import img19 from '../../assets/woodfire_3.jpg';
+
+// ── Gallery data ───────────────────────────────────────────────
+const IMAGES = [
+  { id: 1,  src: img01, alt: 'Air Pizza',             caption: 'Handcrafted with Precision'     },
+  { id: 2,  src: img02, alt: 'Green Garden Pizza',    caption: 'Fresh Garden Flavours'           },
+  { id: 3,  src: img03, alt: 'OvenZa Atmosphere',     caption: 'Our Cozy Space'                  },
+  { id: 4,  src: img04, alt: 'OvenZa Kitchen',        caption: 'Where the Magic Happens'         },
+  { id: 5,  src: img05, alt: 'OvenZa Dining',         caption: 'Warm Neighbourhood Vibes'        },
+  { id: 6,  src: img06, alt: 'Restaurant Interior 1', caption: 'Crafted for Comfort'             },
+  { id: 7,  src: img07, alt: 'Restaurant Interior 2', caption: 'Every Detail Matters'            },
+  { id: 8,  src: img08, alt: 'Restaurant Interior 3', caption: 'A Place to Gather'              },
+  { id: 9,  src: img09, alt: 'Restaurant Interior 4', caption: 'Rustic & Refined'               },
+  { id: 10, src: img10, alt: 'Restaurant Interior 5', caption: 'Warmth in Every Corner'         },
+  { id: 11, src: img11, alt: 'Restaurant Interior 6', caption: 'The Heart of OvenZa'            },
+  { id: 12, src: img12, alt: 'Restaurant Interior 7', caption: 'Crafted Spaces'                 },
+  { id: 13, src: img13, alt: 'OvenZa Restaurant',     caption: 'Come As You Are'                },
+  { id: 14, src: img14, alt: 'The Classic Pizza',     caption: 'The Classic — Timeless Taste'   },
+  { id: 15, src: img15, alt: 'Chicken Alfredo Pizza', caption: 'Chicken Alfredo — Fan Favourite' },
+  { id: 16, src: img16, alt: 'The Greek Pizza',       caption: 'The Greek — Mediterranean Soul' },
+  { id: 17, src: img17, alt: 'Wood Fire Oven 1',      caption: 'Wood-Fired Perfection'          },
+  { id: 18, src: img18, alt: 'Wood Fire Oven 2',      caption: 'The Flame That Defines Us'      },
+  { id: 19, src: img19, alt: 'Wood Fire Oven 3',      caption: 'Ancient Craft, Modern Taste'    },
+  { id: 20, src: img20, alt: 'OvenZa Classic',        caption: 'A Timeless Classic'             },
+];

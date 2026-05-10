@@ -88,3 +88,16 @@ router.put('/:id', upload.array('images', 4), async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
+
+// ── PATCH /api/offers/:id/toggle ──────────────────────────────
+router.patch('/:id/toggle', async (req, res) => {
+  try {
+    const offer = await Offer.findById(req.params.id);
+    if (!offer) return res.status(404).json({ message: 'Offer not found' });
+    offer.isActive = !offer.isActive;
+    await offer.save();
+    res.json({ message: '✅ Toggled!', isActive: offer.isActive });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});

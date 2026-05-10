@@ -77,3 +77,21 @@ export default function Gallery() {
   const closeLightbox = ()    => setLightbox(null);
   const prevImg       = (e)   => { e.stopPropagation(); setLightbox(i => (i - 1 + IMAGES.length) % IMAGES.length); };
   const nextImg       = (e)   => { e.stopPropagation(); setLightbox(i => (i + 1) % IMAGES.length); };
+
+  return (
+    <>
+      <Navbar />
+
+      <main className="gl-page">
+
+        {/* ── Hero ── */}
+        <section className="gl-hero">
+          <div className="gl-hero-overlay" />
+          <div className="gl-hero-content">
+            <span className="gl-hero-label">OvenZa Crust</span>
+            <h1 className="gl-hero-title">Our Gallery</h1>
+            <p className="gl-hero-sub">A glimpse into our world — from wood-fired ovens to warm, welcoming spaces</p>
+            <div className="gl-hero-divider" />
+            <p className="gl-hero-count">{IMAGES.length} moments captured</p>
+          </div>
+        </section>

@@ -11,6 +11,7 @@ import OrderConfirmation from './pages/client/OrderConfirmation.jsx';
 import CustomerProfile   from './pages/client/CustomerProfile.jsx';
 import SpecialOffers     from './pages/client/specialOffers.jsx';
 import Gallery           from './pages/client/gallery.jsx'
+import AboutUs           from './pages/client/aboutUs.jsx';   
 
 // Admin Pages
 import AdminDashboard from './pages/admin/adminDashboard.jsx';
@@ -31,6 +32,7 @@ function App() {
           <Route path="/customer-profile" element={<CustomerProfile />} />
           <Route path="/special-offers" element={<SpecialOffers />} />
           <Route path="/gallery" element={<Gallery />} />
+          <Route path="/about" element={<AboutUs />} />
 
           {/* Admin Routes */}
           <Route path="/admin-dashboard" element={<AdminDashboard />} />

@@ -49,3 +49,31 @@ const IMAGES = [
   { id: 19, src: img19, alt: 'Wood Fire Oven 3',      caption: 'Ancient Craft, Modern Taste'    },
   { id: 20, src: img20, alt: 'OvenZa Classic',        caption: 'A Timeless Classic'             },
 ];
+
+export default function Gallery() {
+  const [lightbox, setLightbox]   = useState(null); // index or null
+  const [imgLoaded, setImgLoaded] = useState({});
+
+  // ── Keyboard navigation ─────────────────────────────────
+  const handleKey = useCallback((e) => {
+    if (lightbox === null) return;
+    if (e.key === 'Escape')     setLightbox(null);
+    if (e.key === 'ArrowRight') setLightbox(i => (i + 1) % IMAGES.length);
+    if (e.key === 'ArrowLeft')  setLightbox(i => (i - 1 + IMAGES.length) % IMAGES.length);
+  }, [lightbox]);
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [handleKey]);
+
+  // Lock body scroll when lightbox open
+  useEffect(() => {
+    document.body.style.overflow = lightbox !== null ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [lightbox]);
+
+  const openLightbox  = (idx) => setLightbox(idx);
+  const closeLightbox = ()    => setLightbox(null);
+  const prevImg       = (e)   => { e.stopPropagation(); setLightbox(i => (i - 1 + IMAGES.length) % IMAGES.length); };
+  const nextImg       = (e)   => { e.stopPropagation(); setLightbox(i => (i + 1) % IMAGES.length); };

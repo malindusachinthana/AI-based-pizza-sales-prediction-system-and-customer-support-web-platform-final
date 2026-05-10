@@ -1,4 +1,4 @@
-# api.py — OvenZa Crust | AI Sales Prediction API
+# OvenZa Crust - AI Sales Prediction API
 
 # imports
 
@@ -13,7 +13,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 app = Flask(__name__)
-CORS(app)  # allow React (localhost:3000) to call this API
+CORS(app)
 
 # Paths
 BASE_DIR    = os.path.dirname(os.path.abspath(__file__))
@@ -23,7 +23,7 @@ DATASET_PATH= os.path.join(BASE_DIR, 'models', 'current_dataset.csv')
 VALID_CATEGORIES  = {'Chicken', 'Classic', 'Supreme', 'Veggie'}
 MAX_FORECAST_DAYS = 14
 
-# ── Load models at startup ────────────────────────────────────────
+# Load models at startup
 def load_models():
     with open(MODEL_PATH, 'rb') as f:
         store = pickle.load(f)
@@ -40,7 +40,7 @@ print(f'✅ Models loaded. Last training date: {last_train_date.date()}')
 print(f'   Categories: {list(category_models.keys())}')
 
 
-# ── Helper: parse mixed date formats ─────────────────────────────
+# Parse mixed date formats
 def parse_date(s):
     s = str(s).strip()
     for fmt in ('%m/%d/%Y', '%d-%m-%Y', '%d/%m/%Y', '%Y-%m-%d'):
@@ -49,7 +49,7 @@ def parse_date(s):
     return pd.NaT
 
 
-# ── Helper: predict a single day N ───────────────────────────────
+# Predict a single day N
 def predict_day_n(n):
     """
     Predict pizza quantity for day N (1–14) after training data ends.
@@ -80,10 +80,9 @@ def predict_day_n(n):
     return result
 
 
-# ═══════════════════════════════════════════════════════════════════
-# ENDPOINT 1 — GET /predict?day=5
+# Endpoint 1 - GET /predict?day=5
 # Returns prediction for a single day (1–14)
-# ═══════════════════════════════════════════════════════════════════
+
 @app.route('/predict', methods=['GET'])
 def predict():
     try:
@@ -101,10 +100,9 @@ def predict():
         return jsonify({'error': str(e)}), 500
 
 
-# ═══════════════════════════════════════════════════════════════════
-# ENDPOINT 2 — GET /forecast
+# Endpoint 2 - GET /forecast
 # Returns predictions for all 14 days at once (for the chart)
-# ═══════════════════════════════════════════════════════════════════
+
 @app.route('/forecast', methods=['GET'])
 def forecast_all():
     try:
@@ -117,10 +115,9 @@ def forecast_all():
         return jsonify({'error': str(e)}), 500
 
 
-# ═══════════════════════════════════════════════════════════════════
-# ENDPOINT 3 — GET /accuracy
+# Endpoint 3 - GET /accuracy
 # Returns current model accuracy for the dashboard
-# ═══════════════════════════════════════════════════════════════════
+
 @app.route('/accuracy', methods=['GET'])
 def accuracy():
     try:
@@ -147,17 +144,17 @@ def accuracy():
         return jsonify({'error': str(e)}), 500
 
 
-# ═══════════════════════════════════════════════════════════════════
-# ENDPOINT 4 — POST /retrain
+
+# Endpoint 4 - POST /retrain
 # Admin uploads a new CSV → appends to existing data → retrains
-# ═══════════════════════════════════════════════════════════════════
+
 @app.route('/retrain', methods=['POST'])
 def retrain():
     global store, category_models, global_model
     global category_evals, global_eval, last_train_date
 
     try:
-        # ── 1. Check file was uploaded ────────────────────────────
+        # 1. Check file was uploaded 
         if 'file' not in request.files:
             return jsonify({'error': 'No file uploaded. Send CSV as multipart/form-data with key "file"'}), 400
 
@@ -167,7 +164,7 @@ def retrain():
         if not filename.endswith('.csv'):
             return jsonify({'error': 'Only .csv files are accepted'}), 400
 
-        # ── 2. Read uploaded CSV ──────────────────────────────────
+        # 2. Read uploaded CSV
         new_raw = pd.read_csv(io.StringIO(file.read().decode('utf-8')))
 
         required = ['order_date', 'quantity', 'pizza_category']
@@ -179,7 +176,7 @@ def retrain():
                 'found'   : list(new_raw.columns),
             }), 400
 
-        # ── 3. Filter new data ────────────────────────────────────
+        # 3. Filter new data
         new_df = new_raw[required].copy()
         new_df['order_date'] = new_df['order_date'].apply(parse_date)
         new_df.dropna(subset=['order_date'], inplace=True)
@@ -192,7 +189,7 @@ def retrain():
         if len(new_df) == 0:
             return jsonify({'error': 'No valid rows found in uploaded CSV after filtering'}), 400
 
-        # ── 4. Load existing dataset and append ───────────────────
+        # 4. Load existing dataset and append
         existing_df = pd.read_csv(DATASET_PATH)
         existing_df['order_date'] = existing_df['order_date'].apply(parse_date)
 
@@ -201,7 +198,7 @@ def retrain():
         combined.sort_values('order_date', inplace=True)
         combined.reset_index(drop=True, inplace=True)
 
-        # ── 5. Rebuild daily data and retrain ─────────────────────
+        # 5. Rebuild daily data and retrain
         from prophet import Prophet
         from sklearn.metrics import mean_absolute_error, mean_squared_error
 
@@ -267,7 +264,7 @@ def retrain():
 
         new_last_date = g_daily['ds'].max()
 
-        # ── 6. Save new models + dataset ─────────────────────────
+        # 6. Save new models + dataset
         new_store = {
             'category_models'   : new_cat_models,
             'global_model'      : gm_fin,
@@ -283,7 +280,7 @@ def retrain():
         combined['order_date'] = combined['order_date'].dt.strftime('%Y-%m-%d')
         combined.to_csv(DATASET_PATH, index=False)
 
-        # ── 7. Reload models in memory ────────────────────────────
+        # 7. Reload models in memory
         store           = new_store
         category_models = new_cat_models
         global_model    = gm_fin
@@ -310,10 +307,9 @@ def retrain():
         return jsonify({'error': str(e)}), 500
 
 
-# ═══════════════════════════════════════════════════════════════════
-# ENDPOINT 5 — GET /health
+# Endpoint 5 - GET /health
 # Quick check that the API is running
-# ═══════════════════════════════════════════════════════════════════
+
 @app.route('/health', methods=['GET'])
 def health():
     return jsonify({

@@ -64,3 +64,27 @@ router.post('/', upload.array('images', 4), async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
+
+// ── PUT /api/offers/:id ────────────────────────────────────────
+router.put('/:id', upload.array('images', 4), async (req, res) => {
+  try {
+    const { badgeMain, badgeSub, pizzaName, description, familyText, isActive, keepImages } = req.body;
+
+    const updateData = {
+      badgeMain, badgeSub, pizzaName, description, familyText,
+      isActive: isActive !== 'false' && isActive !== false,
+    };
+
+    // If new images uploaded, replace; otherwise keep existing
+    if (req.files && req.files.length > 0) {
+      updateData.images = req.files.map(f => `/uploads/offers/${f.filename}`);
+    }
+
+    const updated = await Offer.findByIdAndUpdate(req.params.id, updateData, { new: true });
+    if (!updated) return res.status(404).json({ message: 'Offer not found' });
+
+    res.json({ message: '✅ Offer updated!', offer: updated });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});

@@ -101,3 +101,23 @@ router.patch('/:id/toggle', async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
+
+// ── DELETE /api/offers/:id ─────────────────────────────────────
+router.delete('/:id', async (req, res) => {
+  try {
+    const offer = await Offer.findByIdAndDelete(req.params.id);
+    if (!offer) return res.status(404).json({ message: 'Offer not found' });
+
+    // Delete image files
+    (offer.images || []).forEach(img => {
+      const filePath = path.join(__dirname, '..', img);
+      if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
+    });
+
+    res.json({ message: '✅ Offer deleted!' });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+module.exports = router;

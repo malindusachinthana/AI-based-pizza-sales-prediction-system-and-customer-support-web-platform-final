@@ -19,3 +19,26 @@ const storage = multer.diskStorage({
     cb(null, `offer_${Date.now()}_${Math.random().toString(36).slice(2)}${path.extname(file.originalname)}`);
   }
 });
+const upload = multer({ storage });
+
+// ── GET /api/offers ────────────────────────────────────────────
+router.get('/', async (req, res) => {
+  try {
+    const offers = await Offer.find({}).sort({ createdAt: -1 });
+    res.json(offers);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// ── GET /api/offers/active ─────────────────────────────────────
+router.get('/active', async (req, res) => {
+  try {
+    const offers = await Offer.find({
+      $or: [{ isActive: true }, { isActive: 'true' }]
+    }).sort({ createdAt: -1 });
+    res.json(offers);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});

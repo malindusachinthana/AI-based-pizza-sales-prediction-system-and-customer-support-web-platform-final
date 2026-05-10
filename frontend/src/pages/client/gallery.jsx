@@ -95,3 +95,31 @@ export default function Gallery() {
             <p className="gl-hero-count">{IMAGES.length} moments captured</p>
           </div>
         </section>
+
+        {/* ── Masonry Grid ── */}
+        <section className="gl-section">
+          <div className="gl-masonry">
+            {IMAGES.map((img, idx) => (
+              <div
+                key={img.id}
+                className={`gl-item ${imgLoaded[idx] ? 'gl-item--loaded' : ''}`}
+                onClick={() => openLightbox(idx)}
+                style={{ animationDelay: `${(idx % 9) * 60}ms` }}
+              >
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  onLoad={() => setImgLoaded(prev => ({ ...prev, [idx]: true }))}
+                />
+                <div className="gl-item-overlay">
+                  <div className="gl-item-content">
+                    <span className="gl-item-caption">{img.caption}</span>
+                    <span className="gl-item-zoom">⊕</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+      </main>

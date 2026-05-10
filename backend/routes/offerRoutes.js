@@ -42,3 +42,25 @@ router.get('/active', async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
+
+// ── POST /api/offers ───────────────────────────────────────────
+router.post('/', upload.array('images', 4), async (req, res) => {
+  try {
+    const { badgeMain, badgeSub, pizzaName, description, familyText, isActive } = req.body;
+    const images = (req.files || []).map(f => `/uploads/offers/${f.filename}`);
+
+    const offer = await Offer.create({
+      badgeMain:  badgeMain  || 'BUY 1\nGET 1',
+      badgeSub:   badgeSub   || 'FREE\nOFFER..!',
+      pizzaName,
+      description,
+      familyText: familyText || 'Enjoy\nWith\nYour\nWhole\nFamily.',
+      images,
+      isActive:   isActive !== 'false',
+    });
+
+    res.status(201).json({ message: '✅ Offer created!', offer });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});

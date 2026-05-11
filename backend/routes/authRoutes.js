@@ -1,11 +1,14 @@
 const express    = require('express');
 const router     = express.Router();
-const { register, login } = require('../controllers/authController');
+const { register, login, updateProfile } = require('../controllers/authController');
 
-// POST /api/auth/register - Create new customer
+// POST /api/auth/register
 router.post('/register', register);
 
-// POST /api/auth/login - Login admin or customer
+// POST /api/auth/login
 router.post('/login', login);
+
+// PUT /api/auth/update-profile
+router.put('/update-profile', updateProfile);
 
 module.exports = router;

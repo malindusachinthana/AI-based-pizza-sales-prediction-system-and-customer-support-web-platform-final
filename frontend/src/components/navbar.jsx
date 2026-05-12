@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom'; // ✅ Added useLocation
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import '../style/navbar.css';
 import logo from '../assets/OvenZlogo.png';
+import { useCart } from '../context/CartContext';
 
 // ── Logout Overlay ────────────────────────────────────────────
 function LogoutOverlay({ show }) {
@@ -24,12 +25,15 @@ function LogoutOverlay({ show }) {
 export default function Navbar() {
   const navRef   = useRef(null);
   const navigate = useNavigate();
-  const location = useLocation(); // ✅ Added
+  const location = useLocation();
   const [showLogout, setShowLogout] = useState(false);
 
   const token    = localStorage.getItem('token');
   const username = localStorage.getItem('username');
   const role     = localStorage.getItem('userRole');
+
+  // ── Cart count from context ───────────────────────────────
+  const { cartCount } = useCart();
 
   const handleLogout = () => {
     setShowLogout(true);
@@ -68,18 +72,12 @@ export default function Navbar() {
         {/* ── Left Links ── */}
         <ul className="navbar-links-left">
           <li>
-            <Link
-              to="/"
-              className={location.pathname === '/' ? 'active' : ''}
-            >
+            <Link to="/" className={location.pathname === '/' ? 'active' : ''}>
               Home
             </Link>
           </li>
           <li>
-            <Link
-              to="/gallery"
-              className={location.pathname === '/gallery' ? 'active' : ''}
-            >
+            <Link to="/gallery" className={location.pathname === '/gallery' ? 'active' : ''}>
               Gallery
             </Link>
           </li>
@@ -93,66 +91,82 @@ export default function Navbar() {
         {/* ── Right Links ── */}
         <ul className="navbar-links-right">
           <li>
-            <Link
-              to="/menu"
-              className={location.pathname === '/menu' ? 'active' : ''}
-            >
+            <Link to="/menu" className={location.pathname === '/menu' ? 'active' : ''}>
               Menu
             </Link>
           </li>
           <li>
-            <Link
-              to="/special-offers"
-              className={location.pathname === '/special-offers' ? 'active' : ''}
-            >
+            <Link to="/special-offers" className={location.pathname === '/special-offers' ? 'active' : ''}>
               Special Offers
             </Link>
           </li>
           <li>
-            <Link
-              to="/about"
-              className={location.pathname === '/about' ? 'active' : ''}
-            >
+            <Link to="/about" className={location.pathname === '/about' ? 'active' : ''}>
               About Us
             </Link>
           </li>
         </ul>
 
-        {/* ── User Section ── */}
-        <div className="navbar-user-wrap">
-          {token && (
-            <span className="navbar-greeting">👋 Hi, {username}</span>
+        {/* ── Right Section: Cart + User ── */}
+        <div className="navbar-right-section">
+
+          {/* ── Cart Icon (only show when logged in as customer) ── */}
+          {token && role !== 'admin' && (
+            <button
+              className="navbar-cart-btn"
+              onClick={() => navigate('/cart')}
+              title="View Cart"
+            >
+              <svg className="navbar-cart-icon" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="9" cy="21" r="1" />
+                <circle cx="20" cy="21" r="1" />
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0
+                  0 2-1.61L23 6H6" />
+              </svg>
+              {cartCount > 0 && (
+                <span className="navbar-cart-badge">{cartCount > 9 ? '9+' : cartCount}</span>
+              )}
+            </button>
           )}
 
-          <button className="user-icon-btn" onClick={handleProfileRedirect}>
-            👨‍🍳
-          </button>
-
-          <div className="user-dropdown">
-            {!token ? (
-              <button className="dropdown-btn" onClick={handleLoginRedirect}>
-                🔑 Login
-              </button>
-            ) : (
-              <>
-                {role === 'admin' && (
-                  <button className="dropdown-btn" onClick={handleAdminRedirect}>
-                    ▦ Admin Panel
-                  </button>
-                )}
-                <button className="dropdown-btn"
-                  onClick={() => navigate('/customer-profile')}>
-                  👨‍🍳 My Profile
-                </button>
-                <button className="dropdown-btn logout" onClick={handleLogout}>
-                  ⟵ Logout
-                </button>
-              </>
+          {/* ── User Section ── */}
+          <div className="navbar-user-wrap">
+            {token && (
+              <span className="navbar-greeting">👋 Hi, {username}</span>
             )}
+
+            <button className="user-icon-btn" onClick={handleProfileRedirect}>
+              👨‍🍳
+            </button>
+
+            <div className="user-dropdown">
+              {!token ? (
+                <button className="dropdown-btn" onClick={handleLoginRedirect}>
+                  🔑 Login
+                </button>
+              ) : (
+                <>
+                  {role === 'admin' && (
+                    <button className="dropdown-btn" onClick={handleAdminRedirect}>
+                      ▦ Admin Panel
+                    </button>
+                  )}
+                  <button className="dropdown-btn"
+                    onClick={() => navigate('/customer-profile')}>
+                    👨‍🍳 My Profile
+                  </button>
+                  <button className="dropdown-btn logout" onClick={handleLogout}>
+                    ⟵ Logout
+                  </button>
+                </>
+              )}
+            </div>
           </div>
+
         </div>
+
       </nav>
-      
     </>
   );
 }

@@ -1,53 +1,46 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../../style/CustomerHome.css';
 
-// Import shared components
 import Navbar from '../../components/navbar';
 import Footer from '../../components/footer';
 import Chatbot from '../../components/chatbot.jsx'
 
-// Hero / Main Background
 import heroBg      from '../../assets/MainBackgound.png';
-
-// About section
 import aboutPizza  from '../../assets/mainGalleryimg.png';
-
-// Gallery Strip
 import galleryImg1 from '../../assets/home01.jpg';
 import galleryImg2 from '../../assets/home02.jpg';
 import galleryImg3 from '../../assets/home03.jpg';
 import galleryImg4 from '../../assets/home04.jpg';
-
-// Menu — Category Icons
 import pizzaIcon   from '../../assets/pizza_img_icon.png';
 import chickenIcon from '../../assets/chickenIcon.png';
 import seafoodIcon from '../../assets/seafoodIcon.png';
 import cheeseIcon  from '../../assets/cheeseIcon.png';
 import vegIcon     from '../../assets/vegIcon.png';
-
-// Menu — Category Cards
 import veggiePizza  from '../../assets/vegimg.jpg';
 import chickenPizza from '../../assets/theChickenAlfimg.jpg';
 import classicPizza from '../../assets/theClassicimg.jpg';
 import supremePizza from '../../assets/supremeimg.jpg';
-
-// Menu — Size Cards
-import largePizza  from '../../assets/theBigmeetimg.jpg';
-import mediumPizza from '../../assets/mainGalleryimg.png';
-import smallPizza  from '../../assets/pepo2img.jpg';
-
-// Gallery — OvenZa Foods
+import largePizza  from '../../assets/size_br3.png';
+import mediumPizza from '../../assets/size_br2.png';
+import smallPizza  from '../../assets/size_br1.png';
 import foodImg1    from '../../assets/home05.jpg';
 import foodImg2    from '../../assets/rest01.jpg';
 import foodImg3    from '../../assets/thepepoimg.jpg';
-
-// Gallery — OvenZa Lobby
 import lobbyImg1   from '../../assets/home02.jpg';
 import lobbyImg2   from '../../assets/home03.jpg';
 import lobbyImg3   from '../../assets/home04.jpg';
 
-// ── Scroll Reveal Hook ───────────────────────────────────────
+import floatingPizza from '../../assets/mainimg.png'; // floating bubble pizza
+import masonryImg1   from '../../assets/rest01.jpg';         // large left image
+import masonryImg2   from '../../assets/pepo2img.jpg';         // image 2
+import masonryImg3   from '../../assets/italianCopoimg.jpg';         // image 3
+import masonryImg4   from '../../assets/theItalianCopoimg.jpg';         // image 4
+import masonryImg5   from '../../assets/paperSalamiimg.jpg';         // image 5
+import masonryImg6   from '../../assets/southwestChickenimg.jpg';         // image 6
+import masonryImg7   from '../../assets/vegimg.jpg';     // image 7
+
+// ── Scroll Reveal Hook ────────────────────────────────────────
 function useReveal() {
   useEffect(() => {
     const targets = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
@@ -56,9 +49,7 @@ function useReveal() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const delay = entry.target.dataset.delay || 0;
-            setTimeout(() => {
-              entry.target.classList.add('visible');
-            }, Number(delay));
+            setTimeout(() => entry.target.classList.add('visible'), Number(delay));
           }
         });
       },
@@ -69,7 +60,7 @@ function useReveal() {
   }, []);
 }
 
-// ── Hero Section ─────────────────────────────────────────────
+// ── Hero Section ──────────────────────────────────────────────
 function HeroSection() {
   return (
     <section className="hero" id="home">
@@ -90,6 +81,56 @@ function HeroSection() {
           <Link to="/gallery" className="btn-outline">View Gallery</Link>
         </div>
       </div>
+    </section>
+  );
+}
+
+// ── Floating Pizza + Masonry Section ─────────────────────────
+function FloatMasonrySection() {
+  return (
+    <section className="float-masonry-section">
+
+      {/* ── Floating Pizza Bubble ── */}
+      <div className="float-pizza-wrap">
+        <img src={floatingPizza} alt="Featured pizza" className="float-pizza-img" />
+      </div>
+
+      {/* ── Tagline ── */}
+      <div className="float-tagline reveal" data-delay="100">
+        <p className="float-tagline-text">
+          Old-world Italian craft.<br />
+          New-world Sri Lankan spice. Pure pizza magic.
+        </p>
+      </div>
+
+      {/* ── Masonry Grid ── */}
+      <div className="masonry-grid reveal" data-delay="200">
+        {/* Large image — left, spans 2 rows */}
+        <div className="masonry-item masonry-large">
+          <img src={masonryImg1} alt="OvenZa 1" />
+        </div>
+        {/* Top-right group: 3 stacked */}
+        <div className="masonry-item">
+          <img src={masonryImg2} alt="OvenZa 2" />
+        </div>
+        <div className="masonry-item">
+          <img src={masonryImg3} alt="OvenZa 3" />
+        </div>
+        <div className="masonry-item">
+          <img src={masonryImg4} alt="OvenZa 4" />
+        </div>
+        {/* Bottom-right group: 3 stacked */}
+        <div className="masonry-item">
+          <img src={masonryImg5} alt="OvenZa 5" />
+        </div>
+        <div className="masonry-item">
+          <img src={masonryImg6} alt="OvenZa 6" />
+        </div>
+        <div className="masonry-item">
+          <img src={masonryImg7} alt="OvenZa 7" />
+        </div>
+      </div>
+
     </section>
   );
 }
@@ -115,7 +156,7 @@ function CategoryIconRow() {
   );
 }
 
-// ── About Section ────────────────────────────────────────────
+// ── About Section ─────────────────────────────────────────────
 function AboutSection() {
   return (
     <section className="section" id="about">
@@ -160,12 +201,12 @@ function AboutSection() {
   );
 }
 
-// ── Menu Section ─────────────────────────────────────────────
+// ── Menu Section ──────────────────────────────────────────────
 const categories = [
-  { label: 'Veggie',  img: veggiePizza  },
-  { label: 'Chicken', img: chickenPizza },
-  { label: 'Classic', img: classicPizza },
-  { label: 'Supreme', img: supremePizza },
+  { label: 'Veggie',  img: veggiePizza,  menuCategory: 'Veggie'  },
+  { label: 'Chicken', img: chickenPizza, menuCategory: 'Chicken' },
+  { label: 'Classic', img: classicPizza, menuCategory: 'Classic' },
+  { label: 'Supreme', img: supremePizza, menuCategory: 'Supreme' },
 ];
 
 const sizes = [
@@ -175,6 +216,7 @@ const sizes = [
 ];
 
 function MenuSection() {
+  const navigate = useNavigate();
   return (
     <section className="section section-alt menu-section" id="menu">
       <div className="container">
@@ -186,11 +228,18 @@ function MenuSection() {
           </p>
         </div>
         <div className="category-grid">
-          {categories.map(({ label, img }, i) => (
-            <div className="category-card reveal" key={label} data-delay={i * 90}>
+          {categories.map(({ label, img, menuCategory }, i) => (
+            <div
+              className="category-card reveal"
+              key={label}
+              data-delay={i * 90}
+              onClick={() => navigate(`/menu?category=${menuCategory}`)}
+              title={`Browse ${label} pizzas`}
+            >
               <img src={img} alt={label} />
               <div className="category-card-overlay" />
               <span className="category-card-label">{label}</span>
+              <div className="category-card-cta">View {label} Pizzas →</div>
             </div>
           ))}
         </div>
@@ -209,7 +258,7 @@ function MenuSection() {
   );
 }
 
-// ── Special Offers Section — LIVE from MongoDB ────────────────
+// ── Special Offers Section ────────────────────────────────────
 function OffersSection() {
   const [offers,  setOffers]  = useState([]);
   const [loading, setLoading] = useState(true);
@@ -224,29 +273,17 @@ function OffersSection() {
   return (
     <section className="offers-section" id="special-offers">
       <div className="container">
-
         <div className="offers-header">
           <h2 className="offers-title">Special Offers</h2>
         </div>
-
-        {loading && (
-          <p style={{ textAlign: 'center', color: '#a89f8c', padding: '40px 0' }}>
-            Loading offers...
-          </p>
-        )}
-
+        {loading && <p style={{ textAlign: 'center', color: '#a89f8c', padding: '40px 0' }}>Loading offers...</p>}
         {!loading && offers.length === 0 && (
-          <p style={{ textAlign: 'center', color: '#a89f8c', padding: '40px 0' }}>
-            No active offers right now. Check back soon! 🍕
-          </p>
+          <p style={{ textAlign: 'center', color: '#a89f8c', padding: '40px 0' }}>No active offers right now. Check back soon! 🍕</p>
         )}
-
         {!loading && offers.map((offer) => {
           const imgs = offer.images || [];
           return (
             <div key={offer._id} className="offer-card">
-
-              {/* Left — Badge */}
               <div className="offer-badge-wrap">
                 <span className="offer-badge-main">
                   {offer.badgeMain.split('\n').map((line, j) => (
@@ -259,32 +296,25 @@ function OffersSection() {
                   ))}
                 </span>
               </div>
-
-              {/* Center — 2×2 image grid with description overlay */}
               <div className="offer-center">
                 {[0,1,2,3].map(i => (
                   imgs[i]
                     ? <img key={i} className="offer-center-img" src={`http://localhost:5000${imgs[i]}`} alt={`offer ${i+1}`} />
                     : <div key={i} className="offer-center-placeholder">🍕</div>
                 ))}
-                {/* Description overlay */}
                 <div className="offer-overlay">
                   <h3 className="offer-pizza-name">{offer.pizzaName}</h3>
                   <p className="offer-desc">{offer.description}</p>
                 </div>
               </div>
-
-              {/* Right — Family text */}
               <div className="offer-family">
                 {offer.familyText.split('\n').map((line, j) => (
                   <React.Fragment key={j}>{line}{j < offer.familyText.split('\n').length - 1 && <br />}</React.Fragment>
                 ))}
               </div>
-
             </div>
           );
         })}
-
       </div>
     </section>
   );
@@ -322,15 +352,15 @@ function GallerySection() {
   );
 }
 
-// ── Main Page Export ──────────────────────────────────────────
+// ── Main Export ───────────────────────────────────────────────
 export default function CustomerHome() {
   useReveal();
-
   return (
     <>
       <Navbar />
       <main className="home-page">
         <HeroSection />
+        <FloatMasonrySection />   {/* ← NEW section between hero and about */}
         <AboutSection />
         <MenuSection />
         <OffersSection />

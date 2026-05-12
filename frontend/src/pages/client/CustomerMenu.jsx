@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Navbar from '../../components/navbar';
 import Footer from '../../components/footer';
 import { useCart } from '../../context/CartContext';
@@ -18,12 +18,8 @@ function LoginModal({ onLogin, onCancel }) {
           You need to log in to add items to your cart and place an order.
         </p>
         <div className="login-modal-btns">
-          <button className="login-modal-btn-primary" onClick={onLogin}>
-            🔑 Login
-          </button>
-          <button className="login-modal-btn-secondary" onClick={onCancel}>
-            Cancel
-          </button>
+          <button className="login-modal-btn-primary" onClick={onLogin}>🔑 Login</button>
+          <button className="login-modal-btn-secondary" onClick={onCancel}>Cancel</button>
         </div>
       </div>
     </div>
@@ -47,7 +43,7 @@ function MenuHero() {
 }
 
 // ── Category Filter ───────────────────────────────────────────
-function CategoryFilter({ active, setActive, counts }) {
+function CategoryFilter({ active, setActive, counts, onCategoryClick }) {
   const categories = ['All', 'Classic', 'Chicken', 'Supreme', 'Veggie'];
   return (
     <div className="category-filter">
@@ -55,12 +51,10 @@ function CategoryFilter({ active, setActive, counts }) {
         <button
           key={cat}
           className={`filter-btn ${active === cat ? 'filter-btn--active' : ''}`}
-          onClick={() => setActive(cat)}
+          onClick={() => onCategoryClick(cat)}
         >
           {cat}
-          {counts[cat] > 0 && (
-            <span className="filter-count">{counts[cat]}</span>
-          )}
+          {counts[cat] > 0 && <span className="filter-count">{counts[cat]}</span>}
         </button>
       ))}
     </div>
@@ -76,13 +70,7 @@ function PizzaCard({ pizza, onLoginRequired }) {
   function handleAddToCart() {
     const token    = localStorage.getItem('token');
     const userRole = localStorage.getItem('userRole');
-
-    // Not logged in or admin → show login modal
-    if (!token || userRole === 'admin') {
-      onLoginRequired();
-      return;
-    }
-
+    if (!token || userRole === 'admin') { onLoginRequired(); return; }
     addToCart(pizza, selectedSize);
     setAdded(true);
     setTimeout(() => setAdded(false), 1500);
@@ -91,58 +79,22 @@ function PizzaCard({ pizza, onLoginRequired }) {
   return (
     <div className="menu-pizza-card">
       <div className="menu-pizza-img-wrap">
-        <img
-          src={`http://localhost:5000${pizza.imageUrl}`}
-          alt={pizza.name}
-          className="menu-pizza-img"
-        />
+        <img src={`http://localhost:5000${pizza.imageUrl}`} alt={pizza.name} className="menu-pizza-img" />
       </div>
-
       <div className="menu-pizza-body">
         <h3 className="menu-pizza-name">{pizza.name}</h3>
-
         <div className="menu-size-wrap">
-          <select
-            className="menu-size-select"
-            value={selectedSize}
-            onChange={(e) => setSelectedSize(e.target.value)}
-          >
+          <select className="menu-size-select" value={selectedSize} onChange={e => setSelectedSize(e.target.value)}>
             <option value="small">Small  — Rs. {pizza.sizes?.small}</option>
             <option value="medium">Medium — Rs. {pizza.sizes?.medium}</option>
             <option value="large">Large  — Rs. {pizza.sizes?.large}</option>
           </select>
         </div>
-
-        <p className="menu-pizza-price">
-          Rs. {pizza.sizes?.[selectedSize]?.toLocaleString()}
-        </p>
-
-        <button
-          className={`menu-cart-btn ${added ? 'menu-cart-btn--added' : ''}`}
-          onClick={handleAddToCart}
-        >
+        <p className="menu-pizza-price">Rs. {pizza.sizes?.[selectedSize]?.toLocaleString()}</p>
+        <button className={`menu-cart-btn ${added ? 'menu-cart-btn--added' : ''}`} onClick={handleAddToCart}>
           {added ? '✓ Added!' : '🛒 Add to Cart'}
         </button>
       </div>
-    </div>
-  );
-}
-
-// ── Floating Cart Button ──────────────────────────────────────
-function FloatingCart() {
-  const { cartCount, cartTotal } = useCart();
-  const navigate                 = useNavigate();
-
-  if (cartCount === 0) return null;
-
-  return (
-    <div className="floating-cart" onClick={() => navigate('/cart')}>
-      <span className="floating-cart-icon">🛒</span>
-      <span className="floating-cart-info">
-        <span className="floating-cart-count">{cartCount} item{cartCount > 1 ? 's' : ''}</span>
-        <span className="floating-cart-total">Rs. {cartTotal.toLocaleString()}</span>
-      </span>
-      <span className="floating-cart-arrow">→</span>
     </div>
   );
 }
@@ -151,19 +103,25 @@ function FloatingCart() {
 function CategorySection({ category, pizzas, onLoginRequired }) {
   if (pizzas.length === 0) return null;
   return (
-    <div className="menu-category-section">
+    <div className="menu-category-section" id={`cat-${category}`}>
       <h2 className="menu-category-title">{category}</h2>
       <div className="menu-pizza-grid">
         {pizzas.map(pizza => (
-          <PizzaCard
-            key={pizza._id}
-            pizza={pizza}
-            onLoginRequired={onLoginRequired}
-          />
+          <PizzaCard key={pizza._id} pizza={pizza} onLoginRequired={onLoginRequired} />
         ))}
       </div>
     </div>
   );
+}
+
+// ── Scroll helper ─────────────────────────────────────────────
+function scrollToCategory(category) {
+  const el = document.getElementById(`cat-${category}`);
+  if (el) {
+    const offset = 110; // navbar height + filter bar
+    const top = el.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }
 }
 
 // ── Main Export ───────────────────────────────────────────────
@@ -172,61 +130,72 @@ export default function CustomerMenu() {
   const [loading,        setLoading]        = useState(true);
   const [activeCategory, setActiveCategory] = useState('All');
   const [error,          setError]          = useState(null);
-  const [showLoginModal, setShowLoginModal] = useState(false);  // ← modal state
+  const [showLoginModal, setShowLoginModal] = useState(false);
 
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // ── Read ?category= from URL (coming from Home page cards) ──
+  useEffect(() => {
+    const params   = new URLSearchParams(location.search);
+    const category = params.get('category');
+    const valid    = ['Classic', 'Chicken', 'Supreme', 'Veggie'];
+    if (category && valid.includes(category)) {
+      setActiveCategory(category);
+      // Wait for pizzas to render, then scroll
+      setTimeout(() => scrollToCategory(category), 800);
+    }
+  }, [location.search]);
 
   useEffect(() => {
-    const fetchPizzas = async () => {
-      try {
-        const res = await axios.get('http://localhost:5000/api/pizzas');
-        setPizzas(res.data);
-      } catch (err) {
-        setError('Failed to load menu. Please try again.');
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchPizzas();
+    axios.get('http://localhost:5000/api/pizzas')
+      .then(res => setPizzas(res.data))
+      .catch(err => { setError('Failed to load menu.'); console.error(err); })
+      .finally(() => setLoading(false));
   }, []);
 
-  const filteredPizzas = activeCategory === 'All'
-    ? pizzas
-    : pizzas.filter(p => p.category === activeCategory);
+  // ── Always show ALL pizzas, filter just highlights & scrolls ──
+  const allCategories = ['Classic', 'Chicken', 'Supreme', 'Veggie'];
+
+  const grouped = {
+    Classic: pizzas.filter(p => p.category === 'Classic'),
+    Chicken: pizzas.filter(p => p.category === 'Chicken'),
+    Supreme: pizzas.filter(p => p.category === 'Supreme'),
+    Veggie:  pizzas.filter(p => p.category === 'Veggie'),
+  };
 
   const counts = {
     All:     pizzas.length,
-    Classic: pizzas.filter(p => p.category === 'Classic').length,
-    Chicken: pizzas.filter(p => p.category === 'Chicken').length,
-    Supreme: pizzas.filter(p => p.category === 'Supreme').length,
-    Veggie:  pizzas.filter(p => p.category === 'Veggie').length,
+    Classic: grouped.Classic.length,
+    Chicken: grouped.Chicken.length,
+    Supreme: grouped.Supreme.length,
+    Veggie:  grouped.Veggie.length,
   };
 
-  const grouped = {
-    Classic: filteredPizzas.filter(p => p.category === 'Classic'),
-    Chicken: filteredPizzas.filter(p => p.category === 'Chicken'),
-    Supreme: filteredPizzas.filter(p => p.category === 'Supreme'),
-    Veggie:  filteredPizzas.filter(p => p.category === 'Veggie'),
-  };
+  // ── Category button click ─────────────────────────────────
+  function handleCategoryClick(cat) {
+    setActiveCategory(cat);
+    if (cat === 'All') {
+      // Scroll to top of menu content
+      const el = document.querySelector('.menu-content');
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      scrollToCategory(cat);
+    }
+  }
 
   return (
     <>
       <Navbar />
 
-      {/* ── Login Required Modal ── */}
       {showLoginModal && (
         <LoginModal
-          onLogin={() => {
-            setShowLoginModal(false);
-            navigate('/login');
-          }}
+          onLogin={() => { setShowLoginModal(false); navigate('/login'); }}
           onCancel={() => setShowLoginModal(false)}
         />
       )}
 
       <div className="menu-page">
-
         <MenuHero />
 
         <div className="menu-filter-wrap">
@@ -234,6 +203,7 @@ export default function CustomerMenu() {
             active={activeCategory}
             setActive={setActiveCategory}
             counts={counts}
+            onCategoryClick={handleCategoryClick}
           />
         </div>
 
@@ -251,20 +221,19 @@ export default function CustomerMenu() {
               <p>Menu is being prepared. Check back soon!</p>
             </div>
           ) : (
-            Object.entries(grouped).map(([category, list]) => (
+            // ── Always render ALL categories ──
+            allCategories.map(category => (
               <CategorySection
                 key={category}
                 category={category}
-                pizzas={list}
+                pizzas={grouped[category]}
                 onLoginRequired={() => setShowLoginModal(true)}
               />
             ))
           )}
         </div>
-
       </div>
 
-      <FloatingCart />
       <Footer />
       <Chatbot />
     </>

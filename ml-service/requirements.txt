@@ -1,3 +1,5 @@
+# Requirements for run the AI Model
+
 flask==3.0.0
 flask-cors==4.0.0
 prophet==1.1.5

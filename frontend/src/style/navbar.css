@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&family=Great+Vibes&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Lato:wght@300;400;700&family=Aclonica&display=swap');
+
 @keyframes navSlide {
   from { transform: translateY(-100%); opacity: 0; }
   to   { transform: translateY(0);     opacity: 1; }
@@ -31,6 +32,12 @@
 @keyframes loadBar {
   from { width: 0%; }
   to   { width: 100%; }
+}
+
+@keyframes badgePop {
+  0%   { transform: scale(0); }
+  70%  { transform: scale(1.25); }
+  100% { transform: scale(1); }
 }
 
 /* ── Navbar ── */
@@ -76,7 +83,7 @@
 .navbar-links-right a {
   font-family: 'Aclonica', sans-serif;
   font-size: 0.85rem;
-  font-weight: 400; 
+  font-weight: 400;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #f5ede0;
@@ -130,11 +137,67 @@
 .navbar-logo img:hover { border-color: #e2c97e; }
 .navbar-logo span { display: none; }
 
-/* ── User Section ── */
-.navbar-user-wrap {
+/* ── Right Section (Cart + User together) ── */
+.navbar-right-section {
   position: absolute;
   right: 32px; top: 50%;
   transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ── Cart Button ── */
+.navbar-cart-btn {
+  position: relative;
+  background: transparent;
+  border: 1.5px solid rgba(201, 168, 76, 0.5);
+  color: #c9a84c;
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.navbar-cart-btn:hover {
+  background: #c9a84c;
+  color: #1c2318;
+  border-color: #c9a84c;
+  transform: scale(1.08);
+}
+
+.navbar-cart-icon {
+  width: 18px; height: 18px;
+  stroke: currentColor;
+}
+
+/* ── Cart Badge ── */
+.navbar-cart-badge {
+  position: absolute;
+  top: -5px; right: -5px;
+  background: #c85a20;
+  color: #fff;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 700;
+  min-width: 18px; height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+  border: 2px solid rgba(20, 26, 16, 0.9);
+  animation: badgePop 0.3s ease;
+  line-height: 1;
+}
+
+/* ── User Section ── */
+.navbar-user-wrap {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 10px;

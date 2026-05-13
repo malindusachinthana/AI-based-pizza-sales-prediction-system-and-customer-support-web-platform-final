@@ -27,7 +27,7 @@
 ══════════════════════════════════════ */
 .menu-hero {
   position: relative;
-  height: 280px;
+  height: 350px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -59,13 +59,14 @@
     0 0 40px rgba(201, 168, 76, 0.4);
   line-height: 1;
   margin-bottom: 12px;
+  align-items: center;
 }
 
 .menu-hero-subtitle {
   font-family: var(--font-heading);
   font-size: 0.85rem;
   font-style: italic;
-  color: rgba(245, 237, 224, 0.85);
+  color: rgba(230, 226, 220, 0.85);
   max-width: 560px;
   margin: 0 auto;
   line-height: 1.7;

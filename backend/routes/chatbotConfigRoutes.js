@@ -29,7 +29,7 @@ const DEFAULTS = [
   },
 ];
 
-// ══ Named routes MUST come before /:key ══
+// Named routes MUST come before /:key
 
 // GET /api/chatbot-config/seed
 router.get('/seed', async (req, res) => {

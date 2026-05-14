@@ -4,14 +4,14 @@ const ChatbotConfigSchema = new mongoose.Schema({
   key: {
     type: String,
     required: true,
-    unique: true,   // e.g. 'hours', 'contact', 'payment', 'how_to_order'
+    unique: true,
   },
   label: {
-    type: String,   // e.g. 'Opening Hours'
+    type: String, 
     required: true,
   },
   answer: {
-    type: String,   // The HTML answer string shown in the chatbot
+    type: String,  
     required: true,
   },
   updatedAt: {

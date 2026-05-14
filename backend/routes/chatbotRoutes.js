@@ -1,6 +1,3 @@
-// chatbotRoutes.js  (UPDATED)
-// Place in: backend/routes/chatbotRoutes.js
-
 const express       = require('express');
 const router        = express.Router();
 const Pizza         = require('../models/Pizza');
@@ -8,7 +5,7 @@ const Order         = require('../models/order');
 const ChatbotConfig = require('../models/ChatbotConfig');
 const ChatbotLog    = require('../models/ChatbotLog');
 
-// Helper — get answer from DB config (falls back to hardcoded)
+// Helper — get answer from DB config
 async function getConfig(key, fallback) {
   try {
     const cfg = await ChatbotConfig.findOne({ key });
@@ -16,7 +13,7 @@ async function getConfig(key, fallback) {
   } catch { return fallback; }
 }
 
-// ── POST /api/chatbot/query ────────────────────────────────────
+// POST /api/chatbot/query
 router.post('/query', async (req, res) => {
   const { type } = req.body;
 
@@ -100,7 +97,7 @@ router.post('/query', async (req, res) => {
         });
       }
 
-      // ── Editable answers from MongoDB config ─────────────────
+      // Editable answers from MongoDB config
       case 'hours': {
         const answer = await getConfig('hours',
           `🕐 We're open every day:<br/><strong>Mon – Fri:</strong> 10:00 AM – 11:00 PM<br/><strong>Sat – Sun:</strong> 9:00 AM – 12:00 AM`

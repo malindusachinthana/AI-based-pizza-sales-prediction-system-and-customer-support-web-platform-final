@@ -173,7 +173,7 @@ body {
   border: 1px solid rgba(201, 168, 76, 0.2);
   border-radius: 6px;
   color: var(--text-muted);
-  font-family: var(--font-body);
+  font-family: 'Times New Roman', Times, serif;
   font-size: 0.8rem;
   cursor: pointer;
   transition: all var(--transition);

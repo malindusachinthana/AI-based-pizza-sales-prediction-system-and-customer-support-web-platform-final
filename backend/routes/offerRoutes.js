@@ -1,6 +1,3 @@
-// offerRoutes.js
-// Place in: backend/routes/offerRoutes.js
-
 const express = require('express');
 const router  = express.Router();
 const multer  = require('multer');
@@ -8,7 +5,7 @@ const path    = require('path');
 const fs      = require('fs');
 const Offer   = require('../models/Offer');
 
-// ── Multer — accept up to 4 images ────────────────────────────
+// Multer — accept up to 4 images
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     const dir = path.join(__dirname, '../uploads/offers');
@@ -21,7 +18,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-// ── GET /api/offers ────────────────────────────────────────────
+// GET /api/offers 
 router.get('/', async (req, res) => {
   try {
     const offers = await Offer.find({}).sort({ createdAt: -1 });
@@ -31,7 +28,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// ── GET /api/offers/active ─────────────────────────────────────
+// GET /api/offers/active
 router.get('/active', async (req, res) => {
   try {
     const offers = await Offer.find({
@@ -43,7 +40,7 @@ router.get('/active', async (req, res) => {
   }
 });
 
-// ── POST /api/offers ───────────────────────────────────────────
+// POST /api/offers
 router.post('/', upload.array('images', 4), async (req, res) => {
   try {
     const { badgeMain, badgeSub, pizzaName, description, familyText, isActive } = req.body;
@@ -65,7 +62,7 @@ router.post('/', upload.array('images', 4), async (req, res) => {
   }
 });
 
-// ── PUT /api/offers/:id ────────────────────────────────────────
+// PUT /api/offers/:id
 router.put('/:id', upload.array('images', 4), async (req, res) => {
   try {
     const { badgeMain, badgeSub, pizzaName, description, familyText, isActive, keepImages } = req.body;
@@ -89,7 +86,7 @@ router.put('/:id', upload.array('images', 4), async (req, res) => {
   }
 });
 
-// ── PATCH /api/offers/:id/toggle ──────────────────────────────
+// PATCH /api/offers/:id/toggle
 router.patch('/:id/toggle', async (req, res) => {
   try {
     const offer = await Offer.findById(req.params.id);
@@ -102,7 +99,7 @@ router.patch('/:id/toggle', async (req, res) => {
   }
 });
 
-// ── DELETE /api/offers/:id ─────────────────────────────────────
+// DELETE /api/offers/:id 
 router.delete('/:id', async (req, res) => {
   try {
     const offer = await Offer.findByIdAndDelete(req.params.id);

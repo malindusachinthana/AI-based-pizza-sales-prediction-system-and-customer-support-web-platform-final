@@ -32,11 +32,6 @@ function Login() {
 
   const navigate = useNavigate();
 
-  const handleForgotPassword = (e) => {
-    e.preventDefault();
-    alert("Redirecting to password reset...");
-  };
-
   const validate = async (e) => {
     e.preventDefault();
     setErrorMessage("");
@@ -107,15 +102,6 @@ function Login() {
               placeholder="Password"
               required
             />
-
-            <div className="remember-forgot">
-              <span
-                className="forgot-btn-link"
-                onClick={handleForgotPassword}
-              >
-                Forgot password..?
-              </span>
-            </div>
 
             {errorMessage && (
               <p style={{ color: "red", marginTop: "10px" }}>{errorMessage}</p>

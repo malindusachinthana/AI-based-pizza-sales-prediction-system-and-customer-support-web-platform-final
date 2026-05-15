@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&family=Great+Vibes&family=Uncial+Antiqua&display=swap');
 
-/* ── Variables ── */
+/* Variables */
 :root {
   --menu-bg:      #3a4a32;
   --menu-card:    rgba(180, 190, 170, 0.15);
@@ -15,16 +15,14 @@
   --transition:   0.3s ease;
 }
 
-/* ── Page Base ── */
+/* Page Base */
 .menu-page {
   background: var(--menu-bg);
   min-height: 100vh;
   padding-bottom: 60px;
 }
 
-/* ══════════════════════════════════════
-   HERO SECTION
-══════════════════════════════════════ */
+/* HERO SECTION */
 .menu-hero {
   position: relative;
   height: 350px;
@@ -73,9 +71,7 @@
   letter-spacing: 0.02em;
 }
 
-/* ══════════════════════════════════════
-   CATEGORY FILTER
-══════════════════════════════════════ */
+/*  CATEGORY FILTER */
 .menu-filter-wrap {
   display: flex;
   justify-content: center;
@@ -135,18 +131,14 @@
   background: rgba(28, 35, 24, 0.2);
 }
 
-/* ══════════════════════════════════════
-   MENU CONTENT
-══════════════════════════════════════ */
+/*  MENU CONTENT */
 .menu-content {
   max-width: 1100px;
   margin: 0 auto;
   padding: 24px 32px;
 }
 
-/* ══════════════════════════════════════
-   CATEGORY SECTION
-══════════════════════════════════════ */
+/*  CATEGORY SECTION */
 .menu-category-section {
   margin-bottom: 52px;
 }
@@ -174,20 +166,16 @@
 .menu-category-title::before { right: calc(50% + 100px); }
 .menu-category-title::after  { left:  calc(50% + 100px); }
 
-/* ══════════════════════════════════════
-   PIZZA GRID
-══════════════════════════════════════ */
+/*  PIZZA GRID */
 .menu-pizza-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);  /* ✅ 4 columns now */
+  grid-template-columns: repeat(4, 1fr); 
   gap: 18px;
-  max-width: 950px;                        /* ✅ Limit grid width */
+  max-width: 950px;   
   margin: 0 auto;
 }
 
-/* ══════════════════════════════════════
-   PIZZA CARD
-══════════════════════════════════════ */
+/*  PIZZA CARD */
 .menu-pizza-card {
   background: rgba(200, 210, 195, 0.18);
   border: 1px solid rgba(255, 255, 255, 0.18);
@@ -199,7 +187,7 @@
   padding: 0;
   gap: 0;
   transition: all 0.3s ease;
-  max-width: 220px;                        /* ✅ Card max width */
+  max-width: 220px;
   width: 100%;
   margin: 0 auto;
 }
@@ -210,13 +198,12 @@
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
 }
 
-/* ── Image ── */
+/* Image */
 .menu-pizza-img-wrap {
   width: 100%;
-  height: 150px;                           /* ✅ Smaller height */
+  height: 150px; 
   border-radius: 0;
   overflow: hidden;
-  background: rgba(240, 238, 232, 0.95);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -234,20 +221,20 @@
   transform: scale(1.06);
 }
 
-/* ── Body ── */
+/* Body */
 .menu-pizza-body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;                                /* ✅ Smaller gap */
+  gap: 8px;   
   width: 100%;
-  padding: 12px 12px 14px;                 /* ✅ Less padding */
+  padding: 12px 12px 14px; 
 }
 
-/* ── Name ── */
+/* Name */
 .menu-pizza-name {
   font-family: var(--font-heading);
-  font-size: 0.82rem;                      /* ✅ Smaller text */
+  font-size: 0.82rem; 
   font-weight: 500;
   color: var(--cream);
   text-align: center;
@@ -255,18 +242,18 @@
 }
 
 
-/* ── Size Dropdown ── */
+/* Size Dropdown */
 .menu-size-wrap { width: 100%; }
 
 .menu-size-select {
   width: 100%;
-  padding: 6px 10px;                       /* ✅ Smaller padding */
+  padding: 6px 10px;  
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 6px;
   color: var(--cream);
   font-family: var(--font-body);
-  font-size: 0.74rem;                      /* ✅ Smaller text */
+  font-size: 0.74rem; 
   cursor: pointer;
   text-align: center;
   transition: all var(--transition);
@@ -284,16 +271,16 @@
   color: var(--cream);
 }
 
-/* ── Purchase Button ── */
+/* Purchase Button */
 .menu-purchase-btn {
   width: 100%;
-  padding: 8px 12px;                       /* ✅ Smaller padding */
+  padding: 8px 12px;  
   background: rgba(245, 237, 224, 0.3);
   border: none;
   border-radius: 6px;
   color: var(--cream);
   font-family: 'Uncial Antiqua', serif;
-  font-size: 0.78rem;                      /* ✅ Smaller text */
+  font-size: 0.78rem; 
   letter-spacing: 0.05em;
   cursor: pointer;
   transition: all var(--transition);
@@ -306,9 +293,7 @@
   box-shadow: 0 4px 16px rgba(200, 90, 32, 0.4);
 }
 
-/* ══════════════════════════════════════
-   LOADING STATE
-══════════════════════════════════════ */
+/* LOADING STATE */
 .menu-loading {
   text-align: center;
   padding: 80px 20px;
@@ -334,9 +319,7 @@
   letter-spacing: 0.08em;
 }
 
-/* ══════════════════════════════════════
-   ERROR / EMPTY STATE
-══════════════════════════════════════ */
+/* ERROR / EMPTY STATE */
 .menu-error,
 .menu-empty {
   text-align: center;
@@ -358,7 +341,7 @@
   letter-spacing: 0.05em;
 }
 
-/* ── Login Required Modal ───────────────────────────────────── */
+/* Login Required Modal */
 
 .login-modal-overlay {
   position: fixed;
@@ -458,9 +441,7 @@
 }
 
 
-/* ══════════════════════════════════════
-   RESPONSIVE
-══════════════════════════════════════ */
+/* RESPONSIVE */
 @media (max-width: 1000px) {
   .menu-pizza-grid { grid-template-columns: repeat(3, 1fr); }
 }

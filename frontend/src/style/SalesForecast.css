@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Playfair+Display:ital,wght@0,400;1,400&display=swap');
-/* ── Page ─────────────────────────────────────────────────────── */
+/*  Page */
 .sf-page {
   min-height: 100vh;
   background: #1a1e16;
@@ -9,7 +9,7 @@
   padding: 0 0 48px;
 }
 
-/* ── Header ───────────────────────────────────────────────────── */
+/* Header */
 .sf-header {
   background: linear-gradient(180deg, #0d0f0a 0%, #1a1e16 100%);
   border-bottom: 1px solid #3a3d2e;
@@ -63,7 +63,7 @@
   display: inline-block;
 }
 
-/* ── Body ─────────────────────────────────────────────────────── */
+/* Body */
 .sf-body {
   padding: 28px 32px;
 }
@@ -82,7 +82,7 @@
   font-family: Arial, sans-serif;
 }
 
-/* ── Error banner ─────────────────────────────────────────────── */
+/* Error banner */
 .sf-error {
   background: #331a1a;
   border: 1px solid #6b3333;
@@ -94,7 +94,7 @@
   font-family: Arial, sans-serif;
 }
 
-/* ── Loading ──────────────────────────────────────────────────── */
+/* Loading */
 
 .sf-loading {
   min-height: 100vh;
@@ -135,7 +135,7 @@
   text-transform: uppercase;
 }
 
-/* ── Tabs ─────────────────────────────────────────────────────── */
+/* Tabs */
 .sf-tabs {
   display: flex;
   gap: 4px;
@@ -166,7 +166,7 @@
   border-bottom-color: #c8872a;
 }
 
-/* ── Metric cards ─────────────────────────────────────────────── */
+/* Metric cards */
 .sf-metrics-row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -208,7 +208,7 @@
   font-family: Arial, sans-serif;
 }
 
-/* ── Card ─────────────────────────────────────────────────────── */
+/* Card */
 .sf-card {
   background: #1f2419;
   border: 1px solid #3a3d2e;
@@ -267,7 +267,7 @@
   font-family: Arial, sans-serif;
 }
 
-/* ── Dropdown ─────────────────────────────────────────────────── */
+/* Dropdown */
 .sf-dropdown-row {
   display: flex;
   align-items: center;
@@ -303,7 +303,7 @@
   border-color: #c8872a;
 }
 
-/* ── Day stat mini cards ──────────────────────────────────────── */
+/* Day stat mini cards */
 .sf-day-stats {
   display: flex;
   gap: 10px;
@@ -343,7 +343,7 @@
   margin: 2px 0 0;
 }
 
-/* ── Table ────────────────────────────────────────────────────── */
+/* Table */
 .sf-table-wrap {
   overflow-x: auto;
 }
@@ -399,7 +399,7 @@
   font-weight: 400;
 }
 
-/* ── Badge ────────────────────────────────────────────────────── */
+/* Badge */
 .sf-badge {
   display: inline-block;
   border-radius: 4px;
@@ -419,7 +419,7 @@
   color: #c8a060;
 }
 
-/* ── Upload box ───────────────────────────────────────────────── */
+/* Upload box */
 .sf-upload-box {
   border: 2px dashed #4a4d3a;
   border-radius: 12px;
@@ -451,7 +451,7 @@
   font-family: Arial, sans-serif;
 }
 
-/* ── Info box (CSV format hint) ───────────────────────────────── */
+/* Info box (CSV format hint) */
 .sf-info-box {
   background: #1a1e16;
   border-radius: 8px;
@@ -476,7 +476,7 @@
   margin: 8px 0 0;
 }
 
-/* ── Retrain report ───────────────────────────────────────────── */
+/* Retrain report */
 .sf-retrain-cats {
   display: flex;
   gap: 10px;

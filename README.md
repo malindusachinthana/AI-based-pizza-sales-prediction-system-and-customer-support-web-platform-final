@@ -321,6 +321,12 @@ Base URL: `http://localhost:5001`
 
 ---
 
+## All Project Documentayion
+
+![Project Proposal](https://liveplymouthac-my.sharepoint.com/:f:/g/personal/10953031_students_plymouth_ac_uk/IgDdReHJnrMkQaMEoTOXnWUHAWjzgh3_wOiW325o37eew68?e=iewP4t)
+
+---
+
 ## 📜 License
 
 This project was developed as a final year academic submission for the **BSc (Hons) Software Engineering** degree at the **University of Plymouth**, affiliated with **NSBM Green University, Sri Lanka**.
@@ -328,16 +334,11 @@ This project was developed as a final year academic submission for the **BSc (Ho
 > Dataset sourced from [Kaggle — Open Source Pizza Sales Dataset](https://www.kaggle.com)  
 > PayPal integration uses Sandbox (test) credentials only.
 
----
-
-## All Project Documentayion
-
-![Project Proposal](https://liveplymouthac-my.sharepoint.com/:f:/g/personal/10953031_students_plymouth_ac_uk/IgDdReHJnrMkQaMEoTOXnWUHAWjzgh3_wOiW325o37eew68?e=iewP4t)
 
 
 <div align="center">
 
-© 2026 OvenZa Crust. All Rights Reserved...!
+© 2026 OvenZa Crust. All Rights Reserved...! </br>
 By, Malindu Sachinthana
 
 </div>

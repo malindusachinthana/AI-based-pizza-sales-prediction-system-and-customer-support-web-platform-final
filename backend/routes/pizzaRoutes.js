@@ -6,7 +6,7 @@ const router   = express.Router(); // ✅ This was missing!
 const Pizza    = require('../models/Pizza');
 const { protect, adminOnly } = require('../middleware/authMiddleware');
 
-// ── Multer Configuration ──────────────────────────────────────
+// Multer Configuration
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, 'uploads/pizzas/');
@@ -28,7 +28,7 @@ const upload = multer({
   }
 });
 
-// ── GET ALL PIZZAS (public) ───────────────────────────────────
+// GET ALL PIZZAS (public)
 router.get('/', async (req, res) => {
   try {
     const pizzas = await Pizza.find().sort({ category: 1, name: 1 });
@@ -38,7 +38,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// ── GET BY CATEGORY (public) ──────────────────────────────────
+// GET BY CATEGORY (public)
 router.get('/category/:category', async (req, res) => {
   try {
     const pizzas = await Pizza.find({ category: req.params.category });
@@ -48,7 +48,7 @@ router.get('/category/:category', async (req, res) => {
   }
 });
 
-// ── ADD NEW PIZZA (admin only) ────────────────────────────────
+// ADD NEW PIZZA (admin only)
 router.post('/', protect, adminOnly, upload.single('image'), async (req, res) => {
   try {
     const { name, category, description, smallPrice, mediumPrice, largePrice } = req.body;
@@ -79,7 +79,7 @@ router.post('/', protect, adminOnly, upload.single('image'), async (req, res) =>
   }
 });
 
-// ── DELETE PIZZA (admin only) ─────────────────────────────────
+// DELETE PIZZA (admin only)
 router.delete('/:id', protect, adminOnly, async (req, res) => {
   try {
     const pizza = await Pizza.findById(req.params.id);

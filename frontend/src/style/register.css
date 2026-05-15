@@ -19,7 +19,7 @@
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0, 0, 0, 0.65);     /* Adjust the 0.65 to make the background darker or lighter */
+  background: rgba(0, 0, 0, 0.65);
   z-index: 1;
 }
 
@@ -27,15 +27,15 @@
 .auth-box {
   position: relative;
   z-index: 2;
-  background: rgba(20, 20, 20, 0.75); /* Dark transparent background */
+  background: rgba(20, 20, 20, 0.75);
   padding: 45px 50px;
   border-radius: 15px;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
   width: 100%;
   max-width: 420px;
   text-align: center;
-  border: 1px solid rgba(242, 158, 32, 0.2); /* Subtle orange border glow */
-  backdrop-filter: blur(8px);                  /* Creates the frosted glass effect */
+  border: 1px solid rgba(242, 158, 32, 0.2);
+  backdrop-filter: blur(8px); 
 }
 
 .auth-letter{
@@ -55,7 +55,7 @@
 }
 
 .auth-box h1 .orange-text {
-  color: #f29e20;         /* The signature OvenZa orange */
+  color: #f29e20; 
 }
 
 /* Welcome / Create Account Text */
@@ -75,7 +75,7 @@
 
 .input-group label {
   display: block;
-  color: #f29e20;    /* Orange labels matching the image */
+  color: #f29e20;
   margin-bottom: 8px;
   font-size: 14px;
   font-weight: 500;
@@ -86,7 +86,7 @@
 .input-group input {
   width: 100%;
   padding: 12px 15px;
-  background: rgba(255, 255, 255, 0.05); /* Highly transparent white */
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
   color: #ffffff;
@@ -101,7 +101,7 @@
 }
 
 .input-group input:focus {
-  border-color: #f29e20;              /* Glows orange when clicked */
+  border-color: #f29e20;
   background: rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 10px rgba(242, 158, 32, 0.3);
 }
@@ -125,7 +125,7 @@
 }
 
 .primary-btn:hover {
-  background-color: #ffffff;    /* Darkens slightly on hover */
+  background-color: #ffffff;
 }
 
 .primary-btn:active {
@@ -162,8 +162,7 @@
   text-decoration: underline;
 }
 
-/* REGISTER SUCCESS ANIMATION OVERLAY */
-
+/* Register Success Animation Overlay */
 .register-overlay {
   position: fixed;
   inset: 0;

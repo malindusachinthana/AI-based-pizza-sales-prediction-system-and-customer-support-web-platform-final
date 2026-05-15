@@ -1,4 +1,4 @@
-# 🍕 OvenZa Crust — AI-Based Pizza Sales Prediction System & Customer Support Web Platform
+# 🍕 OvenZa Crust - AI-Based Pizza Sales Prediction System & Customer Support Web Platform
 
 <div align="center">
 

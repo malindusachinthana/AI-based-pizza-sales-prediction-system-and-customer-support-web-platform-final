@@ -1,7 +1,7 @@
 /* AdminProfile.css */
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Playfair+Display:ital,wght@0,600;1,400&display=swap');
 
-/* ── Wrap ─────────────────────────────────────────────────── */
+/* Wrap */
 .ap-wrap {
   padding: 32px 28px;
   font-family: 'Lato', sans-serif;
@@ -11,7 +11,7 @@
   margin: 0 auto;
 }
 
-/* ── Loading ──────────────────────────────────────────────── */
+/* Loading */
 .ap-loading {
   display: flex;
   flex-direction: column;
@@ -46,7 +46,7 @@
   margin: 0;
 }
 
-/* ── Header ───────────────────────────────────────────────── */
+/* Header */
 .ap-header {
   display: flex;
   align-items: center;
@@ -98,7 +98,7 @@
   border-radius: 20px;
 }
 
-/* ── Card ─────────────────────────────────────────────────── */
+/* Card */
 .ap-card {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(201, 168, 76, 0.12);
@@ -106,7 +106,7 @@
   padding: 32px 28px;
 }
 
-/* ── Avatar section ───────────────────────────────────────── */
+/* Avatar section */
 .ap-avatar-section {
   display: flex;
   flex-direction: column;
@@ -148,14 +148,14 @@
   margin: 0;
 }
 
-/* ── Divider ──────────────────────────────────────────────── */
+/* Divider */
 .ap-divider {
   height: 1px;
   background: rgba(201, 168, 76, 0.12);
   margin: 24px 0;
 }
 
-/* ── Info Rows ────────────────────────────────────────────── */
+/* Info Rows */
 .ap-info-rows {
   display: flex;
   flex-direction: column;
@@ -196,7 +196,7 @@
   border-radius: 20px;
 }
 
-/* ── Responsive ───────────────────────────────────────────── */
+/* Responsive */
 @media (max-width: 600px) {
   .ap-wrap    { padding: 20px 14px; }
   .ap-card    { padding: 24px 18px; }

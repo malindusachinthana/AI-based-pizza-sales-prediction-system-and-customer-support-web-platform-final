@@ -1,6 +1,3 @@
-// OrderConfirmation.jsx
-// Place in: frontend/src/pages/client/OrderConfirmation.jsx
-
 import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Navbar from '../../components/navbar';

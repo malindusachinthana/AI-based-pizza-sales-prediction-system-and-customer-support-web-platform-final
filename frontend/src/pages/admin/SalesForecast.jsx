@@ -17,7 +17,7 @@ const CATEGORY_COLORS = {
   Veggie : '#5a8a3a',
 };
 
-// ── Custom tooltip ────────────────────────────────────────────────
+// Custom tooltip
 const CustomTooltip = ({ active, payload, label }) => {
   if (!active || !payload?.length) return null;
   return (
@@ -36,7 +36,7 @@ const CustomTooltip = ({ active, payload, label }) => {
   );
 };
 
-// ── Metric card ───────────────────────────────────────────────────
+// Metric card
 const MetricCard = ({ label, value, sub, accent }) => (
   <div className="sf-metric-card">
     <p className="sf-metric-label">{label}</p>
@@ -45,7 +45,7 @@ const MetricCard = ({ label, value, sub, accent }) => (
   </div>
 );
 
-// ── Main Component ────────────────────────────────────────────────
+// Main Component
 export default function SalesForecast() {
   const [forecastData,  setForecastData]  = useState([]);
   const [accuracyData,  setAccuracyData]  = useState(null);
@@ -74,7 +74,7 @@ export default function SalesForecast() {
   }
 
 
-  // ── Derived data ──────────────────────────────────────────────
+  // Derived data
   const displayData    = selectedDay === 'all'
     ? forecastData
     : forecastData.filter(d => d.day_number === Number(selectedDay));
@@ -102,7 +102,7 @@ export default function SalesForecast() {
     Veggie  : d.categories?.Veggie?.predicted  || 0,
   }));
 
-  // ── Loading 
+  // Loading 
   if (loading) return (
     <div className="sf-loading">
       <div className="sf-loading-pizza">🍕</div>
@@ -113,7 +113,7 @@ export default function SalesForecast() {
   return (
     <div className="sf-page">
 
-      {/* ── Header ── */}
+      {/* Header */}
       <div className="sf-header">
         <div className="sf-header-logo">🍕</div>
         <div>
@@ -126,7 +126,7 @@ export default function SalesForecast() {
         </div>
       </div>
 
-      {/* ── Body ── */}
+      {/* Body */}
       <div className="sf-body">
         <h1 className="sf-title">Sales Forecast</h1>
         <p className="sf-subtitle">
@@ -136,7 +136,7 @@ export default function SalesForecast() {
         {/* Error */}
         {error && <div className="sf-error">⚠ {error}</div>}
 
-        {/* ── Tabs ── */}
+        {/* Tabs */}
         <div className="sf-tabs">
           {[
             { key: 'forecast',  label: '📈 14 - Days Forecast'  },
@@ -152,9 +152,7 @@ export default function SalesForecast() {
           ))}
         </div>
 
-        {/* ════════════════════════════════════
-            TAB 1 — 14-DAY FORECAST
-        ════════════════════════════════════ */}
+        {/* TAB 1 — 14-DAY FORECAST */}
         {activeTab === 'forecast' && (
           <>
             {/* Metric cards */}
@@ -302,9 +300,7 @@ export default function SalesForecast() {
           </>
         )}
 
-        {/* ════════════════════════════════════
-            TAB 2 — DAILY BREAKDOWN
-        ════════════════════════════════════ */}
+        {/*TAB 2 — DAILY BREAKDOWN */}
         {activeTab === 'breakdown' && (
           <>
             <div className="sf-card">
@@ -378,9 +374,7 @@ export default function SalesForecast() {
           </>
         )}
 
-        {/* ════════════════════════════════════
-            TAB 3 — MODEL ACCURACY
-        ════════════════════════════════════ */}
+        {/* TAB 3 — MODEL ACCURACY */}
         {activeTab === 'accuracy' && accuracyData && (
           <>
             <div className="sf-card">

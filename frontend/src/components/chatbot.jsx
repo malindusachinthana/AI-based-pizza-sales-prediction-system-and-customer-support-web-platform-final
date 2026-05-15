@@ -3,7 +3,7 @@ import axios from 'axios';
 import '../style/chatbot.css';
 import chatIcon from '../../src/assets/OvenZlogo.png';
 
-// ── Hardcoded questions (always shown) ────────────────────────
+// Hardcoded questions (always shown)
 const FIXED_QUESTIONS = [
   { id: 'best_seller',   label: '🏆 Best selling pizza?'        },
   { id: 'most_expensive',label: '💎 Most expensive pizza?'      },
@@ -34,12 +34,12 @@ export default function Chatbot() {
   const bottomRef  = useRef(null);
   const wrapperRef = useRef(null);
 
-  // ── Auto-scroll ──────────────────────────────────────────
+  // Auto-scroll
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  // ── Close on outside click ───────────────────────────────
+  // Close on outside click
   useEffect(() => {
     function handleClickOutside(event) {
       if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
@@ -50,7 +50,7 @@ export default function Chatbot() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // ── Load custom questions from DB ────────────────────────
+  // Load custom questions from DB
   useEffect(() => {
     axios.get('http://localhost:5000/api/chatbot-config')
       .then(res => {
@@ -66,7 +66,7 @@ export default function Chatbot() {
   // All questions = fixed + custom from DB
   const allQuestions = [...FIXED_QUESTIONS, ...extraQs];
 
-  // ── Handle question tap ──────────────────────────────────
+  // Handle question tap
   async function handleQuestion(q) {
     setMessages(prev => [...prev, { from: 'user', text: q.label }]);
     setLoading(true);
@@ -95,7 +95,7 @@ export default function Chatbot() {
 
   return (
     <div ref={wrapperRef}>
-      {/* ── Floating Bubble Button ── */}
+      {/* Floating Bubble Button */}
       <button
         className={`cb-bubble ${open ? 'cb-bubble--active' : ''}`}
         onClick={() => setOpen(o => !o)}
@@ -114,7 +114,7 @@ export default function Chatbot() {
         )}
       </button>
 
-      {/* ── Chat Window ── */}
+      {/* Chat Window */}
       <div className={`cb-window ${open ? 'cb-window--open' : ''}`}>
 
         {/* Header */}

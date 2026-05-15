@@ -140,6 +140,7 @@
     text-align: center;
     font-size: 0.9rem;
     color: #ffffff;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .register-link a {
@@ -148,6 +149,7 @@
     cursor: pointer;
     text-decoration: none;
     transition: color 0.3s ease;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .register-link a:hover {

@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../../style/specialOffersManagement.css';
@@ -61,6 +59,7 @@ export default function SpecialOffersManagement() {
       isActive:    offer.isActive,
     });
     setImageFiles([null, null, null, null]);
+
     // Load existing images as previews
     const previews = ['', '', '', ''];
     (offer.images || []).forEach((img, i) => {
@@ -148,7 +147,7 @@ export default function SpecialOffersManagement() {
         <button className="som-add-btn" onClick={handleAdd}>+ Add Offer</button>
       </div>
 
-      {/* ── Add / Edit Form ── */}
+      {/* Add / Edit Form */}
       {showForm && (
         <div className="som-form-card">
           <h3 className="som-form-title">{editOffer ? '✏️ Edit Offer' : '➕ New Offer'}</h3>
@@ -247,7 +246,7 @@ export default function SpecialOffersManagement() {
         </div>
       )}
 
-      {/* ── Offers List ── */}
+      {/* Offers List */}
       {offers.length === 0 ? (
         <div className="som-empty">
           <span>✦</span>

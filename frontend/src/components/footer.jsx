@@ -1,6 +1,3 @@
-// footer.jsx
-// Place in: frontend/src/components/footer.jsx
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logoCrust from '../assets/OvenzaCrust logo.png';
@@ -10,13 +7,13 @@ export default function Footer() {
   return (
     <footer className="footer">
 
-      {/* ── Logo ── */}
+      {/* Logo */}
       <div className="footer-logo-wrap">
         <img src={logoCrust} alt="OvenZa Crust" className="footer-logo-img" />
         <span className="footer-logo-text">OVENZA</span>
       </div>
 
-      {/* ── Social Icons ── */}
+      {/* Social Icons */}
       <div className="footer-socials">
 
         {/* Facebook */}
@@ -51,7 +48,7 @@ export default function Footer() {
 
       </div>
 
-      {/* ── Nav Links ── */}
+      {/* Nav Links */}
       <nav className="footer-nav">
         <Link to="/">Home</Link>
         <span className="footer-divider">|</span>
@@ -64,7 +61,7 @@ export default function Footer() {
         <Link to="/about">About Us</Link>
       </nav>
 
-      {/* ── Copyright ── */}
+      {/* Copyright */}
       <p className="footer-copy">
         © 2026 OvenZa Crust. All Rights Reserved...!<br />
         By, Malindu Sachinthana.

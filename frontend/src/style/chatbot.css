@@ -1,15 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital@1&display=swap');
 
-/* ── Floating Bubble ──────────────────────────────────────── */
+/* Floating Bubble */
 .cb-bubble {
   position: fixed;
   bottom: 28px;
   right: 28px;
   z-index: 1000;
-  width: 58px;             /* Changed back to fixed width */
+  width: 58px;             
   height: 58px;
-  border-radius: 50%;      /* Changed back to perfect circle */
-  padding: 0;              /* Removed side padding */
+  border-radius: 50%;      
+  padding: 0;             
   background: linear-gradient(135deg, #3b4a32, #c9a84c);
   border: none;
   cursor: pointer;
@@ -23,12 +23,12 @@
 
 /* Custom Image Icon Styling */
 .cb-bubble-icon {
-  width: 36px;             /* Made slightly larger since it's the only item */
+  width: 36px;             
   height: 36px;
-  margin: 0;               /* Removed the right margin */
+  margin: 0;              
   vertical-align: middle;
   object-fit: contain;     
-  border-radius: 50%;      /* Ensures the logo fits well inside the circular button */
+  border-radius: 50%;     
 }
 
 /* Text inside the bubble */
@@ -47,7 +47,7 @@
 }
 
 .cb-bubble:hover {
-  transform: scale(1.1);   /* Slightly increased the hover pop */
+  transform: scale(1.1);
   box-shadow: 0 10px 32px rgba(0, 0, 0, 0.5), 0 0 0 6px rgba(201, 168, 76, 0.2);
   animation: none;
 }
@@ -80,7 +80,7 @@
   100% { transform: scale(1); opacity: 0; }
 }
 
-/* ── Chat Window ──────────────────────────────────────────── */
+/* Chat Window */
 .cb-window {
   position: fixed;
   bottom: 100px;
@@ -110,7 +110,7 @@
   pointer-events: all;
 }
 
-/* ── Header ───────────────────────────────────────────────── */
+/* Header */
 .cb-header {
   background: linear-gradient(135deg, #2d3828, #3b4a32);
   border-bottom: 1px solid rgba(201, 168, 76, 0.15);
@@ -179,7 +179,7 @@
   background: rgba(201, 168, 76, 0.1);
 }
 
-/* ── Messages ─────────────────────────────────────────────── */
+/* Messages */
 .cb-messages {
   flex: 1;
   overflow-y: auto;
@@ -246,7 +246,7 @@
   border-bottom-right-radius: 4px;
 }
 
-/* ── Typing dots ──────────────────────────────────────────── */
+/* Typing dots */
 .cb-typing {
   display: flex;
   align-items: center;
@@ -270,7 +270,7 @@
   40%           { transform: translateY(-6px); opacity: 1;   }
 }
 
-/* ── Footer / Questions ───────────────────────────────────── */
+/* Footer / Questions */
 .cb-footer {
   border-top: 1px solid rgba(201, 168, 76, 0.12);
   background: #1a2016;
@@ -313,7 +313,7 @@
   transform: translateX(3px);
 }
 
-/* ── Ask Another ──────────────────────────────────────────── */
+/* Ask Another */
 .cb-ask-another {
   padding: 12px 14px;
 }
@@ -337,7 +337,7 @@
   transform: scale(1.02);
 }
 
-/* ── Mobile ───────────────────────────────────────────────── */
+/* Mobile  */
 @media (max-width: 480px) {
   .cb-window {
     width: calc(100vw - 24px);

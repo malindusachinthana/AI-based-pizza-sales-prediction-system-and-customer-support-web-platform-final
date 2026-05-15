@@ -37,7 +37,9 @@
 
 ## 🧾 Project Overview
 
-**OvenZa Crust** is a full-stack, AI-powered web application developed for a wood-fired pizza restaurant based in Maharagama, Colombo, Sri Lanka. Built using the **MERN stack** integrated with a **Python/Flask AI microservice**, the platform addresses three core operational challenges:
+**OvenZa Crust** is a full-stack, AI-powered web application developed for a wood-fired pizza restaurant based in Maharagama, Colombo, Sri Lanka. Built using the **MERN stack** integrated with a **Python/Flask AI microservice**, the platform addresses three core operational challenges:</br>
+
+- [Final Project Report](https://drive.google.com/file/d/1HUylOB8neK8KLQlacCuA_XFipoP141Tn/view?usp=sharing)
 
 | Problem | Solution |
 |---|---|

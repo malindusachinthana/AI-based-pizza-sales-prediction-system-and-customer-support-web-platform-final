@@ -7,7 +7,7 @@ import ChatbotManagement from './chatbotManagement.jsx';
 import AdminProfile from './adminProfile.jsx';
 import SpecialOffersManagement from './specialOffersManagement.jsx';
 
-// ── Route Protection ──────────────────────────────────────────
+// Route Protection
 function useAdminProtection() {
   const navigate = useNavigate();
   useEffect(() => {
@@ -19,7 +19,7 @@ function useAdminProtection() {
   }, [navigate]);
 }
 
-// ── Fetch Real Stats from Backend ─────────────────────────────
+// Fetch Real Stats from Backend
 function useAdminStats() {
   const [stats, setStats] = useState({
     totalCustomers: 0,
@@ -51,7 +51,7 @@ function useAdminStats() {
   return { stats, loading };
 }
 
-// ── Stat Card ─────────────────────────────────────────────────
+// Stat Card
 function StatCard({ icon, value, label, change, accent }) {
   return (
     <div className={`stat-card stat-${accent}`}>
@@ -63,7 +63,7 @@ function StatCard({ icon, value, label, change, accent }) {
   );
 }
 
-// ── Sidebar ───────────────────────────────────────────────────
+// Sidebar
 function Sidebar({ active, setActive }) {
   const navigate = useNavigate();
 
@@ -153,11 +153,11 @@ function Sidebar({ active, setActive }) {
   );
 }
 
-// ── Dashboard Overview ────────────────────────────────────────
+// Dashboard Overview
 function DashboardOverview({ setActive }) {
   const { stats, loading } = useAdminStats();
 
-  // ── Weekly Sales State ─────────────────────────────────────
+  // Weekly Sales State
   const [weeklySales,    setWeeklySales]    = useState([]);
   const [weeklyLoading,  setWeeklyLoading]  = useState(true);
   const [hoveredDay,     setHoveredDay]     = useState(null);
@@ -279,7 +279,7 @@ function DashboardOverview({ setActive }) {
       {/* Mid Row */}
       <div className="mid-grid">
 
-        {/* ── Weekly Sales Chart (LIVE) ── */}
+        {/* Weekly Sales Chart (LIVE) */}
         <div className="admin-panel">
           <div className="panel-header">
             <span className="panel-title">Weekly Sales</span>
@@ -422,7 +422,7 @@ function DashboardOverview({ setActive }) {
 }
 
 
-// ── Coming Soon Panel ─────────────────────────────────────────
+// Coming Soon Panel
 function ComingSoon({ title }) {
   return (
     <div className="admin-content">
@@ -435,7 +435,7 @@ function ComingSoon({ title }) {
   );
 }
 
-// ── Main Export ───────────────────────────────────────────────
+// Main Export
 export default function AdminDashboard() {
   useAdminProtection();
   const [active, setActive] = useState('dashboard');
@@ -448,6 +448,7 @@ export default function AdminDashboard() {
       case 'offers':    return <SpecialOffersManagement/>;
       case 'Chatbot': return <ChatbotManagement />;
       case 'profile':   return <AdminProfile />;
+      case 'settings':  return <ComingSoon title="Settings" />;
       default:          return <DashboardOverview setActive={setActive} />;
     }
   };

@@ -1,8 +1,6 @@
-/* ══════════════════════════════════════
-   PIZZA MENU MANAGEMENT
-══════════════════════════════════════ */
+/* PIZZA MENU MANAGEMENT */
 
-/* ── Header ── */
+/* Header */
 .add-pizza-btn {
   padding: 10px 22px;
   background: var(--gold);
@@ -20,7 +18,7 @@
   transform: translateY(-2px);
 }
 
-/* ── Add Form ── */
+/* Add Form */
 .add-pizza-form {
   background: var(--bg-card);
   border: 1px solid rgba(201, 168, 76, 0.2);
@@ -126,9 +124,7 @@
   color: var(--red);
 }
 
-/* ══════════════════════════════════════
-   CATEGORY SECTION
-══════════════════════════════════════ */
+/*  CATEGORY SECTION */
 .category-section {
   margin-bottom: 48px;
 }
@@ -143,18 +139,15 @@
   text-transform: capitalize;
 }
 
-/* ══════════════════════════════════════
-   PIZZA GRID
-══════════════════════════════════════ */
-/* ── Pizza Grid ── */
+/* Pizza Grid */
 .pizza-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* ✅ 4 columns now */
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   padding: 0 8px;
 }
 
-/* ── Pizza Card ── */
+/* Pizza Card */
 .pizza-card {
   background: rgba(180, 190, 170, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -164,7 +157,7 @@
   flex-direction: column;
   align-items: center;
   padding: 12px 12px 24px;
-  gap: 16px;                 /* ✅ More gap */
+  gap: 16px;  
   transition: all 0.3s ease;
   cursor: default;
   max-width: 220px;
@@ -180,11 +173,10 @@
 
 /* ── Image Wrap ── */
 .pizza-card-img-wrap {
-  width: 140px;              /* ✅ Smaller image */
-  height: 140px;             /* ✅ Smaller image */
+  width: 140px;   
+  height: 140px;    
   border-radius: 12px;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.92);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -202,7 +194,7 @@
   transform: scale(1.06);
 }
 
-/* ── Pizza Name ── */
+/* Pizza Name */
 .pizza-card-name {
   font-family: var(--font-heading);
   font-size: 0.82rem;
@@ -210,10 +202,10 @@
   color: var(--cream);
   text-align: center;
   line-height: 1.4;
-  margin-top: 12px;          /* ✅ More space above name */
+  margin-top: 12px;
 }
 
-/* ── Size Dropdown ── */
+/* Size Dropdown */
 .pizza-size-select {
   padding: 6px 10px;
   background: rgba(255, 255, 255, 0.12);
@@ -221,7 +213,7 @@
   border-radius: 20px;
   color: var(--cream);
   font-family: var(--font-body);
-  font-size: 0.74rem;        /* ✅ Slightly smaller */
+  font-size: 0.74rem;
   cursor: pointer;
   width: 100%;
   text-align: center;
@@ -233,12 +225,12 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 8px;           /* ✅ More space above dropdown */
+  margin-top: 8px;
 }
 
 .pizza-size-select {
-  padding: 8px 12px;         /* ✅ More padding */
-  background: rgba(255, 255, 255, 0.12);
+  padding: 8px 12px; 
+  background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 20px;
   color: var(--cream);
@@ -260,17 +252,17 @@
   color: var(--cream);
 }
 
-/* ── Card Footer ── */
+/* Card Footer */
 .pizza-card-footer {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  margin-top: 14px;          /* ✅ More space above delete btn */
+  margin-top: 14px;
 }
 
-/* ── Delete Button ── */
+/* Delete Button */
 .btn-delete {
   width: 100%;
   padding: 8px 12px;
@@ -279,7 +271,7 @@
   border-radius: 8px;
   color: #e07070;
   font-family: var(--font-body);
-  font-size: 0.75rem;        /* ✅ Slightly smaller */
+  font-size: 0.75rem; 
   font-weight: 600;
   cursor: pointer;
   transition: all var(--transition);
@@ -292,9 +284,7 @@
   border-color: var(--red);
 }
 
-/* ══════════════════════════════════════
-   EMPTY STATE
-══════════════════════════════════════ */
+/*  EMPTY STATE */
 .empty-state {
   text-align: center;
   padding: 60px 20px;
@@ -310,9 +300,7 @@
   font-style: italic;
 }
 
-/* ══════════════════════════════════════
-   LOADING
-══════════════════════════════════════ */
+/*  LOADING */
 .loading-stats {
   text-align: center;
   padding: 40px;
@@ -322,9 +310,7 @@
   font-size: 1.1rem;
 }
 
-/* ══════════════════════════════════════
-   RESPONSIVE
-══════════════════════════════════════ */
+/*  RESPONSIVE */
 @media (max-width: 1100px) {
   .pizza-grid { grid-template-columns: repeat(2, 1fr); }
 }
@@ -333,7 +319,7 @@
   .form-grid    { grid-template-columns: 1fr; }
   .form-buttons { flex-direction: column; }
 }
-/* ── Responsive ── */
+/* Responsive */
 @media (max-width: 1200px) {
   .pizza-grid { grid-template-columns: repeat(3, 1fr); }
 }

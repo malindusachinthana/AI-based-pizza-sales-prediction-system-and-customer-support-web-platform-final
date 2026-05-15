@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&family=Great+Vibes&display=swap');
 
-/* ── CSS Variables ── */
+/* CSS Variables */
 :root {
   --bg-dark:      #1c2318;
   --bg-section:   #242e1f;
@@ -23,7 +23,7 @@
   --shadow-deep:  0 16px 48px rgba(0, 0, 0, 0.55);
 }
 
-/* ── Reset & Base ── */
+/* Reset & Base */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
@@ -33,7 +33,7 @@ body {
 }
 .home-page { overflow-x: hidden; }
 
-/* ── Keyframe Animations ── */
+/* Keyframe Animations */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(40px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -55,7 +55,7 @@ body {
   50%       { box-shadow: 0 0 28px rgba(201, 168, 76, 0.7); }
 }
 
-/* ── Scroll Reveal ── */
+/* Scroll Reveal */
 .reveal {
   opacity: 0;
   transform: translateY(36px);
@@ -75,9 +75,7 @@ body {
 }
 .reveal-right.visible { opacity: 1; transform: translateX(0); }
 
-/* ══════════════════════════════════════
-   HERO SECTION — fixed full viewport
-══════════════════════════════════════ */
+/* HERO SECTION — fixed full viewport */
 .hero {
   position: relative;
   height: 100vh;
@@ -87,7 +85,6 @@ body {
   justify-content: center;
   text-align: center;
   overflow: hidden;
-  /* ✅ Isolate hero so nothing from next section overlaps */
   isolation: isolate;
   z-index: 0;
 }
@@ -158,7 +155,7 @@ body {
   flex-wrap: wrap;
 }
 
-/* ── Buttons ── */
+/* Buttons */
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -204,7 +201,7 @@ body {
   box-shadow: 0 8px 24px rgba(201, 168, 76, 0.25);
 }
 
-/* ── Section Common ── */
+/* Section Common */
 .section { padding: 90px 0; }
 .section-alt { background: var(--bg-section); }
 .container {
@@ -236,16 +233,13 @@ body {
   margin: 18px 0;
 }
 
-/* ══════════════════════════════════════
-   ABOUT SECTION — fixed overlap
-══════════════════════════════════════ */
+/* ABOUT SECTION — fixed overlap */
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 100px;
   align-items: center;
   margin-bottom: 60px;
-  /* ✅ No negative margins pulling into hero */
   position: relative;
   z-index: 1;
 }
@@ -258,7 +252,6 @@ body {
   object-fit: cover;
   border-radius: 2px;
   display: block;
-  /* ✅ Removed margin-top: -60px — was causing the overlap */
 }
 
 .about-image-wrap::before {
@@ -323,7 +316,7 @@ body {
   flex-wrap: wrap;
 }
 
-/* ── Category Icon Row ── */
+/* Category Icon Row */
 .icon-row {
   display: flex;
   gap: 24px;
@@ -361,7 +354,7 @@ body {
 }
 .icon-item:hover span { color: var(--gold); }
 
-/* ── Gallery Strip ── */
+/* Gallery Strip */
 .gallery-strip {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -389,7 +382,7 @@ body {
 }
 .gallery-strip-item:hover::after { background: rgba(201, 168, 76, 0.12); }
 
-/* ── Menu Section ── */
+/* Menu Section */
 .menu-section { background: var(--bg-dark); }
 .menu-header { text-align: center; margin-bottom: 16px; }
 .menu-letter {
@@ -459,7 +452,7 @@ body {
   text-align: center;
 }
 
-/* ── Category Card Hover CTA ── */
+/* Category Card Hover CTA */
 .category-card-cta {
   position: absolute;
   bottom: 0; left: 0; right: 0;
@@ -496,7 +489,7 @@ body {
   margin-bottom: 40px;
 }
 
-/* ── Size Grid ── */
+/* Size Grid */
 .size-grid {
   display: flex;
   align-items: center;
@@ -547,7 +540,7 @@ body {
 .size-card:nth-child(2) .size-card-label { font-size: 1.3rem; }
 .size-card:nth-child(3) .size-card-label { font-size: 1.1rem; }
 
-/* ── Special Offers ── */
+/* Special Offers */
 .offers-section {
   background: var(--bg-dark);
   padding: 90px 0;
@@ -676,7 +669,7 @@ body {
   z-index: 2;
 }
 
-/* ── Gallery Section ── */
+/* Gallery Section */
 .gallery-section {
   background: var(--bg-dark);
   padding: 90px 0;
@@ -735,7 +728,7 @@ body {
   flex-shrink: 0;
 }
 
-/* ── Responsive ── */
+/* Responsive */
 @media (max-width: 900px) {
   .about-grid { grid-template-columns: 1fr; gap: 48px; }
   .about-image-wrap { max-width: 520px; margin: 0 auto; }
@@ -760,9 +753,7 @@ body {
   .hero-title { font-size: 2rem; }
 }
 
-/* ══════════════════════════════════════
-   FLOATING PIZZA + MASONRY SECTION
-══════════════════════════════════════ */
+/* FLOATING PIZZA + MASONRY SECTION */
 .float-masonry-section {
   padding: 0 0 80px;
   text-align: center;
@@ -770,7 +761,7 @@ body {
   overflow: visible;
 }
 
-/* ── Floating Pizza ── */
+/* Floating Pizza */
 .float-pizza-wrap {
   display: flex;
   justify-content: center;
@@ -792,7 +783,7 @@ body {
   50%       { transform: translateY(-14px); }
 }
 
-/* ── Tagline ── */
+/* Tagline */
 .float-tagline {
   margin: 36px auto 52px;
   padding: 0 24px;
@@ -806,7 +797,7 @@ body {
   text-shadow: 0 2px 12px rgba(0,0,0,0.4);
 }
 
-/* ── Masonry Grid ── */
+/* Masonry Grid */
 .masonry-grid {
   display: grid;
   grid-template-columns: 1.6fr 1fr 1fr 1fr;
@@ -843,7 +834,7 @@ body {
   height: 160px;
 }
 
-/* ── Responsive ── */
+/* Responsive */
 @media (max-width: 700px) {
   .float-pizza-img { width: 160px; height: 160px; }
   .float-pizza-wrap { margin-top: -80px; }

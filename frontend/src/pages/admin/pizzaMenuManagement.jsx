@@ -21,7 +21,7 @@ export default function PizzaMenuManagement() {
   const [preview,       setPreview]       = useState(null);
   const [selectedSizes, setSelectedSizes] = useState({});
 
-  // ── Fetch pizzas ──────────────────────────────────────────
+  // Fetch pizzas
   const fetchPizzas = async () => {
     try {
       const res = await axios.get('http://localhost:5000/api/pizzas');
@@ -38,7 +38,7 @@ export default function PizzaMenuManagement() {
 
   useEffect(() => { fetchPizzas(); }, []);
 
-  // ── Handle form input ─────────────────────────────────────
+  // Handle form input
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -51,7 +51,7 @@ export default function PizzaMenuManagement() {
     }
   };
 
-  // ── Add pizza ─────────────────────────────────────────────
+  // Add pizza
   const handleAdd = async (e) => {
     e.preventDefault();
 
@@ -99,7 +99,7 @@ export default function PizzaMenuManagement() {
     }
   };
 
-  // ── Delete pizza ──────────────────────────────────────────
+  // Delete pizza
   const handleDelete = async (id, name) => {
     const result = await Swal.fire({
       title: 'Delete Pizza?',
@@ -133,7 +133,7 @@ export default function PizzaMenuManagement() {
     }
   };
 
-  // ── Group by category ─────────────────────────────────────
+  // Group by category
   const groupedPizzas = {
     Classic: pizzas.filter(p => p.category === 'Classic'),
     Chicken: pizzas.filter(p => p.category === 'Chicken'),
@@ -144,7 +144,7 @@ export default function PizzaMenuManagement() {
   return (
     <div className="admin-content">
 
-      {/* ── Header ── */}
+      {/* Header */}
       <div className="content-header">
         <div>
           <h1 className="content-title">Pizza Menu Management</h1>
@@ -158,7 +158,7 @@ export default function PizzaMenuManagement() {
         </button>
       </div>
 
-      {/* ── Add Form ── */}
+      {/* Add Form */}
       {showForm && (
         <div className="add-pizza-form">
           <h2 className="form-title">Add New Pizza</h2>
@@ -276,7 +276,7 @@ export default function PizzaMenuManagement() {
         </div>
       )}
 
-      {/* ── Pizza List ── */}
+      {/* Pizza List */}
       {loading ? (
         <div className="loading-stats">🍕 Loading pizzas...</div>
       ) : pizzas.length === 0 ? (
@@ -306,7 +306,7 @@ export default function PizzaMenuManagement() {
                     <div className="pizza-card-body">
                       <h3 className="pizza-card-name">{pizza.name}</h3>
 
-                      {/* ✅ Size Dropdown */}
+                      {/* Size Dropdown */}
                       <div className="pizza-size-row">
                         <select
                           className="pizza-size-select"

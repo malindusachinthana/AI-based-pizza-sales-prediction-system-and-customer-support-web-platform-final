@@ -4,7 +4,7 @@ import Footer from '../../components/footer';
 import Chatbot from '../../components/chatbot.jsx';
 import '../../style/gallery.css';
 
-// ── Image imports ─────────────────────────────────────────────
+// Image imports
 import img01 from '../../assets/airpizzaimg.jpeg';
 import img02 from '../../assets/greenGarden pizzaimg.jpg';
 import img20 from '../../assets/home01.jpg';
@@ -26,7 +26,7 @@ import img17 from '../../assets/woodfire_1.jpg';
 import img18 from '../../assets/woodfire_2.jpg';
 import img19 from '../../assets/woodfire_3.jpg';
 
-// ── Gallery data ───────────────────────────────────────────────
+// Gallery data
 const IMAGES = [
   { id: 1,  src: img01, alt: 'Air Pizza',             caption: 'Handcrafted with Precision'     },
   { id: 2,  src: img02, alt: 'Green Garden Pizza',    caption: 'Fresh Garden Flavours'           },
@@ -54,7 +54,7 @@ export default function Gallery() {
   const [lightbox, setLightbox]   = useState(null); // index or null
   const [imgLoaded, setImgLoaded] = useState({});
 
-  // ── Keyboard navigation ─────────────────────────────────
+  // Keyboard navigation
   const handleKey = useCallback((e) => {
     if (lightbox === null) return;
     if (e.key === 'Escape')     setLightbox(null);
@@ -84,7 +84,7 @@ export default function Gallery() {
 
       <main className="gl-page">
 
-        {/* ── Hero ── */}
+        {/* Hero */}
         <section className="gl-hero">
           <div className="gl-hero-overlay" />
           <div className="gl-hero-content">
@@ -96,7 +96,7 @@ export default function Gallery() {
           </div>
         </section>
 
-        {/* ── Masonry Grid ── */}
+        {/* Masonry Grid */}
         <section className="gl-section">
           <div className="gl-masonry">
             {IMAGES.map((img, idx) => (
@@ -124,7 +124,7 @@ export default function Gallery() {
 
       </main>
 
-      {/* ── Lightbox ── */}
+      {/* Lightbox */}
       {lightbox !== null && (
         <div className="gl-lightbox" onClick={closeLightbox}>
 

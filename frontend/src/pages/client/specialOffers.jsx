@@ -1,6 +1,3 @@
-// SpecialOffers.jsx
-// Place in: frontend/src/pages/client/SpecialOffers.jsx
-
 import React, { useEffect, useState } from 'react';
 import Navbar from '../../components/navbar';
 import Footer from '../../components/footer';
@@ -26,7 +23,7 @@ export default function SpecialOffers() {
 
       <main className="so-page">
 
-        {/* ── Hero Banner ── */}
+        {/* Hero Banner */}
         <section className="so-hero">
           <div className="so-hero-overlay" />
           <div className="so-hero-content">
@@ -39,7 +36,7 @@ export default function SpecialOffers() {
           </div>
         </section>
 
-        {/* ── Offers Section ── */}
+        {/* Offers Section */}
         <section className="so-offers-section">
           <div className="so-container">
 

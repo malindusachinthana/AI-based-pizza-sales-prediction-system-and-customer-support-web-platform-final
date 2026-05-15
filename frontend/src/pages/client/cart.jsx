@@ -7,12 +7,12 @@ import Footer from '../../components/footer';
 import { useCart } from '../../context/CartContext';
 import '../../style/cart.css';
 
-// ── PayPal Sandbox Client ID ──────────────────────────────────
+// PayPal Sandbox Client ID
 const PAYPAL_CLIENT_ID = 'AaP9unl1F12HpVGdDIR8IeN0NpmbW99-3TqT4mImxH6ymHTq-_G9FDfDQqBWHq9A3AZS4LGJGAWK3Ycp';
 
 const SIZE_LABELS = { small: 'S', medium: 'M', large: 'L' };
 
-// ── Empty Cart ────────────────────────────────────────────────
+// Empty Cart
 function EmptyCart() {
   const navigate = useNavigate();
   return (
@@ -27,7 +27,7 @@ function EmptyCart() {
   );
 }
 
-// ── Cart Item Row ─────────────────────────────────────────────
+// Cart Item Row
 function CartItem({ item }) {
   const { increaseQty, decreaseQty, removeFromCart, changeSize } = useCart();
   const sizes = ['small', 'medium', 'large'];
@@ -85,13 +85,13 @@ function CartItem({ item }) {
   );
 }
 
-// ── Main Cart Page ────────────────────────────────────────────
+// Main Cart Page
 export default function Cart() {
   const { cartItems, cartTotal, clearCart } = useCart();
   const navigate                            = useNavigate();
   const [paying, setPaying]                 = useState(false);
 
-  // ── Route Guard — must be logged in as customer ───────────
+  // Route Guard — must be logged in as customer
   const token    = localStorage.getItem('token');
   const userRole = localStorage.getItem('userRole');
   const username = localStorage.getItem('username') || 'Customer';
@@ -100,9 +100,8 @@ export default function Cart() {
     navigate('/login');
     return null;
   }
-  // ─────────────────────────────────────────────────────────
 
-  // ── PayPal success handler ────────────────────────────────
+  // PayPal success handler
   async function onPayPalApprove(data) {
     setPaying(true);
     try {

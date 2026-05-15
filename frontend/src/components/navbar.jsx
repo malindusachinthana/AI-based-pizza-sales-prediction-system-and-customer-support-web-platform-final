@@ -4,14 +4,31 @@ import '../style/navbar.css';
 import logo from '../assets/OvenZlogo.png';
 import { useCart } from '../context/CartContext';
 
-// ── Logout Overlay ────────────────────────────────────────────
+// Login Transition Overlay
+function LoginTransitionOverlay({ show }) {
+  if (!show) return null;
+  return (
+    <div className="login-overlay">
+      <div className="login-box">
+        <div className="login-pizza">🍕</div>
+        <h2 className="login-title">Let's Login to OvenZa Crust..!</h2>
+        <p className="login-sub">Taking you to the login page...</p>
+        <div className="login-bar-wrap">
+          <div className="login-bar" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── Logout Overlay ───────────────────────────────────────────────────────────
 function LogoutOverlay({ show }) {
   if (!show) return null;
   return (
     <div className="logout-overlay">
       <div className="logout-box">
         <div className="logout-pizza">🍕</div>
-        <h2 className="logout-title">See You Soon!</h2>
+        <h2 className="logout-title">See You Soon..!</h2>
         <p className="logout-sub">You have been logged out.</p>
         <div className="logout-bar-wrap">
           <div className="logout-bar" />
@@ -21,20 +38,22 @@ function LogoutOverlay({ show }) {
   );
 }
 
-// ── Navbar ────────────────────────────────────────────────────
+// ─── Navbar ───────────────────────────────────────────────────────────────────
 export default function Navbar() {
   const navRef   = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
-  const [showLogout, setShowLogout] = useState(false);
+
+  const [showLogout,       setShowLogout]       = useState(false);
+  const [showLoginOverlay, setShowLoginOverlay] = useState(false); // ← NEW
 
   const token    = localStorage.getItem('token');
   const username = localStorage.getItem('username');
   const role     = localStorage.getItem('userRole');
 
-  // ── Cart count from context ───────────────────────────────
   const { cartCount } = useCart();
 
+  // ── Logout ──────────────────────────────────────────────────────────────────
   const handleLogout = () => {
     setShowLogout(true);
     setTimeout(() => {
@@ -46,10 +65,19 @@ export default function Navbar() {
     }, 2500);
   };
 
-  const handleLoginRedirect   = () => navigate('/login');
+  // ── Login redirect — now plays the overlay first ────────────────────────────
+  const handleLoginRedirect = () => {
+    setShowLoginOverlay(true);          // show animation
+    setTimeout(() => {
+      setShowLoginOverlay(false);
+      navigate('/login');               // navigate after 2.5 s
+    }, 2500);
+  };
+
   const handleAdminRedirect   = () => navigate('/admin-dashboard');
   const handleProfileRedirect = () => { if (token) navigate('/customer-profile'); };
 
+  // ── Scroll shadow ───────────────────────────────────────────────────────────
   useEffect(() => {
     const onScroll = () => {
       if (navRef.current) {
@@ -65,11 +93,13 @@ export default function Navbar() {
 
   return (
     <>
-      <LogoutOverlay show={showLogout} />
+      {/* Overlays */}
+      <LogoutOverlay        show={showLogout}       />
+      <LoginTransitionOverlay show={showLoginOverlay} /> {/* ← NEW */}
 
       <nav className="navbar" ref={navRef}>
 
-        {/* ── Left Links ── */}
+        {/* Left Links */}
         <ul className="navbar-links-left">
           <li>
             <Link to="/" className={location.pathname === '/' ? 'active' : ''}>
@@ -83,12 +113,12 @@ export default function Navbar() {
           </li>
         </ul>
 
-        {/* ── Center Logo ── */}
+        {/* Center Logo */}
         <Link to="/" className="navbar-logo">
           <img src={logo} alt="OvenZa Logo" />
         </Link>
 
-        {/* ── Right Links ── */}
+        {/* Right Links */}
         <ul className="navbar-links-right">
           <li>
             <Link to="/menu" className={location.pathname === '/menu' ? 'active' : ''}>
@@ -107,10 +137,10 @@ export default function Navbar() {
           </li>
         </ul>
 
-        {/* ── Right Section: Cart + User ── */}
+        {/* Right Section: Cart + User */}
         <div className="navbar-right-section">
 
-          {/* ── Cart Icon (only show when logged in as customer) ── */}
+          {/* Cart Icon (only show when logged in as customer) */}
           {token && role !== 'admin' && (
             <button
               className="navbar-cart-btn"
@@ -130,7 +160,7 @@ export default function Navbar() {
             </button>
           )}
 
-          {/* ── User Section ── */}
+          {/* User Section */}
           <div className="navbar-user-wrap">
             {token && (
               <span className="navbar-greeting">👋 Hi, {username}</span>
@@ -142,6 +172,7 @@ export default function Navbar() {
 
             <div className="user-dropdown">
               {!token ? (
+                // ← now calls handleLoginRedirect instead of navigate('/login')
                 <button className="dropdown-btn" onClick={handleLoginRedirect}>
                   🔑 Login
                 </button>

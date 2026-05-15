@@ -7,7 +7,7 @@ import { useCart } from '../../context/CartContext';
 import '../../style/CustomerMenu.css';
 import Chatbot from '../../components/chatbot.jsx'
 
-// ── Login Required Modal ──────────────────────────────────────
+// Login Required Modal
 function LoginModal({ onLogin, onCancel }) {
   return (
     <div className="login-modal-overlay">
@@ -26,7 +26,7 @@ function LoginModal({ onLogin, onCancel }) {
   );
 }
 
-// ── Hero Section ──────────────────────────────────────────────
+// Hero Section
 function MenuHero() {
   return (
     <div className="menu-hero">
@@ -42,7 +42,7 @@ function MenuHero() {
   );
 }
 
-// ── Category Filter ───────────────────────────────────────────
+// Category Filter
 function CategoryFilter({ active, setActive, counts, onCategoryClick }) {
   const categories = ['All', 'Classic', 'Chicken', 'Supreme', 'Veggie'];
   return (
@@ -61,7 +61,7 @@ function CategoryFilter({ active, setActive, counts, onCategoryClick }) {
   );
 }
 
-// ── Pizza Card ────────────────────────────────────────────────
+// Pizza Card
 function PizzaCard({ pizza, onLoginRequired }) {
   const [selectedSize, setSelectedSize] = useState('medium');
   const [added,        setAdded]        = useState(false);
@@ -99,7 +99,7 @@ function PizzaCard({ pizza, onLoginRequired }) {
   );
 }
 
-// ── Category Section ──────────────────────────────────────────
+// Category Section
 function CategorySection({ category, pizzas, onLoginRequired }) {
   if (pizzas.length === 0) return null;
   return (
@@ -114,7 +114,7 @@ function CategorySection({ category, pizzas, onLoginRequired }) {
   );
 }
 
-// ── Scroll helper ─────────────────────────────────────────────
+// Scroll helper
 function scrollToCategory(category) {
   const el = document.getElementById(`cat-${category}`);
   if (el) {
@@ -124,7 +124,7 @@ function scrollToCategory(category) {
   }
 }
 
-// ── Main Export ───────────────────────────────────────────────
+// Main Export
 export default function CustomerMenu() {
   const [pizzas,         setPizzas]         = useState([]);
   const [loading,        setLoading]        = useState(true);
@@ -135,7 +135,7 @@ export default function CustomerMenu() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // ── Read ?category= from URL (coming from Home page cards) ──
+  // Read ?category= from URL (coming from Home page cards)
   useEffect(() => {
     const params   = new URLSearchParams(location.search);
     const category = params.get('category');
@@ -154,7 +154,7 @@ export default function CustomerMenu() {
       .finally(() => setLoading(false));
   }, []);
 
-  // ── Always show ALL pizzas, filter just highlights & scrolls ──
+  // Always show ALL pizzas, filter just highlights & scrolls
   const allCategories = ['Classic', 'Chicken', 'Supreme', 'Veggie'];
 
   const grouped = {
@@ -172,7 +172,7 @@ export default function CustomerMenu() {
     Veggie:  grouped.Veggie.length,
   };
 
-  // ── Category button click ─────────────────────────────────
+  // Category button click
   function handleCategoryClick(cat) {
     setActiveCategory(cat);
     if (cat === 'All') {
@@ -221,7 +221,7 @@ export default function CustomerMenu() {
               <p>Menu is being prepared. Check back soon!</p>
             </div>
           ) : (
-            // ── Always render ALL categories ──
+            // Always render ALL categories
             allCategories.map(category => (
               <CategorySection
                 key={category}

@@ -1,6 +1,3 @@
-/* OrderConfirmation.css */
-/* Place in: frontend/src/style/OrderConfirmation.css */
-
 .oc-page {
   min-height: 100vh;
   background: #1c2318;
@@ -17,7 +14,7 @@
   text-align: center;
 }
 
-/* ── Success Icon ─────────────────────────────────────────── */
+/* Success Icon */
 .oc-success-icon {
   font-size: 72px;
   margin-bottom: 16px;
@@ -30,7 +27,7 @@
   100% { transform: scale(1); opacity: 1; }
 }
 
-/* ── Title ────────────────────────────────────────────────── */
+/* Title */
 .oc-title {
   font-family: 'Cinzel Decorative', serif;
   font-size: clamp(1.6rem, 5vw, 2.4rem);
@@ -50,7 +47,7 @@
   color: #c9a84c;
 }
 
-/* ── Order ID ─────────────────────────────────────────────── */
+/* Order ID */
 .oc-order-id {
   background: #2d3828;
   border: 1px solid rgba(201, 168, 76, 0.2);
@@ -76,7 +73,7 @@
   word-break: break-all;
 }
 
-/* ── Items Card ───────────────────────────────────────────── */
+/* Items Card */
 .oc-items-card {
   background: #2d3828;
   border: 1px solid rgba(201, 168, 76, 0.15);
@@ -131,7 +128,7 @@
   color: #c9a84c;
 }
 
-/* ── Delivery note ────────────────────────────────────────── */
+/* Delivery note */
 .oc-delivery-note {
   font-size: 14px;
   color: #a89f8c;
@@ -139,7 +136,7 @@
   line-height: 1.6;
 }
 
-/* ── Action buttons ───────────────────────────────────────── */
+/* Action buttons */
 .oc-actions {
   display: flex;
   gap: 14px;

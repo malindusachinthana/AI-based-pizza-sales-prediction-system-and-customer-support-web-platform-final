@@ -1,4 +1,4 @@
-# 🍕 OvenZa Crust – AI-Based Pizza Sales Prediction System & Customer Support Web Platform
+# 🍕 OvenZa Crust – AI Based Pizza Sales Prediction System & Customer Support Web Platform
 
 <div align="center">
 
@@ -9,7 +9,7 @@
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
 
-**Final Year Project — BSc (Hons) Software Engineering**  
+**Final Year Project – BSc (Hons) Software Engineering**  
 **University of Plymouth (PUSL3190 Computing Project)**  
 **Student:** Muhandiram M Muhandiram | **Plymouth Index:** 10953031  
 **Supervisor:** Ms. Thisarani Wickramasinghe

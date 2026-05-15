@@ -1,6 +1,3 @@
-// chatbotManagement.jsx
-// Place in: frontend/src/pages/admin/chatbotManagement.jsx
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../../style/chatbotManagement.css';
@@ -35,13 +32,13 @@ export default function ChatbotManagement() {
   const [activeTab,  setActiveTab]  = useState('answers');
   const [saveMsg,    setSaveMsg]    = useState('');
 
-  // ── Edit state ────────────────────────────────────────────
+  // Edit state
   const [editingKey,  setEditingKey]  = useState(null);
   const [editLabel,   setEditLabel]   = useState('');
   const [editAnswer,  setEditAnswer]  = useState('');
   const [saving,      setSaving]      = useState(false);
 
-  // ── Add new Q&A state ─────────────────────────────────────
+  // Add new Q&A state
   const [showAdd,     setShowAdd]     = useState(false);
   const [newForm,     setNewForm]     = useState(EMPTY_NEW);
   const [adding,      setAdding]      = useState(false);
@@ -72,7 +69,7 @@ export default function ChatbotManagement() {
     setTimeout(() => setSaveMsg(''), 3000);
   }
 
-  // ── Open edit ─────────────────────────────────────────────
+  // Open edit
   function handleEdit(cfg) {
     setEditingKey(cfg.key);
     setEditLabel(cfg.label);
@@ -80,7 +77,7 @@ export default function ChatbotManagement() {
     setShowAdd(false);
   }
 
-  // ── Save edit ─────────────────────────────────────────────
+  // Save edit
   async function handleSave(key) {
     if (!editLabel.trim() || !editAnswer.trim()) {
       showToast('❌ Question and answer cannot be empty.');
@@ -102,7 +99,7 @@ export default function ChatbotManagement() {
     }
   }
 
-  // ── Delete ────────────────────────────────────────────────
+  // Delete
   async function handleDelete(key) {
     if (!window.confirm('Delete this question? Customers won\'t see it anymore.')) return;
     try {
@@ -114,7 +111,7 @@ export default function ChatbotManagement() {
     }
   }
 
-  // ── Add new Q&A ───────────────────────────────────────────
+  // Add new Q&A
   async function handleAdd() {
     if (!newForm.label.trim() || !newForm.answer.trim()) {
       showToast('❌ Both question and answer are required.');
@@ -186,7 +183,7 @@ export default function ChatbotManagement() {
         ))}
       </div>
 
-      {/* ══ TAB 1 — Edit Answers ══ */}
+      {/* TAB 1 — Edit Answers */}
       {activeTab === 'answers' && (
         <div className="cbm-section">
 
@@ -201,7 +198,7 @@ export default function ChatbotManagement() {
             </button>
           </div>
 
-          {/* ── Add New Form ── */}
+          {/* Add New Form */}
           {showAdd && (
             <div className="cbm-add-form">
               <h4 className="cbm-add-title">➕ New Question & Answer</h4>
@@ -236,7 +233,7 @@ export default function ChatbotManagement() {
             </div>
           )}
 
-          {/* ── Q&A Cards ── */}
+          {/* Q&A Cards */}
           <div className="cbm-cards">
             {configs.map(cfg => (
               <div key={cfg.key}
@@ -304,7 +301,7 @@ export default function ChatbotManagement() {
         </div>
       )}
 
-      {/* ══ TAB 2 — Live DB Data ══ */}
+      {/* TAB 2 — Live DB Data */}
       {activeTab === 'live' && (
         <div className="cbm-section">
           <p className="cbm-section-desc">
@@ -343,7 +340,7 @@ export default function ChatbotManagement() {
         </div>
       )}
 
-      {/* ══ TAB 3 — Usage Stats ══ */}
+      {/* TAB 3 — Usage Stats */}
       {activeTab === 'stats' && (
         <div className="cbm-section">
           <p className="cbm-section-desc">

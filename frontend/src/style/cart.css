@@ -16,7 +16,7 @@
   --transition: 0.3s ease;
 }
 
-/* ── Page ─────────────────────────────────────────────────── */
+/* Page */
 .cart-page {
   min-height: 100vh;
   background: var(--bg-dark);
@@ -30,7 +30,7 @@
   padding: 0 24px;
 }
 
-/* ── Header ───────────────────────────────────────────────── */
+/* Header */
 .cart-header {
   display: flex;
   align-items: center;
@@ -74,7 +74,7 @@
   color: var(--bg-dark);
 }
 
-/* ── Body Layout ──────────────────────────────────────────── */
+/* Body Layout */
 .cart-body {
   display: grid;
   grid-template-columns: 1fr 360px;
@@ -86,7 +86,7 @@
   .cart-body { grid-template-columns: 1fr; }
 }
 
-/* ── Cart Item ────────────────────────────────────────────── */
+/* Cart Item */
 .cart-item {
   display: flex;
   align-items: center;
@@ -254,7 +254,7 @@
   background: rgba(192, 57, 43, 0.1);
 }
 
-/* ── Order Summary Card ───────────────────────────────────── */
+/* Order Summary Card */
 .cart-summary-card {
   background: var(--bg-card);
   border: 1px solid rgba(201, 168, 76, 0.2);
@@ -345,7 +345,7 @@
   font-family: var(--font-body);
 }
 
-/* ── Empty Cart ───────────────────────────────────────────── */
+/* Empty Cart */
 .cart-empty {
   display: flex;
   flex-direction: column;
@@ -371,7 +371,7 @@
   font-size: 15px;
 }
 
-/* ── Add to Cart button (in CustomerMenu.css) ─────────────── */
+/* Add to Cart button (in CustomerMenu.css) */
 .menu-cart-btn {
   width: 100%;
   padding: 10px 0;
@@ -406,7 +406,7 @@
   font-family: 'Lato', sans-serif;
 }
 
-/* ── Floating Cart Button ─────────────────────────────────── */
+/* Floating Cart Button */
 .floating-cart {
   position: fixed;
   bottom: 28px;

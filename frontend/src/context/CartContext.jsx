@@ -2,7 +2,7 @@ import { createContext, useContext, useState, useEffect } from 'react';
 
 const CartContext = createContext();
 
-// ── Load cart from localStorage on startup ────────────────────
+// Load cart from localStorage on startup
 function loadCart() {
   try {
     const saved = localStorage.getItem('ovenza_cart');
@@ -15,12 +15,12 @@ function loadCart() {
 export function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState(loadCart);
 
-  // ── Save cart to localStorage whenever it changes ─────────
+  // Save cart to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem('ovenza_cart', JSON.stringify(cartItems));
   }, [cartItems]);
 
-  // ── Add item to cart ──────────────────────────────────────
+  // Add item to cart
   function addToCart(pizza, size) {
     const price = pizza.sizes?.[size] || 0;
 
@@ -42,7 +42,7 @@ export function CartProvider({ children }) {
         name     : pizza.name,
         imageUrl : pizza.imageUrl,
         category : pizza.category,
-        sizes    : pizza.sizes,   // ← store all sizes for price lookup
+        sizes    : pizza.sizes, 
         size,
         price,
         quantity : 1,
@@ -50,14 +50,14 @@ export function CartProvider({ children }) {
     });
   }
 
-  // ── Remove item from cart ─────────────────────────────────
+  // Remove item from cart
   function removeFromCart(id, size) {
     setCartItems(prev =>
       prev.filter(item => !(item._id === id && item.size === size))
     );
   }
 
-  // ── Increase quantity ─────────────────────────────────────
+  // Increase quantity
   function increaseQty(id, size) {
     setCartItems(prev =>
       prev.map(item =>
@@ -68,7 +68,7 @@ export function CartProvider({ children }) {
     );
   }
 
-  // ── Decrease quantity ─────────────────────────────────────
+  // Decrease quantity
   function decreaseQty(id, size) {
     setCartItems(prev =>
       prev
@@ -81,7 +81,6 @@ export function CartProvider({ children }) {
     );
   }
 
-  // ── Change size ───────────────────────────────────────────
   // Uses stored sizes from the cart item itself — no pizza prop needed
   function changeSize(id, oldSize, newSize) {
     setCartItems(prev => {
@@ -114,13 +113,13 @@ export function CartProvider({ children }) {
     });
   }
 
-  // ── Clear entire cart ─────────────────────────────────────
+  // Clear entire cart
   function clearCart() {
     setCartItems([]);
     localStorage.removeItem('ovenza_cart');
   }
 
-  // ── Totals ────────────────────────────────────────────────
+  // Totals
   const cartTotal = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity, 0
   );
@@ -146,7 +145,7 @@ export function CartProvider({ children }) {
   );
 }
 
-// ── Custom hook ───────────────────────────────────────────────
+// ── Custom hook 
 export function useCart() {
   return useContext(CartContext);
 }

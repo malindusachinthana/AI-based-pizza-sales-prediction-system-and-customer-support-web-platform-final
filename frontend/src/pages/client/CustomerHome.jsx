@@ -31,16 +31,16 @@ import lobbyImg1   from '../../assets/home02.jpg';
 import lobbyImg2   from '../../assets/home03.jpg';
 import lobbyImg3   from '../../assets/home04.jpg';
 
-import floatingPizza from '../../assets/mainimg.png'; // floating bubble pizza
-import masonryImg1   from '../../assets/rest01.jpg';         // large left image
-import masonryImg2   from '../../assets/pepo2img.jpg';         // image 2
-import masonryImg3   from '../../assets/italianCopoimg.jpg';         // image 3
-import masonryImg4   from '../../assets/theItalianCopoimg.jpg';         // image 4
-import masonryImg5   from '../../assets/paperSalamiimg.jpg';         // image 5
-import masonryImg6   from '../../assets/southwestChickenimg.jpg';         // image 6
-import masonryImg7   from '../../assets/vegimg.jpg';     // image 7
+import floatingPizza from '../../assets/mainimg.png';          
+import masonryImg1   from '../../assets/rest01.jpg';            
+import masonryImg2   from '../../assets/pepo2img.jpg';          
+import masonryImg3   from '../../assets/italianCopoimg.jpg';    
+import masonryImg4   from '../../assets/theItalianCopoimg.jpg'; 
+import masonryImg5   from '../../assets/paperSalamiimg.jpg';    
+import masonryImg6   from '../../assets/southwestChickenimg.jpg';         
+import masonryImg7   from '../../assets/vegimg.jpg';     
 
-// ── Scroll Reveal Hook ────────────────────────────────────────
+// Scroll Reveal Hook
 function useReveal() {
   useEffect(() => {
     const targets = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
@@ -60,7 +60,7 @@ function useReveal() {
   }, []);
 }
 
-// ── Hero Section ──────────────────────────────────────────────
+// Hero Section
 function HeroSection() {
   return (
     <section className="hero" id="home">
@@ -85,17 +85,17 @@ function HeroSection() {
   );
 }
 
-// ── Floating Pizza + Masonry Section ─────────────────────────
+// Floating Pizza + Masonry Section
 function FloatMasonrySection() {
   return (
     <section className="float-masonry-section">
 
-      {/* ── Floating Pizza Bubble ── */}
+      {/* Floating Pizza Bubble */}
       <div className="float-pizza-wrap">
         <img src={floatingPizza} alt="Featured pizza" className="float-pizza-img" />
       </div>
 
-      {/* ── Tagline ── */}
+      {/* Tagline */}
       <div className="float-tagline reveal" data-delay="100">
         <p className="float-tagline-text">
           Old-world Italian craft.<br />
@@ -103,7 +103,7 @@ function FloatMasonrySection() {
         </p>
       </div>
 
-      {/* ── Masonry Grid ── */}
+      {/* Masonry Grid */}
       <div className="masonry-grid reveal" data-delay="200">
         {/* Large image — left, spans 2 rows */}
         <div className="masonry-item masonry-large">
@@ -135,7 +135,7 @@ function FloatMasonrySection() {
   );
 }
 
-// ── Category Icon Row ─────────────────────────────────────────
+// Category Icon Row
 function CategoryIconRow() {
   const icons = [
     { src: chickenIcon, label: 'Chicken' },
@@ -156,7 +156,7 @@ function CategoryIconRow() {
   );
 }
 
-// ── About Section ─────────────────────────────────────────────
+// About Section
 function AboutSection() {
   return (
     <section className="section" id="about">
@@ -201,7 +201,7 @@ function AboutSection() {
   );
 }
 
-// ── Menu Section ──────────────────────────────────────────────
+// Menu Section
 const categories = [
   { label: 'Veggie',  img: veggiePizza,  menuCategory: 'Veggie'  },
   { label: 'Chicken', img: chickenPizza, menuCategory: 'Chicken' },
@@ -258,7 +258,7 @@ function MenuSection() {
   );
 }
 
-// ── Special Offers Section ────────────────────────────────────
+// Special Offers Section
 function OffersSection() {
   const [offers,  setOffers]  = useState([]);
   const [loading, setLoading] = useState(true);
@@ -320,7 +320,7 @@ function OffersSection() {
   );
 }
 
-// ── Gallery Section ───────────────────────────────────────────
+// Gallery Section
 function GallerySection() {
   return (
     <section className="gallery-section" id="gallery">
@@ -352,7 +352,7 @@ function GallerySection() {
   );
 }
 
-// ── Main Export ───────────────────────────────────────────────
+// Main Export
 export default function CustomerHome() {
   useReveal();
   return (

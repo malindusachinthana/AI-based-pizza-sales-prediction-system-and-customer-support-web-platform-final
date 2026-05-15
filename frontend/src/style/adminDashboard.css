@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap');
 
-/* ── Variables ── */
+/* Variables */
 :root {
   --bg-dark:      #1c2318;
   --bg-section:   #242e1f;
@@ -20,7 +20,7 @@
   --transition:   0.3s ease;
 }
 
-/* ── Reset ── */
+/* Reset */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
   font-family: var(--font-body);
@@ -28,9 +28,7 @@ body {
   color: var(--cream);
 }
 
-/* ══════════════════════════════════════
-   LAYOUT
-══════════════════════════════════════ */
+/* LAYOUT */
 .admin-wrapper {
   display: flex;
   min-height: 100vh;
@@ -43,9 +41,7 @@ body {
   background: var(--bg-dark);
 }
 
-/* ══════════════════════════════════════
-   SIDEBAR
-══════════════════════════════════════ */
+/* SIDEBAR */
 .admin-sidebar {
   width: 220px;
   background: var(--bg-sidebar);
@@ -59,7 +55,7 @@ body {
   overflow-y: auto;
 }
 
-/* ── Logo ── */
+/* Logo */
 .sidebar-logo {
   padding: 20px 18px 16px;
   border-bottom: 1px solid rgba(201, 168, 76, 0.1);
@@ -80,7 +76,7 @@ body {
   text-transform: uppercase;
 }
 
-/* ── Admin Info ── */
+/* Admin Info */
 .sidebar-admin {
   display: flex;
   align-items: center;
@@ -117,7 +113,7 @@ body {
   margin-top: 2px;
 }
 
-/* ── Navigation ── */
+/* Navigation */
 .sidebar-nav {
   flex: 1;
   padding: 8px 0;
@@ -161,7 +157,7 @@ body {
   flex-shrink: 0;
 }
 
-/* ── Sidebar Footer ── */
+/* Sidebar Footer */
 .sidebar-footer {
   padding: 12px 18px;
   border-top: 1px solid rgba(201, 168, 76, 0.1);
@@ -184,14 +180,12 @@ body {
   color: var(--gold);
 }
 
-/* ══════════════════════════════════════
-   CONTENT AREA
-══════════════════════════════════════ */
+/* CONTENT AREA */
 .admin-content {
   padding: 24px 28px;
 }
 
-/* ── Content Header ── */
+/* Content Header */
 .content-header {
   display: flex;
   align-items: center;
@@ -211,9 +205,7 @@ body {
   color: var(--text-muted);
 }
 
-/* ══════════════════════════════════════
-   STAT CARDS
-══════════════════════════════════════ */
+/* STAT CARDS */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -269,9 +261,7 @@ body {
   margin-top: 6px;
 }
 
-/* ══════════════════════════════════════
-   GRID LAYOUTS
-══════════════════════════════════════ */
+/* GRID LAYOUTS */
 .mid-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -279,9 +269,7 @@ body {
   margin-bottom: 20px;
 }
 
-/* ══════════════════════════════════════
-   PANELS
-══════════════════════════════════════ */
+/* PANELS */
 .admin-panel {
   background: var(--bg-card);
   border: 1px solid rgba(201, 168, 76, 0.1);
@@ -311,9 +299,7 @@ body {
 }
 .panel-action:hover { color: var(--gold); }
 
-/* ══════════════════════════════════════
-   BAR CHART
-══════════════════════════════════════ */
+/* BAR CHART */
 .bar-chart {
   display: flex;
   align-items: flex-end;
@@ -344,9 +330,7 @@ body {
   color: var(--text-muted);
 }
 
-/* ══════════════════════════════════════
-   TOP PIZZAS
-══════════════════════════════════════ */
+/* TOP PIZZAS */
 .pizza-list {
   display: flex;
   flex-direction: column;
@@ -385,9 +369,7 @@ body {
   border: 1px solid rgba(201, 168, 76, 0.2);
 }
 
-/* ══════════════════════════════════════
-   AI FORECAST
-══════════════════════════════════════ */
+/* AI FORECAST */
 .ai-panel {
   border-color: rgba(201, 168, 76, 0.25);
 }
@@ -453,9 +435,7 @@ body {
   color: var(--text-muted);
 }
 
-/* ══════════════════════════════════════
-   QUICK ACTIONS
-══════════════════════════════════════ */
+/* QUICK ACTIONS */
 .quick-actions {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -488,9 +468,7 @@ body {
 }
 .action-btn:hover .action-label { color: var(--gold); }
 
-/* ══════════════════════════════════════
-   LOADING STATE
-══════════════════════════════════════ */
+/* LOADING STATE */
 .loading-stats {
   text-align: center;
   padding: 40px;
@@ -502,9 +480,7 @@ body {
   margin-bottom: 20px;
 }
 
-/* ══════════════════════════════════════
-   COMING SOON
-══════════════════════════════════════ */
+/* COMING SOON */
 .coming-soon {
   display: flex;
   flex-direction: column;
@@ -535,9 +511,7 @@ body {
 }
 
 
-/* ══════════════════════════════════════
-   BAR CHART ADDITIONS
-══════════════════════════════════════ */
+/*  BAR CHART ADDITIONS */
 
 /* Today highlight */
 .bar-today {
@@ -629,9 +603,7 @@ body {
   font-weight: 700;
 }
 
-/* ══════════════════════════════════════
-   RESPONSIVE
-══════════════════════════════════════ */
+/* RESPONSIVE */
 @media (max-width: 1100px) {
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
 }

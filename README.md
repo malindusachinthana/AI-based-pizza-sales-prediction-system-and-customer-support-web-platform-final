@@ -1,4 +1,4 @@
-# 🍕 OvenZa Crust - AI-Based Pizza Sales Prediction System & Customer Support Web Platform
+# 🍕 OvenZa Crust – AI-Based Pizza Sales Prediction System & Customer Support Web Platform
 
 <div align="center">
 
@@ -330,8 +330,14 @@ This project was developed as a final year academic submission for the **BSc (Ho
 
 ---
 
+## All Project Documentayion
+
+![Project Proposal](https://liveplymouthac-my.sharepoint.com/:f:/g/personal/10953031_students_plymouth_ac_uk/IgDdReHJnrMkQaMEoTOXnWUHAWjzgh3_wOiW325o37eew68?e=iewP4t)
+
+
 <div align="center">
 
-Made with 🍕 by **Malindu Sachinthana** — OvenZa Crust © 2026
+© 2026 OvenZa Crust. All Rights Reserved...!
+By, Malindu Sachinthana
 
 </div>
